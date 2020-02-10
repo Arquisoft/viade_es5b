@@ -1,0 +1,7 @@
+1º) Abrir la consola (linux)
+2º) Ponerse en el directorio que contenga el documento x.adoc
+x= nombre del archivo
+3º) asciidoctor x.adoc
+Fin) deberia haber un documento x.html
+
+Mas Info: https://asciidoctor.org/docs/convert-documents/
