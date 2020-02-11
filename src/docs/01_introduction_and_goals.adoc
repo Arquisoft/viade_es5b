@@ -3,31 +3,21 @@
 
 [role="arc42help"]
 ****
-Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
-
-* underlying business goals, essential features and functional requirements for the system
-* quality goals for the architecture
-* relevant stakeholders and their expectations
+El objetivo  del proyecto es la creación de un sistema descentralizado de gestión de rutas basado en las especificaciones SOLID, en la que lo más importante será la privacidad de los datos y el control de los mismos por los usuarios.
 ****
 
 === Requirements Overview
 
 [role="arc42help"]
 ****
-.Contents
-Short description of the functional requirements, driving forces, extract (or abstract)
-of requirements. Link to (hopefully existing) requirements documents
-(with version number and information where to find it).
+* El sistema debe utilizar una arquitectura descentralizada, separando datos y aplicación.
+* Los usuarios deben poder ver sus rutas en un mapa.
+* Los datos de las rutas se deben guardar en los PODs de los usuarios.
+* Los usuarios pueden tener amigos con los que compartir sus rutas.
+* El usuario puede recibir notificaciones cuando le compartan una ruta.
+* Los usuarios pueden compartir fotos, videos u otros ficheros con sus amigos.
 
-.Motivation
-From the point of view of the end users a system is created or modified to
-improve support of a business activity and/or improve the quality.
-
-.Form
-Short textual description, probably in tabular use-case format.
-If requirements documents exist this overview should refer to these documents.
-
-Keep these excerpts as short as possible. Balance readability of this document with potential redundancy w.r.t to requirements documents.
+* Deben de poder verse las rutas  cargadas por usuarios de otros programas de gestión de rutas, teniendo en cuenta la interoperabilidad.
 ****
 
 === Quality Goals
