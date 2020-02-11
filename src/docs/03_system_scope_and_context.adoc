@@ -32,7 +32,7 @@ Es decir esta aplicación utiliza datos que están en nuestro servidor privado (
 Cada usuario podrá compartir sus rutas y podrá acceder a rutas de otros usuarios.
 
 .Form
-All kinds of diagrams that show the system as a black box and specify the domain interfaces to communication partners.
+En un futuro se realizará el diagramas para el Business Context, seguido de una breve explicación.
 
 Alternatively (or additionally) you can use a table.
 The title of the table is the name of your system, the three columns contain the name of the communication partner, the inputs, and the outputs.
@@ -62,8 +62,7 @@ Se ha escogido SOLID para el backend por su seguridad al darnos la capacidad par
 Así mismo se utiliza React para el Frontend por su facilidad para la creación de interfaces de usuario.
 
 .Form
-E.g. UML deployment diagram describing channels to neighboring systems,
-together with a mapping table showing the relationships between channels and input/output.
+Se describirá en un diagrama UML, seguido de una breve explicación
 
 ****
 
