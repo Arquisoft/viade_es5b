@@ -1,3 +1,4 @@
+Previa: sudo apt-get asciidoctor
 1º) Abrir la consola (linux)
 2º) Ponerse en el directorio que contenga el documento x.adoc
 x= nombre del archivo
