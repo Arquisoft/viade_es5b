@@ -7,6 +7,9 @@
 .Contents/Contenidos
 Las limitaciones existentes a la hora de crear la aplicación son de dos clases, las impuestas por el cliente y las limitaciones tecnicas a las que nos enfrentamos en su desarollo. 
 
+
+
+
 .Motivation/Motivacion
 Buscamos conseguir una red social de rutas descentralizada, de forma que se pueda interactuar con otros usuarios desde una web, amigable y sencilla.
 
