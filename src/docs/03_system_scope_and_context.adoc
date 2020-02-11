@@ -5,10 +5,9 @@
 [role="arc42help"]
 ****
 .Contents
-System scope and context - as the name suggests - delimits your system (i.e. your scope) from all its communication partners
-(neighboring systems and users, i.e. the context of your system). It thereby specifies the external interfaces.
+Nuestra aplicación descentralizada de rutas da la posibilidad al usuario de compartir sus rutas fácilmente sin poner en riesgo la seguridad de sus datos.
 
-If necessary, differentiate the business context (domain specific inputs and outputs) from the technical context (channels, protocols, hardware).
+Aquí describiremos el Business Context.
 
 .Motivation
 The domain interfaces and technical interfaces to communication partners are among your system's most critical aspects. Make sure that you completely understand them.
@@ -26,10 +25,11 @@ Various options:
 [role="arc42help"]
 ****
 .Contents
-El usuario de la aplicación se conectara a través
+Los usuarios de la aplicación podrán compartir sus rutas con otros usuarios sin que sus datos tengan que pasar a través de un servidor externo.
+Es decir esta aplicación utiliza datos que están en nuestro servidor privado (POD).
 
 .Motivation
-All stakeholders should understand which data are exchanged with the environment of the system.
+Cada usuario podrá compartir sus rutas y podrá acceder a rutas de otros usuarios.
 
 .Form
 All kinds of diagrams that show the system as a black box and specify the domain interfaces to communication partners.
@@ -46,11 +46,20 @@ The title of the table is the name of your system, the three columns contain the
 
 [role="arc42help"]
 ****
+.Backend
+La aplicación utiliza un servidor SOLID a través de un POD. Un POD es como una clave para un usuario. Determina quién puede obtener un contenido,
+como las rutas, evitando accesos no deseados de personas externas.
+
+.Frontend
+Para la creación de interfaces de usuario utilizaremos React, una biblioteca de JavaScript diseñada para crear interfaces de usuario con el objetivo de
+facilitar el desarrollo de aplicaciones de una sola página.
+
 .Contents
-google maps (channels and transmission media) linking your system to its environment. In addition a mapping of domain specific input/output to the channels, i.e. an explanation with I/O uses which channel.
+Google maps, GitHub, Visual Studio Code ejecutado sobre una terminal Windows / Linux con npm (sistema de gestión de paquetes por defecto para Node.js).
 
 .Motivation
-Many stakeholders make architectural decision based on the technical interfaces between the system and its context. Especially infrastructure or hardware designers decide these technical interfaces.
+Se ha escogido SOLID para el backend por su seguridad al darnos la capacidad para tener una aplicación descentralizada.
+Así mismo se utiliza React para el Frontend por su facilidad para la creación de interfaces de usuario.
 
 .Form
 E.g. UML deployment diagram describing channels to neighboring systems,
