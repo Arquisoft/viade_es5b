@@ -88,10 +88,19 @@ A continuación, se muestran las diferentes restricciones agrupadas por categor�
 | Restricción | Explicación
 
 | Uso de componentes React
-| de esta forma, los componenetes ya creados pueden ser incluidos facilmente en nuestra aplicacion, sin necesidad de crearlos desde cero.
+| De esta forma, los componenetes ya creados pueden ser incluidos facilmente en nuestra aplicacion, sin necesidad de crearlos desde cero.
 
-| restricción 2
-| explicación 2
+| Uso de Solid
+| Utilizando solid, obtenemos un paradigma de persistencia desacoplada. Esto nos obliga a no depender de las bases de datos mas usuales. En su lugar los datos se almacenan de forma privada en el servidor del usuario (Pod), a no ser que este decida compartirla.
+
+| Division del proyecto de forma interna
+| Una division estructurada del diseño de la aplicacion (en cuanto a diagrama de directorios) resulta muy util de cara a procesar cambios, o localizar componentes de forma sencilla.
+Esta directriz, aunque poco usada, es altamente recomendable.
+//Esta es nueva
+| AsciiDoctor
+| Utilizamos esta herramienta para la documentacion porque cuenta con diversas plantillas muy utiles.
+Ademas, es capaz de dar formato a multiples lenguajes (.doc, .html, etc) lo que facilita una documentacion mas accesible.
+
 |===
 
 .Convenciones
