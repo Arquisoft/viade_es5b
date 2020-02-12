@@ -4,16 +4,96 @@
 
 [role="arc42help"]
 ****
-.Contents
-Any requirement that constrains software architects in their freedom of design and implementation decisions or decision about the development process. These constraints sometimes go beyond individual systems and are valid for whole organizations and companies.
+////
 
-.Motivation
-Architects should know exactly where they are free in their design decisions and where they must adhere to constraints.
-Constraints must always be dealt with; they may be negotiable, though.
+.Contents/Contenidos
+Las limitaciones existentes a la hora de crear la aplicación son de dos clases, las impuestas por el cliente y las limitaciones tecnicas a las que nos enfrentamos en su desarollo. 
+
+
+
+
+.Motivation/Motivacion
+Buscamos conseguir una red social de rutas descentralizada, de forma que se pueda interactuar con otros usuarios desde una web, amigable y sencilla.
 
 .Form
 Simple tables of constraints with explanations.
 If needed you can subdivide them into
 technical constraints, organizational and political constraints and
 conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
+////
+.Contenido
+En esta sección, vamos a describir de manera detallada las diferentes restricciones que podemos contemplar sobre el desarollo del proyecto VIADE. Se ha
+optado por agrupar las restricciones en varias categorías, pudiendo distinguir las siguientes:
+
+    * Restricciones tecnológicas.
+    * Restricciones de implementación.
+    * Organizativas.
+    * De diseño.
+    * Convenciones.
+
+Estas restricciones limitan a los miembros del equipo a la hora de desarrollar el proyecto, obligando a estos a ajustarse a las decisiones tomadas en base 
+a dichas restricciones.
+
+
+.Motivación
+El objetivo de este proyecto es desarrollar una red social descentralizada que permita a los usuarios subir y registrar sus rutas, compartirlas con sus amigos, pudiendo recibir comentarios de estos, así como poder adjuntar archivos multimedia asociados a cada una de sus rutas, de forma que el usuario tenga
+control total a la hora de decidir si desea comparti sus rutas, o por el contrario mantenerlas en su propio servidor POD.
+
+.Restricciones
+A continuación, se muestran las diferentes restricciones agrupadas por categorías, en forma de tabla (una para cada categoría).
+
+.Restricciones tecnológicas
+|===
+| Restricción | Explicación
+
+| restriccion 1
+| explicación 1
+
+| restricción 2
+| explicación 2
+|===
+
+.Restricciones de implementación
+|===
+| Restricción | Explicación
+
+| restriccion 1
+| explicación 1
+
+| restricción 2
+| explicación 2
+|===
+
+.Restricciones organizativas
+|===
+| Restricción | Explicación
+
+| restriccion 1
+| explicación 1
+
+| restricción 2
+| explicación 2
+|===
+
+.Restricciones de diseño
+|===
+| Restricción | Explicación
+
+| restriccion 1
+| explicación 1
+
+| restricción 2
+| explicación 2
+|===
+
+.Convenciones
+|===
+| Restricción | Explicación
+
+| restriccion 1
+| explicación 1
+
+| restricción 2
+| explicación 2
+|===
 ****
