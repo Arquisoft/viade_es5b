@@ -1,6 +1,6 @@
 [[section-architecture-constraints]]
 == Architecture Constraints
-
+Alejandro Florez Muñiz <uo264371@uniovi.es>; Alejandro Iglesias Calvo <uo247346@uniovi.es>;
 
 [role="arc42help"]
 ****
