@@ -86,7 +86,7 @@ servidor. Para ello será necesario integrar React con SOLID.
 
 .Restricciones organizativas
 |===
-| Restricción | Explicación
+| *Restricción* | *Explicación*
 
 | restriccion 1
 | explicación 1
@@ -97,7 +97,7 @@ servidor. Para ello será necesario integrar React con SOLID.
 
 .Restricciones de diseño
 |===
-| Restricción | Explicación
+| *Restricción* | *Explicación*
 
 | restriccion 1
 | explicación 1
