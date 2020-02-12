@@ -108,12 +108,13 @@ servidor. Para ello será necesario integrar React con SOLID.
 
 .Convenciones
 |===
-| Restricción | Explicación
+| *Restricción* | *Explicación*
 
-| restriccion 1
-| explicación 1
+| *Separación en capas*
+| El código debe separarse en capas/módulos cohesivos y con una interfaz bien definida aumentando así la mantenibilidad del código. El front-end y el
+back-end deben estar bien delimitados para hacer que la comunicación sea lo mas sencilla posible.
 
-| restricción 2
-| explicación 2
+| *Agrupar componentes en paquetes*
+| Relacionado con la restricción anterior, es útil agrupar componentes y clases relacionadas en paquetes o módulos aumentando la cohesión.
 |===
 ****
