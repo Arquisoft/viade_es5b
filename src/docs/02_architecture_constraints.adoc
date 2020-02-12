@@ -35,8 +35,10 @@ a dichas restricciones.
 
 
 .Motivación
-El objetivo de este proyecto es desarrollar una red social descentralizada que permita a los usuarios subir y registrar sus rutas, compartirlas con sus amigos, pudiendo recibir comentarios de estos, así como poder adjuntar archivos multimedia asociados a cada una de sus rutas, de forma que el usuario tenga
-control total a la hora de decidir si desea comparti sus rutas, o por el contrario mantenerlas en su propio servidor POD.
+El objetivo de este proyecto es desarrollar una red social descentralizada que permita a los usuarios subir y registrar sus rutas, compartirlas con sus amigos.
+
+Pudiendo recibir comentarios de estos, así como poder adjuntar archivos multimedia asociados a cada una de sus rutas. +
+De forma que el usuario tenga control total a la hora de decidir si desea comparti sus rutas, o por el contrario mantenerlas en su propio servidor (POD).
 
 .Restricciones
 A continuación, se muestran las diferentes restricciones agrupadas por categorías, en forma de tabla (una para cada categoría).
@@ -67,8 +69,8 @@ A continuación, se muestran las diferentes restricciones agrupadas por categor�
 |===
 | Restricción | Explicación
 
-| restriccion 1
-| explicación 1
+| Realizar la documentacion de forma incremental
+| Puesto que carecemos de experiencia en las tecnologias solicitadas, no podemos aportar una documentacion completa de la forma mas eficiente.
 
 | restricción 2
 | explicación 2
