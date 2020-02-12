@@ -1,4 +1,4 @@
-[[section-introduction-and-goals]]
+https://github.com/Arquisoft/viade_es5b.git[[section-introduction-and-goals]]
 == Introduction and Goals
 
 [role="arc42help"]
@@ -39,27 +39,12 @@ El objetivo  del proyecto es la creación de un sistema descentralizado de gesti
 
 [role="arc42help"]
 ****
-.Contents
-Explicit overview of stakeholders of the system, i.e. all person, roles or organizations that
-
-* should know the architecture
-* have to be convinced of the architecture
-* have to work with the architecture or with code
-* need the documentation of the architecture for their work
-* have to come up with decisions about the system or its development
-
-.Motivation
-You should know all parties involved in development of the system or affected by the system.
-Otherwise, you may get nasty surprises later in the development process.
-These stakeholders determine the extent and the level of detail of your work and its results.
-
-.Form
-Table with role names, person names, and their expectations with respect to the architecture and its documentation.
-****
-
 [options="header",cols="1,2,2"]
 |===
-|Role/Name|Contact|Expectations
-| _<Role-1>_ | _<Contact-1>_ | _<Expectation-1>_
-| _<Role-2>_ | _<Contact-2>_ | _<Expectation-2>_
+|Rol|Descripción|Expectativas
+| _Profesor_ | Encargado de supervisar y evaluar el proyecto | Espera que los estudiantes trabajen continuamente en el proyecto y que la aplicación cumpla con ciertos criterios y requisitos funcionales
+| _Usuarios_ | Personas que van a hacer uso de la aplicación | Esperan que la aplicación sea segura, disponible, cuente con un buen rendimiento y sea fácil de comprender y usar
+| _Inrupt_ | Organización que trabaja con Solid y ha propuesto el desafío de desarrollar una aplicación de rutas descentralizadas | Esperan que los estudiantes creen una aplicación de rutas descentralizadas utilizando la tecnología Solid y que cumpla una serie de requisitos técnicos y de calidad
+| _Desarrolladores de software_ | Estudiantes que se encargarán de desarrollar la aplicación | Esperan aprender nuevas tecnologías como es SOLID y no ceñirse solo a ciertas tecnologías que podrían caer en desuso
+Otra expectativa es reforzar la capacidad de trabajar en grupo que nos ayudará a adaptarnos más fácilmente en las empresas
 |===
