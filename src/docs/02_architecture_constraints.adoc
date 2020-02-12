@@ -72,16 +72,23 @@ A continuación, se muestran las diferentes restricciones agrupadas por categor�
 | Realizar la documentacion de forma incremental
 | Puesto que carecemos de experiencia en las tecnologias solicitadas, no podemos aportar una documentacion completa de la forma mas eficiente.
 
-| restricción 2
-| explicación 2
+| Entregas periodicas de una implementación parcial
+| Debido a la metodologia de la practica, debemos realizar entregas periodicas con funcionalidades, lo que puede afectar al rendimiento en otros aspectos. Por ejmeplo pruebas u optimizaciones.
+
+| Redactar actas semanalmente
+| Esto nos obliga a realizar un seguimiento continuo del proyecto, lo cual beneficia la calidad del mismo.
+
+| Uso de ramas individuales 
+| Por cada feature se creara una rama, la cual partira del subconjunto al que pertenece el programador dentro del paradigma organico del grupo de trabajo. De esta forma se intenta impedir el codigo muerto, o crear conflictos con otras partes del proyecto.
+
 |===
 
 .Restricciones de diseño
 |===
 | Restricción | Explicación
 
-| restriccion 1
-| explicación 1
+| Uso de componentes React
+| de esta forma, los componenetes ya creados pueden ser incluidos facilmente en nuestra aplicacion, sin necesidad de crearlos desde cero.
 
 | restricción 2
 | explicación 2
