@@ -43,13 +43,22 @@ A continuación, se muestran las diferentes restricciones agrupadas por categor�
 
 .Restricciones tecnológicas
 |===
-| Restricción | Explicación
+| *Restricción*  | *Explicación*
 
-| restriccion 1
-| explicación 1
+| *Usar lenguaje JavaScript*
+| Utilizar como lenguaje de codificación el estándar ES6 (JavaScript).
 
-| restricción 2
-| explicación 2
+| *Usar framework React.js*
+| Para el desarrollo de la interfaz de usuario y sus componentes Web, se usará el framekwork React.js, que plasma los cambios en un DOM virtual antes de representarlos en el DOM real.
+
+| *Usar la tecnología SOLID.* 
+| Implementar el sistema de persistencia mediante servidores POD descentralizados, con la tecnología SOLID desarrollada por Inrupt.
+
+| *Software de Control de Versiones Git.* 
+| Se debe utilizar la plataforma Git para gestionar las versiones y la evolución del proyecto, con ayuda del repositorio remoto que se nos ofrece en GitHub.
+
+| *Uso del modelo Arc42 para documentar.*
+|  A la hora de documentar, se requiere utilizar el modelo Arc42, respetando su estructura y utilizando la plantilla AsciiDoc.
 |===
 
 .Restricciones de implementación
