@@ -90,16 +90,16 @@ servidor. Para ello será necesario integrar React con SOLID.
 |===
 | *Restricción* | *Explicación*
 
-| Realizar la documentacion de forma incremental
+| *Realizar la documentacion de forma incremental*
 | Puesto que carecemos de experiencia en las tecnologias solicitadas, no podemos aportar una documentacion completa de la forma mas eficiente.
 
-| Entregas periodicas de una implementación parcial
+| *Entregas periodicas de una implementación parcial*
 | Debido a la metodologia de la practica, debemos realizar entregas periodicas con funcionalidades, lo que puede afectar al rendimiento en otros aspectos. Por ejmeplo pruebas u optimizaciones.
 
-| Redactar actas semanalmente
+| *Redactar actas semanalmente*
 | Esto nos obliga a realizar un seguimiento continuo del proyecto, lo cual beneficia la calidad del mismo.
 
-| Uso de ramas individuales 
+| *Uso de ramas individuales*
 | Por cada feature se creara una rama, la cual partira del subconjunto al que pertenece el programador dentro del paradigma organico del grupo de trabajo. De esta forma se intenta impedir el codigo muerto, o crear conflictos con otras partes del proyecto.
 
 |===
@@ -108,17 +108,17 @@ servidor. Para ello será necesario integrar React con SOLID.
 |===
 | *Restricción* | *Explicación*
 
-| Uso de componentes React
+| *Uso de componentes React*
 | De esta forma, los componenetes ya creados pueden ser incluidos facilmente en nuestra aplicacion, sin necesidad de crearlos desde cero.
 
-| Uso de Solid
+| *Uso de Solid*
 | Utilizando solid, obtenemos un paradigma de persistencia desacoplada. Esto nos obliga a no depender de las bases de datos mas usuales. En su lugar los datos se almacenan de forma privada en el servidor del usuario (Pod), a no ser que este decida compartirla.
 
-| Division del proyecto de forma interna
+| *Division del proyecto de forma interna*
 | Una division estructurada del diseño de la aplicacion (en cuanto a diagrama de directorios) resulta muy util de cara a procesar cambios, o localizar componentes de forma sencilla.
 Esta directriz, aunque poco usada, es altamente recomendable.
 //Esta es nueva
-| AsciiDoctor
+| *AsciiDoctor*
 | Utilizamos esta herramienta para la documentacion porque cuenta con diversas plantillas muy utiles.
 Ademas, es capaz de dar formato a multiples lenguajes (.doc, .html, etc) lo que facilita una documentacion mas accesible.
 
