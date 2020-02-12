@@ -45,29 +45,50 @@ A continuación, se muestran las diferentes restricciones agrupadas por categor�
 
 .Restricciones tecnológicas
 |===
-| Restricción | Explicación
+| *Restricción*  | *Explicación*
 
-| restriccion 1
-| explicación 1
+| *Usar lenguaje JavaScript*
+| Utilizar como lenguaje de codificación el estándar ES6 (JavaScript).
 
-| restricción 2
-| explicación 2
+| *Usar framework React.js*
+| Para el desarrollo de la interfaz de usuario y sus componentes Web, se usará el framekwork React.js, que plasma los cambios en un DOM virtual antes de representarlos en el DOM real.
+
+| *Usar la tecnología SOLID.* 
+| Implementar el sistema de persistencia mediante servidores POD descentralizados, con la tecnología SOLID desarrollada por Inrupt.
+
+| *Software de Control de Versiones Git.* 
+| Se debe utilizar la plataforma Git para gestionar las versiones y la evolución del proyecto, con ayuda del repositorio remoto que se nos ofrece en GitHub.
+
+| *Uso del modelo Arc42 para documentar.*
+|  A la hora de documentar, se requiere utilizar el modelo Arc42, respetando su estructura y utilizando la plantilla AsciiDoc.
 |===
 
 .Restricciones de implementación
 |===
-| Restricción | Explicación
+| *Restricción* | *Explicación*
 
-| restriccion 1
-| explicación 1
+| *Sistema descentralizado.*
+| Debe consistir en una red social descentralizada donde se almacenen los datos (rutas) en un servidor propio, del cual dispone cada usuario.
 
-| restricción 2
-| explicación 2
+| *Datos separados.*
+| Obligatorio que los datos de los usuarios estén separados de la lógica de la aplicación, en un servidor POD.
+
+| *Lógica y UI juntas.*
+| La lógica referente a la interacción entre el usuario y los componentes Web, validación de entradas, navegación...etc debe gestionarse de manera
+conjunta a través de los componentes de React.
+
+| *Integración del FrontEnd con BackEnd.*
+| Debe integrarse correctamente la parte de cliente/usuario, con la parte de datos de la aplicación, es decir, persistencia y lógica computada en el
+servidor. Para ello será necesario integrar React con SOLID.
+
+| *Desarrollo de una aplicación Web*
+| El resultado final debe ser una aplicación Web soportada mediante un servidor, y a la cual se pueda acceder desde cualquier equipo, incluyendo opcionalmente dispositivos móviles.
+
 |===
 
 .Restricciones organizativas
 |===
-| Restricción | Explicación
+| *Restricción* | *Explicación*
 
 | Realizar la documentacion de forma incremental
 | Puesto que carecemos de experiencia en las tecnologias solicitadas, no podemos aportar una documentacion completa de la forma mas eficiente.
@@ -85,7 +106,7 @@ A continuación, se muestran las diferentes restricciones agrupadas por categor�
 
 .Restricciones de diseño
 |===
-| Restricción | Explicación
+| *Restricción* | *Explicación*
 
 | Uso de componentes React
 | De esta forma, los componenetes ya creados pueden ser incluidos facilmente en nuestra aplicacion, sin necesidad de crearlos desde cero.
@@ -105,12 +126,13 @@ Ademas, es capaz de dar formato a multiples lenguajes (.doc, .html, etc) lo que 
 
 .Convenciones
 |===
-| Restricción | Explicación
+| *Restricción* | *Explicación*
 
-| restriccion 1
-| explicación 1
+| *Separación en capas*
+| El código debe separarse en capas/módulos cohesivos y con una interfaz bien definida aumentando así la mantenibilidad del código. El front-end y el
+back-end deben estar bien delimitados para hacer que la comunicación sea lo mas sencilla posible.
 
-| restricción 2
-| explicación 2
+| *Agrupar componentes en paquetes*
+| Relacionado con la restricción anterior, es útil agrupar componentes y clases relacionadas en paquetes o módulos aumentando la cohesión.
 |===
 ****
