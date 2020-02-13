@@ -17,9 +17,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
+<<<<<<< Updated upstream
     "docs": "shx rm -rf build/docs && asciidoctor -D build/docs -a imagesdir=./images -r asciidoctor-diagram src/docs/index.adoc && shx cp -R src/docs/images build/docs",
     "eject": "react-scripts eject",
     "asciidoctor": "npm install asciidoctor"
+=======
+    "docs": "asciidoctor -D build/docs -a imagesdir=./images -r asciidoctor-diagram src/docs/index.adoc && copy src/docs/images build/docs",
+    "eject": "react-scripts eject"
+>>>>>>> Stashed changes
   },
   "eslintConfig": {
     "extends": "react-app"
