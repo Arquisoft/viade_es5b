@@ -19,7 +19,8 @@
     "test": "react-scripts test --coverage",
     "docs": "shx rm -rf build/docs && asciidoctor -D build/docs -a imagesdir=./images -r asciidoctor-diagram src/docs/index.adoc && shx cp -R src/docs/images build/docs",
     "eject": "react-scripts eject",
-    "install": "npm install asciidoctor"
+    "asciidoctorYdiagram": "gem install asciidoctor asciidoctor-diagram",
+    "asciidoctor": "npm install asciidoctor"
   },
   "eslintConfig": {
     "extends": "react-app"
