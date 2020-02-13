@@ -7,18 +7,20 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
+    "asciidoctor": "^2.1.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0", 
-    "shx" : "0.3.2"
+    "react-scripts": "3.3.0",
+    "shx": "0.3.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm update && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
     "docs": "shx rm -rf build/docs && asciidoctor -D build/docs -a imagesdir=./images -r asciidoctor-diagram src/docs/index.adoc && shx cp -R src/docs/images build/docs",
     "eject": "react-scripts eject",
-    "asciidoctor": "gem install asciidoctor asciidoctor-diagram"
+    "asciidoctorYdiagram": "gem install asciidoctor asciidoctor-diagram",
+    "asciidoctor": "npm install asciidoctor"
   },
   "eslintConfig": {
     "extends": "react-app"
