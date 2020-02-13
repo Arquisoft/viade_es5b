@@ -41,16 +41,10 @@ El objetivo  del proyecto es la creación de un sistema descentralizado de gesti
 ****
 [options="header",cols="1,2,2"]
 |===
-<<<<<<< Updated upstream
 |Rol|Descripción|Expectativas
 | _Profesor_ | Encargado de supervisar y evaluar el proyecto | Espera que los estudiantes trabajen continuamente en el proyecto y que la aplicación cumpla con ciertos criterios y requisitos funcionales
 | _Usuarios_ | Personas que van a hacer uso de la aplicación | Esperan que la aplicación sea segura, disponible, cuente con un buen rendimiento y sea fácil de comprender y usar
 | _Inrupt_ | Organización que trabaja con Solid y ha propuesto el desafío de desarrollar una aplicación de rutas descentralizadas | Esperan que los estudiantes creen una aplicación de rutas descentralizadas utilizando la tecnología Solid y que cumpla una serie de requisitos técnicos y de calidad
-| _Desarrolladores de software_ | Estudiantes que se encargarán de desarrollar la aplicación | Esperan aprender nuevas tecnologías como es SOLID y no ceñirse solo a ciertas tecnologías que podrían caer en desuso
+| _Desarrolladores de software_ | Estudiantes que se encargarán de desarrollar la aplicación | Esperan aprender nuevas tecnologías como es SOLID y no ceñirse solo a ciertas tecnologías que podrían caer en desuso.
 Otra expectativa es reforzar la capacidad de trabajar en grupo que nos ayudará a adaptarnos más fácilmente en las empresas
-=======
-|Role/Name|Contact|Expectations
-| _Desarrollador_ | _<Contact-1>_ | _<Expectation-1>_
-| _<Role-2>_ | _<Contact-2>_ | _<Expectation-2>_
->>>>>>> Stashed changes
 |===
