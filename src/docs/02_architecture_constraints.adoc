@@ -1,19 +1,138 @@
 [[section-architecture-constraints]]
 == Architecture Constraints
-
+Alejandro Florez Muñiz <uo264371@uniovi.es>; Alejandro Iglesias Calvo <uo247346@uniovi.es>;
 
 [role="arc42help"]
 ****
-.Contents
-Any requirement that constrains software architects in their freedom of design and implementation decisions or decision about the development process. These constraints sometimes go beyond individual systems and are valid for whole organizations and companies.
+////
 
-.Motivation
-Architects should know exactly where they are free in their design decisions and where they must adhere to constraints.
-Constraints must always be dealt with; they may be negotiable, though.
+.Contents/Contenidos
+Las limitaciones existentes a la hora de crear la aplicación son de dos clases, las impuestas por el cliente y las limitaciones tecnicas a las que nos enfrentamos en su desarollo. 
+
+
+
+.Motivation/Motivacion
+Buscamos conseguir una red social de rutas descentralizada, de forma que se pueda interactuar con otros usuarios desde una web, amigable y sencilla.
 
 .Form
 Simple tables of constraints with explanations.
 If needed you can subdivide them into
 technical constraints, organizational and political constraints and
 conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
+////
+.Contenido
+En esta sección, vamos a describir de manera detallada las diferentes restricciones que podemos contemplar sobre el desarollo del proyecto VIADE. Se ha
+optado por agrupar las restricciones en varias categorías, pudiendo distinguir las siguientes:
+
+    * Restricciones tecnológicas.
+    * Restricciones de implementación.
+    * Organizativas.
+    * De diseño.
+    * Convenciones.
+
+Estas restricciones limitan a los miembros del equipo a la hora de desarrollar el proyecto, obligando a estos a ajustarse a las decisiones tomadas en base 
+a dichas restricciones.
+
+
+.Motivación
+El objetivo de este proyecto es desarrollar una red social descentralizada que permita a los usuarios subir y registrar sus rutas, compartirlas con sus amigos.
+
+Pudiendo recibir comentarios de estos, así como poder adjuntar archivos multimedia asociados a cada una de sus rutas. +
+De forma que el usuario tenga control total a la hora de decidir si desea comparti sus rutas, o por el contrario mantenerlas en su propio servidor (POD).
+
+.Restricciones
+A continuación, se muestran las diferentes restricciones agrupadas por categorías, en forma de tabla (una para cada categoría).
+
+.Restricciones tecnológicas
+|===
+| *Restricción*  | *Explicación*
+
+| *Usar lenguaje JavaScript*
+| Utilizar como lenguaje de codificación el estándar ES6 (JavaScript).
+
+| *Usar framework React.js*
+| Para el desarrollo de la interfaz de usuario y sus componentes Web, se usará el framekwork React.js, que plasma los cambios en un DOM virtual antes de representarlos en el DOM real.
+
+| *Usar la tecnología SOLID.* 
+| Implementar el sistema de persistencia mediante servidores POD descentralizados, con la tecnología SOLID desarrollada por Inrupt.
+
+| *Software de Control de Versiones Git.* 
+| Se debe utilizar la plataforma Git para gestionar las versiones y la evolución del proyecto, con ayuda del repositorio remoto que se nos ofrece en GitHub.
+
+| *Uso del modelo Arc42 para documentar.*
+|  A la hora de documentar, se requiere utilizar el modelo Arc42, respetando su estructura y utilizando la plantilla AsciiDoc.
+|===
+
+.Restricciones de implementación
+|===
+| *Restricción* | *Explicación*
+
+| *Sistema descentralizado.*
+| Debe consistir en una red social descentralizada donde se almacenen los datos (rutas) en un servidor propio, del cual dispone cada usuario.
+
+| *Datos separados.*
+| Obligatorio que los datos de los usuarios estén separados de la lógica de la aplicación, en un servidor POD.
+
+| *Lógica y UI juntas.*
+| La lógica referente a la interacción entre el usuario y los componentes Web, validación de entradas, navegación...etc debe gestionarse de manera
+conjunta a través de los componentes de React.
+
+| *Integración del FrontEnd con BackEnd.*
+| Debe integrarse correctamente la parte de cliente/usuario, con la parte de datos de la aplicación, es decir, persistencia y lógica computada en el
+servidor. Para ello será necesario integrar React con SOLID.
+
+| *Desarrollo de una aplicación Web*
+| El resultado final debe ser una aplicación Web soportada mediante un servidor, y a la cual se pueda acceder desde cualquier equipo, incluyendo opcionalmente dispositivos móviles.
+
+|===
+
+.Restricciones organizativas
+|===
+| *Restricción* | *Explicación*
+
+| *Realizar la documentacion de forma incremental*
+| Puesto que carecemos de experiencia en las tecnologias solicitadas, no podemos aportar una documentacion completa de la forma mas eficiente.
+
+| *Entregas periodicas de una implementación parcial*
+| Debido a la metodologia de la practica, debemos realizar entregas periodicas con funcionalidades, lo que puede afectar al rendimiento en otros aspectos. Por ejmeplo pruebas u optimizaciones.
+
+| *Redactar actas semanalmente*
+| Esto nos obliga a realizar un seguimiento continuo del proyecto, lo cual beneficia la calidad del mismo.
+
+| *Uso de ramas individuales*
+| Por cada feature se creara una rama, la cual partira del subconjunto al que pertenece el programador dentro del paradigma organico del grupo de trabajo. De esta forma se intenta impedir el codigo muerto, o crear conflictos con otras partes del proyecto.
+
+|===
+
+.Restricciones de diseño
+|===
+| *Restricción* | *Explicación*
+
+| *Uso de componentes React*
+| De esta forma, los componenetes ya creados pueden ser incluidos facilmente en nuestra aplicacion, sin necesidad de crearlos desde cero.
+
+| *Uso de Solid*
+| Utilizando solid, obtenemos un paradigma de persistencia desacoplada. Esto nos obliga a no depender de las bases de datos mas usuales. En su lugar los datos se almacenan de forma privada en el servidor del usuario (Pod), a no ser que este decida compartirla.
+
+| *Division del proyecto de forma interna*
+| Una division estructurada del diseño de la aplicacion (en cuanto a diagrama de directorios) resulta muy util de cara a procesar cambios, o localizar componentes de forma sencilla.
+Esta directriz, aunque poco usada, es altamente recomendable.
+//Esta es nueva
+| *AsciiDoctor*
+| Utilizamos esta herramienta para la documentacion porque cuenta con diversas plantillas muy utiles.
+Ademas, es capaz de dar formato a multiples lenguajes (.doc, .html, etc) lo que facilita una documentacion mas accesible.
+
+|===
+
+.Convenciones
+|===
+| *Restricción* | *Explicación*
+
+| *Separación en capas*
+| El código debe separarse en capas/módulos cohesivos y con una interfaz bien definida aumentando así la mantenibilidad del código. El front-end y el
+back-end deben estar bien delimitados para hacer que la comunicación sea lo mas sencilla posible.
+
+| *Agrupar componentes en paquetes*
+| Relacionado con la restricción anterior, es útil agrupar componentes y clases relacionadas en paquetes o módulos aumentando la cohesión.
+|===
 ****
