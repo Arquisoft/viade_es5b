@@ -26,20 +26,18 @@ Various options:
 ****
 .Contents
 Los usuarios de la aplicación podrán compartir sus rutas con otros usuarios sin que sus datos tengan que pasar a través de un servidor externo.
-Es decir esta aplicación utiliza datos que están en nuestro servidor privado (POD).
+Es decir esta aplicación utiliza datos que están en nuestro servidor privado (POD). De este modo sus datos simpre están en un sitio seguro.
 
 .Motivation
 Cada usuario podrá compartir sus rutas y podrá acceder a rutas de otros usuarios.
 
 .Form
-All kinds of diagrams that show the system as a black box and specify the domain interfaces to communication partners.
+En un futuro se realizará el diagramas para el Business Context, seguido de una breve explicación.
 
-Alternatively (or additionally) you can use a table.
-The title of the table is the name of your system, the three columns contain the name of the communication partner, the inputs, and the outputs.
 ****
 
-**<Diagram or Table>**
 
+image:BusinessDiagram.jpeg[bd]
 **<optionally: Explanation of external domain interfaces>**
 
 === Technical Context
@@ -58,12 +56,11 @@ facilitar el desarrollo de aplicaciones de una sola página.
 Google maps, GitHub, Visual Studio Code ejecutado sobre una terminal Windows / Linux con npm (sistema de gestión de paquetes por defecto para Node.js).
 
 .Motivation
-Se ha escogido SOLID para el backend por su seguridad al darnos la capacidad para tener una aplicación descentralizada.
-Así mismo se utiliza React para el Frontend por su facilidad para la creación de interfaces de usuario.
+Se ha escogido SOLID para el backend por su seguridad, al darnos la capacidad para tener una aplicación descentralizada.
+Así mismo, se utiliza React para el Frontend por su facilidad para la creación de interfaces de usuario.
 
 .Form
-E.g. UML deployment diagram describing channels to neighboring systems,
-together with a mapping table showing the relationships between channels and input/output.
+Se describirá en un diagrama UML, seguido de una breve explicación
 
 ****
 
