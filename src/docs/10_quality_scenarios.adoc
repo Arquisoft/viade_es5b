@@ -41,15 +41,14 @@ Escenarios de calidad, estos pueden cambiar
 
 | *Lanzamiento de la app*
 | La aplicacion debe ser de facil acceso
-| **
-| La aplicacion debe ser de facil acceso
+| *Accesibilidad*
+| La aplicacion debe ser apta para el mayor numero de personas posibles.
 |===
 
 .Escenarios de cambio
 |===
 | *Cambio*  | *Explicación*
-
-| *Usar lenguaje JavaScript*
-| Utilizar como lenguaje de codificación el estándar ES6 (JavaScript).
+| *Aun no tenemos cambios*
+| -----
 |===
 ****
