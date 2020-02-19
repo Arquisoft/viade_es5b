@@ -59,35 +59,27 @@ In the best case you will get away with examples or simple signatures.
 
 _**<Overview Diagram>**_
 
-Motivation::
+Motivación::
 
-_<text explanation>_
+La arquitectura del contexto del sistema puede verse reflejada en la imagen superior. Esta figura refleja de forma general la relación entre los principales elementos de alto nivel, distinguiendo dos bloques principales de construcción: UserPOD y ViadeAPP. Dada la complejidad interna de estos dos bloques del nivel 0, se procede a descomponerlos en dos cajas blancas en un primer nivel (nivel 1) para especificar mejor sus detalles.
 
 
-Contained Building Blocks::
-_<Description of contained building block (black boxes)>_
+Bloques de construcción contenidos::
+En cuanto a los bloques de construcción, podemos distinguir por un lado al *POD de un usuario*, que servirá de almacén descentralizado para almacenar los datos del usuario, sus rutas, comentarios, entre otros. Por otro lado, se encuentra el bloque de la *aplicación de VIADE*, el cual se intercomunica con los PODs a través de lo que denominamos la interfaz de SOLID. Además la aplicación también se comunica con otras APIs como la API File de HTML5 o bien la API de Google Maps. En la figura también podemos observar a los usuarios, cada uno de los cuales dispone de su POD, y que son quienes decidirán si comparten o no sus datos con otros usuarios o con la aplicación.
 
-Important Interfaces::
-_<Description of important interfaces>_
+Interfaces importantes::
+En cuanto a interfaces, podemos definir por un lado la *interfaz de SOLID*, la cual detallaremos más adelante, y que proporciona operaciones sobre los PODs de los usuarios. También se encuentran las *APIs de Google y File*, que nos proporcionarán servicios para representar las rutas sobre los mapas y la carga de ficheros respectivamente.
 
 [role="arc42help"]
 ****
-Insert your explanations of black boxes from level 1:
-
-If you use tabular form you will only describe your black boxes with name and
-responsibility according to the following schema:
+Descripción de las cajas negras de el nivel 0.
 
 [cols="1,2" options="header"]
 |===
-| **Name** | **Responsibility**
-| _<black box 1>_ | _<Text>_
-| _<black box 2>_ | _<Text>_
+| **Nombre** | **Responsabilidad**
+| User POD | Almacenar los datos del usuario y sus rutas, así como permitir la comunicación con la aplicación desacoplando los datos de la aplicación.
+| Viade App | Representa la aplicación en su totalidad, que se encarga tanto del procesamiento de los datos de entrada del usuario como de los datos almacenados en los PODs.
 |===
-
-
-
-If you use a list of black box descriptions then you fill in a separate black box template for every important building block .
-Its headline is the name of the black box.
 ****
 
 
@@ -168,39 +160,5 @@ _<white box template>_
 
 ==== White Box _<building block m>_
 
-
-_<white box template>_
-
-
-
-=== Level 3
-
-[role="arc42help"]
-****
-Here you can specify the inner structure of (some) building blocks from level 2 as white boxes.
-
-When you need more detailed levels of your architecture please copy this
-part of arc42 for additional levels.
-****
-
-
-==== White Box <_building block x.1_>
-
-[role="arc42help"]
-****
-Specifies the internal structure of _building block x.1_.
-****
-
-
-_<white box template>_
-
-
-==== White Box <_building block x.2_>
-
-_<white box template>_
-
-
-
-==== White Box <_building block y.1_>
 
 _<white box template>_
