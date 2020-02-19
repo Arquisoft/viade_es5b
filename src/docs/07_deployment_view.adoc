@@ -50,9 +50,11 @@ For multiple environments or alternative deployments please copy that section of
 
 _**<Overview Diagram>**_
 
+image:images\DeploymentView.jpeg[dv]
+
 Motivation::
 
-_<explanation in text form>_
+En el diagrama se representa una vista de la estructura de la aplicación que se va a proceder a realizar. En ella el usuario, en este caso el actor estaría comodamente situado en su casa y a través de un ordenador accedería a nuestra aplicacíon por medio de una interfaz. Esta aplicación estaría en la nube, y accedería a los datos del usuario a través de su POD una vez que el usuario le de permisos para hacerlo 
 
 Quality and/or Performance Features::
 
