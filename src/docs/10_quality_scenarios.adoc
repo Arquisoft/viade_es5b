@@ -1,5 +1,5 @@
 [[section-quality-scenarios]]
-== Quality Requirements
+== Quality Requirements/Requisitos de calidad
 Alejandro Iglesias Calvo <uo247346@uniovi.es>;
 
 [role="arc42help"]
@@ -42,8 +42,8 @@ Escenarios de calidad, estos pueden cambiar
 
 | *Lanzamiento de la app*
 | La aplicacion debe ser de facil acceso
-| *Lanzamiento de la app*
-| La aplicacion debe ser de facil acceso
+| *Subir una ruta*
+| Debe ser sencillo en extremo
 | *Accesibilidad*
 | La aplicacion debe ser apta para el mayor numero de personas posibles.
 |===
