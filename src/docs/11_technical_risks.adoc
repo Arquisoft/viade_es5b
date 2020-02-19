@@ -4,14 +4,22 @@
 
 [role="arc42help"]
 ****
-.Contents
-A list of identified technical risks or technical debts, ordered by priority
+A continuación se muestran los apartados más críticos de emplear las distintas tecnologías escogidas para la aplicación:
 
-.Motivation
-“Risk management is project management for grown-ups” (Tim Lister, Atlantic Systems Guild.) 
+* Inicialmente desconocemos todos por completo tanto la arquitectura SOLID como el framework React, con lo cual perderemos
+bastante tiempo en adecuarnos antes de poder trabajar de una manera ágil.
 
-This should be your motto for systematic detection and evaluation of risks and technical debts in the architecture, which will be needed by management stakeholders (e.g. project managers, product owners) as part of the overall risk analysis and measurement planning.
+* Todas las librerías que sean de utilidad para el manejo de SOLID también son desconocidas para nosotros y no tenemos aún
+definido cuales utilizaremos.
 
-.Form
-List of risks and/or technical debts, probably including suggested measures to minimize, mitigate or avoid risks or reduce technical debts.
+* SOLID es un proyecto muy reciente y no se puede encontrar demasiada información de ayuda en la web para integrar este con
+React.
+
+* Los conceptos que tenemos de javaScript son básicos y hemos practicado con el lenguaje durante poco tiempo con lo cual
+ciertos aspectos mas específicos dedicados a SOLID son desconocidos para nosotros.
+
+.Soluciones
+Las medidas que hemos adoptado ante estos problemas o carencias consisten en informarnos lo más pronto posible en todas estas
+tecnologías nuevas para nosotros, hemos repartido el equipo en dos grupos para poder concentrar los esfuerzos de cada grupo 
+en el frontend y el backend. También es muy importante la realización de tutoriales para una rápida adaptación.
 ****

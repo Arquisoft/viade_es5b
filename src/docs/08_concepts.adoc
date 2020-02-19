@@ -1,67 +1,63 @@
 [[section-concepts]]
 == Cross-cutting Concepts
 
+Inicialmente este apartado va a contener algunos conceptos básicos del proyecto según
+se profundice en la implentación del mismo irá aumentando este apartado consigo.
 
+=== User interface
 [role="arc42help"]
 ****
-.Content
-This section describes overall, principal regulations and solution ideas that are
-relevant in multiple parts (= cross-cutting) of your system.
-Such concepts are often related to multiple building blocks.
-They can include many different topics, such as
-
-* domain models
-* architecture patterns or design patterns
-* rules for using specific technology
-* principal, often technical decisions of overall decisions
-* implementation rules
-
-.Motivation
-Concepts form the basis for _conceptual integrity_ (consistency, homogeneity)
-of the architecture. Thus, they are an important contribution to achieve inner qualities of your system.
-
-Some of these concepts cannot be assigned to individual building blocks
-(e.g. security or safety). This is the place in the template that we provided for a
-cohesive specification of such concepts.
-
-.Form
-The form can be varied:
-
-* concept papers with any kind of structure
-* cross-cutting model excerpts or scenarios using notations of the architecture views
-* sample implementations, especially for technical concepts
-* reference to typical usage of standard frameworks (e.g. using Hibernate for object/relational mapping)
-
-.Structure
-A potential (but not mandatory) structure for this section could be:
-
-* Domain concepts
-* User Experience concepts (UX)
-* Safety and security concepts
-* Architecture and design patterns
-* "Under-the-hood"
-* development concepts
-* operational concepts
-
-Note: it might be difficult to assign individual concepts to one specific topic
-on this list.
-
-image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
+Los usuarios emplearán una interfaz desarrollada en JavaScript junto con React a la cual
+se le incluirán los componentes específicos de solid que sean necesarios.
 ****
 
+=== Security
+[role="arc42help"]
+****
+La seguridad se va a basar en la de la arquitectura SOLID donde cada usuario será identificado con su WebID y 
+el mismo otorgará los permisos pertinentes sobre los datos contenidos en su POD.
+****
 
-=== _<Concept 1>_
+=== Persistency
+[role="arc42help"]
+****
+Debido al carácter descentralizado de la aplicación, no se puede contar con una base de datos en la cual se puedan manejar
+todos los datos de la aplicación. Cada usuario será el único que tendrá acceso a los datos que genere.
+****
 
-_<explanation>_
+=== Transaction handling
+[role="arc42help"]
+****
+Las transacciones serán asíncronas, debido al empleo de React en el cual es muy habitual este funcionamiento
+al basarse en JavaScript. Además de que la integración con Solid se realiza de esta manera también y es más fácil encontrar 
+ejemplos para aplicar a nuestra arquitectura.
+****
 
+=== Session handling
+[role="arc42help"]
+****
+La sesión se iniciará en el momento en el que el usuario se autentifique con su cuenta en solid y en ese momento tendrá 
+acceso a su pod, sus amigos y las rutas que posee actualmente.
+****
 
+=== Exception and error handling
+[role="arc42help"]
+****
+Todos los datos inconsistentes que se traten de hacer circular serán interceptados por el protocolo HTTP así como los intentos
+de autenticación erróneos.
+****
 
-=== _<Concept 2>_
+=== Communication and interoperability
+[role="arc42help"]
+****
+Los usuarios podrán compartir las rutas que deseen entre los distintos amigos que tengan en la solid community. También se
+intentará que los usuarios puedan enviar sus rutas a otros usuarios que empleen aplicaciones desarrolladas por los otros
+compañeros de la asignatura.
+****
 
-_<explanation>_
-
-...
-
-=== _<Concept n>_
-
-_<explanation>_
+=== Testing
+[role="arc42help"]
+****
+La aplicación dispondrá de casos de prueba que muestren su eficiencia, pero aún no se ha asignado la tecnología sobre la
+que se harán dichas pruebas.
+****
