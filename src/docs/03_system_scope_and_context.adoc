@@ -37,7 +37,7 @@ En un futuro se realizará el diagramas para el Business Context, seguido de una
 ****
 
 
-image:BusinessDiagram.jpeg[bd]
+image:images\BusinessDiagram.jpeg[bd]
 **<optionally: Explanation of external domain interfaces>**
 
 === Technical Context
@@ -64,8 +64,8 @@ Se describirá en un diagrama UML, seguido de una breve explicación
 
 ****
 
-**<Diagram or Table>**
+image:images\TecnicDG.jpeg[td]
 
-**<optionally: Explanation of technical interfaces>**
+**El siguiente diagrama es una descripción técnica del funcionamiento de nuestra aplicación, siendo las cajas rojas los elementos más complejos que en versiones posteriores se pasarán a representar con más diagramas**
 
 **<Mapping Input/Output to Channels>**
