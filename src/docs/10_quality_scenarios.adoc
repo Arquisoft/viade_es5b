@@ -22,7 +22,7 @@ Usabilidad, eficiencia, accesibilidad, descentralización y peso de la app.
 [role="arc42help"]
 ****
 .Content
-image::images/mind map.png
+image::images/mind_map.png[]
 
 .Explicacion
 En este mapa mental podemos observar nuestra "filosofia" de trabajo. +
