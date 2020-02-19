@@ -5,7 +5,7 @@
 
 === Whitebox Overall System
 ****
-image:images\Contexto-del-sistema.jpg[Arquitectura del Contexto del Sistema]
+image::Contexto-del-sistema.jpg[Arquitectura del Contexto del Sistema]
 
 Motivación::
 
@@ -47,7 +47,7 @@ La interfaz de esta caja se resume basicamente a las operaciones de lectura y es
 
 A continuación, se muestra una figura de la *caja blanca* del User POD con sus elementos:
 
-image:images\UserPOD.jpg[Caja blanca para el POD del usuario]
+image::UserPOD.jpg[Caja blanca para el POD del usuario]
 
 ****
 ==== Viade App
@@ -61,5 +61,5 @@ La principal interfaz es la de SOLID, en donde se definen una serie de operacion
 
 A continuación, se adjunta una figura que muestra un esquema de esta segunda *caja blanca de la aplicación Viade*:
 
-image:images\ViadeApp.jpg[Diagrama de la caja blanca de Viade App]
+image::ViadeApp.jpg[Diagrama de la caja blanca de Viade App]
 ****

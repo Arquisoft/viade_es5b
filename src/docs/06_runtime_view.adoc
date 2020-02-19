@@ -21,7 +21,7 @@
 
 
 === <Runtime Scenario 1>
-
+****
 
 * _<insert runtime diagram or textual description of the scenario>_
 * _<insert description of the notable aspects of the interactions between the
@@ -37,6 +37,7 @@ Bob --> Alice: Authentication Response
 Alice -> Bob: Another authentication Request
 Alice <-- Bob: another authentication Response
 ----
+****
 === <Runtime Scenario 2>
 
 === ...

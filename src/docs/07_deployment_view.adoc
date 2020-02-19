@@ -9,7 +9,7 @@
 
 ****
 
-image:images\DeploymentView.jpeg[dv]
+image::DeploymentView.jpeg[dv]
 
 Motivation::
 
@@ -22,7 +22,7 @@ La aplicación, al ser descentralizada tendrá tiempos de espera mayores, ya que
 Mapping of Building Blocks to Infrastructure::
 La aplicación permite hacer diferentes acciones al usuario dentro de la aplicación, y usar sus datos a través de solid para formar la interfaz por la que podrá navegar.
 
-image:images\DWInfrastructureE1.jpg[dwE1]
+image::DWInfrastructureE1.jpg[dwE1]
 
 Por una parte el "Actor" sube su ruta y se guarda en su POD, en esa ruta comenta el "Actor2" y el comentario se guarda en el POD de este. Es decir, los datos que suba cada usuario se guardan en su propio POD.
 
@@ -30,7 +30,7 @@ Por una parte el "Actor" sube su ruta y se guarda en su POD, en esa ruta comenta
 === Infrastructure Level 2
 ****
 
-image:images\DWInfrastructureE2.jpg[dwE2]
+image::DWInfrastructureE2.jpg[dwE2]
 
 Por otra parte, cuando un usuario desea añadir a otro como amigo, esto se guardará en ambos PODs, para que cada uno pueda ver quien está en su lista de amigos en su propio POD.
 

@@ -20,7 +20,7 @@ Usabilidad, eficiencia, accesibilidad, descentralización y peso de la app.
 
 ****
 .Content
-image::images/mind_map.png[Mapa de la filosofia de trabajo]
+image::mind_map.png[Mapa de la filosofia de trabajo]
 
 .Explicacion
 En este mapa mental podemos observar nuestra "filosofia" de trabajo. +
