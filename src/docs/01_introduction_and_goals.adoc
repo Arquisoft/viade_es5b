@@ -48,3 +48,4 @@ El objetivo  del proyecto es la creación de un sistema descentralizado de gesti
 | _Desarrolladores de software_ | Estudiantes que se encargarán de desarrollar la aplicación | Esperan aprender nuevas tecnologías como es SOLID y no ceñirse solo a ciertas tecnologías que podrían caer en desuso.
 Otra expectativa es reforzar la capacidad de trabajar en grupo que nos ayudará a adaptarnos más fácilmente en las empresas
 |===
+****
