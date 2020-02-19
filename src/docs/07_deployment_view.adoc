@@ -63,8 +63,16 @@ La aplicación, al ser descentralizada tendrá tiempos de espera mayores, ya que
 Mapping of Building Blocks to Infrastructure::
 La aplicación permite hacer diferentes acciones al usuario dentro de la aplicación, y usar sus datos a través de solid para formar la interfaz por la que podrá navegar.
 
+image:images\DWInfrastructureE1.jpg[dwE1]
+
+Por una parte el "Actor" sube su ruta y se guarda en su POD, en esa ruta comenta el "Actor2" y el comentario se guarda en el POD de este. Es decir, los datos que suba cada usuario se guardan en su propio POD.
+
 
 === Infrastructure Level 2
+
+image:images\DWInfrastructureE2.jpg[dwE2]
+
+Por otra parte, cuando un usuario desea añadir a otro como amigo, esto se guardará en ambos PODs, para que cada uno pueda ver quien está en su lista de amigos en su propio POD.
 
 [role="arc42help"]
 ****
@@ -73,18 +81,6 @@ Here you can include the internal structure of (some) infrastructure elements fr
 Please copy the structure from level 1 for each selected element.
 ****
 
-==== _<Infrastructure Element 1>_
 
-image:images\DWInfrastructureE1.jpg[dwE1]
 
-Por una parte el "Actor" sube su ruta y se guarda en su POD, en esa ruta comenta el "Actor2" y el comentario se guarda en el POD de este. 
 
-==== _<Infrastructure Element 2>_
-
-_<diagram + explanation>_
-
-...
-
-==== _<Infrastructure Element n>_
-
-_<diagram + explanation>_
