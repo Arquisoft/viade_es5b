@@ -57,7 +57,7 @@ In the best case you will get away with examples or simple signatures.
 
 ****
 
-_**<Overview Diagram>**_
+image:Contexto-del-sistema.png["Arquitectura del Contexto del Sistema"]
 
 Motivación::
 
@@ -70,9 +70,10 @@ En cuanto a los bloques de construcción, podemos distinguir por un lado al *POD
 Interfaces importantes::
 En cuanto a interfaces, podemos definir por un lado la *interfaz de SOLID*, la cual detallaremos más adelante, y que proporciona operaciones sobre los PODs de los usuarios. También se encuentran las *APIs de Google y File*, que nos proporcionarán servicios para representar las rutas sobre los mapas y la carga de ficheros respectivamente.
 
+=== Nivel 1
 [role="arc42help"]
 ****
-Descripción de las cajas negras de el nivel 0.
+Descripción de las cajas negras de el nivel 1.
 
 [cols="1,2" options="header"]
 |===
@@ -83,55 +84,27 @@ Descripción de las cajas negras de el nivel 0.
 ****
 
 
-==== <Name black box 1>
+==== User POD
 
 [role="arc42help"]
 ****
-Here you describe <black box 1>
-according the the following black box template:
-
-* Purpose/Responsibility
-* Interface(s), when they are not extracted as separate paragraphs. This interfaces may include qualities and performance characteristics.
-* (Optional) Quality-/Performance characteristics of the black box, e.g.availability, run time behavior, ....
-* (Optional) directory/file location
-* (Optional) Fulfilled requirements (if you need traceability to requirements).
-* (Optional) Open issues/problems/risks
-
+En esta primera caja negra, se engloba todo lo relacionado con los PODs de los usuarios, en donde se almacenan los datos, rutas, comentarios...de cada usuario. Es el usuario el que se encarga de permitir a la aplicación el acceso a sus datos, de tal forma que mediante la especificación de SOLID se pueda recuperar dichos datos o bien escribir datos en el POD de los usuarios.
 ****
 
-_<Purpose/Responsibility>_
+El propósito de esta caja negra es representar a un usuario y a su POD, junto con sus datos. 
 
-_<Interface(s)>_
+La interfaz de esta caja se resume basicamente a las operaciones de lectura y escritura en los PODs que se llevará a cabo mediante librerías que se ajustan a la especificación SOLID. 
 
-_<(Optional) Quality/Performance Characteristics>_
+==== Viade App
+****
+En cuanto a la segunda caja negra, esta es de vital importancia ya que representa a la aplicación en su totalidad, y es la que lleva a cabo toda la lógica de negocio de la aplicación, que está desacoplada de los datos de los usuarios, que residen en los PODs.
+****
 
-_<(Optional) Directory/File Location>_
+La responsabilidad de esta caja negra es llevar a cabo el procesamiento de los datos de acuerdo a la lógica de negocio de la aplicación, comunicándose mediante la interfaz SOLID con los usuarios y sus PODs, así como con otras APIs como la de Google Maps o la API File.
 
-_<(Optional) Fulfilled Requirements>_
+La principal interfaz es la de SOLID, en donde se definen una serie de operaciones que permiten acceder a los PODs de los usuarios, siempre con su consentimiento.
 
-_<(optional) Open Issues/Problems/Risks>_
-
-
-
-
-==== <Name black box 2>
-
-_<black box template>_
-
-==== <Name black box n>
-
-_<black box template>_
-
-
-==== <Name interface 1>
-
-...
-
-==== <Name interface m>
-
-
-
-=== Level 2
+=== Nivel 2
 
 [role="arc42help"]
 ****
