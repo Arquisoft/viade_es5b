@@ -2,7 +2,6 @@
 == Risks and Technical Debts
 
 
-[role="arc42help"]
 ****
 A continuación se muestran los apartados más críticos de emplear las distintas tecnologías escogidas para la aplicación:
 

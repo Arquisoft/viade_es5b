@@ -1,8 +1,6 @@
 [[section-solution-strategy]]
 == Solution Strategy
 
-
-[role="arc42help"]
 ****
 .Tecnologias
 |===
@@ -39,4 +37,4 @@ Division del trabajo en dos equipos (backend y frontend).
 |
 |Alejandro Flórez
 |===
-
+****

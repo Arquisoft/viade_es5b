@@ -5,22 +5,6 @@ Alejandro Florez Muñiz <uo264371@uniovi.es>
 Alejandro Iglesias Calvo <uo247346@uniovi.es>
 
 ****
-////
-
-.Contents/Contenidos
-Las limitaciones existentes a la hora de crear la aplicación son de dos clases, las impuestas por el cliente y las limitaciones tecnicas a las que nos enfrentamos en su desarollo. 
-
-
-
-.Motivation/Motivacion
-Buscamos conseguir una red social de rutas descentralizada, de forma que se pueda interactuar con otros usuarios desde una web, amigable y sencilla.
-
-.Form
-Simple tables of constraints with explanations.
-If needed you can subdivide them into
-technical constraints, organizational and political constraints and
-conventions (e.g. programming or versioning guidelines, documentation or naming conventions)Cammbios de prueba
-////
 .Contenido
 En esta sección, vamos a describir de manera detallada las diferentes restricciones que podemos contemplar sobre el desarollo del proyecto VIADE. Se ha
 optado por agrupar las restricciones en varias categorías, pudiendo distinguir las siguientes:

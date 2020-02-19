@@ -2,7 +2,6 @@
 == Quality Requirements/Requisitos de calidad
 Alejandro Iglesias Calvo <uo247346@uniovi.es>;
 
-[role="arc42help"]
 ****
 
 .Content/contenido
@@ -19,7 +18,6 @@ Usabilidad, eficiencia, accesibilidad, descentralización y peso de la app.
 
 === Quality Tree/Arbol de calidad
 
-[role="arc42help"]
 ****
 .Content
 image::images/mind_map.png[Mapa de la filosofia de trabajo]
@@ -31,7 +29,6 @@ Un proceso constante de autoevaluacion nos ayudará a proporcionar una mejor exp
 ****
 === Quality Scenarios/Escenarios de calidad
 
-[role="arc42help"]
 ****
 .Contents/Contenidos
 Escenarios de calidad, estos pueden cambiar

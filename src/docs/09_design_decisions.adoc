@@ -2,7 +2,6 @@
 == Design Decisions
 
 
-[role="arc42help"]
 ****
 
 En la siguiente tabla se enumeran las decisiones que hemos tomado para implementar en nuestro proyecto en cuanto a arquitectura y diseño.
@@ -30,3 +29,4 @@ Proporciona un sistema de etiquetas, para etiquetar las distintas versiones del 
 
 
 |===
+****

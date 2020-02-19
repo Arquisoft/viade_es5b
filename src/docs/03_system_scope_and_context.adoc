@@ -2,7 +2,6 @@
 == System Scope and Context
 
 
-[role="arc42help"]
 ****
 .Contents
 Nuestra aplicación descentralizada de rutas da la posibilidad al usuario de compartir sus rutas fácilmente sin poner en riesgo la seguridad de sus datos.
@@ -22,7 +21,6 @@ Various options:
 
 === Business Context
 
-[role="arc42help"]
 ****
 .Contents
 Los usuarios de la aplicación podrán compartir sus rutas con otros usuarios sin que sus datos tengan que pasar a través de un servidor externo.
@@ -42,7 +40,6 @@ image:images\BusinessDiagram.jpeg[bd]
 
 === Technical Context
 
-[role="arc42help"]
 ****
 .Backend
 La aplicación utiliza un servidor SOLID a través de un POD. Un POD es como una clave para un usuario. Determina quién puede obtener un contenido,
