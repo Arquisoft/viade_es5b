@@ -57,7 +57,7 @@ In the best case you will get away with examples or simple signatures.
 
 ****
 
-image:Contexto-del-sistema.png["Arquitectura del Contexto del Sistema"]
+image:images\Contexto-del-sistema.jpg[Arquitectura del Contexto del Sistema]
 
 Motivación::
 
@@ -91,9 +91,18 @@ Descripción de las cajas negras de el nivel 1.
 En esta primera caja negra, se engloba todo lo relacionado con los PODs de los usuarios, en donde se almacenan los datos, rutas, comentarios...de cada usuario. Es el usuario el que se encarga de permitir a la aplicación el acceso a sus datos, de tal forma que mediante la especificación de SOLID se pueda recuperar dichos datos o bien escribir datos en el POD de los usuarios.
 ****
 
-El propósito de esta caja negra es representar a un usuario y a su POD, junto con sus datos. 
+El propósito de esta caja negra es representar a un usuario y a su POD, junto con sus datos. Para poder comunicarse con un usuario y que este pueda autenticarse, se utiliza su *WebID*. Mediante este elemento, podremos acceder a los recursos que dicho usuario tiene almacenados en su POD.
 
-La interfaz de esta caja se resume basicamente a las operaciones de lectura y escritura en los PODs que se llevará a cabo mediante librerías que se ajustan a la especificación SOLID. 
+La interfaz de esta caja se resume basicamente a las operaciones de lectura y escritura en los PODs que se llevará a cabo mediante librerías que se ajustan a la especificación SOLID. Podemos distinguir las siguientes interfaces:
+
+  * *Usuario*: representa a un usuario junto con sus propiedades básicas.
+  * *Ruta*: Modela una ruta con su nombre, datos básicos e hitos destacados con coordenadas que serviran para representar la ruta enn el mapa.
+  * *Hito*: representa la entidad de un hito de una ruta concreta, almacenando su nombre, descripción,...etc pero también sus coordenadas, que serán de gran importancia.
+
+A continuación, se muestra una figura de la *caja blanca* del User POD con sus elementos:
+
+image:images\UserPOD.jpg[Caja blanca para el POD del usuario]
+
 
 ==== Viade App
 ****
