@@ -5,16 +5,16 @@ Alejandro Iglesias Calvo <uo247346@uniovi.es>;
 [role="arc42help"]
 ****
 
-.Content
+.Content/contenido
 Los requisitos de calidad se iran ampliando durante el proyecto.
 
 La pagina debe ser funcional, rapida y accesible.
 Es importante que los tiempos de carga sean minimos, aunque la parte mas pesada del trabajo es tarea de la conexion a internet del usuario.
 
-.Motivation
-Since quality requirements will have a lot of influence on architectural
-decisions you should know for every stakeholder what is really important to them,
-concrete and measurable.
+.Motivation/Motivación
+Planteamos nuestros criterios de calidad en funcion de nuestra experiencia, las pruebas, y el feedback de la comunidad.
+Se buscan los siguientes puntos:
+Usabilidad, eficiencia, accesibilidad, descentralización y peso de la app.
 ****
 
 === Quality Tree
