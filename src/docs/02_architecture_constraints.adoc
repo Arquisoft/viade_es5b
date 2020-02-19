@@ -18,7 +18,7 @@ Buscamos conseguir una red social de rutas descentralizada, de forma que se pued
 Simple tables of constraints with explanations.
 If needed you can subdivide them into
 technical constraints, organizational and political constraints and
-conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
+conventions (e.g. programming or versioning guidelines, documentation or naming conventions)Cammbios de prueba
 ////
 .Contenido
 En esta sección, vamos a describir de manera detallada las diferentes restricciones que podemos contemplar sobre el desarollo del proyecto VIADE. Se ha
