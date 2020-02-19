@@ -28,10 +28,8 @@ There are many notations for describing scenarios, e.g.
 * state machines
 * ...
 
-****
 
-
-=== <Casos de uso>
+.Casos de uso
 * _Crear ruta_
 * _Eliminar ruta_
 * _Añadir ruta_
@@ -39,11 +37,13 @@ There are many notations for describing scenarios, e.g.
 * _Registrarse_
 * _Iniciar sesión_
 
-
-=== <Casos de error>
+.Casos de error
 * _Error al crear ruta_
 * _Error al añadir ruta_
 * _Error al iniciar sesión_
+
+****
+
 
 === <Runtime Scenario 1>
 
