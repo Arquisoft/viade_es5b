@@ -1,15 +1,15 @@
 [[section-quality-scenarios]]
 == Quality Requirements
-
+Alejandro Iglesias Calvo <uo247346@uniovi.es>;
 
 [role="arc42help"]
 ****
 
 .Content
-This section contains all quality requirements as quality tree with scenarios. The most important ones have already been described in section 1.2. (quality goals)
+Los requisitos de calidad se iran ampliando durante el proyecto.
 
-Here you can also capture quality requirements with lesser priority,
-which will not create high risks when they are not fully achieved.
+La pagina debe ser funcional, rapida y accesible.
+Es importante que los tiempos de carga sean minimos, aunque la parte mas pesada del trabajo es tarea de la conexion a internet del usuario.
 
 .Motivation
 Since quality requirements will have a lot of influence on architectural
