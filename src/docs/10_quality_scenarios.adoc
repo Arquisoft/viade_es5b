@@ -17,18 +17,19 @@ Se buscan los siguientes puntos:
 Usabilidad, eficiencia, accesibilidad, descentralización y peso de la app.
 ****
 
-=== Quality Tree
+=== Quality Tree/Arbol de calidad
 
 [role="arc42help"]
 ****
 .Content
-image::images/mind_map.png[]
+image::images/mind_map.png[Mapa de la filosofia de trabajo]
 
 .Explicacion
 En este mapa mental podemos observar nuestra "filosofia" de trabajo. +
-A lo largo del tiempo y usando nuestra propia experiencia, mejoraremos la eperiencia.
+A lo largo del tiempo, y usando nuestra propia experiencia, mejoraremos la aplicacion y la usabilidad. +
+Un proceso constante de autoevaluacion nos ayudará a proporcionar una mejor experiencia a usarios y futuros desarolladores.
 ****
-=== Quality Scenarios
+=== Quality Scenarios/Escenarios de calidad
 
 [role="arc42help"]
 ****
@@ -39,6 +40,8 @@ Escenarios de calidad, estos pueden cambiar
 |===
 | *Uso*  | *Explicación*
 
+| *Lanzamiento de la app*
+| La aplicacion debe ser de facil acceso
 | *Lanzamiento de la app*
 | La aplicacion debe ser de facil acceso
 | *Accesibilidad*
