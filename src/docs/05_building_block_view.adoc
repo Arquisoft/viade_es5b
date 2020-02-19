@@ -109,10 +109,15 @@ image:images\UserPOD.jpg[Caja blanca para el POD del usuario]
 En cuanto a la segunda caja negra, esta es de vital importancia ya que representa a la aplicación en su totalidad, y es la que lleva a cabo toda la lógica de negocio de la aplicación, que está desacoplada de los datos de los usuarios, que residen en los PODs.
 ****
 
-La responsabilidad de esta caja negra es llevar a cabo el procesamiento de los datos de acuerdo a la lógica de negocio de la aplicación, comunicándose mediante la interfaz SOLID con los usuarios y sus PODs, así como con otras APIs como la de Google Maps o la API File.
+La responsabilidad de esta caja negra es llevar a cabo el procesamiento de los datos de acuerdo a la lógica de negocio de la aplicación, comunicándose mediante la interfaz SOLID con los usuarios y sus PODs, así como con otras APIs como la de Google Maps o la API File. Podemos distinguir entre *Front End* y *Back End*. El primero se encarga principalmente de la lógica de negocio que trata con los objetos del dominio y con los componentes de la interfaz de usuario modelados mediante Componentes JSX de *React.js*. Este módulo utilizará los *servicios de la capa de Back-End* para obtener datos y escribirlos en los PODs de los usuarios, recibiendo como respuestas grafos RDF que sirven para representar a los recursos en el navegador del usuario. Por otro lado, en el Back End se utilizan librerías como  *rdflib* o *ldflex* para hacer peticiones a los PODs de los usuarios y así tener disponible una especie de 'CRUD', lo cual se consigue mediante las tripletas (*Triple*).
 
-La principal interfaz es la de SOLID, en donde se definen una serie de operaciones que permiten acceder a los PODs de los usuarios, siempre con su consentimiento.
+La principal interfaz es la de SOLID, en donde se definen una serie de operaciones que permiten acceder a los PODs de los usuarios, siempre con su consentimiento. Estas operaciones se asemejarían a un CRUD, y están representadas en el diagrama adjunto como *Data API* Luego podemos distinguir varias interfaces tales como Ruta, Usario, y otros elementos que modelan el dominio. También podemos distinguir una *capa intermedia* entre el Front-End y el Back-End que sirve de controlador entre ambos módulos, permitiendo su comunicación. Desde el punto de vista de la persistencia, tendremos interfaces que nos proporcionen acceso CRUD a los datos de los usuarios almacenados en sus PODs.
 
+A continuación, se adjunta una figura que muestra un esquema de esta segunda *caja blanca de la aplicación Viade*:
+
+image:images\ViadeApp.jpg[Diagrama de la caja blanca de Viade App]
+
+////
 === Nivel 2
 
 [role="arc42help"]
@@ -144,3 +149,4 @@ _<white box template>_
 
 
 _<white box template>_
+//// 

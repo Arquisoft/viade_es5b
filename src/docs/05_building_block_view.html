@@ -524,10 +524,8 @@ In the best case you will get away with examples or simple signatures.</p>
 </div>
 </div>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="Contexto-del-sistema.jpg" alt="Contexto del sistema">
-</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/Contexto-del-sistema.jpg" alt="Arquitectura del Contexto del Sistema"></span></p>
 </div>
 <div class="dlist">
 <dl>
@@ -587,10 +585,29 @@ In the best case you will get away with examples or simple signatures.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>El propósito de esta caja negra es representar a un usuario y a su POD, junto con sus datos.</p>
+<p>El propósito de esta caja negra es representar a un usuario y a su POD, junto con sus datos. Para poder comunicarse con un usuario y que este pueda autenticarse, se utiliza su <strong>WebID</strong>. Mediante este elemento, podremos acceder a los recursos que dicho usuario tiene almacenados en su POD.</p>
 </div>
 <div class="paragraph">
-<p>La interfaz de esta caja se resume basicamente a las operaciones de lectura y escritura en los PODs que se llevará a cabo mediante librerías que se ajustan a la especificación SOLID.</p>
+<p>La interfaz de esta caja se resume basicamente a las operaciones de lectura y escritura en los PODs que se llevará a cabo mediante librerías que se ajustan a la especificación SOLID. Podemos distinguir las siguientes interfaces:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Usuario</strong>: representa a un usuario junto con sus propiedades básicas.</p>
+</li>
+<li>
+<p><strong>Ruta</strong>: Modela una ruta con su nombre, datos básicos e hitos destacados con coordenadas que serviran para representar la ruta enn el mapa.</p>
+</li>
+<li>
+<p><strong>Hito</strong>: representa la entidad de un hito de una ruta concreta, almacenando su nombre, descripción,&#8230;&#8203;etc pero también sus coordenadas, que serán de gran importancia.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A continuación, se muestra una figura de la <strong>caja blanca</strong> del User POD con sus elementos:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/UserPOD.jpg" alt="Caja blanca para el POD del usuario"></span></p>
 </div>
 </div>
 <div class="sect3">
@@ -603,53 +620,16 @@ In the best case you will get away with examples or simple signatures.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>La responsabilidad de esta caja negra es llevar a cabo el procesamiento de los datos de acuerdo a la lógica de negocio de la aplicación, comunicándose mediante la interfaz SOLID con los usuarios y sus PODs, así como con otras APIs como la de Google Maps o la API File.</p>
+<p>La responsabilidad de esta caja negra es llevar a cabo el procesamiento de los datos de acuerdo a la lógica de negocio de la aplicación, comunicándose mediante la interfaz SOLID con los usuarios y sus PODs, así como con otras APIs como la de Google Maps o la API File. Podemos distinguir entre <strong>Front End</strong> y <strong>Back End</strong>. El primero se encarga principalmente de la lógica de negocio que trata con los objetos del dominio y con los componentes de la interfaz de usuario modelados mediante Componentes JSX de <strong>React.js</strong>. Este módulo utilizará los <strong>servicios de la capa de Back-End</strong> para obtener datos y escribirlos en los PODs de los usuarios, recibiendo como respuestas grafos RDF que sirven para representar a los recursos en el navegador del usuario. Por otro lado, en el Back End se utilizan librerías como  <strong>rdflib</strong> o <strong>ldflex</strong> para hacer peticiones a los PODs de los usuarios y así tener disponible una especie de 'CRUD', lo cual se consigue mediante las tripletas (<strong>Triple</strong>).</p>
 </div>
 <div class="paragraph">
-<p>La principal interfaz es la de SOLID, en donde se definen una serie de operaciones que permiten acceder a los PODs de los usuarios, siempre con su consentimiento.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_nivel_2">Nivel 2</h3>
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="paragraph">
-<p>Here you can specify the inner structure of (some) building blocks from level 1 as white boxes.</p>
+<p>La principal interfaz es la de SOLID, en donde se definen una serie de operaciones que permiten acceder a los PODs de los usuarios, siempre con su consentimiento. Estas operaciones se asemejarían a un CRUD, y están representadas en el diagrama adjunto como <strong>Data API</strong> Luego podemos distinguir varias interfaces tales como Ruta, Usario, y otros elementos que modelan el dominio. También podemos distinguir una <strong>capa intermedia</strong> entre el Front-End y el Back-End que sirve de controlador entre ambos módulos, permitiendo su comunicación. Desde el punto de vista de la persistencia, tendremos interfaces que nos proporcionen acceso CRUD a los datos de los usuarios almacenados en sus PODs.</p>
 </div>
 <div class="paragraph">
-<p>You have to decide which building blocks of your system are important enough to justify such a detailed description.
-Please prefer relevance over completeness. Specify important, surprising, risky, complex or volatile building blocks.
-Leave out normal, simple, boring or standardized parts of your system</p>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_white_box_building_block_1">White Box <em>&lt;building block 1&gt;</em></h4>
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="paragraph">
-<p>&#8230;&#8203;describes the internal structure of <em>building block 1</em>.</p>
-</div>
-</div>
+<p>A continuación, se adjunta una figura que muestra un esquema de esta segunda <strong>caja blanca de la aplicación Viade</strong>:</p>
 </div>
 <div class="paragraph">
-<p><em>&lt;white box template&gt;</em></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_white_box_building_block_2">White Box <em>&lt;building block 2&gt;</em></h4>
-<div class="paragraph">
-<p><em>&lt;white box template&gt;</em></p>
-</div>
-<div class="paragraph">
-<p>&#8230;&#8203;</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_white_box_building_block_m">White Box <em>&lt;building block m&gt;</em></h4>
-<div class="paragraph">
-<p><em>&lt;white box template&gt;</em></p>
+<p><span class="image"><img src="images/ViadeApp.jpg" alt="Diagrama de la caja blanca de Viade App"></span></p>
 </div>
 </div>
 </div>
@@ -658,7 +638,7 @@ Leave out normal, simple, boring or standardized parts of your system</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-02-19 17:46:13 +0100
+Last updated 2020-02-19 18:31:33 +0100
 </div>
 </div>
 </body>
