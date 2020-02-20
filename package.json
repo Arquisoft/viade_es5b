@@ -23,7 +23,8 @@
     "docs": "shx rm -rf build/docs && asciidoctor -D build/docs -a imagesdir=./images -r asciidoctor-diagram src/docs/index.adoc && shx cp -R src/docs/images build/docs",
     "eject": "react-scripts eject",
     "asciidoctorYdiagram": "gem install asciidoctor asciidoctor-diagram",
-    "asciidoctor": "npm install asciidoctor"
+    "asciidoctor": "npm install asciidoctor",
+    "RunSolidServer":"solid init"
   },
   "eslintConfig": {
     "extends": "react-app"
