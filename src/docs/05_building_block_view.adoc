@@ -3,204 +3,63 @@
 
 == Building Block View
 
-[role="arc42help"]
-****
-.Content
-The building block view shows the static decomposition of the system into building blocks (modules, components, subsystems, classes,
-interfaces, packages, libraries, frameworks, layers, partitions, tiers, functions, macros, operations,
-datas structures, ...) as well as their dependencies (relationships, associations, ...)
-
-This view is mandatory for every architecture documentation.
-In analogy to a house this is the _floor plan_.
-
-.Motivation
-Maintain an overview of your source code by making its structure understandable through
-abstraction.
-
-This allows you to communicate with your stakeholder on an abstract level without disclosing implementation details.
-
-.Form
-The building block view is a hierarchical collection of black boxes and white boxes
-(see figure below) and their descriptions.
-
-image:05_building_blocks-EN.png["Hierarchy of building blocks"]
-
-*Level 1* is the white box description of the overall system together with black
-box descriptions of all contained building blocks.
-
-*Level 2* zooms into some building blocks of level 1.
-Thus it contains the white box description of selected building blocks of level 1, together with black box descriptions of their internal building blocks.
-
-*Level 3* zooms into selected building blocks of level 2, and so on.
-****
-
 === Whitebox Overall System
-
-[role="arc42help"]
 ****
-Here you describe the decomposition of the overall system using the following white box template. It contains
+image::Contexto-del-sistema.jpg[Arquitectura del Contexto del Sistema]
 
- * an overview diagram
- * a motivation for the decomposition
- * black box descriptions of the contained building blocks. For these we offer you alternatives:
+Motivación::
 
-   ** use _one_ table for a short and pragmatic overview of all contained building blocks and their interfaces
-   ** use a list of black box descriptions of the building blocks according to the black box template (see below).
-   Depending on your choice of tool this list could be sub-chapters (in text files), sub-pages (in a Wiki) or nested elements (in a modeling tool).
+La arquitectura del contexto del sistema puede verse reflejada en la imagen superior. Esta figura refleja de forma general la relación entre los principales elementos de alto nivel, distinguiendo dos bloques principales de construcción: UserPOD y ViadeAPP. Dada la complejidad interna de estos dos bloques del nivel 0, se procede a descomponerlos en dos cajas blancas en un primer nivel (nivel 1) para especificar mejor sus detalles.
 
 
- * (optional:) important interfaces, that are not explained in the black box templates of a building block, but are very important for understanding the white box.
-Since there are so many ways to specify interfaces why do not provide a specific template for them.
- In the worst case you have to specify and describe syntax, semantics, protocols, error handling,
- restrictions, versions, qualities, necessary compatibilities and many things more.
-In the best case you will get away with examples or simple signatures.
+Bloques de construcción contenidos::
+En cuanto a los bloques de construcción, podemos distinguir por un lado al *POD de un usuario*, que servirá de almacén descentralizado para almacenar los datos del usuario, sus rutas, comentarios, entre otros. Por otro lado, se encuentra el bloque de la *aplicación de VIADE*, el cual se intercomunica con los PODs a través de lo que denominamos la interfaz de SOLID. Además la aplicación también se comunica con otras APIs como la API File de HTML5 o bien la API de Google Maps. En la figura también podemos observar a los usuarios, cada uno de los cuales dispone de su POD, y que son quienes decidirán si comparten o no sus datos con otros usuarios o con la aplicación.
 
+Interfaces importantes::
+En cuanto a interfaces, podemos definir por un lado la *interfaz de SOLID*, la cual detallaremos más adelante, y que proporciona operaciones sobre los PODs de los usuarios. También se encuentran las *APIs de Google y File*, que nos proporcionarán servicios para representar las rutas sobre los mapas y la carga de ficheros respectivamente.
 ****
-
-_**<Overview Diagram>**_
-
-Motivation::
-
-_<text explanation>_
-
-
-Contained Building Blocks::
-_<Description of contained building block (black boxes)>_
-
-Important Interfaces::
-_<Description of important interfaces>_
-
-[role="arc42help"]
+=== Nivel 1
 ****
-Insert your explanations of black boxes from level 1:
-
-If you use tabular form you will only describe your black boxes with name and
-responsibility according to the following schema:
+Descripción de las cajas negras de el nivel 1.
 
 [cols="1,2" options="header"]
 |===
-| **Name** | **Responsibility**
-| _<black box 1>_ | _<Text>_
-| _<black box 2>_ | _<Text>_
+| **Nombre** | **Responsabilidad**
+| User POD | Almacenar los datos del usuario y sus rutas, así como permitir la comunicación con la aplicación desacoplando los datos de la aplicación.
+| Viade App | Representa la aplicación en su totalidad, que se encarga tanto del procesamiento de los datos de entrada del usuario como de los datos almacenados en los PODs.
 |===
-
-
-
-If you use a list of black box descriptions then you fill in a separate black box template for every important building block .
-Its headline is the name of the black box.
 ****
 
 
-==== <Name black box 1>
-
-[role="arc42help"]
-****
-Here you describe <black box 1>
-according the the following black box template:
-
-* Purpose/Responsibility
-* Interface(s), when they are not extracted as separate paragraphs. This interfaces may include qualities and performance characteristics.
-* (Optional) Quality-/Performance characteristics of the black box, e.g.availability, run time behavior, ....
-* (Optional) directory/file location
-* (Optional) Fulfilled requirements (if you need traceability to requirements).
-* (Optional) Open issues/problems/risks
+==== User POD
 
 ****
-
-_<Purpose/Responsibility>_
-
-_<Interface(s)>_
-
-_<(Optional) Quality/Performance Characteristics>_
-
-_<(Optional) Directory/File Location>_
-
-_<(Optional) Fulfilled Requirements>_
-
-_<(optional) Open Issues/Problems/Risks>_
+En esta primera caja negra, se engloba todo lo relacionado con los PODs de los usuarios, en donde se almacenan los datos, rutas, comentarios...de cada usuario. Es el usuario el que se encarga de permitir a la aplicación el acceso a sus datos, de tal forma que mediante la especificación de SOLID se pueda recuperar dichos datos o bien escribir datos en el POD de los usuarios.
 
 
+El propósito de esta caja negra es representar a un usuario y a su POD, junto con sus datos. Para poder comunicarse con un usuario y que este pueda autenticarse, se utiliza su *WebID*. Mediante este elemento, podremos acceder a los recursos que dicho usuario tiene almacenados en su POD.
 
+La interfaz de esta caja se resume basicamente a las operaciones de lectura y escritura en los PODs que se llevará a cabo mediante librerías que se ajustan a la especificación SOLID. Podemos distinguir las siguientes interfaces:
 
-==== <Name black box 2>
+  * *Usuario*: representa a un usuario junto con sus propiedades básicas.
+  * *Ruta*: Modela una ruta con su nombre, datos básicos e hitos destacados con coordenadas que serviran para representar la ruta enn el mapa.
+  * *Hito*: representa la entidad de un hito de una ruta concreta, almacenando su nombre, descripción,...etc pero también sus coordenadas, que serán de gran importancia.
 
-_<black box template>_
+A continuación, se muestra una figura de la *caja blanca* del User POD con sus elementos:
 
-==== <Name black box n>
+image::UserPOD.jpg[Caja blanca para el POD del usuario]
 
-_<black box template>_
-
-
-==== <Name interface 1>
-
-...
-
-==== <Name interface m>
-
-
-
-=== Level 2
-
-[role="arc42help"]
 ****
-Here you can specify the inner structure of (some) building blocks from level 1 as white boxes.
-
-You have to decide which building blocks of your system are important enough to justify such a detailed description.
-Please prefer relevance over completeness. Specify important, surprising, risky, complex or volatile building blocks.
-Leave out normal, simple, boring or standardized parts of your system
+==== Viade App
 ****
+En cuanto a la segunda caja negra, esta es de vital importancia ya que representa a la aplicación en su totalidad, y es la que lleva a cabo toda la lógica de negocio de la aplicación, que está desacoplada de los datos de los usuarios, que residen en los PODs.
 
-==== White Box _<building block 1>_
 
-[role="arc42help"]
+La responsabilidad de esta caja negra es llevar a cabo el procesamiento de los datos de acuerdo a la lógica de negocio de la aplicación, comunicándose mediante la interfaz SOLID con los usuarios y sus PODs, así como con otras APIs como la de Google Maps o la API File. Podemos distinguir entre *Front End* y *Back End*. El primero se encarga principalmente de la lógica de negocio que trata con los objetos del dominio y con los componentes de la interfaz de usuario modelados mediante Componentes JSX de *React.js*. Este módulo utilizará los *servicios de la capa de Back-End* para obtener datos y escribirlos en los PODs de los usuarios, recibiendo como respuestas grafos RDF que sirven para representar a los recursos en el navegador del usuario. Por otro lado, en el Back End se utilizan librerías como  *rdflib* o *ldflex* para hacer peticiones a los PODs de los usuarios y así tener disponible una especie de 'CRUD', lo cual se consigue mediante las tripletas (*Triple*).
+
+La principal interfaz es la de SOLID, en donde se definen una serie de operaciones que permiten acceder a los PODs de los usuarios, siempre con su consentimiento. Estas operaciones se asemejarían a un CRUD, y están representadas en el diagrama adjunto como *Data API* Luego podemos distinguir varias interfaces tales como Ruta, Usario, y otros elementos que modelan el dominio. También podemos distinguir una *capa intermedia* entre el Front-End y el Back-End que sirve de controlador entre ambos módulos, permitiendo su comunicación. Desde el punto de vista de la persistencia, tendremos interfaces que nos proporcionen acceso CRUD a los datos de los usuarios almacenados en sus PODs.
+
+A continuación, se adjunta una figura que muestra un esquema de esta segunda *caja blanca de la aplicación Viade*:
+
+image::ViadeApp.jpg[Diagrama de la caja blanca de Viade App]
 ****
-...describes the internal structure of _building block 1_.
-****
-
-_<white box template>_
-
-==== White Box _<building block 2>_
-
-
-_<white box template>_
-
-...
-
-==== White Box _<building block m>_
-
-
-_<white box template>_
-
-
-
-=== Level 3
-
-[role="arc42help"]
-****
-Here you can specify the inner structure of (some) building blocks from level 2 as white boxes.
-
-When you need more detailed levels of your architecture please copy this
-part of arc42 for additional levels.
-****
-
-
-==== White Box <_building block x.1_>
-
-[role="arc42help"]
-****
-Specifies the internal structure of _building block x.1_.
-****
-
-
-_<white box template>_
-
-
-==== White Box <_building block x.2_>
-
-_<white box template>_
-
-
-
-==== White Box <_building block y.1_>
-
-_<white box template>_

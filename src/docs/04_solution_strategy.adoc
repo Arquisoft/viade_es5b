@@ -1,24 +1,40 @@
 [[section-solution-strategy]]
 == Solution Strategy
 
-
-[role="arc42help"]
 ****
-.Contents
-A short summary and explanation of the fundamental decisions and solution strategies, that shape the system's architecture. These include
+.Tecnologias
+|===
+|Tecnología |Propósito 
 
-* technology decisions
-* decisions about the top-level decomposition of the system, e.g. usage of an architectural pattern or design pattern
-* decisions on how to achieve key quality goals
-* relevant organizational decisions, e.g. selecting a development process or delegating certain tasks to third parties.
+|Solid
+|Separación entre la aplicación y los datos de los usuarios.
+|React
+|Framework para la creación de la interfaz de usuario.
+|GitHub
+|Control de versiones.
+|Javascript
+|
 
-.Motivation
-These decisions form the cornerstones for your architecture. They are the basis for many other detailed decisions or implementation rules.
+|Visual Studio Code
+|IDE para la codificación de la solución y de la documentación.
+|===
+.Decisiones Organizativas
 
-.Form
-Keep the explanation of these key decisions short.
+Division en capas de la arquitectura para una mayor mantenibilidad.
 
-Motivate what you have decided and why you decided that way,
-based upon your problem statement, the quality goals and key constraints.
-Refer to details in the following sections.
+Empezar el trabajo por asuntos de mayor prioridad como añadir y visualizar rutas.
+
+Division del trabajo en dos equipos (backend y frontend).
+|===
+|BackEnd|FrontEnd
+
+|Alejandro Iglesias
+|Diego Marcos
+|Francisco Barrio
+|Adnane Moulud
+|Pedro José Fernández
+|Lucía Prado
+|
+|Alejandro Flórez
+|===
 ****
