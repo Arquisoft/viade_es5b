@@ -17,7 +17,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React. Developed using Docker.
+          Let´s Go Rutas.Learn React. Developed using Docker.
         </a>
       </header>
     </div>
