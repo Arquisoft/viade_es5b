@@ -1,21 +1,21 @@
 {
-  "root": "/mnt/c/Users/UO247346/Documents/ASW/equipoInterfaz5/viade_es5b/data",
+  "root": "/mnt/c/Users/UO247346/Documents/ASW/equipoInterfaz5/viade_es5b/ServidorPODs",
   "port": "8443",
-  "serverUri": "https://localhost:8443",
+  "serverUri": "https://localhost/ServidorPODs/index:8443",
   "webid": true,
-  "mount": "/",
-  "configPath": "./config",
-  "configFile": "./config.json",
-  "dbPath": "./.db",
-  "sslKey": "key.pem",
-  "sslCert": "cert.pem",
+  "mount": "/ServidorPODs",
+  "configPath": "./ServidorPODs/config",
+  "configFile": "./ServidorPODs/config.json",
+  "dbPath": "./ServidorPODs/.db",
+  "sslKey": "./ServidorPODs/claves/key.pem",
+  "sslCert": "./ServidorPODs/claves/cert.pem",
   "multiuser": true,
   "enforceToc": false,
   "disablePasswordChecks": true,
   "supportEmail": "",
   "server": {
     "name": "Viade_es5b",
-    "description": "La mejor app del univerrrrrrso",
+    "description": "EL mejor servidor de PODs",
     "logo": ""
   }
 }
