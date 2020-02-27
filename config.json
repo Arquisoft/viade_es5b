@@ -1,21 +1,37 @@
 {
-  "root": "/mnt/c/Users/UO247346/Documents/ASW/equipoInterfaz5/viade_es5b/ServidorPODs",
+  "root": "/mnt/c/Users/UO247346/Documents/ASW/equipoInterfaz5/viade_es5b/data",
   "port": "8443",
-  "serverUri": "https://localhost/ServidorPODs/index:8443",
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+  "serverUri": "https://localhost:8443/C:/Users/UO247346/Documents/ASW/equipoInterfaz5/viade_es5b/ServidorPODs/",
+=======
+  "serverUri": "https://localhost:8443",
+>>>>>>> parent of ee98f00... Creado en una subcarpeta
+=======
+  "serverUri": "https://localhost:8443",
+>>>>>>> parent of ee98f00... Creado en una subcarpeta
+=======
+  "serverUri": "https://localhost:8443",
+>>>>>>> parent of ee98f00... Creado en una subcarpeta
+=======
+  "serverUri": "https://localhost:8443",
+>>>>>>> parent of ee98f00... Creado en una subcarpeta
   "webid": true,
-  "mount": "/ServidorPODs",
-  "configPath": "./ServidorPODs/config",
-  "configFile": "./ServidorPODs/config.json",
-  "dbPath": "./ServidorPODs/.db",
-  "sslKey": "./ServidorPODs/claves/key.pem",
-  "sslCert": "./ServidorPODs/claves/cert.pem",
+  "mount": "/",
+  "configPath": "./config",
+  "configFile": "./config.json",
+  "dbPath": "./.db",
+  "sslKey": "key.pem",
+  "sslCert": "cert.pem",
   "multiuser": true,
   "enforceToc": false,
   "disablePasswordChecks": true,
   "supportEmail": "",
   "server": {
     "name": "Viade_es5b",
-    "description": "EL mejor servidor de PODs",
+    "description": "La mejor app del univerrrrrrso",
     "logo": ""
   }
 }

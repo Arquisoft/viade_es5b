@@ -24,8 +24,7 @@
     "eject": "react-scripts eject",
     "asciidoctorYdiagram": "gem install asciidoctor asciidoctor-diagram",
     "asciidoctor": "npm install asciidoctor",
-    "RunSolidServer":"solid start",
-    "crearServerPODs":"solid init"
+    "RunSolidServer":"solid init"
   },
   "eslintConfig": {
     "extends": "react-app"
