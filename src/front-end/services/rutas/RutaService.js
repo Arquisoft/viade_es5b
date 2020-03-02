@@ -1,4 +1,6 @@
 "use strict";
+import Ruta from "../../model/Ruta"
+import Hito from "../../model/Hito"
 /*
  * Clase que representa el servicio de Rutas (Fachada)
  */
@@ -34,5 +36,14 @@ class RutaService {
   /*
    * Añade una nueva ruta al sistema.
    */
-  addRuta(ruta) {}
+  addRuta(ruta) {
+   this.BDRutas=[...this.BDRutas,ruta];
+   console.log("Número de rutas almacenadas: "+this.getRutas().length);
+   //for (var r of this.BDRutas){
+     //console.log(r.toString());
+   //}
+  }
 }
+
+
+export default RutaService;

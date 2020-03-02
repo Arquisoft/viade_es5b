@@ -1,4 +1,7 @@
 "use strict";
+
+import Hito from "./Hito";
+
 class Ruta {
   constructor(nombre, inicio) {
     this.nombre = nombre; // Nombre de la ruta
@@ -6,6 +9,7 @@ class Ruta {
     this.hitos = []; // Hitos de la ruta
   }
 
+ 
   /*
    * Devuelve el nombre de la ruta
    */
@@ -33,4 +37,20 @@ class Ruta {
   addHito(hito) {
     this.hitos.push(hito);
   }
+
+  setHitos(hitos){
+    
+    this.hitos=hitos.map(hito=>{new Hito(hito.nombre, hito.longitud, hito.latitud)});
+  }
+
+  toString(){
+    console.log("Ruta: ");
+    console.log("-Nombre: "+this.nombre);
+    console.log("-Inicio: "+this.nombre);
+    console.log("-Hitos de la ruta: ");
+    for (var h of this.getHitos() ){
+      h.toString();
+    }
+  }
 }
+export default Ruta;
