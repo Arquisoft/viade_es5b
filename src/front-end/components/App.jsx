@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import VerRutas from "./ruta/VerRutas";
 import Menu from "./fragments/Menu";
 import AddRuta from "./ruta/AddRuta";
+import HomeLogin from "./authentication/HomeLogin";
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
             </Switch>
           </div>
         </Router>
+        <HomeLogin />
       </div>
     );
   }
