@@ -48,9 +48,9 @@ class Ruta {
     console.log("-Nombre: "+this.nombre);
     console.log("-Inicio: "+this.nombre);
     console.log("-Hitos de la ruta: ");
-    for (var h of this.getHitos() ){
-      h.toString();
-    }
+    //for (var h of this.getHitos() ){
+     // h.toString();
+    //}
   }
 }
 export default Ruta;
