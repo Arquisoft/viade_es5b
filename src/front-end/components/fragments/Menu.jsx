@@ -13,6 +13,7 @@ class Menu extends Component {
         </Nav>
         <Nav className="ml-auto">
           <Nav.Link href="/login">Log In</Nav.Link>
+          <Nav.Link href="/signup">Sign Up</Nav.Link>
         </Nav>
       </Navbar>
     );

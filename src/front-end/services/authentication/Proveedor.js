@@ -15,7 +15,7 @@ class Provider {
       {
         id: 'inrupt',
         label: 'Inrupt',
-        image: '/img/inrupt.svg',
+        image: '/img/',
         value: 'https://inrupt.net/auth',
         registerLink: 'https://inrupt.net/register',
         description: 'Lorem ipsum dolor sit amet non ipsom dolor'
