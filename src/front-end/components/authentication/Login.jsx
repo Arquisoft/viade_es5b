@@ -1,14 +1,16 @@
 import React from "react";
 import {ProviderLogin} from "@inrupt/solid-react-components";
+import  Provider  from '../../services/authentication/Proveedor';
 
 export const LogInComponent = () =>{
     return(
         <div>
             <h1>Login en Viade</h1>
             <ProviderLogin
-            callbackUri = "{'${window.location.origin}'}"
+            className="provider-login-component"
+            callbackUri={`${window.location.origin}`}
             selectPlaceHolder = "Seleccione su proveedor"
-            inputPlaceholder = "Introduza su webId"
+            inputPlaceholder = "Introduza la url de su webId"
             formButtonText = "Login"
             btnTxtWebId = "Login con el WebId"
             btnTxtProvider = "Login con el proveedor"
@@ -18,6 +20,7 @@ export const LogInComponent = () =>{
                 emptyProvider: "Proveedor Solid es necesario",
                 emptyWebId: "WebId es necesario"
             }}
+            providers={Provider.getIdentityProviders()}
             />
         </div>
     );
