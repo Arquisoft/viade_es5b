@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./Home";
-import VerRutas from "./ruta/VerRutas";
-import Menu from "./fragments/Menu";
-import AddRuta from "./ruta/AddRuta";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {PrivateRoute} from "@inrupt/solid-react-components";
 import Login from "./authentication/Login";
+import Menu from "./fragments/Menu";
+import Home from "./Home";
+import AddRuta from "./ruta/AddRuta";
+import VerRutas from "./ruta/VerRutas";
 
 class App extends Component {
   render() {
@@ -15,8 +16,8 @@ class App extends Component {
           <div>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/ver-rutas" component={VerRutas} />
-              <Route path="/add-ruta" component={AddRuta} />
+              <PrivateRoute path="/ver-rutas" component={VerRutas} redirect = "/login" />
+              <PrivateRoute path="/add-ruta" component={AddRuta} redirect="/login" />
               <Route path="/login" component={Login} />
             </Switch>
           </div>

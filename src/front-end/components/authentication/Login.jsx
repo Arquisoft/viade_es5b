@@ -6,7 +6,7 @@ export const LogInComponent = () =>{
         <div>
             <h1>Login en Viade</h1>
             <ProviderLogin
-            callbackUri = "/"
+            callbackUri = "{'${window.location.origin}'}"
             selectPlaceHolder = "Seleccione su proveedor"
             inputPlaceholder = "Introduza su webId"
             formButtonText = "Login"
