@@ -4,7 +4,7 @@ import Home from "./Home";
 import VerRutas from "./ruta/VerRutas";
 import Menu from "./fragments/Menu";
 import AddRuta from "./ruta/AddRuta";
-import HomeLogin from "./authentication/HomeLogin";
+import Login from "./authentication/Login";
 
 class App extends Component {
   render() {
@@ -17,10 +17,10 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route path="/ver-rutas" component={VerRutas} />
               <Route path="/add-ruta" component={AddRuta} />
+              <Route path="/login" component={Login} />
             </Switch>
           </div>
         </Router>
-        <HomeLogin />
       </div>
     );
   }
