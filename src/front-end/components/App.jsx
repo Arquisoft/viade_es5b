@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import {PrivateRoute} from "@inrupt/solid-react-components";
 import Login from "./authentication/Login";
 import RegisterContainer from "./authentication/RegistroContainer";
 import Menu from "./fragments/Menu";
 import Home from "./Home";
 import AddRuta from "./ruta/AddRuta";
 import VerRutas from "./ruta/VerRutas";
+import BtLogout from "./authentication/Logout";
 
 class App extends Component {
   render() {
@@ -17,13 +17,14 @@ class App extends Component {
           <div>
             <Switch>
               <Route exact path="/" component={Home} />
-              <PrivateRoute path="/ver-rutas" component={VerRutas} redirect = "/login" />
-              <PrivateRoute path="/add-ruta" component={AddRuta} redirect="/login" />
+              <Route path="/ver-rutas" component={VerRutas} />
+              <Route path="/add-ruta" component={AddRuta} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={RegisterContainer} />
             </Switch>
           </div>
         </Router>
+        <BtLogout/>
       </div>
     );
   }
