@@ -1,7 +1,7 @@
 import { fetchDocument } from 'tripledoc';
 import { solid, schema } from 'rdf-namespaces';
 
-async function getRoutesList(profile) {
+export async function getRoutesList(profile) {
   /* 1. Check if a Document tracking our notes already exists. */
   const publicTypeIndexRef = profile.getRef(solid.publicTypeIndex);
   const publicTypeIndex = await fetchDocument(publicTypeIndexRef);
