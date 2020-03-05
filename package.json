@@ -17,15 +17,15 @@
     "solid-file-client": "^1.0.2"
   },
   "scripts": {
-    "start": "npm ci && react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
     "docs": "shx rm -rf build/docs && asciidoctor -D build/docs -a imagesdir=./images -r asciidoctor-diagram src/docs/index.adoc && shx cp -R src/docs/images build/docs",
     "eject": "react-scripts eject",
     "asciidoctorYdiagram": "gem install asciidoctor asciidoctor-diagram",
     "asciidoctor": "npm install asciidoctor",
-    "runSS":"cd ./ServidorPODs/ && solid start",
-    "crearServerPODs":"solid init"
+    "runSS": "cd ./ServidorPODs/ && solid start",
+    "crearServerPODs": "solid init"
   },
   "eslintConfig": {
     "extends": "react-app"
