@@ -11,6 +11,7 @@ class Menu extends Component {
           <Nav.Link href="/ver-rutas">Mis rutas</Nav.Link>
           <Nav.Link href="/add-ruta">Añadir ruta</Nav.Link>
         </Nav>
+
         <Nav className="ml-auto">
           <Nav.Link href="/login">Log In</Nav.Link>
         </Nav>
