@@ -7,20 +7,31 @@ import Home from "./Home";
 import AddRuta from "./ruta/AddRuta";
 import VerRutas from "./ruta/VerRutas";
 import BtLogout from "./authentication/Logout";
+import { Redirect } from "react-router-dom";
+
+import auth from "solid-auth-client";
 
 class App extends Component {
+  state = {
+    loggedIn: false
+  };
+
   render() {
     return (
       <div>
-        <Menu />
+        <Menu state={this.state} handleLogOut={this.handleLogOut}/>
         <Router>
           <div>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/ver-rutas" component={VerRutas} />
               <Route path="/add-ruta" component={AddRuta} />
-              <Route path="/login" component={Login} />
-              <Route path="/signup" component={RegisterContainer} />
+              <Route path="/login">
+                <Login handleLogIn={this.handleLogIn}/>
+              </Route>
+              <Route>
+                <BtLogout handleLogOut={this.handleLogOut}/>
+              </Route>
             </Switch>
           </div>
         </Router>
@@ -28,6 +39,17 @@ class App extends Component {
       </div>
     );
   }
+
+
+ handleLogIn = () => {
+    this.setState({loggedIn: true});
+ }
+
+ handleLogOut = () => {
+  auth.logout();
+  this.setState({loggedIn:false});
+ }
+
 }
 
 export default App;

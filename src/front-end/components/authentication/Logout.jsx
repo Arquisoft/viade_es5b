@@ -6,6 +6,7 @@ class BtLogout extends Component {
     render(){
         const logout = () =>{
             auth.logout();
+            this.props.handleLogOut();
             window.location = "/login";
         }
     
