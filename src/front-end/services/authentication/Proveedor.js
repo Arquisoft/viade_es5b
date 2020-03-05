@@ -27,6 +27,14 @@ class Provider {
         value: 'https://solid.community',
         registerLink: 'https://solid.community/register',
         description: 'Lorem ipsum dolor sit non consectetur'
+      },
+      {
+        id: 'local-pod-server',
+        label: 'Servidor Local',
+        image: './img/server.jpg',
+        value: 'https://localhost:8443',
+        registerLink: 'https://localhost:8443/register',
+        description: 'Nuestro propio servidor de PODS'
       }
     ];
   }
