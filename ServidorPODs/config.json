@@ -1,5 +1,5 @@
 {
-  "root": "/mnt/c/Users/UO247346/Documents/ASW/equipoInterfaz5/viade_es5b/ServidorPODs/",
+  "root": "./",
   "port": "8443",
   "serverUri": "https://localhost:8443",
   "webid": true,
