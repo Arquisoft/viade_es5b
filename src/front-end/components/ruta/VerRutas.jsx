@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import Map from "../map/Map";
+import RutaService from "../../services/rutas/RutaService";
+
+var ruta = new RutaService().getRutas()[0];
 
 class VerRutas extends Component {
   render() {

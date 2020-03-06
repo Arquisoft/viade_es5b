@@ -1,4 +1,7 @@
-"use strict";
+("use strict");
+
+import Ruta from "../../model/Ruta";
+import Hito from "../../model/Hito";
 /*
  * Clase que representa el servicio de Rutas (Fachada)
  */
@@ -6,6 +9,7 @@ class RutaService {
   constructor() {
     // Simula la base de datos
     this.BDRutas = [];
+    this.inicializarBD();
   }
 
   /*
@@ -21,6 +25,9 @@ class RutaService {
 
     r2.addHito(new Hito("Hito-r2-1", 10.4, 0));
     r2.addHito(new Hito("Hito-r2-2", 520, -10));
+
+    this.BDRutas.push(r1);
+    this.BDRutas.push(r2);
   }
 
   /*
@@ -36,3 +43,5 @@ class RutaService {
    */
   addRuta(ruta) {}
 }
+
+export default RutaService;
