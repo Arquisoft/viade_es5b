@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../../css/map-style.css";
 import { Map, Marker, Popup, TileLayer, Polyline } from "react-leaflet";
 import L from "leaflet";
+import * as icons from "./MarkerIcons";
 
 // Sin esto no se muestran los Markers
 delete L.Icon.Default.prototype._getIconUrl;
@@ -10,18 +11,6 @@ L.Icon.Default.mergeOptions({
   iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
   iconUrl: require("leaflet/dist/images/marker-icon.png"),
   shadowUrl: require("leaflet/dist/images/marker-shadow.png")
-});
-
-// Iconos de colores
-var greenIcon = new L.Icon({
-  iconUrl:
-    "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png",
-  shadowUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
 });
 
 class MapRuta extends Component {
@@ -65,7 +54,7 @@ class MapRuta extends Component {
    */
   getStartMarker() {
     return (
-      <Marker key={0} position={this.inicio} icon={greenIcon}>
+      <Marker key={0} position={this.inicio} icon={icons.greenIcon}>
         <Popup>{`Inicio: ${this.ruta.getNombre()}`}</Popup>
       </Marker>
     );
