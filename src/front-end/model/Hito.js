@@ -1,4 +1,3 @@
-"use strict";
 class Hito {
   constructor(nombre, longitud, latitud) {
     this.nombre = nombre; // Nombre del hito.
@@ -30,3 +29,5 @@ class Hito {
     return this.latitud;
   }
 }
+
+export default Hito;

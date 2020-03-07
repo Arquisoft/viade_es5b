@@ -1,5 +1,3 @@
-("use strict");
-
 import Ruta from "../../model/Ruta";
 import Hito from "../../model/Hito";
 /*

@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 
 class Menu extends Component {
   state = {
-    loggedIn: false
+    loggedIn: true
   };
 
   render() {

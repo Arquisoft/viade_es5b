@@ -1,4 +1,3 @@
-"use strict";
 class Ruta {
   constructor(nombre, inicio) {
     this.nombre = nombre; // Nombre de la ruta
@@ -34,3 +33,5 @@ class Ruta {
     this.hitos.push(hito);
   }
 }
+
+export default Ruta;

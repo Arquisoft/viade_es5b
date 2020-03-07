@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 
 class Map extends Component {
-  constructor(ruta) {
-    this.ruta = ruta; // Ruta a representar en el mapa
-    this.mapID = `mapa-${ruta.getNombre()}`;
-    this.coords = this.getCoords(ruta); // obtenemos la lista de coordenadas de los hitos
-    this.state = {};
-    console.log(this.coords);
+  constructor(props) {
+    super(props);
+    this.ruta = this.props.ruta; // Ruta a representar en el mapa
+    this.mapID = `mapa-${this.props.ruta.getNombre()}`;
+    this.coords = this.getCoords(this.props.ruta); // obtenemos la lista de coordenadas de los hitos
   }
 
   render() {

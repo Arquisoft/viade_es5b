@@ -4,10 +4,10 @@
     "reportVersion": 1,
     "event": "Allocation failed - JavaScript heap out of memory",
     "trigger": "FatalError",
-    "filename": "report.20200306.165327.44568.0.001.json",
-    "dumpEventTime": "2020-03-06T16:53:27Z",
-    "dumpEventTimeStamp": "1583510007751",
-    "processId": 44568,
+    "filename": "report.20200306.175751.16364.0.001.json",
+    "dumpEventTime": "2020-03-06T17:57:51Z",
+    "dumpEventTimeStamp": "1583513871616",
+    "processId": 16364,
     "cwd": "C:\\Users\\alexf\\Desktop\\Ing_Software\\3er Curso\\2o Semestre\\ASW\\Proyecto-Viade\\ws\\viade_es5b",
     "commandLine": [
       "node",
@@ -50,38 +50,38 @@
       {
         "model": "Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz",
         "speed": 2904,
-        "user": 4416609,
+        "user": 5198234,
         "nice": 0,
-        "sys": 5073375,
-        "idle": 58820343,
-        "irq": 1422437
+        "sys": 5469234,
+        "idle": 61506718,
+        "irq": 1457765
       },
       {
         "model": "Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz",
         "speed": 2904,
-        "user": 4132843,
+        "user": 4894343,
         "nice": 0,
-        "sys": 2692578,
-        "idle": 61484640,
-        "irq": 27812
+        "sys": 2999250,
+        "idle": 64280328,
+        "irq": 30875
       },
       {
         "model": "Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz",
         "speed": 2904,
-        "user": 4746109,
+        "user": 5624765,
         "nice": 0,
-        "sys": 3022500,
-        "idle": 60541453,
-        "irq": 26375
+        "sys": 3373031,
+        "idle": 63176125,
+        "irq": 29406
       },
       {
         "model": "Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz",
         "speed": 2904,
-        "user": 4850437,
+        "user": 5736187,
         "nice": 0,
-        "sys": 2891015,
-        "idle": 60568625,
-        "irq": 18687
+        "sys": 3193921,
+        "idle": 63243828,
+        "irq": 21156
       }
     ],
     "networkInterfaces": [
@@ -212,23 +212,35 @@
       "symbol": "v8::internal::Factory::NewFillerObject+53"
     },
     {
-      "pc": "0x00007ff62be278d7",
-      "symbol": "v8::internal::interpreter::JumpTableTargetOffsets::iterator::operator=+3687"
+      "pc": "0x00007ff62be27a49",
+      "symbol": "v8::internal::interpreter::JumpTableTargetOffsets::iterator::operator=+4057"
     },
     {
       "pc": "0x00007ff62c61463d",
       "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+567949"
     },
     {
-      "pc": "0x00000008d1ad222e",
+      "pc": "0x00007ff62c615571",
+      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+571841"
+    },
+    {
+      "pc": "0x00007ff62c64fe77",
+      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+811719"
+    },
+    {
+      "pc": "0x00007ff62c6011e5",
+      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+489013"
+    },
+    {
+      "pc": "0x00000191d9b8c29a",
       "symbol": ""
     }
   ],
   "javascriptHeap": {
-    "totalMemory": 2158120960,
-    "totalCommittedMemory": 2158120960,
-    "usedMemory": 2140245968,
-    "availableMemory": 48487040,
+    "totalMemory": 2158415872,
+    "totalCommittedMemory": 2158415872,
+    "usedMemory": 2139479600,
+    "availableMemory": 52550192,
     "memoryLimit": 2197815296,
     "heapSpaces": {
       "read_only_space": {
@@ -239,38 +251,38 @@
         "available": 229576
       },
       "new_space": {
-        "memorySize": 2621440,
-        "committedMemory": 2621440,
-        "capacity": 1309360,
-        "used": 205680,
-        "available": 1103680
+        "memorySize": 2097152,
+        "committedMemory": 2097152,
+        "capacity": 1047488,
+        "used": 462344,
+        "available": 585144
       },
       "old_space": {
-        "memorySize": 2084155392,
-        "committedMemory": 2084155392,
-        "capacity": 2076138944,
-        "used": 2069988856,
-        "available": 6150088
+        "memorySize": 2085203968,
+        "committedMemory": 2085203968,
+        "capacity": 2080623496,
+        "used": 2069334936,
+        "available": 11288560
       },
       "code_space": {
         "memorySize": 1998848,
         "committedMemory": 1998848,
-        "capacity": 1645248,
-        "used": 1645248,
+        "capacity": 1588896,
+        "used": 1588896,
         "available": 0
       },
       "map_space": {
         "memorySize": 3149824,
         "committedMemory": 3149824,
-        "capacity": 2617600,
-        "used": 2617600,
+        "capacity": 2531280,
+        "used": 2531280,
         "available": 0
       },
       "large_object_space": {
-        "memorySize": 65310720,
-        "committedMemory": 65310720,
-        "capacity": 65205888,
-        "used": 65205888,
+        "memorySize": 65081344,
+        "committedMemory": 65081344,
+        "capacity": 64979448,
+        "used": 64979448,
         "available": 0
       },
       "code_large_object_space": {
@@ -283,24 +295,24 @@
       "new_large_object_space": {
         "memorySize": 0,
         "committedMemory": 0,
-        "capacity": 1309360,
+        "capacity": 1047488,
         "used": 0,
-        "available": 1309360
+        "available": 1047488
       }
     }
   },
   "resourceUsage": {
-    "userCpuSeconds": 91.171,
-    "kernelCpuSeconds": 3.718,
-    "cpuConsumptionPercent": 96.8255,
-    "maxRss": 2268155904,
+    "userCpuSeconds": 88.812,
+    "kernelCpuSeconds": 3.453,
+    "cpuConsumptionPercent": 230.662,
+    "maxRss": 2269323264,
     "pageFaults": {
-      "IORequired": 788248,
+      "IORequired": 773351,
       "IONotRequired": 0
     },
     "fsActivity": {
-      "reads": 5558,
-      "writes": 8
+      "reads": 5396,
+      "writes": 10
     }
   },
   "libuv": [
@@ -497,14 +509,14 @@
     "npm_package_dependencies__testing_library_user_event": "^7.2.1",
     "npm_package_description": "[![Build Status](https://travis-ci.org/Arquisoft/viade_es5b.svg?branch=master)](https://travis-ci.org/Arquisoft/viade_es5b)\r [![codecov](https://codecov.io/gh/Arquisoft/viade_es5b/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/viade_es5b)\r [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f33d79fd89dc441fba939f80be0075cf)](https://www.codacy.com/gh/Arquisoft/viade_es5b?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/viade_es5b&amp;utm_campaign=Badge_Grade)",
     "npm_package_eslintConfig_extends": "react-app",
-    "npm_package_gitHead": "f4d911088b5b371ceecae49c7a3392e920017a8a",
+    "npm_package_gitHead": "1e66508f3a0c95454811eaec5ba4b98b13b04b89",
     "npm_package_homepage": "https://arquisoft.github.io/viade_es5b/",
     "npm_package_name": "viade_es5b",
     "npm_package_private": "true",
     "npm_package_readmeFilename": "README.md",
     "npm_package_scripts_asciidoctor": "npm install asciidoctor",
     "npm_package_scripts_asciidoctorYdiagram": "gem install asciidoctor asciidoctor-diagram",
-    "npm_package_scripts_build": "react-scripts build",
+    "npm_package_scripts_build": "react-scripts --max_old_space_size=4096 build",
     "npm_package_scripts_docs": "shx rm -rf build/docs && asciidoctor -D build/docs -a imagesdir=./images -r asciidoctor-diagram src/docs/index.adoc && shx cp -R src/docs/images build/docs",
     "npm_package_scripts_eject": "react-scripts eject",
     "npm_package_scripts_execute": "react-scripts start",
@@ -554,10 +566,10 @@
     "C:\\WINDOWS\\System32\\KERNELBASE.dll",
     "C:\\WINDOWS\\System32\\WS2_32.dll",
     "C:\\WINDOWS\\System32\\RPCRT4.dll",
-    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
     "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
-    "C:\\WINDOWS\\System32\\msvcrt.dll",
+    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
     "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\System32\\msvcrt.dll",
     "C:\\WINDOWS\\System32\\sechost.dll",
     "C:\\WINDOWS\\System32\\USER32.dll",
     "C:\\WINDOWS\\System32\\win32u.dll",
@@ -568,8 +580,8 @@
     "C:\\WINDOWS\\System32\\CRYPT32.dll",
     "C:\\WINDOWS\\System32\\MSASN1.dll",
     "C:\\WINDOWS\\System32\\bcrypt.dll",
-    "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
     "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
     "C:\\WINDOWS\\System32\\profapi.dll",
     "C:\\WINDOWS\\SYSTEM32\\WINMM.dll",
     "C:\\WINDOWS\\SYSTEM32\\winmmbase.dll",

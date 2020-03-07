@@ -4,10 +4,10 @@
     "reportVersion": 1,
     "event": "Allocation failed - JavaScript heap out of memory",
     "trigger": "FatalError",
-    "filename": "report.20200306.165124.39464.0.001.json",
-    "dumpEventTime": "2020-03-06T16:51:24Z",
-    "dumpEventTimeStamp": "1583509884242",
-    "processId": 39464,
+    "filename": "report.20200306.174905.34624.0.001.json",
+    "dumpEventTime": "2020-03-06T17:49:05Z",
+    "dumpEventTimeStamp": "1583513345573",
+    "processId": 34624,
     "cwd": "C:\\Users\\alexf\\Desktop\\Ing_Software\\3er Curso\\2o Semestre\\ASW\\Proyecto-Viade\\ws\\viade_es5b",
     "commandLine": [
       "node",
@@ -50,38 +50,38 @@
       {
         "model": "Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz",
         "speed": 2904,
-        "user": 4388546,
+        "user": 5040562,
         "nice": 0,
-        "sys": 5066515,
-        "idle": 58731750,
-        "irq": 1421578
+        "sys": 5422093,
+        "idle": 61185484,
+        "irq": 1453687
       },
       {
         "model": "Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz",
         "speed": 2904,
-        "user": 4105156,
+        "user": 4745421,
         "nice": 0,
-        "sys": 2688125,
-        "idle": 61393265,
-        "irq": 27796
+        "sys": 2960640,
+        "idle": 63941812,
+        "irq": 30578
       },
       {
         "model": "Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz",
         "speed": 2904,
-        "user": 4715171,
+        "user": 5445015,
         "nice": 0,
-        "sys": 3015265,
-        "idle": 60456109,
-        "irq": 26281
+        "sys": 3333125,
+        "idle": 62869734,
+        "irq": 28953
       },
       {
         "model": "Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz",
         "speed": 2904,
-        "user": 4821906,
+        "user": 5569890,
         "nice": 0,
-        "sys": 2886890,
-        "idle": 60477765,
-        "irq": 18671
+        "sys": 3159953,
+        "idle": 62918046,
+        "irq": 20937
       }
     ],
     "networkInterfaces": [
@@ -220,15 +220,15 @@
       "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+567949"
     },
     {
-      "pc": "0x0000034fc5d84dc8",
+      "pc": "0x0000016044284561",
       "symbol": ""
     }
   ],
   "javascriptHeap": {
-    "totalMemory": 2155147264,
-    "totalCommittedMemory": 2155147264,
-    "usedMemory": 2135535384,
-    "availableMemory": 50987104,
+    "totalMemory": 2181189632,
+    "totalCommittedMemory": 2181189632,
+    "usedMemory": 2144248440,
+    "availableMemory": 48796520,
     "memoryLimit": 2197815296,
     "heapSpaces": {
       "read_only_space": {
@@ -239,38 +239,38 @@
         "available": 229576
       },
       "new_space": {
-        "memorySize": 2621440,
-        "committedMemory": 2621440,
-        "capacity": 1309360,
-        "used": 387384,
-        "available": 921976
+        "memorySize": 22020096,
+        "committedMemory": 22020096,
+        "capacity": 10998624,
+        "used": 2099168,
+        "available": 8899456
       },
       "old_space": {
-        "memorySize": 2082582528,
-        "committedMemory": 2082582528,
-        "capacity": 2072545296,
-        "used": 2066687136,
-        "available": 5858160
+        "memorySize": 2087563264,
+        "committedMemory": 2087563264,
+        "capacity": 2084086480,
+        "used": 2072043280,
+        "available": 12043200
       },
       "code_space": {
         "memorySize": 1998848,
         "committedMemory": 1998848,
-        "capacity": 1537376,
-        "used": 1537376,
+        "capacity": 1716928,
+        "used": 1716928,
         "available": 0
       },
       "map_space": {
-        "memorySize": 3149824,
-        "committedMemory": 3149824,
-        "capacity": 2526080,
-        "used": 2526080,
+        "memorySize": 3411968,
+        "committedMemory": 3411968,
+        "capacity": 2600480,
+        "used": 2600480,
         "available": 0
       },
       "large_object_space": {
-        "memorySize": 63909888,
-        "committedMemory": 63909888,
-        "capacity": 63814712,
-        "used": 63814712,
+        "memorySize": 65310720,
+        "committedMemory": 65310720,
+        "capacity": 65205888,
+        "used": 65205888,
         "available": 0
       },
       "code_large_object_space": {
@@ -283,24 +283,24 @@
       "new_large_object_space": {
         "memorySize": 0,
         "committedMemory": 0,
-        "capacity": 1309360,
+        "capacity": 10998624,
         "used": 0,
-        "available": 1309360
+        "available": 10998624
       }
     }
   },
   "resourceUsage": {
-    "userCpuSeconds": 87.031,
-    "kernelCpuSeconds": 4.218,
-    "cpuConsumptionPercent": 107.352,
-    "maxRss": 2264707072,
+    "userCpuSeconds": 104.64,
+    "kernelCpuSeconds": 3.687,
+    "cpuConsumptionPercent": 204.391,
+    "maxRss": 2277335040,
     "pageFaults": {
-      "IORequired": 733949,
+      "IORequired": 823740,
       "IONotRequired": 0
     },
     "fsActivity": {
-      "reads": 5362,
-      "writes": 7
+      "reads": 5575,
+      "writes": 76
     }
   },
   "libuv": [
@@ -497,14 +497,14 @@
     "npm_package_dependencies__testing_library_user_event": "^7.2.1",
     "npm_package_description": "[![Build Status](https://travis-ci.org/Arquisoft/viade_es5b.svg?branch=master)](https://travis-ci.org/Arquisoft/viade_es5b)\r [![codecov](https://codecov.io/gh/Arquisoft/viade_es5b/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/viade_es5b)\r [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f33d79fd89dc441fba939f80be0075cf)](https://www.codacy.com/gh/Arquisoft/viade_es5b?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/viade_es5b&amp;utm_campaign=Badge_Grade)",
     "npm_package_eslintConfig_extends": "react-app",
-    "npm_package_gitHead": "f4d911088b5b371ceecae49c7a3392e920017a8a",
+    "npm_package_gitHead": "1e66508f3a0c95454811eaec5ba4b98b13b04b89",
     "npm_package_homepage": "https://arquisoft.github.io/viade_es5b/",
     "npm_package_name": "viade_es5b",
     "npm_package_private": "true",
     "npm_package_readmeFilename": "README.md",
     "npm_package_scripts_asciidoctor": "npm install asciidoctor",
     "npm_package_scripts_asciidoctorYdiagram": "gem install asciidoctor asciidoctor-diagram",
-    "npm_package_scripts_build": "react-scripts build",
+    "npm_package_scripts_build": "react-scripts --max_old_space_size=4096 build",
     "npm_package_scripts_docs": "shx rm -rf build/docs && asciidoctor -D build/docs -a imagesdir=./images -r asciidoctor-diagram src/docs/index.adoc && shx cp -R src/docs/images build/docs",
     "npm_package_scripts_eject": "react-scripts eject",
     "npm_package_scripts_execute": "react-scripts start",
@@ -554,9 +554,7 @@
     "C:\\WINDOWS\\System32\\KERNELBASE.dll",
     "C:\\WINDOWS\\System32\\WS2_32.dll",
     "C:\\WINDOWS\\System32\\RPCRT4.dll",
-    "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
     "C:\\WINDOWS\\System32\\ADVAPI32.dll",
-    "C:\\WINDOWS\\System32\\ucrtbase.dll",
     "C:\\WINDOWS\\System32\\msvcrt.dll",
     "C:\\WINDOWS\\System32\\sechost.dll",
     "C:\\WINDOWS\\System32\\USER32.dll",
@@ -564,11 +562,13 @@
     "C:\\WINDOWS\\System32\\GDI32.dll",
     "C:\\WINDOWS\\System32\\gdi32full.dll",
     "C:\\WINDOWS\\System32\\msvcp_win.dll",
+    "C:\\WINDOWS\\System32\\ucrtbase.dll",
     "C:\\WINDOWS\\System32\\PSAPI.DLL",
     "C:\\WINDOWS\\System32\\CRYPT32.dll",
     "C:\\WINDOWS\\System32\\MSASN1.dll",
-    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
     "C:\\WINDOWS\\System32\\bcrypt.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
+    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
     "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
     "C:\\WINDOWS\\System32\\profapi.dll",
     "C:\\WINDOWS\\SYSTEM32\\WINMM.dll",

@@ -7,6 +7,7 @@ import Home from "./Home";
 import AddRuta from "./ruta/AddRuta";
 import VerRutas from "./ruta/VerRutas";
 import BtLogout from "./authentication/Logout";
+import Footer from "./fragments/Footer";
 
 class App extends Component {
   render() {
@@ -24,7 +25,8 @@ class App extends Component {
             </Switch>
           </div>
         </Router>
-        <BtLogout/>
+        <BtLogout />
+        <Footer />
       </div>
     );
   }
