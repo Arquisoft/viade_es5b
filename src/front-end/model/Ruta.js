@@ -1,7 +1,7 @@
 class Ruta {
   constructor(nombre, inicio) {
     this.nombre = nombre; // Nombre de la ruta
-    this.inicio = inicio; // Lugar de inicio
+    this.inicio = inicio; // Coordenadas del lugar de inicio
     this.hitos = []; // Hitos de la ruta
   }
 
@@ -13,7 +13,7 @@ class Ruta {
   }
 
   /*
-   * Devuelve el lugar de inicio
+   * Devuelve las coordenadas [lat, long] del lugar de inicio
    */
   getInicio() {
     return this.inicio;

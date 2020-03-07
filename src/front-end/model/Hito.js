@@ -1,5 +1,5 @@
 class Hito {
-  constructor(nombre, longitud, latitud) {
+  constructor(nombre, latitud, longitud) {
     this.nombre = nombre; // Nombre del hito.
     // Coordenadas del hito
     this.longitud = longitud;

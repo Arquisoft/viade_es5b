@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Map from "../map/Map";
+import MapRuta from "../map/MapRuta";
 import RutaService from "../../services/rutas/RutaService";
 
 var r = new RutaService().getRutas()[0];
@@ -12,9 +12,11 @@ class VerRutas extends Component {
           <h1>Mis rutas</h1>
           <p>
             En este apartado puedes echar un vistazo a tus rutas, visualizarlas
-            en un mapa, ver sus detalles o bien eliminarla.
+            en un mapa, ver sus detalles o bien eliminarlas.
           </p>
-          <Map ruta={r} />
+          <div>
+            <MapRuta ruta={r} />
+          </div>
         </header>
       </div>
     );

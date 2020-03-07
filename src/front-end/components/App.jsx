@@ -8,6 +8,7 @@ import AddRuta from "./ruta/AddRuta";
 import VerRutas from "./ruta/VerRutas";
 import BtLogout from "./authentication/Logout";
 import Footer from "./fragments/Footer";
+import "leaflet/dist/leaflet.css";
 
 class App extends Component {
   render() {
