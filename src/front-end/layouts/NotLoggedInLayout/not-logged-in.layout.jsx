@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { NavBar } from '@components';
+import  NavBar  from "../../components/NavBar/nav-bar.component";
 import { useWebId } from '@inrupt/solid-react-components';
 
 const NotLoggedInLayout = props => {
@@ -10,7 +10,10 @@ const NotLoggedInLayout = props => {
     <Route
       {...rest}
       component={matchProps => (
+        <div>
           <NavBar/>
+          <Component {...matchProps}/>
+        </div>
       )}
     />
   ) : (

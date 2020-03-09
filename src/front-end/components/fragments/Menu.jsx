@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
+//import //React, { Component } from "react";
+//import Navbar from "react-bootstrap/Navbar";
+//import Nav from "react-bootstrap/Nav";
 
-class Menu extends Component {
-  render() {
+//class Menu extends Component {
+  /*render() {
     return (
       <Navbar bg="primary" variant="dark">
         <Navbar.Brand href="/">Viade-Rutas</Navbar.Brand>
@@ -21,7 +21,7 @@ class Menu extends Component {
         </Nav>
       </Navbar>
     );
-  }
-}
+  }*/
+//}
 
-export default Menu;
+//export default Menu;

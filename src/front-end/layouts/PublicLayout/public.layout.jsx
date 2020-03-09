@@ -1,7 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { useWebId } from '@inrupt/solid-react-components';
-import { NavBar, AuthNavBar } from '@components';
+import  NavBar  from '../../components/NavBar/nav-bar.component';
+import  AuthNavBar  from '../../components/AuthNavBar/auth-nav-bar.component';
+
 
 const PublicLayout = props => {
   const webId = useWebId();

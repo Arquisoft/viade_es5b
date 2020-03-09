@@ -1,9 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import auth from "solid-auth-client";
 
 const AuthNavBar = () => {
 
+  const logout = () =>{
+    auth.logout();
+    window.location = "/login";
+  }
   return (
     <Navbar bg="primary" variant="dark">
         <Navbar.Brand href="/">Viade-Rutas</Navbar.Brand>
@@ -13,7 +18,7 @@ const AuthNavBar = () => {
           </Nav>
 
         <Nav className="ml-auto">
-          <Nav.Link href="/login">Log Out</Nav.Link>
+          <Nav.Link onClick={logout}>Log Out</Nav.Link>
         </Nav>
       </Navbar>
   );
