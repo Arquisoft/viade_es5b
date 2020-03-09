@@ -3,9 +3,6 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
 class Menu extends Component {
-  state = {
-    loggedIn: true
-  };
   render() {
     return (
       <Navbar bg="primary" variant="dark">
@@ -18,8 +15,9 @@ class Menu extends Component {
         )}
 
         <Nav className="ml-auto">
-          {!this.state.loggedIn && <Nav.Link href="/login">Log In</Nav.Link>}
-          {!this.state.loggedIn && <Nav.Link href="/signup">Log In</Nav.Link>}
+          {!this.props.state.loggedIn && <Nav.Link href="/login">Log In</Nav.Link>}
+          {!this.props.state.loggedIn && <Nav.Link href="/signup">Sign Up</Nav.Link>}
+          {this.props.state.loggedIn && <Nav.Link href="/login">Log Out</Nav.Link>}
         </Nav>
       </Navbar>
     );

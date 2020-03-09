@@ -1,6 +1,7 @@
+// @ts-ignore
+import { ProviderLogin } from '@inrupt/solid-react-components';
 import React from "react";
-import {ProviderLogin} from "@inrupt/solid-react-components";
-import  Provider  from '../../services/authentication/Proveedor';
+import Provider from '../../services/authentication/Proveedor';
 
 export const LogInComponent = (props) =>{
     return(
@@ -8,7 +9,6 @@ export const LogInComponent = (props) =>{
             <h1>Login en Viade</h1>
             <ProviderLogin
             className="provider-login-component"
-            callback={() => alert("Holaa")}
             callbackUri={`${window.location.origin}`}
             selectPlaceHolder = "Seleccione su proveedor"
             inputPlaceholder = "Introduza la url de su webId"

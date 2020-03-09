@@ -7,7 +7,6 @@ import Home from "./Home";
 import AddRuta from "./ruta/AddRuta";
 import VerRutas from "./ruta/VerRutas";
 import BtLogout from "./authentication/Logout";
-import { Redirect } from "react-router-dom";
 
 import auth from "solid-auth-client";
 import Footer from "./fragments/Footer";
@@ -15,7 +14,7 @@ import "leaflet/dist/leaflet.css";
 
 class App extends Component {
   state = {
-    loggedIn: false
+    loggedIn: true
   };
 
   render() {
@@ -28,16 +27,12 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route path="/ver-rutas" component={VerRutas} />
               <Route path="/add-ruta" component={AddRuta} />
-              <Route path="/login">
-                <Login handleLogIn={this.handleLogIn}/>
-              </Route>
-              <Route>
-                <BtLogout handleLogOut={this.handleLogOut}/>
-              </Route>
+              <Route path="/login" component={Login} handleLogIn={this.handleLogIn}/>
+              <Route path="/signup" component={RegisterContainer}/>
+              <Route path="/login" component={BtLogout} handleLogOut={this.handleLogOut}/>
             </Switch>
           </div>
         </Router>
-        <BtLogout />
         <Footer />
       </div>
     );
