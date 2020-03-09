@@ -22,6 +22,7 @@ export default class BackMain
                 //si esta logueado guardo la ruta
         else
             console.log(`The user is ${session.webId}`)
+            this.creacionAlmacenRutas();
            })
     }
 
