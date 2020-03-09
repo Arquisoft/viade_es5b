@@ -10,6 +10,8 @@ import BtLogout from "./authentication/Logout";
 import { Redirect } from "react-router-dom";
 
 import auth from "solid-auth-client";
+import Footer from "./fragments/Footer";
+import "leaflet/dist/leaflet.css";
 
 class App extends Component {
   state = {
@@ -35,7 +37,8 @@ class App extends Component {
             </Switch>
           </div>
         </Router>
-        <BtLogout/>
+        <BtLogout />
+        <Footer />
       </div>
     );
   }
