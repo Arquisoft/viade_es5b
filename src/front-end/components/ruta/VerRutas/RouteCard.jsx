@@ -4,6 +4,7 @@ import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
 import MapRuta from "../../map/MapRuta";
 import "../../../css/map-style.css";
+import { Jumbotron } from "react-bootstrap";
 
 /**
  * Representa un elemento Card con la
@@ -32,14 +33,25 @@ class RouteCard extends Component {
           <Button className="mr-2">Eliminar</Button>
           <Button>Editar</Button>
         </Card.Body>
-
         {this.state.loaded && (
-          <div>
+          <div id={`mapa-${this.ruta.getNombre()}`} className="ml-3 mb-3">
             <MapRuta ruta={this.ruta} />
           </div>
         )}
       </Card>
     );
+  }
+
+  /**
+   * Se ejecuta cada vez que se actualiza el componente
+   * para mover el scroll al mapa recién mostrado.
+   */
+  componentDidUpdate() {
+    if (this.state.loaded) {
+      document
+        .getElementById(`mapa-${this.ruta.getNombre()}`)
+        .scrollIntoView(false);
+    }
   }
 
   /**

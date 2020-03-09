@@ -25,7 +25,7 @@ class MapRuta extends Component {
 
   render() {
     return (
-      <Map center={this.inicio} zoom={this.zoom}>
+      <Map id={this.mapID} center={this.inicio} zoom={this.zoom}>
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
