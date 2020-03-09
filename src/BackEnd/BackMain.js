@@ -1,12 +1,10 @@
 
 
-import React from "react";
 
-import {initialiseRoutesList} from './Scripts/storageForRoutes.js'
+//import {initialiseRoutesList} from './Scripts/storageForRoutes.js'
 import{addRoute} from './Scripts/addRoute.js'
 import{deleteRoute} from './Scripts/deleteRoute.js'
 import{getRoutesList} from './Scripts/getRoutes.js'
-import{Ruta}from '/src/front-end/model/Ruta.js'
 const auth = require('solid-auth-client')
 
 export default class BackMain
@@ -31,8 +29,8 @@ export default class BackMain
     { 
         this.BDRutas = [];
         auth.trackSession(session =>{
-            let rutasStorageNew= initialiseRoutesList(session, this.BDRutas);
-            return rutasStorageNew;
+            //let rutasStorageNew= initialiseRoutesList(session, this.BDRutas);
+            //return rutasStorageNew;
         })
     };
     static obtenerAlmacenRutas(){
