@@ -19,13 +19,14 @@ class MapRuta extends Component {
     this.ruta = this.props.ruta; // Ruta a representar en el mapa
     this.mapID = `mapa-${this.props.ruta.getNombre()}`; // ID del mapa
     this.hitos = this.getCoords(this.props.ruta); // obtenemos la lista de coordenadas de los hitos
-    this.zoom = 15;
+    this.zoom = 14;
     this.inicio = this.props.ruta.getInicio(); // Coordenadas de inicio de la ruta
   }
 
   render() {
+    console.log(this.inicio);
     return (
-      <Map id={this.mapID} center={this.inicio} zoom={this.zoom}>
+      <Map center={this.inicio} zoom={this.zoom}>
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

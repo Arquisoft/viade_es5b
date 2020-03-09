@@ -15,8 +15,14 @@ class RutaService {
    * que simula la base de datos.
    */
   inicializarBD() {
-    var r1 = new Ruta("Ruta-1 Avilés", [43.534401, -5.909476]);
-    var r2 = new Ruta("Ruta-2 Oviedo", [43.361763, -5.847995]);
+    var r1 = new Ruta("Ruta-1 Avilés", "La ruta de Avilés", [
+      43.534401,
+      -5.909476
+    ]);
+    var r2 = new Ruta("Ruta-2 Oviedo", "La ruta de Oviede", [
+      43.361763,
+      -5.847995
+    ]);
 
     r1.addHito(new Hito("Hito-r1-1", 43.531484, -5.911818));
     r1.addHito(new Hito("Hito-r1-2", 43.528935, -5.914273));
