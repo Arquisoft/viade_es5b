@@ -6,7 +6,7 @@ export async function initialiseRoutesList(profile, typeIndex) {
   const storage = profile.getRef(space.storage);
 
   // Decide at what URL within the user's Pod the new Document should be stored:
-  const routesListRef = storage + 'private/routes.ttl';
+  const routesListRef = storage + 'private/routes.txt';
   // Create the new Document:
   const routesList = createDocument(routesListRef);
   await routesList.save();
