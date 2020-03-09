@@ -6,10 +6,10 @@ const NavBar = () => {
 
   return (
     <Navbar bg="primary" variant="dark">
-        <Navbar.Brand href="/">Viade-Rutas</Navbar.Brand>
+        <Navbar.Brand href="/viade_es5b/">Viade-Rutas</Navbar.Brand>
         <Nav className="ml-auto">
-          <Nav.Link href="/login">Log In</Nav.Link>
-          <Nav.Link href="/signup">Sign Up</Nav.Link>
+          <Nav.Link href="/viade_es5b/login">Log In</Nav.Link>
+          <Nav.Link href="/viade_es5b/signup">Sign Up</Nav.Link>
         </Nav>
     </Navbar>
   );

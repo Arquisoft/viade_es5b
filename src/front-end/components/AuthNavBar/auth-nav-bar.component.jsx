@@ -11,10 +11,10 @@ const AuthNavBar = () => {
   }
   return (
     <Navbar bg="primary" variant="dark">
-        <Navbar.Brand href="/">Viade-Rutas</Navbar.Brand>
+        <Navbar.Brand href="/viade_es5b/">Viade-Rutas</Navbar.Brand>
           <Nav>
-            <Nav.Link href="/ver-rutas">Mis rutas</Nav.Link>
-            <Nav.Link href="/add-ruta">Añadir ruta</Nav.Link>
+            <Nav.Link href="/viade_es5b/ver-rutas">Mis rutas</Nav.Link>
+            <Nav.Link href="/viade_es5b/add-ruta">Añadir ruta</Nav.Link>
           </Nav>
 
         <Nav className="ml-auto">

@@ -17,11 +17,11 @@ function App() {
         <Router>
           <div>
             <Switch>
-              <PublicLayout exact path="/" component={Home} />
-              <PrivateLayout path="/ver-rutas" component={VerRutas} />
-              <PrivateLayout path="/add-ruta" component={AddRuta} />
-              <NotLoggedInLayout path="/login" component={Login}/>
-              <NotLoggedInLayout path="/signup" component={RegisterContainer}/>
+              <PublicLayout exact path="/viade_es5b/" component={Home} />
+              <PrivateLayout path="/viade_es5b/ver-rutas" component={VerRutas} />
+              <PrivateLayout path="/viade_es5b/add-ruta" component={AddRuta} />
+              <NotLoggedInLayout path="/viade_es5b/login" component={Login}/>
+              <NotLoggedInLayout path="/viade_es5b/signup" component={RegisterContainer}/>
             </Switch>
           </div>
         </Router>
