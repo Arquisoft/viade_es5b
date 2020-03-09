@@ -1,6 +1,7 @@
 class Ruta {
-  constructor(nombre, inicio) {
+  constructor(nombre, descripcion, inicio) {
     this.nombre = nombre; // Nombre de la ruta
+    this.descripcion = descripcion; // Pequeña descripción de la ruta.
     this.inicio = inicio; // Coordenadas del lugar de inicio
     this.hitos = []; // Hitos de la ruta
   }
@@ -24,6 +25,13 @@ class Ruta {
    */
   getHitos() {
     return this.hitos;
+  }
+
+  /**
+   * Devuelve la descripción de la ruta.
+   */
+  getDescripcion() {
+    return this.descripcion;
   }
 
   /*

@@ -4,7 +4,6 @@ import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
 import MapRuta from "../../map/MapRuta";
 import "../../../css/map-style.css";
-import { Jumbotron } from "react-bootstrap";
 
 /**
  * Representa un elemento Card con la
@@ -30,7 +29,6 @@ class RouteCard extends Component {
           <Button className="mr-2" onClick={this.handleViewInMap}>
             Ver en el mapa
           </Button>
-          <Button className="mr-2">Eliminar</Button>
           <Button>Editar</Button>
         </Card.Body>
         {this.state.loaded && (
