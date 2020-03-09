@@ -5,7 +5,7 @@ import RegisterContainer from "./authentication/RegistroContainer";
 import Menu from "./fragments/Menu";
 import Home from "./Home";
 import AddRuta from "./ruta/AddRuta";
-import VerRutas from "./ruta/VerRutas";
+import VerRutas from "./ruta/VerRutas/VerRutas";
 import BtLogout from "./authentication/Logout";
 import Footer from "./fragments/Footer";
 import "leaflet/dist/leaflet.css";

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import MapRuta from "../map/MapRuta";
-import RutaService from "../../services/rutas/RutaService";
+import RutaService from "../../../services/rutas/RutaService";
+import RouteList from "./RouteList";
 
-var r = new RutaService().getRutas()[0];
+var service = new RutaService();
 
 class VerRutas extends Component {
   render() {
@@ -15,7 +15,7 @@ class VerRutas extends Component {
             en un mapa, ver sus detalles o bien eliminarlas.
           </p>
           <div>
-            <MapRuta ruta={r} />
+            <RouteList rutas={service.getRutas()} />
           </div>
         </header>
       </div>
