@@ -91,36 +91,31 @@ crearRuta=e=>{
       <div className="addRuta">
         <h1>Añadir rutas:</h1>
         <form onSubmit={this.onSubmit}>
-                <label>
-                    Nombre de la ruta:
-                    <input disabled={this.state.formulario1} placeholder="Ruta 21" type="text" name="nombre" value={this.state.nombre} onChange={this.onChange}/>
-                </label>
-                <br/>
-                <label>
-                    Lugar de inicio:
-                    <input disabled={this.state.formulario1} placeholder="Madrid" type="text" name="inicio" value={this.state.inicio} onChange={this.onChange}/>
-                </label>
-                <br/>
-                <input type="submit" value="Añadir ruta"/>
+            <div class="form-group">
+                <label>Nombre de la ruta:</label>
+                <input disabled={this.state.formulario1} class="form-control" placeholder="Ruta 21" type="text" name="nombre" value={this.state.nombre} onChange={this.onChange}/>
+            </div>    
+            <div class="form-group">    
+                <label>Lugar de inicio:</label>
+                <input disabled={this.state.formulario1} class="form-control" placeholder="Madrid" type="text" name="inicio" value={this.state.inicio} onChange={this.onChange}/>
+            </div>  
+            <input type="submit" value="Añadir ruta"/>
         </form>
         <h2>Añadir hitos para la ruta:</h2>
         <form onSubmit={this.onSubmit2} disabled={this.state.formulario}>
-                <label>
-                    Nombre del hito:
-                    <input disabled={this.state.formulario2} placeholder="Hito 1" type="text" name="nombreHito" value={this.state.nombreHito} onChange={this.onChange}/>
-                </label>
-                <br/>
-                <label>
-                    Longitud del hito:
-                    <input disabled={this.state.formulario2} placeholder="200" type="text" name="longitudHito" value={this.state.longitudHito} onChange={this.onChange}/>
-                </label>
-                <br/>
-                <label>
-                    Latitud del hito:
-                    <input disabled={this.state.formulario2} placeholder="300" type="text" name="latitudHito" value={this.state.latitudHito} onChange={this.onChange}/>
-                </label>
-                <br/>
-                <input type="submit" value="Añadir hito"/>
+              <div class="form-group"> 
+                <label>Nombre del hito:</label>
+                <input disabled={this.state.formulario2} class="form-control" placeholder="hito1" type="text" name="nombreHito" value={this.state.nombreHito} onChange={this.onChange}/>
+              </div>  
+              <div class="form-group">
+                <label>Longitud del hito:</label>
+                <input disabled={this.state.formulario2} class="form-control" placeholder="200" type="text" name="longitudHito" value={this.state.longitudHito} onChange={this.onChange}/>
+              </div>
+              <div class="form-group">
+                <label>Latitud del hito:</label>
+                <input disabled={this.state.formulario2} class="form-control" placeholder="300" type="text" name="latitudHito" value={this.state.latitudHito} onChange={this.onChange}/>
+              </div>
+              <input type="submit"  value="Añadir hito"/>
         </form>
         <br/>
         <button onClick={this.crearRuta}>Guardar ruta</button>
