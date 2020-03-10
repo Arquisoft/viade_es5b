@@ -3,9 +3,9 @@
 import Hito from "./Hito";
 
 class Ruta {
-  constructor(nombre, inicio) {
+  constructor(nombre, latitud, longitud) {
     this.nombre = nombre; // Nombre de la ruta
-    this.inicio = inicio; // Lugar de inicio
+    this.inicio = [latitud, longitud]; // Lugar de inicio
     this.hitos = []; // Hitos de la ruta
   }
 
@@ -40,7 +40,7 @@ class Ruta {
 
   setHitos(hitos){
     
-    this.hitos=hitos.map(hito=>{new Hito(hito.nombre, hito.longitud, hito.latitud)});
+    this.hitos=hitos.map(hito=>{new Hito(hito.nombre, hito.latitud, hito.longitud)});
   }
 
   toString(){
