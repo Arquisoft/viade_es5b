@@ -40,13 +40,7 @@ export default class BackMain
 
     static añadirRuta(Ruta)
     {
-        auth.trackSession(session => {
-            //si no esta logueado lo redirijo al login.
-         if (!session)
-            window.location.href = "/login";
-        else
-            addRoute(session.webId,Ruta)
-        })
+        addRoute(Ruta)
     };
     static borrarRuta(uuid)
     {
