@@ -3,10 +3,11 @@
 import Hito from "./Hito";
 
 class Ruta {
-  constructor(nombre, latitud, longitud) {
+  constructor(nombre, latitud, longitud, hitosAdd) {
     this.nombre = nombre; // Nombre de la ruta
     this.inicio = [latitud, longitud]; // Lugar de inicio
     this.hitos = []; // Hitos de la ruta
+    this.setHitos(hitosAdd);
   }
 
  
@@ -38,19 +39,18 @@ class Ruta {
     this.hitos.push(hito);
   }
 
-  setHitos(hitos){
+  setHitos(hitosAdd){
+    for (var h in hitosAdd){
+      this.hitos.push(new Hito(hitosAdd[h].nombre, hitosAdd[h].latitud, hitosAdd[h].longitud));
+    }
+
     
-    this.hitos=hitos.map(hito=>{new Hito(hito.nombre, hito.latitud, hito.longitud)});
   }
 
   toString(){
-    console.log("Ruta: ");
-    console.log("-Nombre: "+this.nombre);
-    console.log("-Inicio: "+this.nombre);
-    console.log("-Hitos de la ruta: ");
-    //for (var h of this.getHitos() ){
-     // h.toString();
-    //}
+    for (var h of this.hitos){
+      console.log(h);
+    }
   }
 }
 export default Ruta;

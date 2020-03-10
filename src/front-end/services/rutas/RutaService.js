@@ -16,8 +16,8 @@ class RutaService {
    * que simula la base de datos.
    */
   inicializarBD() {
-    var r1 = new Ruta("Ruta-1", "Avilés");
-    var r2 = new Ruta("Ruta-2", "Oviedo");
+    var r1 = new Ruta("Ruta-1", 10, 10);
+    var r2 = new Ruta("Ruta-2", 10, 20);
 
    
 
@@ -42,12 +42,16 @@ class RutaService {
   /*
    * Añade una nueva ruta al sistema.
    */
-  addRuta(ruta) {
-   this.BDRutas=[...this.BDRutas,ruta];
+  addRuta(nombre, latitud, longitud, hitos) {
+   var ruta=new Ruta(nombre, latitud, longitud, hitos);
+   this.BDRutas.push(ruta);
+   console.log(this.BDRutas.length);
    console.log("Número de rutas almacenadas: "+this.getRutas().length);
-   //for (var r of this.BDRutas){
-     //console.log(r.toString());
-   //}
+   for (var r of this.BDRutas){
+    console.log(r);
+   }
+
+   
   }
 }
 

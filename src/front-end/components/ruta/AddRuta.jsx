@@ -48,6 +48,7 @@ onSubmit=e=>{//Creamos ruta sin hitos.
 onSubmit2=e=>{//Creamos hitos.
   this.addHito();
   e.preventDefault();
+  console.log(this.state.hitos);
 
   //Inicializamos el formulario de hito:
   this.setState({
@@ -74,13 +75,16 @@ addHito = () =>{
 
 crearRuta=e=>{
   console.log("Añadimos la ruta: "+this.state.nombre+", con "+this.state.hitos.length+" hitos");
+  for (var h of this.state.hitos){
+    console.log(h);
+  }
   this.setState(
     {
       formulario1:false,
       formulario2:true    
     }
   )
-  this.rutaService.addRuta(new Ruta(this.state.nombre, this.state.longitudInicio, this.latitudInicio).setHitos(this.state.hitos));
+  this.rutaService.addRuta(this.state.nombre, this.state.latitudInicio, this.state.longitudInicio,this.state.hitos);
   this.setState({
     nombre:'',
     longitudInicio:'',
@@ -116,7 +120,7 @@ crearRuta=e=>{
         <form onSubmit={this.onSubmit2} disabled={this.state.formulario}>
               <div className="form-group"> 
                 <label>Nombre del hito:</label>
-                <input disabled={this.state.formulario2} className="form-control" placeholder="hito1" type="text" name="nombreHito" value={this.state.nombreHito} onChange={this.onChange}/>
+                <input disabled={this.state.formulario2} className="form-control" placeholder="Hito 1" type="text" name="nombreHito" value={this.state.nombreHito} onChange={this.onChange}/>
               </div>  
               <div className="form-group">
                 <label>Latitud del hito:</label>
