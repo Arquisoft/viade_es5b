@@ -93,7 +93,7 @@ crearRuta=e=>{
         <form onSubmit={this.onSubmit}>
                 <label>
                     Nombre de la ruta:
-                    <input disabled={this.state.formulario1} type="text" name="nombre" value={this.state.nombre} onChange={this.onChange}/>
+                    <input disabled={this.state.formulario1} placeholder="Ruta 21" type="text" name="nombre" value={this.state.nombre} onChange={this.onChange}/>
                 </label>
                 <br/>
                 <label>
