@@ -1,1 +1,0 @@
-{"client_id":"4a270ca1486c791208cd2a37e176c7f3","redirect_uris":["http://localhost:3000"],"response_types":["id_token token"],"grant_types":["implicit"],"application_type":"web","id_token_signed_response_alg":"RS256","token_endpoint_auth_method":"client_secret_basic","frontchannel_logout_session_required":false}

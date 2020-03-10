@@ -33,7 +33,11 @@
     "eject": "react-scripts eject",
     "asciidoctorYdiagram": "gem install asciidoctor asciidoctor-diagram",
     "asciidoctor": "npm install asciidoctor",
-    "execute": "react-scripts start"
+    "execute": "react-scripts start",
+    "RunSolidServer":"init solid app",
+    "runSS": "cd ./ServidorPODs/ && solid start",
+    "crearServerPODs": "solid init",
+    "instalarServerPODs":"npm install -g solid-server"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -24,3 +24,5 @@ yarn-error.log*
 package-lock.json
 
 ServidorPODs/.db/oidc/op/tokens/
+
+ServidorPODs/.db/oidc/op/clients/
