@@ -15,6 +15,7 @@ state ={
   nombre:'',
   longitudInicio: '',
   latitudInicio: '',
+  descripcion:'',
   nombreHito:'',
   longitudHito:'',
   latitudHito:'',
@@ -54,7 +55,8 @@ onSubmit2=e=>{//Creamos hitos.
   this.setState({
     nombreHito: '',
     longitudHito:'',
-    latitudHito:''
+    latitudHito:'',
+   
   })
 }
 
@@ -84,11 +86,12 @@ crearRuta=e=>{
       formulario2:true    
     }
   )
-  this.rutaService.addRuta(this.state.nombre, this.state.latitudInicio, this.state.longitudInicio,this.state.hitos);
+  this.rutaService.addRuta(this.state.nombre, this.state.latitudInicio, this.state.longitudInicio,this.state.descripcion,this.state.hitos);
   this.setState({
     nombre:'',
     longitudInicio:'',
     latitudInicio:'',
+    descripcion:'',
     hitos: []
   })
 }
@@ -112,7 +115,11 @@ crearRuta=e=>{
                   <label>Longitud de la ruta:</label>
                   <input disabled={this.state.formulario1} className="form-control" placeholder="100" type="text" name="longitudInicio" value={this.state.longitudInicio} onChange={this.onChange}/>
                 </div>
-            </div>  
+            </div> 
+            <div className="form-group">
+                <label>Descripción de la ruta:</label>
+                <textarea disabled={this.state.formulario1} className="form-control" rows="3" name="descripcion" value={this.state.descripcion} onChange={this.onChange}></textarea>
+            </div> 
             <button type="submit" className="btn btn-primary">Añadir ruta</button>
         </form>
         

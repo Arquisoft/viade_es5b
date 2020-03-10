@@ -1,4 +1,3 @@
-"use strict";
 class Hito {
   constructor(nombre, latitud, longitud) {
     this.nombre = nombre; // Nombre del hito.
