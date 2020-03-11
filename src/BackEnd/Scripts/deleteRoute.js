@@ -1,5 +1,5 @@
 import { space, rdf, solid, schema, foaf } from 'rdf-namespaces';
-import { fetchDocument, createDocument } from 'tripledoc';
+import { fetchDocument} from 'tripledoc';
 import Ruta from "../../front-end/model/Ruta.js";
 const auth = require('solid-auth-client')
 const FC = require('solid-file-client')
@@ -22,6 +22,7 @@ export async function deleteRoute(uuid) {
             console.log(folder.files[i].url)
             const routeDoc = await fetchDocument(folder.files[i].url);
             const route = routeDoc.getSubject('#ruta');
+            var uuidDelte=route.uuid
             this.route.parentElement.removeChild(route);
         };
     }
