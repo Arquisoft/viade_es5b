@@ -1,5 +1,8 @@
+import { v4 as uuidv4 } from 'uuid';
+
 class Ruta {
   constructor(nombre, descripcion, inicio) {
+    this.uuid = uuidv4();
     this.nombre = nombre; // Nombre de la ruta
     this.descripcion = descripcion; // Pequeña descripción de la ruta.
     this.inicio = inicio; // Coordenadas del lugar de inicio
@@ -34,12 +37,22 @@ class Ruta {
     return this.descripcion;
   }
 
+
+  /**
+   * Devuelve el UUID de la ruta.
+   */
+  getUUID(){
+    return this.uuid;
+  }
+
   /*
    * Añade un hito a la ruta.
    */
   addHito(hito) {
     this.hitos.push(hito);
   }
+
+ 
 }
 
 export default Ruta;

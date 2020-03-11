@@ -20,7 +20,8 @@
     "react-scripts": "3.4.0",
     "shx": "0.3.2",
     "solid-auth-client": "^2.4.1",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "uuid": "^7.0.2"
   },
   "scripts": {
     "start": "react-scripts --max_old_space_size=4096 start",

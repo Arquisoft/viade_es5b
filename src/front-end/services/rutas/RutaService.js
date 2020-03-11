@@ -15,6 +15,7 @@ class RutaService {
    * que simula la base de datos.
    */
   inicializarBD() {
+    console.log("------ Inicializando BDD ------");
     var r1 = new Ruta("Ruta-1 Avilés", "La ruta de Avilés", [
       43.534401,
       -5.909476
@@ -30,8 +31,10 @@ class RutaService {
     r2.addHito(new Hito("Hito-r2-1", 43.362182, -5.84597));
     r2.addHito(new Hito("Hito-r2-2", 43.363071, -5.846447));
 
+
     this.BDRutas.push(r1);
     this.BDRutas.push(r2);
+    
   }
 
   /*
@@ -42,10 +45,45 @@ class RutaService {
     return this.BDRutas;
   }
 
+    /*
+   * Devuelve TODAS las rutas del usuario en sesión.
+   */
+  getRutasUsuarioLogeado(webId) {
+    
+  }
+
   /*
    * Añade una nueva ruta al sistema.
    */
   addRuta(ruta) {}
+
+  /*función splice() se le pasan dos parámetros: 
+  -el primero será el índice partir del cual queremos borrar elementos
+  -el segundo, el número de elementos que queremos borrar a partir de la posición dada*/
+  deleteRuta(uuid){
+    var rutaToDelete = this.findRouteById(uuid);
+    var posicion = this.BDRutas.indexOf(rutaToDelete);
+    console.log(rutaToDelete);
+    if(posicion > -1){
+      this.BDRutas.splice(posicion, 1);
+    }
+  }
+
+  findRouteById(uuid){
+     //implementar mas tarde
+    //rutasUsuario = this.getRutasUsuarioLogeado(webId)
+    var ruta = null;
+    for(var i = 0; i < this.BDRutas.length; i++){
+      if(this.BDRutas[i].getUUID() === uuid)
+        ruta = this.BDRutas[i];
+    }
+    return ruta;
+  }
+
+  
+
 }
+
+
 
 export default RutaService;

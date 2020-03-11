@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import RutaService from "../../../services/rutas/RutaService";
 import RouteList from "./RouteList";
 
-var service = new RutaService();
+
 
 class VerRutas extends Component {
   render() {
@@ -15,7 +15,7 @@ class VerRutas extends Component {
             en un mapa, ver sus detalles o bien eliminarlas.
           </p>
           <div>
-            <RouteList rutas={service.getRutas()} />
+            <RouteList service={this.props.service} rutas={this.props.service.getRutas()} />
           </div>
         </header>
       </div>

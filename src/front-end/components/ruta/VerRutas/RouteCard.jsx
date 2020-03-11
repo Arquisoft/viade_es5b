@@ -5,6 +5,8 @@ import Button from "react-bootstrap/Button";
 import MapRuta from "../../map/MapRuta";
 import "../../../css/map-style.css";
 import { Jumbotron } from "react-bootstrap";
+import RutaService from "../../../services/rutas/RutaService";
+
 
 /**
  * Representa un elemento Card con la
@@ -13,7 +15,6 @@ import { Jumbotron } from "react-bootstrap";
 class RouteCard extends Component {
   constructor(props) {
     super(props);
-    this.ruta = this.props.ruta;
     this.state = { loaded: false };
     this.eventKey = this.props.eventKey;
   }
@@ -22,7 +23,7 @@ class RouteCard extends Component {
     return (
       <Card>
         <Card.Header>
-          <h3>{this.ruta.getNombre()}</h3>
+          <h3>{this.props.ruta.getNombre()}</h3>
         </Card.Header>
         <Card.Body>
           <Card.Title>Detalles de la ruta</Card.Title>
@@ -30,16 +31,19 @@ class RouteCard extends Component {
           <Button className="mr-2" onClick={this.handleViewInMap}>
             Ver en el mapa
           </Button>
+          <Button className="mr-2" onClick={() => this.props.handleDelete(this.props.ruta.getUUID())} >Eliminar</Button>
           <Button>Editar</Button>
         </Card.Body>
         {this.state.loaded && (
-          <div id={`mapa-${this.ruta.getNombre()}`} className="ml-3 mb-3">
-            <MapRuta ruta={this.ruta} />
+          <div id={`mapa-${this.props.ruta.getNombre()}`} className="ml-3 mb-3">
+            <MapRuta ruta={this.props.ruta} />
           </div>
         )}
       </Card>
     );
   }
+
+
 
   /**
    * Se ejecuta cada vez que se actualiza el componente
@@ -48,7 +52,7 @@ class RouteCard extends Component {
   componentDidUpdate() {
     if (this.state.loaded) {
       document
-        .getElementById(`mapa-${this.ruta.getNombre()}`)
+        .getElementById(`mapa-${this.props.ruta.getNombre()}`)
         .scrollIntoView(false);
     }
   }
@@ -60,6 +64,8 @@ class RouteCard extends Component {
   handleViewInMap = () => {
     this.setState({ loaded: !this.state.loaded });
   };
+
+  
 }
 
 export default RouteCard;

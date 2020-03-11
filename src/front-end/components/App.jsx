@@ -9,9 +9,11 @@ import VerRutas from "./ruta/VerRutas/VerRutas";
 import BtLogout from "./authentication/Logout";
 import Footer from "./fragments/Footer";
 import "leaflet/dist/leaflet.css";
+import * as i from "./InstanciaRutas";
 
 class App extends Component {
   render() {
+    console.log("UPDATED");
     return (
       <div>
         <Menu />
@@ -19,7 +21,9 @@ class App extends Component {
           <div>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/ver-rutas" component={VerRutas} />
+              <Route path="/ver-rutas">
+                <VerRutas service={i.service}/>
+                </Route>
               <Route path="/add-ruta" component={AddRuta} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={RegisterContainer} />
