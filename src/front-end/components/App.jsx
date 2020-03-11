@@ -8,10 +8,13 @@ import AddRuta from "./ruta/AddRuta";
 import VerRutas from "./ruta/VerRutas";
 import BtLogout from "./authentication/Logout";
 import BackMain from "../../BackEnd/BackMain.js";
+import Ruta from "../model/Ruta.js";
 
 
 class App extends Component {
   render() {
+    //BackMain.añadirRuta(new Ruta('ruta 3','mi tercera ruta'));
+    //BackMain.listarRutas();
     return (
       <div>
         <Menu />

@@ -1,6 +1,6 @@
 const auth = require('solid-auth-client')
 
-export async function deleteRoute(webId,uuid) {
+export async function deleteRoute(uuid) {
    
 }
 
