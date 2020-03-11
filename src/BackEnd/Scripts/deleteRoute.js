@@ -15,7 +15,7 @@ export async function deleteRoute(uuid) {
     const storage = profile.getRef(space.storage)
     let folder = await fc.readFolder(storage + 'private/routes/');
 
-    var result = [];
+   
     var datosDeRuta = [];
     if (folder) {
 
@@ -28,9 +28,10 @@ export async function deleteRoute(uuid) {
             if(ID==uuid){
                 //Es la misma, asi que la borramos
                fc.deleteFile(folder.files[i]); 
+               return true;
             }
         };
     }
-    return result;
+    return false;
 }
 
