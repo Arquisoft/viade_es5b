@@ -41,6 +41,33 @@ async function insertData(webId,route,ruta)
     const profileDocument = await fetchDocument(webId);
     const routeDocument = await fetchDocument(profileDocument.getSubject(webId).getRef(space.storage) + route);
 
+    if(ruta.getInicio())
+    {
+        for(var i=0;i<=ruta.getHitos().length;i++)
+        {
+            // Initialise the new Subject:
+            const newPoint = routeDocument.addSubject({
+                identifier: i,
+                identifierPrefix: 'point'
+            });
+            if(i==0)
+            {
+                newPoint.addString(schema.name, ruta.getInicio().nombre);
+                newPoint.addDecimal(schema.latitude,ruta.getInicio().latitud);
+                newPoint.addDecimal(schema.longitude,ruta.getInicio().longitud);
+            }
+            else
+            {
+                newPoint.addString(schema.name, ruta.getHitos()[i-1].getNombre());
+                newPoint.addDecimal(schema.latitude,ruta.getHitos()[i-1].getLat());
+                newPoint.addDecimal(schema.longitude,ruta.getHitos()[i-1].getLong());
+            }
+
+            newPoint.addRef(rdf.type, 'http://arquisoft.github.io/viadeSpec/points');
+            await routeDocument.save([newPoint]);
+        }
+    }
+
     // Initialise the new Subject:
     const newRoute = routeDocument.addSubject({
         identifier: 'ruta'
@@ -48,17 +75,16 @@ async function insertData(webId,route,ruta)
 
     // Indicate that the Subject is a schema:TextDigitalDocument:
     newRoute.addRef(rdf.type, 'http://arquisoft.github.io/viadeSpec/route');
-  
     newRoute.addString(schema.name, ruta.getNombre());
     newRoute.addString(schema.description, ruta.getDescripcion());
+    newRoute.addRef('http://arquisoft.github.io/viadeSpec/points','http://arquisoft.github.io/viadeSpec/points');
 
-    if(ruta.getInicio())
-    {
-        
-        for (var hito in ruta.getHitos()){
+    //newRoute.addRef('http://arquisoft.github.io/viadeSpec/points',newPoints.asRef());
 
-        }
-    }
+
+
+
+
     await routeDocument.save([newRoute]);
 
   

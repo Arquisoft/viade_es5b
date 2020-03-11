@@ -15,7 +15,7 @@ import Hito from "../model/Hito.js";
 
 class App extends Component {
   render() {
-    //BackMain.añadirRuta(new Ruta('ruta 3',{nombre: 'primer punto', latitud: 98989.8, longitud: -2888.6},'mi tercera ruta',[{nombre: 'primer hito', latitud: -36666, longitud: -3838},{nombre: 'segundo hito', latitud: -77777, longitud: 88888}]));
+    //BackMain.añadirRuta(new Ruta('ruta 2',{nombre: 'primer puntoj', latitud: 989.8, longitud: -288.6},'mi segunda ruta',[{nombre: 'primer hito', latitud: -36666, longitud: -3838},{nombre: 'segundo hito', latitud: -77777, longitud: 88888}]));
     //BackMain.listarRutas();
     return (
       <div>
