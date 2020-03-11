@@ -1,0 +1,38 @@
+import React, { Component } from "react";
+import Accordion from "react-bootstrap/Accordion";
+import RouteCard from "./RouteCard";
+import RutaService from "../../../services/rutas/RutaService";
+import Button from "react-bootstrap/Button";
+
+
+/**
+ * Representa una lista que encapsula componentes
+ * Card que contienen la información de cada ruta.
+ */
+class RouteList extends Component {
+  constructor(props) {
+    super(props);
+    this.service = this.props.service;
+    this.state = { rutas: this.props.rutas}
+  }
+ 
+  render() {
+    console.log(this.state.rutas);
+    return (
+      <Accordion defaultActiveKey="0">
+       {this.state.rutas.map((r,key) => 
+       <RouteCard handleDelete={this.handleDeleteRoute} ruta={r} key={key++} eventKey={key} />)}
+      </Accordion>
+    );
+  }
+
+  handleDeleteRoute = (uuid) => {
+    this.service.deleteRuta(uuid);
+    this.setState({rutas: this.service.getRutas()});
+  }      
+    
+
+
+}
+
+export default RouteList;

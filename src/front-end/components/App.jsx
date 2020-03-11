@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Login from "./authentication/Login";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import LogInComponent from "./authentication/Login";
 import RegisterContainer from "./authentication/RegistroContainer";
-import Menu from "./fragments/Menu";
 import Home from "./Home";
 import AddRuta from "./ruta/AddRuta";
 import VerRutas from "./ruta/VerRutas";
@@ -18,23 +17,25 @@ class App extends Component {
     //BackMain.añadirRuta(new Ruta('ruta 3',{nombre: 'primer punto', latitud: 98989.8, longitud: -2888.6},'mi tercera ruta',[{nombre: 'primer hito', latitud: -36666, longitud: -3838},{nombre: 'segundo hito', latitud: -77777, longitud: 88888}]));
     //BackMain.listarRutas();
     return (
-      <div>
-        <Menu />
+      <div> 
         <Router>
           <div>
             <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/ver-rutas" component={VerRutas} />
-              <Route path="/add-ruta" component={AddRuta} />
-              <Route path="/login" component={Login} />
-              <Route path="/signup" component={RegisterContainer} />
+              <PublicLayout exact path="/viade_es5b/" component={Home} />
+              <PrivateLayout path="/viade_es5b/ver-rutas">
+                <VerRutas service={i.service}/>
+              </PrivateLayout>
+              <PrivateLayout path="/viade_es5b/add-ruta" component={AddRuta} />
+              <NotLoggedInLayout path="/viade_es5b/login" component={LogInComponent}/>
+              <NotLoggedInLayout path="/viade_es5b/signup" component={RegisterContainer}/>
             </Switch>
           </div>
         </Router>
-        <BtLogout/>
+        <Footer />
       </div>
     );
   }
+
 }
 
 export default App;
