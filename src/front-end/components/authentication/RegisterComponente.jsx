@@ -36,7 +36,7 @@ class RegisterComponent extends Component<Props, State> {
     const { protocol, host } = window.location;
     if (canContinue) {
       //window.location = `${provider}?returnToUrl=${protocol}//${host}/register/success`;
-      window.location = `${provider}?returnToUrl=${protocol}//${host}`;
+      window.location = `${provider}?returnToUrl=${protocol}//${host}/viade_es5b`;
     }
   };
 
@@ -57,7 +57,7 @@ class RegisterComponent extends Component<Props, State> {
     const { protocol, host } = window.location;
     if (canContinue) {
       //window.location = `${provider}?returnToUrl=${protocol}//${host}/register/success`;
-      window.location = `${provider}?returnToUrl=${protocol}//${host}`;
+      window.location = `${provider}?returnToUrl=${protocol}//${host}/viade_es5b`;
     }
   };
 
