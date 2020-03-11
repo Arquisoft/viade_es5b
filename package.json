@@ -27,6 +27,7 @@
   },
   "scripts": {
     "start": "react-scripts --max_old_space_size=4096 start",
+    "reinstalar": "reinstall",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
     "docs": "shx rm -rf build/docs && asciidoctor -D build/docs -a imagesdir=./images -r asciidoctor-diagram src/docs/index.adoc && shx cp -R src/docs/images build/docs",

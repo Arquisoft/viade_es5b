@@ -1,6 +1,7 @@
 import { space, rdf, solid, schema, foaf } from 'rdf-namespaces';
 import { fetchDocument} from 'tripledoc';
 import Ruta from "../../front-end/model/Ruta.js";
+import { LocalTripleDocumentForContainer } from 'tripledoc/dist/document';
 const auth = require('solid-auth-client')
 const FC = require('solid-file-client')
 const fc = new FC(auth)
@@ -15,15 +16,19 @@ export async function deleteRoute(uuid) {
     let folder = await fc.readFolder(storage + 'private/routes/');
 
     var result = [];
-    var result = [];
+    var datosDeRuta = [];
     if (folder) {
 
         for (var i = 0; i < folder.files.length; i++) {
             console.log(folder.files[i].url)
             const routeDoc = await fetchDocument(folder.files[i].url);
-            const route = routeDoc.getSubject('#ruta');
-            var uuidDelte=route.uuid
-            this.route.parentElement.removeChild(route);
+            var route = routeDoc.getSubject('#ruta');
+            datosDeRuta=route.getAllStrings();
+            var ID=datosDeRuta.find(schema.identifier);
+            if(ID==uuid){
+                //Es la misma, asi que la borramos
+               fc.deleteFile(folder.files[i]); 
+            }
         };
     }
     return result;
