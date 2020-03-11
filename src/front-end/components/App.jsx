@@ -1,40 +1,34 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Login from "./authentication/Login";
+import React from "react";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import LogInComponent from "./authentication/Login";
 import RegisterContainer from "./authentication/RegistroContainer";
-import Menu from "./fragments/Menu";
 import Home from "./Home";
 import AddRuta from "./ruta/AddRuta";
 import VerRutas from "./ruta/VerRutas/VerRutas";
-import BtLogout from "./authentication/Logout";
 import Footer from "./fragments/Footer";
 import "leaflet/dist/leaflet.css";
-import * as i from "./InstanciaRutas";
+import NotLoggedInLayout from "../layouts/NotLoggedInLayout/not-logged-in.layout";
+import PrivateLayout from "../layouts/PrivateLayout/private.layout";
+import PublicLayout from "../layouts/PublicLayout/public.layout";
 
-class App extends Component {
-  render() {
-    console.log("UPDATED");
+function App() {
     return (
-      <div>
-        <Menu />
+      <div> 
         <Router>
           <div>
             <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/ver-rutas">
-                <VerRutas service={i.service}/>
-                </Route>
-              <Route path="/add-ruta" component={AddRuta} />
-              <Route path="/login" component={Login} />
-              <Route path="/signup" component={RegisterContainer} />
+              <PublicLayout exact path="/viade_es5b/" component={Home} />
+              <PrivateLayout path="/viade_es5b/ver-rutas" component={VerRutas} />
+              <PrivateLayout path="/viade_es5b/add-ruta" component={AddRuta} />
+              <NotLoggedInLayout path="/viade_es5b/login" component={LogInComponent}/>
+              <NotLoggedInLayout path="/viade_es5b/signup" component={RegisterContainer}/>
             </Switch>
           </div>
         </Router>
-        <BtLogout />
         <Footer />
       </div>
     );
-  }
+
 }
 
 export default App;

@@ -6,7 +6,7 @@ type ProviderEntity = {
   description: String
 };
 
-class Provider {
+export default class Provider {
   /*
    *  Function to get providers. This is to mimic the future provider registry
    */
@@ -15,7 +15,7 @@ class Provider {
       {
         id: 'inrupt',
         label: 'Inrupt',
-        image: '/img/',
+        image: '/img/inrupt.svg',
         value: 'https://inrupt.net/auth',
         registerLink: 'https://inrupt.net/register',
         description: 'Lorem ipsum dolor sit amet non ipsom dolor'
@@ -31,5 +31,3 @@ class Provider {
     ];
   }
 }
-
-export default Provider;
