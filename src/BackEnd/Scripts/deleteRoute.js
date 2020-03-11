@@ -1,7 +1,7 @@
 import { space, rdf, solid, schema, foaf } from 'rdf-namespaces';
 import { fetchDocument} from 'tripledoc';
 import Ruta from "../../front-end/model/Ruta.js";
-import { LocalTripleDocumentForContainer } from 'tripledoc/dist/document';
+//import { LocalTripleDocumentForContainer } from 'tripledoc/dist/document';
 const auth = require('solid-auth-client')
 const FC = require('solid-file-client')
 const fc = new FC(auth)
