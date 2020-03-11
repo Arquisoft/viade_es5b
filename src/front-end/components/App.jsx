@@ -4,7 +4,7 @@ import LogInComponent from "./authentication/Login";
 import RegisterContainer from "./authentication/RegistroContainer";
 import Home from "./Home";
 import AddRuta from "./ruta/AddRuta";
-import VerRutas from "./ruta/VerRutas";
+import VerRutas from "./ruta/VerRutas/VerRutas";
 import Footer from "./fragments/Footer";
 import "leaflet/dist/leaflet.css";
 import NotLoggedInLayout from "../layouts/NotLoggedInLayout/not-logged-in.layout";
