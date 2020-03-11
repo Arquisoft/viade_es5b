@@ -1,30 +1,35 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Route} from 'react-router-dom';
 import { withAuthorization } from '@inrupt/solid-react-components';
 import  AuthNavBar  from '../../components/AuthNavBar/auth-nav-bar.component';
-import  {permissionsHelper}  from '../../utils/index';
+import NavBar from "../../components/NavBar/nav-bar.component";
+import { useWebId } from '@inrupt/solid-react-components';
 
-const PrivateLayout = ({ routes, webId, location, history, ...rest }) => {
-  const errorMessages = {
-    message: "No dispone de permisos para realizar esa acción.",
-    title: "Error",
-    label: "Informate",
-    href: "https://solidsdk.inrupt.net/public/general/en/app-permissions.html"
-  };
-  useEffect(() => {
-    if (webId) {
-      permissionsHelper.checkPermissions(webId, errorMessages);
-    }
-  }, [webId]);
-
+const PrivateLayout = props => {
+  const webId = useWebId();
+  const { component: Component, ...rest } = props;
   return (
-        <Route
-          {...rest}
-          component={({ history }) => (
-              <AuthNavBar {...{ location, webId, history }} />
+    <Route
+      {...rest}
+      component={({ history, location, match }) => (
+        <div>
+          {webId ? (
+            <div>
+              <AuthNavBar {...{ history, location, match, webId }} />
+              <Component {...{ history, location, match }} />
+            </div>
+          ) : (
+            <div>
+            <NavBar
+              {...{ history, location, match }}
+            />
+            <h1>Usuario no autenticado no puede acceder a este URL, identifíquese</h1>
+            </div>
           )}
-        />
+        </div>
+      )}
+    />
   );
 };
 
-export default withAuthorization(PrivateLayout);
+export default PrivateLayout;
