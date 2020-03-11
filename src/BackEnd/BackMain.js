@@ -11,6 +11,7 @@ export default class BackMain {
         addRoute(Ruta)
     };
     static borrarRuta(uuid) {
+        //Aun no funciona
         deleteRoute(uuid)
     };
 }
