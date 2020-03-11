@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../../css/map-style.css";
+import "leaflet/dist/leaflet.css";
 import { Map, Marker, Popup, TileLayer, Polyline } from "react-leaflet";
 import L from "leaflet";
 import * as icons from "./MarkerIcons";
@@ -24,6 +24,7 @@ class MapRuta extends Component {
   }
 
   render() {
+    console.log(this.inicio);
     return (
       <Map center={this.inicio} zoom={this.zoom}>
         <TileLayer
