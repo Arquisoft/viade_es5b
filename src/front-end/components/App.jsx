@@ -9,11 +9,13 @@ import VerRutas from "./ruta/VerRutas";
 import BtLogout from "./authentication/Logout";
 import BackMain from "../../BackEnd/BackMain.js";
 import Ruta from "../model/Ruta.js";
+import Hito from "../model/Hito.js";
+
 
 
 class App extends Component {
   render() {
-    //BackMain.añadirRuta(new Ruta('ruta 3','mi tercera ruta'));
+    //BackMain.añadirRuta(new Ruta('ruta 3',{nombre: 'primer punto', latitud: 98989.8, longitud: -2888.6},'mi tercera ruta',[{nombre: 'primer hito', latitud: -36666, longitud: -3838},{nombre: 'segundo hito', latitud: -77777, longitud: 88888}]));
     //BackMain.listarRutas();
     return (
       <div>

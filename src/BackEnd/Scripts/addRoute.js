@@ -2,8 +2,7 @@ import { space, rdf, solid, schema,foaf } from 'rdf-namespaces';
 import { fetchDocument,createDocument } from 'tripledoc'; 
 
 const auth = require('solid-auth-client')
-const FC   = require('solid-file-client')
-const fc   = new FC( auth )
+
 
 
 
@@ -40,22 +39,27 @@ async function newDocument(webId,route)
 async function insertData(webId,route,ruta)
 { 
     const profileDocument = await fetchDocument(webId);
-    const documentoRuta = await fetchDocument(profileDocument.getSubject(webId).getRef(space.storage) + route);
+    const routeDocument = await fetchDocument(profileDocument.getSubject(webId).getRef(space.storage) + route);
 
     // Initialise the new Subject:
-    const newNote = documentoRuta.addSubject({
+    const newRoute = routeDocument.addSubject({
         identifier: 'ruta'
     });
 
     // Indicate that the Subject is a schema:TextDigitalDocument:
-    newNote.addRef(rdf.type, 'http://arquisoft.github.io/viadeSpec/route');
+    newRoute.addRef(rdf.type, 'http://arquisoft.github.io/viadeSpec/route');
   
-    newNote.addString(schema.name, ruta.nombre);
-    newNote.addString(schema.description, ruta.descripcion);
-  
-    //hora de creación
-    newNote.addDateTime(schema.dateCreated, new Date(Date.now()))
-    await documentoRuta.save([newNote]);
+    newRoute.addString(schema.name, ruta.getNombre());
+    newRoute.addString(schema.description, ruta.getDescripcion());
+
+    if(ruta.getInicio())
+    {
+        
+        for (var hito in ruta.getHitos()){
+
+        }
+    }
+    await routeDocument.save([newRoute]);
 
   
 }
