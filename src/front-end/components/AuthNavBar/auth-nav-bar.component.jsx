@@ -7,7 +7,7 @@ const AuthNavBar = () => {
 
   const logout = () =>{
     auth.logout();
-    window.location = "/login";
+    window.location = "/viade_es5b/login";
   }
   return (
     <Navbar bg="primary" variant="dark">
