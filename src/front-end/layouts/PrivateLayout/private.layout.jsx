@@ -7,16 +7,16 @@ import { useWebId } from '@inrupt/solid-react-components';
 
 const PrivateLayout = props => {
   const webId = useWebId();
-  const { component: Component, ...rest } = props;
+  const { component: Component,service, ...rest } = props;
   return (
     <Route
       {...rest}
-      component={({ history, location, match }) => (
+      component={({ history, location, match,service }) => (
         <div>
           {webId ? (
             <div>
               <AuthNavBar {...{ history, location, match, webId }} />
-              <Component {...{ history, location, match }} />
+              <Component {...{ history, location, match,service }} />
             </div>
           ) : (
             <div>
