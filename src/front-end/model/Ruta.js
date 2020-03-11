@@ -1,14 +1,20 @@
+
+"use strict";
+
+import Hito from "./Hito";
 import { v4 as uuidv4 } from 'uuid';
 
 class Ruta {
-  constructor(nombre, descripcion, inicio) {
+  constructor(nombre, inicio, descripcion, hitosAdd) {
     this.uuid = uuidv4();
     this.nombre = nombre; // Nombre de la ruta
-    this.descripcion = descripcion; // Pequeña descripción de la ruta.
     this.inicio = inicio; // Coordenadas del lugar de inicio
+    this.descripcion=descripcion;
     this.hitos = []; // Hitos de la ruta
+    this.setHitos(hitosAdd);
   }
 
+ 
   /*
    * Devuelve el nombre de la ruta
    */
@@ -52,7 +58,19 @@ class Ruta {
     this.hitos.push(hito);
   }
 
- 
+
+  setHitos(hitosAdd){
+    for (var h in hitosAdd){
+      this.hitos.push(new Hito(hitosAdd[h].nombre, hitosAdd[h].latitud, hitosAdd[h].longitud));
+    }
+    
+  }
+  toString(){
+    for (var h of this.hitos){
+      console.log(h);
+    }
+  }
+
 }
 
 export default Ruta;

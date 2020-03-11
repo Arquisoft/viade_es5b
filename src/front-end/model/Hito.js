@@ -28,6 +28,13 @@ class Hito {
   getLat() {
     return this.latitud;
   }
+
+  toString(){
+    console.log("-Hito:");
+    console.log("--Nombre: "+this.nombre);
+    console.log("--Longitud: "+this.longitud);
+    console.log("--Latitud: "+this.latitud);
+  }
 }
 
 export default Hito;
