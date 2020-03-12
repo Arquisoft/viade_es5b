@@ -38,10 +38,12 @@ class RegistrationSuccess extends Component<Props, State> {
   render() {
     const { timeLeft } = this.state;
     return (
+      <div>
           <h1>Success! Welcome to the decentralized web.</h1>
-          <img src="/img/rocket.svg" alt="rocket" className="rocket" />
+          <img src="/img/rocket.svg" alt="rocket" className="rocket"/>
           <span>We have emailed you more information about your new Solid Identity</span>
           <span>We will redirect you to your POD in {timeLeft} seconds...</span>
+          </div>
     );
   }
 }
