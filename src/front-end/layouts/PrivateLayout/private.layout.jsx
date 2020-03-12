@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route} from 'react-router-dom';
-import { withAuthorization } from '@inrupt/solid-react-components';
 import  AuthNavBar  from '../../components/AuthNavBar/auth-nav-bar.component';
 import NavBar from "../../components/NavBar/nav-bar.component";
 import { useWebId } from '@inrupt/solid-react-components';

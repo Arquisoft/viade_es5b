@@ -11,9 +11,6 @@ import * as i from "./InstanciaRutas";
 import NotLoggedInLayout from "../layouts/NotLoggedInLayout/not-logged-in.layout";
 import PrivateLayout from "../layouts/PrivateLayout/private.layout";
 import PublicLayout from "../layouts/PublicLayout/public.layout";
-import BackMain from "../../BackEnd/BackMain.js";
-import Ruta from "../model/Ruta.js";
-import Hito from "../model/Hito.js";
 
 
 class App extends Component{

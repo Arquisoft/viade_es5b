@@ -1,6 +1,4 @@
 
-"use strict";
-
 import Hito from "./Hito";
 import { v4 as uuidv4 } from 'uuid';
 
