@@ -52,11 +52,6 @@ class RutaService {
     
   }
 
-  /*
-   * Añade una nueva ruta al sistema.
-   */
-  addRuta(ruta) {}
-
   /*función splice() se le pasan dos parámetros: 
   -el primero será el índice partir del cual queremos borrar elementos
   -el segundo, el número de elementos que queremos borrar a partir de la posición dada*/

@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Hito from "../../model/Hito.js";
-import Ruta from "../../model/Ruta.js";
 import RutaService from "../../services/rutas/RutaService"
 
 class AddRuta extends Component {
