@@ -19,7 +19,7 @@ class App extends Component{
     //BackMain.listarRutas();
     return (
       <div> 
-        <Router>
+        <Router path={process.env.PUBLIC_URL + '/'}>
           <div>
             <Switch>
               <PublicLayout exact path="/viade_es5b/" component={Home} />
