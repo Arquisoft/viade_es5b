@@ -1,6 +1,7 @@
 "use strict";
 import Ruta from "../../model/Ruta"
 import Hito from "../../model/Hito"
+import BackMain from "../../../BackEnd/BackMain.js";
 
 /*
  * Clase que representa el servicio de Rutas (Fachada)
@@ -79,18 +80,18 @@ class RutaService {
     }
     return ruta;
   }
-
   
   addRuta(nombre, latitud, longitud, descripcion, hitos) {
-   var ruta=new Ruta(nombre, [latitud, longitud], descripcion,hitos);
-   this.BDRutas.push(ruta);
-   console.log(this.BDRutas.length);
-   console.log("Número de rutas almacenadas: "+this.getRutas().length);
-   for (var r of this.BDRutas){
-    console.log(r);
+    latitud=parseFloat(latitud);
+    longitud=parseFloat(longitud);
+   var ruta=new Ruta(nombre, [latitud, longitud], descripcion);
+   for(var i in hitos)
+   {
+      hitos[i].latitud=parseFloat(hitos[i].latitud);
+      hitos[i].longitud=parseFloat(hitos[i].longitud);
+      ruta.addHito(new Hito(hitos[i].nombre,hitos[i].latitud,hitos[i].longitud));
    }
-
-   
+   BackMain.añadirRuta(ruta);
   }
 
 }

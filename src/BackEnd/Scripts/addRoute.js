@@ -50,9 +50,9 @@ async function insertData(webId, route, ruta) {
             });
             if(i==0)
             {
-                newPoint.addString(schema.name, ruta.getInicio().nombre);
-                newPoint.addDecimal(schema.latitude,ruta.getInicio().latitud);
-                newPoint.addDecimal(schema.longitude,ruta.getInicio().longitud);
+                if(ruta.getInicio().nombre!=null ) newPoint.addString(schema.name, ruta.getInicio().nombre);
+                newPoint.addDecimal(schema.latitude,ruta.getInicio()[0]);
+                newPoint.addDecimal(schema.longitude,ruta.getInicio()[1]);
             }
             else
             {

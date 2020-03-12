@@ -31,7 +31,7 @@ export async function listRoutes() {
 
             let ruta=new Ruta(
             route.getString(schema.name),
-            {nombre : puntos[0].getString(schema.name), latitud : puntos[0].getDecimal(schema.latitude),longitud : puntos[0].getDecimal(schema.longitude)},
+            [puntos[0].getDecimal(schema.latitude),puntos[0].getDecimal(schema.longitude)],
             route.getString(schema.description)
             );
 
@@ -43,9 +43,7 @@ export async function listRoutes() {
                     ruta.addHito(new Hito(puntos[e].getString(schema.name),puntos[e].getDecimal(schema.latitude),puntos[e].getDecimal(schema.longitude)));
                 }
             }
-
-
-            result.push(ruta);
+            result=[...result,ruta];
         };
     }
     return result;
