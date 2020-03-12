@@ -1,6 +1,5 @@
-"use strict";
 class Hito {
-  constructor(nombre, longitud, latitud) {
+  constructor(nombre, latitud, longitud) {
     this.nombre = nombre; // Nombre del hito.
     // Coordenadas del hito
     this.longitud = longitud;
@@ -29,4 +28,13 @@ class Hito {
   getLat() {
     return this.latitud;
   }
+
+  toString(){
+    console.log("-Hito:");
+    console.log("--Nombre: "+this.nombre);
+    console.log("--Longitud: "+this.longitud);
+    console.log("--Latitud: "+this.latitud);
+  }
 }
+
+export default Hito;

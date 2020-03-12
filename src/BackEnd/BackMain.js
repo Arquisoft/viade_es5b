@@ -1,61 +1,17 @@
+import { addRoute } from './Scripts/addRoute.js'
+import { deleteRoute } from './Scripts/deleteRoute.js'
+import { listRoutes } from './Scripts/listRoutes.js'
 
-
-
-//import {initialiseRoutesList} from './Scripts/storageForRoutes.js'
-import{addRoute} from './Scripts/addRoute.js'
-import{deleteRoute} from './Scripts/deleteRoute.js'
-import{getRoutesList} from './Scripts/getRoutes.js'
-const auth = require('solid-auth-client')
-
-export default class BackMain
-{
-    
-    static Inicio(){
-        this.loggeado();
-    };
-    static loggeado(){
-        auth.trackSession(session => {
-            //si no esta logueado lo redirijo al login.
-         if (!session)
-            window.location.href = "/login";
-                //si esta logueado guardo la ruta
-        else
-            console.log(`The user is ${session.webId}`)
-            this.creacionAlmacenRutas();
-           })
+export default class BackMain {
+    static listarRutas() {
+        listRoutes()
     }
 
-    static creacionAlmacenRutas()
-    { 
-        this.BDRutas = [];
-        auth.trackSession(session =>{
-            //let rutasStorageNew= initialiseRoutesList(session, this.BDRutas);
-            //return rutasStorageNew;
-        })
+    static añadirRuta(Ruta) {
+        addRoute(Ruta)
     };
-    static obtenerAlmacenRutas(){
-        let rutasStorage= getRoutesList(auth);
-        return rutasStorage
-    };
-
-    static añadirRuta(Ruta)
-    {
-        auth.trackSession(session => {
-            //si no esta logueado lo redirijo al login.
-         if (!session)
-            window.location.href = "/login";
-        else
-            addRoute(session.webId,Ruta)
-        })
-    };
-    static borrarRuta(uuid)
-    {
-        auth.trackSession(session => {
-            //si no esta logueado lo redirijo al login.
-         if (!session)
-            window.location.href = "/login";
-        else
-            deleteRoute(session.webId,uuid)
-        })
+    static borrarRuta(uuid) {
+        //Aun no funciona
+        deleteRoute(uuid)
     };
 }
