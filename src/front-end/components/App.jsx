@@ -23,12 +23,12 @@ class App extends Component{
           <div>
             <Switch>
               <PublicLayout exact path="/viade_es5b/" component={Home} />
-              <PrivateLayout path="/viade_es5b/ver-rutas">
+              <PrivateLayout exact path="/viade_es5b/ver-rutas">
                 <VerRutas service={i.service}/>
               </PrivateLayout>
-              <PrivateLayout path="/viade_es5b/add-ruta" component={AddRuta} />
-              <NotLoggedInLayout path="/viade_es5b/login" component={LogInComponent}/>
-              <NotLoggedInLayout path="/viade_es5b/signup" component={RegisterContainer}/>
+              <PrivateLayout exact path="/viade_es5b/add-ruta" component={AddRuta} />
+              <NotLoggedInLayout exact path="/viade_es5b/login" component={LogInComponent}/>
+              <NotLoggedInLayout exact path="/viade_es5b/signup" component={RegisterContainer}/>
             </Switch>
           </div>
         </Router>
