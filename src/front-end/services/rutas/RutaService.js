@@ -42,7 +42,7 @@ class RutaService {
    * el sistema.
    */
   getRutas() {
-    return this.BDRutas;
+    return BackMain.listarRutas();
   }
 
     /*

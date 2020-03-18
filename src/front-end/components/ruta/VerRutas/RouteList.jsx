@@ -10,7 +10,11 @@ class RouteList extends Component {
   constructor(props) {
     super(props);
     this.service = this.props.service;
-    this.state = { rutas: this.props.rutas}
+    this.state = { rutas: []}
+  }
+  async componentDidMount() {
+    const response = await this.props.rutas;
+    this.setState({ rutas: response });
   }
  
   render() {
