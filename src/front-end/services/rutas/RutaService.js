@@ -71,12 +71,12 @@ class RutaService {
   }
 
   addRuta(nombre, latitud, longitud, descripcion, hitos) {
-    latitud = parseFloat(latitud);
-    longitud = parseFloat(longitud);
+    latitud = parseFloat(latitud.replace(/\s+/g, ''));
+    longitud = parseFloat(longitud.replace(/\s+/g, ''));
     var ruta = new Ruta(nombre, [latitud, longitud], descripcion);
     for (var i in hitos) {
-      hitos[i].latitud = parseFloat(hitos[i].latitud);
-      hitos[i].longitud = parseFloat(hitos[i].longitud);
+      hitos[i].latitud = parseFloat(hitos[i].latitud.replace(/\s+/g, ''));
+      hitos[i].longitud = parseFloat(hitos[i].longitud.replace(/\s+/g, ''));
       ruta.addHito(
         new Hito(hitos[i].nombre, hitos[i].latitud, hitos[i].longitud)
       );
