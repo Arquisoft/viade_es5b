@@ -24,7 +24,7 @@ class RouteList extends Component {
         {this.state.rutas.length === 0 && (
           <Alert variant="warning">
             Actualmente no dispones de ninguna ruta en tu POD. Accede a
-            <a href="/add-ruta"> Añadir Ruta </a> para añadir una nueva ruta.
+            <a href="/viade_es5b/add-ruta"> Añadir Ruta </a> para añadir una nueva ruta.
           </Alert>
         )}
         {this.state.rutas.length > 0 &&
