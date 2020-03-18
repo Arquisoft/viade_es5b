@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { HashRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import LogInComponent from "./front-end/components/authentication/Login";
 import RegisterContainer from "./front-end/components/authentication/RegistroContainer";
 import Home from "./front-end/components/Home";
@@ -18,26 +18,22 @@ class App extends Component {
     //BackMain.listarRutas();
     return (
       <div>
-        <Router>
+        <Router basename="/">
           <div>
             <Switch>
-              <PublicLayout exact path="/viade_es5b/" component={Home} />
-              <PrivateLayout exact path="/viade_es5b/ver-rutas">
+              <PublicLayout exact path="/" component={Home} />
+              <PrivateLayout exact path="/ver-rutas">
                 <VerRutas service={i.service} />
               </PrivateLayout>
-              <PrivateLayout
-                exact
-                path="/viade_es5b/add-ruta"
-                component={AddRuta}
-              />
+              <PrivateLayout exact path="/add-ruta" component={AddRuta} />
               <NotLoggedInLayout
                 exact
-                path="/viade_es5b/login"
+                path="/login"
                 component={LogInComponent}
               />
               <NotLoggedInLayout
                 exact
-                path="/viade_es5b/signup"
+                path="/signup"
                 component={RegisterContainer}
               />
             </Switch>
