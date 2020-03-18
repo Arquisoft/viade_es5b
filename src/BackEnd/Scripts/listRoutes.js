@@ -45,6 +45,7 @@ export async function listRoutes() {
                 [puntos[0].getDecimal(schema.latitude),puntos[0].getDecimal(schema.longitude)],
                 route.getString(schema.description)
                 );
+                ruta.setUUID(route.getString(schema.identifier));
 
 
                 for(var e in puntos)

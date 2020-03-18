@@ -41,7 +41,7 @@ class RouteList extends Component {
   }
 
   handleDeleteRoute = async uuid => {
-    this.service.deleteRuta(uuid);
+    await this.service.deleteRuta(uuid);
     const rutas = await this.service.getRutas();
     this.setState({ rutas: rutas });
   };

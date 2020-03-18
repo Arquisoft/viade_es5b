@@ -44,6 +44,9 @@ class Ruta {
   getUUID() {
     return this.uuid;
   }
+  setUUID(uuid){
+    this.uuid=uuid;
+  }
 
   /*
    * Añade un hito a la ruta.
