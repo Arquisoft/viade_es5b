@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { HashRouter as Router, Switch } from "react-router-dom";
 import LogInComponent from "./front-end/components/authentication/Login";
 import RegisterContainer from "./front-end/components/authentication/RegistroContainer";
 import Home from "./front-end/components/Home";
