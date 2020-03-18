@@ -4,7 +4,7 @@ import { listRoutes } from './Scripts/listRoutes.js'
 
 export default class BackMain {
     static listarRutas() {
-        listRoutes()
+        return listRoutes()
     }
 
     static añadirRuta(Ruta) {

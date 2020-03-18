@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import RouteCard from "./RouteCard";
-import RutaService from "../../../services/rutas/RutaService";
-import Button from "react-bootstrap/Button";
-
 
 /**
  * Representa una lista que encapsula componentes
@@ -13,7 +10,11 @@ class RouteList extends Component {
   constructor(props) {
     super(props);
     this.service = this.props.service;
-    this.state = { rutas: this.props.rutas}
+    this.state = { rutas: []}
+  }
+  async componentDidMount() {
+    const response = await this.props.rutas;
+    this.setState({ rutas: response });
   }
  
   render() {

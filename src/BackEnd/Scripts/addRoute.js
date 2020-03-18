@@ -1,4 +1,4 @@
-import { space, rdf, solid, schema, foaf } from 'rdf-namespaces';
+import { space, rdf, schema } from 'rdf-namespaces';
 import { fetchDocument, createDocument } from 'tripledoc';
 
 const auth = require('solid-auth-client')
@@ -48,7 +48,7 @@ async function insertData(webId, route, ruta) {
                 identifier: i,
                 identifierPrefix: 'point'
             });
-            if(i==0)
+            if(i===0)
             {
                 if(ruta.getInicio().nombre!=null ) newPoint.addString(schema.name, ruta.getInicio().nombre);
                 newPoint.addDecimal(schema.latitude,ruta.getInicio()[0]);

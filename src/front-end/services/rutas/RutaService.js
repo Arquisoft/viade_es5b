@@ -1,4 +1,3 @@
-"use strict";
 import Ruta from "../../model/Ruta"
 import Hito from "../../model/Hito"
 import BackMain from "../../../BackEnd/BackMain.js";
@@ -43,7 +42,7 @@ class RutaService {
    * el sistema.
    */
   getRutas() {
-    return this.BDRutas;
+    return BackMain.listarRutas();
   }
 
     /*
@@ -52,11 +51,6 @@ class RutaService {
   getRutasUsuarioLogeado(webId) {
     
   }
-
-  /*
-   * Añade una nueva ruta al sistema.
-   */
-  addRuta(ruta) {}
 
   /*función splice() se le pasan dos parámetros: 
   -el primero será el índice partir del cual queremos borrar elementos

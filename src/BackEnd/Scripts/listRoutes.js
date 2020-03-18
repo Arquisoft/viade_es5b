@@ -1,5 +1,5 @@
-import { space, rdf, solid, schema, foaf } from 'rdf-namespaces';
-import { fetchDocument, createDocument } from 'tripledoc';
+import { space, schema } from 'rdf-namespaces';
+import { fetchDocument } from 'tripledoc';
 import Ruta from "../../front-end/model/Ruta.js";
 import Hito from '../../front-end/model/Hito.js';
 const auth = require('solid-auth-client')
@@ -38,7 +38,7 @@ export async function listRoutes() {
 
             for(var e in puntos)
             {
-                if(e!=0)
+                if(e!==0)
                 {
                     ruta.addHito(new Hito(puntos[e].getString(schema.name),puntos[e].getDecimal(schema.latitude),puntos[e].getDecimal(schema.longitude)));
                 }
