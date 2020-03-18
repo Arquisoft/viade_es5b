@@ -17,7 +17,11 @@ export async function listRoutes() {
     // Get the root URL of the user's Pod:
     const storage = profile.getRef(space.storage);
 
-    let folder = await fc.readFolder(storage + 'private/routes/');
+    let folder;
+    await fc.readFolder(storage + 'private/routes/').then((content) => {
+        folder=content;
+    })
+    .catch(err => folder=null);
 
     var result = [];
     if (folder) {
