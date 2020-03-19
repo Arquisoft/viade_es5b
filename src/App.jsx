@@ -18,22 +18,16 @@ class App extends Component {
     //BackMain.listarRutas();
     return (
       <div>
-        <Router>
+        <Router basename="/viade_es5b">
           <div>
             <Switch>
-              <PublicLayout exact path="/viade_es5b/" component={Home} />
-              <PrivateLayout path="/viade_es5b/ver-rutas">
+              <PublicLayout exact path="/" component={Home} />
+              <PrivateLayout path="/ver-rutas">
                 <VerRutas service={i.service} />
               </PrivateLayout>
-              <PrivateLayout path="/viade_es5b/add-ruta" component={AddRuta} />
-              <NotLoggedInLayout
-                path="/viade_es5b/login"
-                component={LogInComponent}
-              />
-              <NotLoggedInLayout
-                path="/viade_es5b/signup"
-                component={RegisterContainer}
-              />
+              <PrivateLayout path="/add-ruta" component={AddRuta} />
+              <NotLoggedInLayout path="/login" component={LogInComponent} />
+              <NotLoggedInLayout path="/signup" component={RegisterContainer} />
             </Switch>
           </div>
         </Router>

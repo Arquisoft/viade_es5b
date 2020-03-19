@@ -10,24 +10,27 @@ class RouteList extends Component {
   constructor(props) {
     super(props);
     this.service = this.props.service;
-    this.state = { rutas: [] };
+    this.state = { rutas: [], noRoutes: false };
   }
+
   async componentDidMount() {
     const response = await this.props.rutas;
     this.setState({ rutas: response });
+    if (this.state.rutas.length === 0) this.setState({ noRoutes: true });
   }
 
   render() {
     console.log(this.state.rutas);
     return (
       <Accordion defaultActiveKey="0">
-        {this.state.rutas.length === 0 && (
+        {this.state.noRoutes && (
           <Alert variant="warning">
             Actualmente no dispones de ninguna ruta en tu POD. Accede a
-            <a href="/viade_es5b/add-ruta"> Añadir Ruta </a> para añadir una nueva ruta.
+            <a href="/viade_es5b/add-ruta"> Añadir Ruta </a> para añadir una
+            nueva ruta.
           </Alert>
         )}
-        {this.state.rutas.length > 0 &&
+        {!this.state.noRoutes &&
           this.state.rutas.map((r, key) => (
             <RouteCard
               handleDelete={this.handleDeleteRoute}
