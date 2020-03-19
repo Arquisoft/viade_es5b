@@ -7,7 +7,6 @@ import AddRuta from "./front-end/components/ruta/AddRuta";
 import VerRutas from "./front-end/components/ruta/VerRutas/VerRutas";
 import Footer from "./front-end/components/fragments/Footer";
 import "leaflet/dist/leaflet.css";
-import * as i from "./front-end/components/InstanciaRutas";
 import NotLoggedInLayout from "./front-end/layouts/NotLoggedInLayout/not-logged-in.layout";
 import PrivateLayout from "./front-end/layouts/PrivateLayout/private.layout";
 import PublicLayout from "./front-end/layouts/PublicLayout/public.layout";
@@ -22,9 +21,10 @@ class App extends Component {
           <div>
             <Switch>
               <PublicLayout exact path="/" component={Home} />
-              <PrivateLayout path="/ver-rutas">
-                <VerRutas service={i.service} />
-              </PrivateLayout>
+              <PrivateLayout
+                path="/ver-rutas"
+                component={VerRutas}
+              ></PrivateLayout>
               <PrivateLayout path="/add-ruta" component={AddRuta} />
               <NotLoggedInLayout path="/login" component={LogInComponent} />
               <NotLoggedInLayout path="/signup" component={RegisterContainer} />

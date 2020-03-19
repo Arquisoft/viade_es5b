@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import RouteList from "./RouteList";
-
-
+import * as i from "../../InstanciaRutas";
 
 class VerRutas extends Component {
   render() {
@@ -14,7 +13,7 @@ class VerRutas extends Component {
             en un mapa, ver sus detalles o bien eliminarlas.
           </p>
           <div>
-            <RouteList service={this.props.service} rutas={this.props.service.getRutas()} />
+            <RouteList service={i.service} rutas={i.service.getRutas()} />
           </div>
         </header>
       </div>
