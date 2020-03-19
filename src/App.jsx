@@ -12,22 +12,28 @@ import NotLoggedInLayout from "./front-end/layouts/NotLoggedInLayout/not-logged-
 import PrivateLayout from "./front-end/layouts/PrivateLayout/private.layout";
 import PublicLayout from "./front-end/layouts/PublicLayout/public.layout";
 
-class App extends Component{
-  render(){
+class App extends Component {
+  render() {
     //BackMain.añadirRuta(new Ruta('ruta 2',{nombre: 'primer puntoj', latitud: 989.8, longitud: -288.6},'mi segunda ruta',[{nombre: 'primer hito', latitud: -36666, longitud: -3838},{nombre: 'segundo hito', latitud: -77777, longitud: 88888}]));
     //BackMain.listarRutas();
     return (
-      <div> 
+      <div>
         <Router>
           <div>
             <Switch>
               <PublicLayout exact path="/viade_es5b/" component={Home} />
-              <PrivateLayout exact path="/viade_es5b/ver-rutas">
-                <VerRutas service={i.service}/>
+              <PrivateLayout path="/viade_es5b/ver-rutas">
+                <VerRutas service={i.service} />
               </PrivateLayout>
-              <PrivateLayout exact path="/viade_es5b/add-ruta" component={AddRuta} />
-              <NotLoggedInLayout exact path="/viade_es5b/login" component={LogInComponent}/>
-              <NotLoggedInLayout exact path="/viade_es5b/signup" component={RegisterContainer}/>
+              <PrivateLayout path="/viade_es5b/add-ruta" component={AddRuta} />
+              <NotLoggedInLayout
+                path="/viade_es5b/login"
+                component={LogInComponent}
+              />
+              <NotLoggedInLayout
+                path="/viade_es5b/signup"
+                component={RegisterContainer}
+              />
             </Switch>
           </div>
         </Router>
@@ -35,7 +41,6 @@ class App extends Component{
       </div>
     );
   }
-
 }
 
 export default App;
