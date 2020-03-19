@@ -4,7 +4,6 @@ import Button from "react-bootstrap/Button";
 import MapRuta from "../../map/MapRuta";
 import "../../../css/map-style.css";
 
-
 /**
  * Representa un elemento Card con la
  * información de la ruta que encapsula.
@@ -23,12 +22,17 @@ class RouteCard extends Component {
           <h3>{this.props.ruta.getNombre()}</h3>
         </Card.Header>
         <Card.Body>
-          <Card.Title>Detalles de la ruta</Card.Title>
-          <Card.Text>Nombre de la ruta y tabla de hitos.</Card.Text>
+          <Card.Title>Descripción</Card.Title>
+          <Card.Text>{this.props.ruta.getDescripcion()}</Card.Text>
           <Button className="mr-2" onClick={this.handleViewInMap}>
             Ver en el mapa
           </Button>
-          <Button className="mr-2" onClick={() => this.props.handleDelete(this.props.ruta.getUUID())} >Eliminar</Button>
+          <Button
+            className="mr-2"
+            onClick={() => this.props.handleDelete(this.props.ruta.getUUID())}
+          >
+            Eliminar
+          </Button>
           <Button>Editar</Button>
         </Card.Body>
         {this.state.loaded && (
@@ -39,8 +43,6 @@ class RouteCard extends Component {
       </Card>
     );
   }
-
-
 
   /**
    * Se ejecuta cada vez que se actualiza el componente
@@ -61,8 +63,6 @@ class RouteCard extends Component {
   handleViewInMap = () => {
     this.setState({ loaded: !this.state.loaded });
   };
-
-  
 }
 
 export default RouteCard;

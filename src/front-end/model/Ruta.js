@@ -1,18 +1,15 @@
-
 import Hito from "./Hito";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 class Ruta {
-  constructor(nombre, inicio, descripcion, hitosAdd) {
+  constructor(nombre, inicio, descripcion) {
     this.uuid = uuidv4();
     this.nombre = nombre; // Nombre de la ruta
     this.inicio = inicio; // Coordenadas del lugar de inicio
-    this.descripcion=descripcion;
+    this.descripcion = descripcion;
     this.hitos = []; // Hitos de la ruta
-    this.setHitos(hitosAdd);
   }
 
- 
   /*
    * Devuelve el nombre de la ruta
    */
@@ -41,12 +38,14 @@ class Ruta {
     return this.descripcion;
   }
 
-
   /**
    * Devuelve el UUID de la ruta.
    */
-  getUUID(){
+  getUUID() {
     return this.uuid;
+  }
+  setUUID(uuid){
+    this.uuid=uuid;
   }
 
   /*
@@ -56,14 +55,15 @@ class Ruta {
     this.hitos.push(hito);
   }
 
-  setHitos(hitosAdd){
-    for (var h in hitosAdd){
-      this.hitos.push(new Hito(hitosAdd[h].nombre, hitosAdd[h].latitud, hitosAdd[h].longitud));
+  setHitos(hitosAdd) {
+    for (var h in hitosAdd) {
+      this.hitos.push(
+        new Hito(hitosAdd[h].nombre, hitosAdd[h].latitud, hitosAdd[h].longitud)
+      );
     }
-    
   }
-  toString(){
-    for (var h of this.hitos){
+  toString() {
+    for (var h of this.hitos) {
       console.log(h);
     }
   }

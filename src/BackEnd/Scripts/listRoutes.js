@@ -17,34 +17,48 @@ export async function listRoutes() {
     // Get the root URL of the user's Pod:
     const storage = profile.getRef(space.storage);
 
-    let folder = await fc.readFolder(storage + 'private/routes/');
+    let folder;
+    await fc.readFolder(storage + 'private/routes/').then((content) => {
+        folder=content;
+    })
+    .catch(err => folder=null);
 
     var result = [];
     if (folder) {
 
         for (var i = 0; i < folder.files.length; i++) {
             console.log(folder.files[i].url)
-            const routeDoc = await fetchDocument(folder.files[i].url);
-            const route = routeDoc.getSubject('#ruta');
+            let routeDoc;
+            await fetchDocument(folder.files[i].url).then((content) => {
+                routeDoc=content;
+            })
+            .catch(err => routeDoc=null);
 
-            let puntos=routeDoc.getSubjectsOfType('http://arquisoft.github.io/viadeSpec/points');
-
-            let ruta=new Ruta(
-            route.getString(schema.name),
-            [puntos[0].getDecimal(schema.latitude),puntos[0].getDecimal(schema.longitude)],
-            route.getString(schema.description)
-            );
-
-
-            for(var e in puntos)
+            if(routeDoc!=null)
             {
-                if(e!==0)
+                const route = routeDoc.getSubject('#ruta');
+
+                let puntos=routeDoc.getSubjectsOfType('http://arquisoft.github.io/viadeSpec/points');
+
+                let ruta=new Ruta(
+                route.getString(schema.name),
+                [puntos[0].getDecimal(schema.latitude),puntos[0].getDecimal(schema.longitude)],
+                route.getString(schema.description)
+                );
+                ruta.setUUID(route.getString(schema.identifier));
+
+
+                for(var e in puntos)
                 {
-                    ruta.addHito(new Hito(puntos[e].getString(schema.name),puntos[e].getDecimal(schema.latitude),puntos[e].getDecimal(schema.longitude)));
+                    if(e!==0)
+                    {
+                        ruta.addHito(new Hito(puntos[e].getString(schema.name),puntos[e].getDecimal(schema.latitude),puntos[e].getDecimal(schema.longitude)));
+                    }
                 }
+                result=[...result,ruta];
             }
-            result=[...result,ruta];
         };
+        
     }
     return result;
 
