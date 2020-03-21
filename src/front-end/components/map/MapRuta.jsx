@@ -80,7 +80,9 @@ class MapRuta extends Component {
     return (
       <div>
         {this.getStartMarker()}
-        {this.hitos.map((c, i) => this.getMarker([c.lat, c.long], c.hito, i++))}
+        {this.hitos
+          .slice(1)
+          .map((c, i) => this.getMarker([c.lat, c.long], c.hito, i++))}
         {this.getPolyLine()}
       </div>
     );

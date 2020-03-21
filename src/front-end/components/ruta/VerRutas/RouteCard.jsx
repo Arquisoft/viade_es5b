@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Card from "react-bootstrap/Card";
+import { Card, Container, Row, Col, Table } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import MapRuta from "../../map/MapRuta";
 import "../../../css/map-style.css";
@@ -20,26 +20,61 @@ class RouteCard extends Component {
       <Card>
         <Card.Header>
           <h3>{this.props.ruta.getNombre()}</h3>
-        </Card.Header>
-        <Card.Body>
-          <Card.Title>Descripción</Card.Title>
-          <Card.Text>{this.props.ruta.getDescripcion()}</Card.Text>
-          <Button className="mr-2" onClick={this.handleViewInMap}>
+          <Button
+            variant="success"
+            className="mr-2"
+            onClick={this.handleViewInMap}
+          >
             Ver en el mapa
           </Button>
           <Button
+            variant="danger"
             className="mr-2"
             onClick={() => this.props.handleDelete(this.props.ruta.getUUID())}
           >
             Eliminar
           </Button>
           <Button>Editar</Button>
+        </Card.Header>
+        <Card.Body>
+          <Container fluid>
+            <Row>
+              <Col md="auto">
+                <Card.Title>Descripción</Card.Title>
+                <Card.Text>{this.props.ruta.getDescripcion()}</Card.Text>
+                <Card.Title>Hitos</Card.Title>
+                <Table striped bordered hover>
+                  <thead>
+                    <tr>
+                      <th>Nombre</th>
+                      <th>Latitud</th>
+                      <th>Longitud</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {this.props.ruta.getHitos().map((h, key) => (
+                      <tr key={key++}>
+                        <td>{key === 1 ? <b>Inicio</b> : h.getNombre()}</td>
+                        <td>{h.getLat()}</td>
+                        <td>{h.getLong()}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              </Col>
+              <Col>
+                {this.state.loaded && (
+                  <div
+                    id={`mapa-${this.props.ruta.getNombre()}`}
+                    className="ml-3 mb-3"
+                  >
+                    <MapRuta ruta={this.props.ruta} />
+                  </div>
+                )}
+              </Col>
+            </Row>
+          </Container>
         </Card.Body>
-        {this.state.loaded && (
-          <div id={`mapa-${this.props.ruta.getNombre()}`} className="ml-3 mb-3">
-            <MapRuta ruta={this.props.ruta} />
-          </div>
-        )}
       </Card>
     );
   }
