@@ -45,7 +45,7 @@ There are many notations for describing scenarios, e.g.
 ****
 
 
-=== <Runtime Scenario 1>
+=== <Crear ruta>
 
 
 * _<insert runtime diagram or textual description of the scenario>_
@@ -62,6 +62,97 @@ Bob --> Alice: Authentication Response
 Alice -> Bob: Another authentication Request
 Alice <-- Bob: another authentication Response
 ----
+
+=== <Ver rutas>
+
+
+* _<insert runtime diagram or textual description of the scenario>_
+* _<insert description of the notable aspects of the interactions between the
+building block instances depicted in this diagram.>_
+
+It is possible to use a sequence diagram:
+
+[plantuml,"Sequence diagram",png]
+----
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+----
+
+=== <Eliminar ruta>
+
+
+* _<insert runtime diagram or textual description of the scenario>_
+* _<insert description of the notable aspects of the interactions between the
+building block instances depicted in this diagram.>_
+
+It is possible to use a sequence diagram:
+
+[plantuml,"Sequence diagram",png]
+----
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+----
+=== <Modificar ruta>
+
+
+* _<insert runtime diagram or textual description of the scenario>_
+* _<insert description of the notable aspects of the interactions between the
+building block instances depicted in this diagram.>_
+
+It is possible to use a sequence diagram:
+
+[plantuml,"Sequence diagram",png]
+----
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+----
+
+=== <Registrarse>
+
+
+* _<insert runtime diagram or textual description of the scenario>_
+* _<insert description of the notable aspects of the interactions between the
+building block instances depicted in this diagram.>_
+
+It is possible to use a sequence diagram:
+
+[plantuml,"Sequence diagram",png]
+----
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+----
+
+=== <Iniciar sesión>
+
+
+* _<insert runtime diagram or textual description of the scenario>_
+* _<insert description of the notable aspects of the interactions between the
+building block instances depicted in this diagram.>_
+
+It is possible to use a sequence diagram:
+
+[plantuml,"Sequence diagram",png]
+----
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+----
+
+
 === <Runtime Scenario 2>
 
 === ...
