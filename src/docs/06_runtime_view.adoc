@@ -70,19 +70,15 @@ App -> Usuario: Devuelve la vista con las rutas del usuario
 === <Eliminar ruta>
 
 
-* _<insert runtime diagram or textual description of the scenario>_
-* _<insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.>_
-
-It is possible to use a sequence diagram:
-
-[plantuml,"Sequence diagram",png]
+[plantuml,"DiagramaEliminarRuta",png]
 ----
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+Usuario -> App: Seleccionamos "Ver rutas"
+App -> BBDD : Solicitar las rutas del usuario al POD
+BBDD -> App: Devuelve las rutas
+App -> Usuario: Devuelve la vista con las rutas del usuario
+Usuario -> App: Escoge la ruta a eliminar y pulsa el botón "Eliminar"
+App -> BBDD: Elimina la ruta del POD
+App -> Usuario: Mensaje de "Ruta eliminada"
 ----
 === <Modificar ruta>
 
