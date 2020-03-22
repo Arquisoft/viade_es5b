@@ -47,37 +47,24 @@ There are many notations for describing scenarios, e.g.
 === <Crear ruta>
 
 
-* _<insert runtime diagram or textual description of the scenario>_
-* _<insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.>_
-
-It is possible to use a sequence diagram:
-
-[plantuml,"Sequence diagram",png]
+[plantuml,"DiagramaAddRuta",png]
 ----
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+Usuario -> App: Seleccionamos "Añadir ruta"
+App -> Usuario: Devuelve la vista con el formulario de Añadir ruta
+Usuario -> App: Rellena campos de ruta e hitos
+App -> BBDD: Guarda la ruta en el POD
+App -> Usuario: Mensaje de "Ruta guardada"
 ----
 
 === <Ver rutas>
 
 
-* _<insert runtime diagram or textual description of the scenario>_
-* _<insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.>_
-
-It is possible to use a sequence diagram:
-
-[plantuml,"Sequence diagram",png]
+[plantuml,"DiagramaVerRutas",png]
 ----
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+Usuario -> App: Seleccionamos "Ver rutas"
+App -> BBDD : Solicitar las rutas del usuario al POD
+BBDD -> App: Devuelve las rutas
+App -> Usuario: Devuelve la vista con las rutas del usuario
 ----
 
 === <Eliminar ruta>
