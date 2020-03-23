@@ -29,38 +29,9 @@ There are many notations for describing scenarios, e.g.
 * ...
 
 
-.Casos de uso
-* _Registrarse_
-* _Iniciar sesión_
-* _Crear ruta_
-* _Ver rutas_
-* _Eliminar ruta_
-* _Modificar ruta_
-* _Compartir ruta_
-
-.Casos de error
-* _Error al iniciar sesión_
 
 ****
 
-
-=== <Registrarse>
-
-
-* _<insert runtime diagram or textual description of the scenario>_
-* _<insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.>_
-
-It is possible to use a sequence diagram:
-
-[plantuml,"Sequence diagram",png]
-----
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
-----
 
 === <Iniciar sesión>
 
@@ -68,18 +39,25 @@ image:inicioSesion.png[inicioSesionDiagrama]
 
 === <Crear ruta>
 
+. Click en "Añadir ruta" en la barra de navegación.
+. Rellenar los campos sobre información de la nueva ruta.
+. Click en el botón "Añadir ruta".
+. Rellenar los campos sobre la información de los hitos de la ruta.
+. Click en el botón "Añadir hito".
+. Click en el botón "Guardar ruta" para guardar la ruta en el POD.
 
 [plantuml,"DiagramaAddRuta",png]
 ----
 Usuario -> App: Seleccionamos "Añadir ruta"
 App -> Usuario: Devuelve la vista con el formulario de Añadir ruta
-Usuario -> App: Rellena campos de ruta e hitos
+Usuario -> App: Rellenar campos de ruta e hitos
 App -> BBDD: Guarda la ruta en el POD
 App -> Usuario: Mensaje de "Ruta guardada"
 ----
 
 === <Ver rutas>
 
+- Click en "Ver rutas" en la barra de navegación.
 
 [plantuml,"DiagramaVerRutas",png]
 ----
@@ -91,6 +69,9 @@ App -> Usuario: Devuelve la vista con las rutas del usuario
 
 === <Eliminar ruta>
 
+. Click en "Ver rutas" en la barra de navegación.
+. Escoger la ruta a eliminar.
+. Click en el botón de "Eliminar" de la ruta elegida y se eliminará la ruta del POD.
 
 [plantuml,"DiagramaEliminarRuta",png]
 ----
@@ -104,7 +85,11 @@ App -> Usuario: Mensaje de "Ruta eliminada"
 ----
 === <Modificar ruta>
 
-
+. Click en "Ver rutas" en la barra de navegación.
+. Escoger la ruta a modificar.
+. Click en el botón de "Editar" de la ruta elegida.
+. Modificar los campos de la ruta.
+. Click en el botón "Editar" para modificar la ruta en el POD.
 
 
 [plantuml,"DiagramaModificarRuta",png]
@@ -118,5 +103,6 @@ App -> Usuario: Devuelve la vista con el formulario de Modificar ruta y los camp
 Usuario -> App: Modifica los campos del formulario y pulsa el botón "Editar"
 App -> BBDD: Modifica los campos de la ruta en el POD
 ----
+
 
 
