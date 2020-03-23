@@ -1,14 +1,14 @@
 [[section-introduction-and-goals]]
 == Introduction and Goals
 
-[role="arc42help"]
+
 ****
 El objetivo  del proyecto es la creación de un sistema descentralizado de gestión de rutas basado en las especificaciones SOLID, en la que lo más importante será la privacidad de los datos y el control de los mismos por los usuarios.
 ****
 
 === Requirements Overview
 
-[role="arc42help"]
+
 ****
 * El sistema debe utilizar una arquitectura descentralizada, separando datos y aplicación.
 * Los usuarios deben poder ver sus rutas en un mapa.
@@ -22,7 +22,7 @@ El objetivo  del proyecto es la creación de un sistema descentralizado de gesti
 
 === Quality Goals
 
-[role="arc42help"]
+
 ****
 [options="header",cols="1,2,2"]
 |===
@@ -37,7 +37,7 @@ El objetivo  del proyecto es la creación de un sistema descentralizado de gesti
 
 === Stakeholders
 
-[role="arc42help"]
+
 ****
 [options="header",cols="1,2,2"]
 |===
@@ -48,3 +48,4 @@ El objetivo  del proyecto es la creación de un sistema descentralizado de gesti
 | _Desarrolladores de software_ | Estudiantes que se encargarán de desarrollar la aplicación | Esperan aprender nuevas tecnologías como es SOLID y no ceñirse solo a ciertas tecnologías que podrían caer en desuso.
 Otra expectativa es reforzar la capacidad de trabajar en grupo que nos ayudará a adaptarnos más fácilmente en las empresas
 |===
+****

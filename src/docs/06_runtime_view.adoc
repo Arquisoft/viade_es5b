@@ -33,11 +33,11 @@ There are many notations for describing scenarios, e.g.
 ****
 
 
-=== <Iniciar sesión>
+=== Iniciar sesión
 
 image:inicioSesion.png[inicioSesionDiagrama]
 
-=== <Crear ruta>
+=== Crear ruta
 
 . Click en "Añadir ruta" en la barra de navegación.
 . Rellenar los campos sobre información de la nueva ruta.
@@ -55,7 +55,7 @@ App -> BBDD: Guarda la ruta en el POD
 App -> Usuario: Mensaje de "Ruta guardada"
 ----
 
-=== <Ver rutas>
+=== Ver rutas
 
 - Click en "Ver rutas" en la barra de navegación.
 
@@ -67,7 +67,7 @@ BBDD -> App: Devuelve las rutas
 App -> Usuario: Devuelve la vista con las rutas del usuario
 ----
 
-=== <Eliminar ruta>
+=== Eliminar ruta
 
 . Click en "Ver rutas" en la barra de navegación.
 . Escoger la ruta a eliminar.
@@ -83,7 +83,7 @@ Usuario -> App: Escoge la ruta a eliminar y pulsa el botón "Eliminar"
 App -> BBDD: Elimina la ruta del POD
 App -> Usuario: Mensaje de "Ruta eliminada"
 ----
-=== <Modificar ruta>
+=== Modificar ruta
 
 . Click en "Ver rutas" en la barra de navegación.
 . Escoger la ruta a modificar.
@@ -103,6 +103,9 @@ App -> Usuario: Devuelve la vista con el formulario de Modificar ruta y los camp
 Usuario -> App: Modifica los campos del formulario y pulsa el botón "Editar"
 App -> BBDD: Modifica los campos de la ruta en el POD
 ----
+
+
+
 
 
 
