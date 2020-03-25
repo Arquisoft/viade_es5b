@@ -1,7 +1,7 @@
 import React from 'react';
 import { render,cleanup } from "@testing-library/react";
 import { BrowserRouter as Router } from 'react-router-dom';
-import AuthNavBar from './auth-nav-bar.component';
+import AuthNavBar from '../front-end/components/AuthNavBar/auth-nav-bar.component';
 
 describe.only('AuthNavBar', () => {
   afterAll(cleanup);

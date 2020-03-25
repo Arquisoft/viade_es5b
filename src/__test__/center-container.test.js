@@ -1,5 +1,5 @@
 import React from 'react';
-import CenterContainer from './center-container.component';
+import CenterContainer from '../front-end/components/authentication/utils/CenterContainer/center-container.component';
 import { act } from 'react-dom/test-utils';
 import ReactDOM from 'react-dom';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeMessageComponent from './HomeLogin';
+import HomeMessageComponent from '../front-end/components/authentication/login/HomeLogin';
 import { act } from 'react-dom/test-utils';
 import ReactDOM from 'react-dom';
 

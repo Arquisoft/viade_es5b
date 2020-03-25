@@ -1,5 +1,5 @@
 import React from 'react';
-import ProviderItem from './provider.item.component';
+import ProviderItem from '../front-end/components/authentication/children/ProviderItem/provider.item.component';
 import { act } from 'react-dom/test-utils';
 import ReactDOM from 'react-dom';
 

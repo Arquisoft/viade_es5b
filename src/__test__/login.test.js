@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { RegisterComponent } from './RegisterComponente';
+import LoginComponent from '../front-end/components/authentication/login/Login';
 import { act } from 'react-dom/test-utils';
 import ReactDOM from 'react-dom';
 
@@ -16,21 +16,19 @@ beforeEach(() => {
     container = null;
   });
 
-it('Register', () => {
-
+it('Login', () => {
   act(() => {
     ReactDOM.render(<Router>
-      <RegisterComponent providers={[]} />
+      <LoginComponent />
     </Router>, container);
   });
 
   expect(container).toBeTruthy();
 
-  expect(container.querySelector('.register-wrapper')).toBeTruthy();
-  expect(container.querySelector('.panel-header')).toBeTruthy();
-  expect(container.querySelector('.register-panel')).toBeTruthy();
+  expect(container.querySelector('.login-panel')).toBeTruthy();
   expect(container.querySelector('.panel-body')).toBeTruthy();
-  expect(container.querySelector('.actions')).toBeTruthy();
 
-  expect(container.querySelector('.title')).toBeTruthy();
+  expect(container.querySelector('h1')).toBeTruthy();
+
+  expect(container.querySelector('.solid-provider-login-component')).toBeTruthy();
 });
