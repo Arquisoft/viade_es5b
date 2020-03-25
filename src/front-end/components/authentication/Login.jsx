@@ -8,8 +8,8 @@ export const LogInComponent = () => {
       <h1>Login en Viade</h1>
       <ProviderLogin
         //className="provider-login-component"
-        callbackUri={`${window.location.origin}/#/`}
-        //callbackUri="/"
+        callbackUri={`${window.location.origin}/viade_es5b/#/`}
+        //callbackUri="/#/"
         selectPlaceHolder="Seleccione su proveedor"
         inputPlaceholder="Introduza la url de su webId"
         formButtonText="Login"
