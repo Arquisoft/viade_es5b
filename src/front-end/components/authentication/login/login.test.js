@@ -14,6 +14,12 @@ describe('Login', () => {
     expect(container).toBeTruthy();
   });
 
+  test('renders with styled components', () => {
+    expect(document.querySelector('.login-panel')).toBeTruthy();
+    expect(document.querySelector('.panel-body')).toBeTruthy();
+    expect(getByTestId('login-title')).toBeTruthy();
+  });
+
   test('renders title properly', () => {
     expect(getByTestId('title')).toBeTruthy();
   });
