@@ -129,11 +129,11 @@ crearRuta=e=>{
               </div>  
               <div className="form-group">
                 <label>Latitud del hito:</label>
-                <input disabled={this.state.formulario2} className="form-control" placeholder="300" type="number" name="latitudHito" value={this.state.latitudHito} onChange={this.onChange}/>
+                <input disabled={this.state.formulario2} className="form-control" placeholder="300" type="text" name="latitudHito" value={this.state.latitudHito} onChange={this.onChange}/>
               </div>
               <div className="form-group">
                 <label>Longitud del hito:</label>
-                <input disabled={this.state.formulario2} className="form-control" placeholder="200" type="number" name="longitudHito" value={this.state.longitudHito} onChange={this.onChange}/>
+                <input disabled={this.state.formulario2} className="form-control" placeholder="200" type="text" name="longitudHito" value={this.state.longitudHito} onChange={this.onChange}/>
               </div>
               <button type="submit" className="btn btn-primary">Añadir hito</button>
         </form>
