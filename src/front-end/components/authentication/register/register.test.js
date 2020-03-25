@@ -1,5 +1,4 @@
 import React from 'react';
-import { render,cleanup } from "@testing-library/react";
 import { BrowserRouter as Router } from 'react-router-dom';
 import { RegisterComponent } from './RegisterComponente';
 import { act } from 'react-dom/test-utils';
@@ -18,7 +17,6 @@ beforeEach(() => {
   });
 
 it('Register', () => {
-  //afterAll(cleanup);
 
   act(() => {
     ReactDOM.render(<Router>
@@ -35,22 +33,4 @@ it('Register', () => {
   expect(container.querySelector('.actions')).toBeTruthy();
 
   expect(container.querySelector('.title')).toBeTruthy();
-
- /* const { container, getByTestId } = render(
-    <Router>
-      <RegisterComponent t={key => key} providers={[]} />
-    </Router>
-  );*/
-
-  /*test('renders without crashing', () => {
-    
-  });
-
-  test('renders with styled components', () => {
-    
-  });
-
-  test('renders title properly', () => {
-    
-  });*/
 });
