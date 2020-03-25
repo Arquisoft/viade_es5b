@@ -14,6 +14,7 @@ export default class BackMain {
         deleteRoute(uuid)
     };
     static añadirAmigo(uuid){
-
-    }
+        addFriend(uuid);
+    };
+    
 }
