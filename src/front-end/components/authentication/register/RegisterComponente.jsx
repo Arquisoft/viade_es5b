@@ -74,11 +74,11 @@ class RegisterComponent extends Component<Props, State> {
     return (
       <GradientBackground>
         <CenterContainer>
-          <RegisterWrapper data-testid="register-wrapper">
-            <h1 data-testid="title">Sign up en Viade</h1>
+          <RegisterWrapper className="register-wrapper">
+            <h1 className="title">Sign up en Viade</h1>
             <form onSubmit={this.onSubmit}>
             <RegisterPanel className="register-panel">
-                <PanelHeader className="panel-header" data-testid="panel-header">
+                <PanelHeader className="panel-header">
                   <h2>Selecciona proveedor</h2>
                   <div className="progress-bar" />
                 </PanelHeader>

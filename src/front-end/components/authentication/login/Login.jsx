@@ -8,11 +8,11 @@ export const LogInComponent = () =>{
     return(
         <LoginWrapper data-testid="login-wrapper">
             <CenterContainer>
-            <h1 data-testid="title">Login en Viade</h1>
+            <h1>Login en Viade</h1>
             <LoginPanel className="login-panel">
             <PanelBody className="panel-body">
             <ProviderLogin
-                class="solid-provider-login-component"
+                className="solid-provider-login-component"
                 callbackUri={`${window.location.origin}/viade_es5b`}
                 selectPlaceHolder = "Seleccione su proveedor"
                 inputPlaceholder = "Introduza la url de su webId"
