@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { HashRouter as Router, Switch } from "react-router-dom";
-import LogInComponent from "./front-end/components/authentication/Login";
-import RegisterContainer from "./front-end/components/authentication/RegistroContainer";
+import LogInComponent from "./front-end/components/authentication/login/Login";
+import RegisterContainer from "./front-end/components/authentication/register/RegistroContainer";
 import Home from "./front-end/components/Home";
 import AddRuta from "./front-end/components/ruta/AddRuta";
 import VerRutas from "./front-end/components/ruta/VerRutas/VerRutas";
