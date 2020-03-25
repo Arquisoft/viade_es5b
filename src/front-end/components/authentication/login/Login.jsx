@@ -1,13 +1,18 @@
 import React from "react";
 import {ProviderLogin} from "@inrupt/solid-react-components";
-import  Provider  from "../../services/authentication/Proveedor";
+import  Provider  from "../../../services/authentication/Proveedor";
+import { LoginWrapper, LoginPanel, PanelBody } from './login.style';
+import  CenterContainer  from '../utils/CenterContainer/center-container.component';
 
 export const LogInComponent = () =>{
     return(
-        <div>
+        <LoginWrapper data-testid="login-wrapper">
+            <CenterContainer>
             <h1>Login en Viade</h1>
+            <LoginPanel className="login-panel">
+            <PanelBody className="panel-body">
             <ProviderLogin
-                //className="provider-login-component"
+                className="solid-provider-login-component"
                 callbackUri={`${window.location.origin}/viade_es5b`}
                 selectPlaceHolder = "Seleccione su proveedor"
                 inputPlaceholder = "Introduza la url de su webId"
@@ -22,8 +27,10 @@ export const LogInComponent = () =>{
                 }}
                 providers={Provider.getIdentityProviders()}
             />
-        </div>
+             </PanelBody>
+        </LoginPanel>
+        </CenterContainer>
+    </LoginWrapper>
     );
-
 };
 export default LogInComponent;
