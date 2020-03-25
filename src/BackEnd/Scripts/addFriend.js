@@ -1,4 +1,4 @@
-import { space, rdf, schema } from 'rdf-namespaces';
+import { space, schema } from 'rdf-namespaces';
 import { fetchDocument, createDocument } from 'tripledoc';
 
 const auth = require('solid-auth-client')
