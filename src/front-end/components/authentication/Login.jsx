@@ -5,9 +5,9 @@ import  Provider  from "../../services/authentication/Proveedor";
 export const LogInComponent = () =>{
     return(
         <div>
-            <h1>Login en Viade</h1>
+            <h1 data-testid="title">Login en Viade</h1>
             <ProviderLogin
-                //className="provider-login-component"
+                className="provider-login-component"
                 callbackUri={`${window.location.origin}/viade_es5b`}
                 selectPlaceHolder = "Seleccione su proveedor"
                 inputPlaceholder = "Introduza la url de su webId"
