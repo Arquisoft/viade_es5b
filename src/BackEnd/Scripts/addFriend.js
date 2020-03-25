@@ -14,8 +14,6 @@ export async function addFriend(newFriend) {
 
 }
 
-//https://github.com/solid/solidproject.org/blob/staging/_posts/for-developers/apps/first-app/2019-01-01-04_data-model.md
-//https://vincenttunru.gitlab.io/tripledoc/
 async function newDocument(webId, friend) {
 
     const profileDocument = await fetchDocument(webId);
