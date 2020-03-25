@@ -3,11 +3,6 @@ import { fetchDocument, createDocument } from 'tripledoc';
 
 const auth = require('solid-auth-client')
 
-
-
-
-
-
 export async function addFriend(newFriend) {
     let session = await auth.currentSession();
     if (!session) { window.location.href = "/login"; }
@@ -39,33 +34,20 @@ async function insertData(webId, friendsRoute, friend) {
     const profileDocument = await fetchDocument(webId);
     const routeDocument = await fetchDocument(profileDocument.getSubject(webId).getRef(space.storage) + friendsRoute);
 
-    if(friend.getInicio())
-    {
-        for(var i=0;i<=friend.getHitos().length;i++)
-        {
-            // Initialise the new Subject:
-            const newPoint = routeDocument.addSubject({
-                identifier: friend,
-                identifierPrefix: 'Name:'
-            });
-            newPoint.addRef(rdf.type, 'http://arquisoft.github.io/viadeSpec/points');
-            await routeDocument.save([newPoint]);
-        }
-    }
 
     // Initialise the new Subject:
-    const newRoute = routeDocument.addSubject({
-        identifier: 'ruta'
+    const newFriend = routeDocument.addSubject({
+        identifier: friend,
+        identifierPrefix: 'Name:'
     });
+    //Guardar
+    await routeDocument.save([newFriend]);
 
-    // Indicate that the Subject is a schema:TextDigitalDocument:
-    newRoute.addRef(rdf.type, 'http://arquisoft.github.io/viadeSpec/route');
-  
-    newRoute.addString(schema.name, friend.getNombre());
-    newRoute.addString(schema.description, friend.getDescripcion());
-    newRoute.addString(schema.identifier, friend.getUUID());
-    newRoute.addRef('http://arquisoft.github.io/viadeSpec/points','http://arquisoft.github.io/viadeSpec/points');
-
-    await routeDocument.save([newRoute]);
+    // Initialise the new Subject:
+    const saveNewFeiend = routeDocument.addSubject({
+        identifier: 'friend'
+    });
+    saveNewFeiend.addString(schema.name, friend);
+    await routeDocument.save([saveNewFeiend]);
 }
 
