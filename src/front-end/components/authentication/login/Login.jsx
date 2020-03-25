@@ -32,6 +32,5 @@ export const LogInComponent = () =>{
         </CenterContainer>
     </LoginWrapper>
     );
-
 };
 export default LogInComponent;

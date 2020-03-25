@@ -26,7 +26,7 @@ class RegisterComponent extends Component<Props, State> {
     this.state = {
       canContinue: false,
       register: {
-        provider: ''
+        provider: ""
       }
     };
   }
@@ -124,48 +124,6 @@ class RegisterComponent extends Component<Props, State> {
           </CenterContainer>
       </GradientBackground>
     );
-
-   /* return (
-      <div>
-            <h1 data-testid="title">Sign up en Viade</h1>
-            <form data-testid="onSubmit" onSubmit={this.onSubmit}>
-                  <h2>Selecciona proveedor</h2>
-                  <div className="progress-bar" />
-                  <Fragment >
-                    <a
-                      href="https://solid.inrupt.com/how-it-works"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      ¿Que es un proveedor?
-                    </a>
-                    <Link to="/login" className="a-with-spacing">
-                      LogIn
-                    </Link>
-                    <ul>
-                      {providers.map(providerData => (
-                        <ProviderItem
-                          data={providerData}
-                          key={providerData.id}
-                          onSelect={this.selectProvider}
-                          radioName="providerRadio"
-                          id={`radio-${providerData.id}`}
-                          checked={providerData.registerLink === provider}
-                        />
-                      ))}
-                    </ul>
-                  </Fragment>
-                  <button
-                    className="btn-solid"
-                    onClick={this.next}
-                    type="submit"
-                    disabled={!canContinue}
-                  >
-                    Continuar
-                  </button>
-            </form>
-      </div>
-    );*/
   }
 }
 
