@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import HomeLogin from "./authentication/HomeLogin";
+import HomeLogin from "./authentication/login/HomeLogin";
 
 class Home extends Component {
   render() {

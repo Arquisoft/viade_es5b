@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import  ProviderItem  from './children/ProviderItem/provider.item.component';
+import  ProviderItem  from '../children/ProviderItem/provider.item.component';
+import { RegisterWrapper,RegisterPanel, PanelHeader, PanelBody, Actions } from './register.style';
+import GradientBackground from '../utils/GradientBackground/gradient-background.component';
+import CenterContainer from '../utils/CenterContainer/center-container.component';
 
 type Provider = {};
 
@@ -69,12 +72,66 @@ class RegisterComponent extends Component<Props, State> {
     const { providers } = this.props;
 
     return (
-      <div>
-            <h1>Sign up en Viade</h1>
+      <GradientBackground>
+        <CenterContainer>
+          <RegisterWrapper data-testid="register-wrapper">
+            <h1 data-testid="title">Sign up en Viade</h1>
             <form onSubmit={this.onSubmit}>
+            <RegisterPanel className="register-panel">
+                <PanelHeader className="panel-header" data-testid="panel-header">
                   <h2>Selecciona proveedor</h2>
                   <div className="progress-bar" />
+                </PanelHeader>
+                <PanelBody className="panel-body">
                   <Fragment>
+                    <a
+                      href="https://solid.inrupt.com/how-it-works"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      ¿Que es un proveedor?
+                    </a>
+                    <Link to="/login" className="a-with-spacing">
+                      LogIn
+                    </Link>
+                    <ul>
+                      {providers.map(providerData => (
+                        <ProviderItem
+                          data={providerData}
+                          key={providerData.id}
+                          onSelect={this.selectProvider}
+                          radioName="providerRadio"
+                          id={`radio-${providerData.id}`}
+                          checked={providerData.registerLink === provider}
+                        />
+                      ))}
+                    </ul>
+                  </Fragment>
+                </PanelBody>
+                <Actions className="actions">
+                  <button
+                    className="btn-solid"
+                    onClick={this.next}
+                    type="submit"
+                    disabled={!canContinue}
+                  >
+                    Continuar
+                  </button>
+                </Actions>
+                </RegisterPanel>
+            </form>
+          </RegisterWrapper>
+          </CenterContainer>
+      </GradientBackground>
+    );
+
+   /* return (
+      <div>
+            <h1 data-testid="title">Sign up en Viade</h1>
+            <form data-testid="onSubmit" onSubmit={this.onSubmit}>
+                  <h2>Selecciona proveedor</h2>
+                  <div className="progress-bar" />
+                  <Fragment >
                     <a
                       href="https://solid.inrupt.com/how-it-works"
                       target="_blank"
@@ -108,7 +165,7 @@ class RegisterComponent extends Component<Props, State> {
                   </button>
             </form>
       </div>
-    );
+    );*/
   }
 }
 

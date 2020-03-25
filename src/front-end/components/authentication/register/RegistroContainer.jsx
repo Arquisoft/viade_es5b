@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {RegisterComponent} from './RegisterComponente';
-import  Provider  from '../../services/authentication/Proveedor';
+import  Provider  from '../../../services/authentication/Proveedor';
 
 type Props = {};
 
