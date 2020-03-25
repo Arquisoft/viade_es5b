@@ -19,7 +19,7 @@ class RouteCard extends Component {
     return (
       <Card>
         <Card.Header>
-          <h3>{this.props.ruta.getNombre()}</h3>
+          <h3 data-testid="r-title">{this.props.ruta.getNombre()}</h3>
           <Button
             variant="success"
             className="mr-2"
@@ -41,7 +41,9 @@ class RouteCard extends Component {
             <Row>
               <Col md="auto">
                 <Card.Title>Descripción</Card.Title>
-                <Card.Text>{this.props.ruta.getDescripcion()}</Card.Text>
+                <Card.Text data-testid="r-description">
+                  {this.props.ruta.getDescripcion()}
+                </Card.Text>
                 <Card.Title>Hitos</Card.Title>
                 <Table striped bordered hover>
                   <thead>
@@ -51,7 +53,7 @@ class RouteCard extends Component {
                       <th>Longitud</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody data-testid="r-hitos">
                     {this.props.ruta.getHitos().map((h, key) => (
                       <tr key={key++}>
                         <td>{key === 1 ? <b>Inicio</b> : h.getNombre()}</td>
