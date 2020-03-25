@@ -14,6 +14,7 @@ class RouteList extends Component {
   }
 
   async componentDidMount() {
+    console.log("MONTANDOO");
     const response = await this.props.rutas;
     this.setState({ rutas: response });
     if (this.state.rutas.length === 0) this.setState({ noRoutes: true });
@@ -43,11 +44,30 @@ class RouteList extends Component {
     );
   }
 
-  handleDeleteRoute = async uuid => {
-    await this.service.deleteRuta(uuid);
-    const rutas = await this.service.getRutas();
-    this.setState({ rutas: rutas });
+  handleDeleteRoute = uuid => {
+    this.service.deleteRuta(uuid);
   };
+
+  /*
+  handleDeleteRoute = uuid => {
+    let promise = new Promise((resolve, reject) => {
+      this.deleteRoute(uuid).then(() => {
+        let rutas = this.service.getRutas();
+        resolve(rutas);
+      });
+    });
+
+    promise.then(rutas => this.setState({ rutas: rutas }));
+  };
+
+  deleteRoute = uuid => {
+    let promise = new Promise((resolve, reject) => {
+      this.service.deleteRuta(uuid);
+      resolve();
+    });
+    return promise;
+  };
+  */
 }
 
 export default RouteList;
