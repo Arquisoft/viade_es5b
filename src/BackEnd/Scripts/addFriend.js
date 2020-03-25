@@ -6,7 +6,7 @@ const auth = require('solid-auth-client')
 export async function addFriend(newFriend) {
     let session = await auth.currentSession();
     if (!session) { window.location.href = "/login"; }
-    const friendsRoute = 'private/friends/' + amigo.nombre + '.ttl';
+    const friendsRoute = 'private/friends/' + newFriend.nombre + '.ttl';
     const webId = session.webId;
 
     await newDocument(webId, friendsRoute);
