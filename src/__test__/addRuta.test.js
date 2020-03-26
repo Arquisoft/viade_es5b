@@ -11,8 +11,8 @@ import AddRuta from "../front-end/components/ruta/AddRuta";
 //PRUEBAS PARA EL FORMULARIO DE AÑADIR RUTA
 test("Comprobar que se visualizan los encabezados del formulario para añadir una ruta", () => {
     const { getByTestId } = render(<AddRuta ></AddRuta>);
-    expect(getByTestId("titleAñadir")).toHaveTextContent("Añadir rutas:");
-    expect(getByTestId("lugarInicio")).toHaveTextContent("Lugar de inicio:");
+    expect(getByTestId("titleAñadirRuta")).toHaveTextContent("Añadir rutas:");
+    expect(getByTestId("titlelugarInicio")).toHaveTextContent("Lugar de inicio:");
 });
 
 test("Comprobar que se visualizan las etiquetas del formulario para añadir una ruta", () => {
@@ -24,10 +24,29 @@ test("Comprobar que se visualizan las etiquetas del formulario para añadir una 
     expect(getByTestId("e-descripcionRuta")).toHaveTextContent("Descripción de la ruta:");
 });
 
-test("Comprobar que se visualiza el botón para añadir una ruta", () => {
+test("Comprobar que se visualiza el botón para añadir/guardar una ruta", () => {
     const { getByTestId } = render(<AddRuta ></AddRuta>);
-    expect(getByTestId("addButton")).toHaveTextContent("Añadir ruta");
+    expect(getByTestId("addRouteButton")).toHaveTextContent("Añadir ruta");
+    expect(getByTestId("saveRouteButton")).toHaveTextContent("Guardar ruta");
 });
 
 
 //PRUEBAS PARA EL FORMULARIO DE AÑADIR HITO
+test("Comprobar que se visualizan los encabezados del formulario para añadir un hito", () => {
+    const { getByTestId } = render(<AddRuta ></AddRuta>);
+    expect(getByTestId("titleAñadirHito")).toHaveTextContent("Añadir hitos para la ruta:");
+
+});
+
+test("Comprobar que se visualizan las etiquetas del formulario para añadir un hito", () => {
+    const { getByTestId } = render(<AddRuta ></AddRuta>);
+
+    expect(getByTestId("e-nombreHito")).toHaveTextContent("Nombre del hito:");
+    expect(getByTestId("e-latitudHito")).toHaveTextContent("Latitud del hito:");
+    expect(getByTestId("e-longitudHito")).toHaveTextContent("Longitud del hito:");
+});
+
+test("Comprobar que se visualiza el botón para añadir un hito", () => {
+    const { getByTestId } = render(<AddRuta ></AddRuta>);
+    expect(getByTestId("addHitoButton")).toHaveTextContent("Añadir hito");
+});
