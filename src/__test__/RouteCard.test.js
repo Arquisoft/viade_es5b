@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import RouteCard from "../front-end/components/ruta/VerRutas/RouteCard";
 import Ruta from "../front-end/model/Ruta";
 import Hito from "../front-end/model/Hito";
-import { render } from "@testing-library/react";
+import { render, waitForElement } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 // Ruta de prueba
@@ -60,3 +60,5 @@ test("RouteCard contiene la información del inicio y los hitos de la ruta.", ()
     }
   }
 });
+
+test("Al hacer click en Ver en el map se muestra el componente MapRuta", async () => {});
