@@ -14,7 +14,6 @@ class RouteList extends Component {
   }
 
   async componentDidMount() {
-    console.log("MONTANDOO");
     const response = await this.props.rutas;
     this.setState({ rutas: response });
     if (this.state.rutas.length === 0) this.setState({ noRoutes: true });
