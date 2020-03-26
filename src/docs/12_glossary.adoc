@@ -22,3 +22,23 @@ A table with columns <Term> and <Definition>.
 Potentially more columns in case you need translations.
 
 ****
+
+[cols="2*"]
+Glosario
+|===
+|Solid | Conjunto de especificaciones modulares que se basan y amplían la tecnología de fundación de la red mundial (HTTP, REST, HTML).
+|React | Biblioteca de JavaScript para construir interfaces de usuario
+|POD | Espacio de almacenamiento personal interoperable entre las diferentes aplicaciones.
+|Ruta | Recorrido definido por un inicio y una serie de hitos.
+|Hito | Punto carácterístico que ayuda a formar una ruta.
+|Stakeholders |  Personas u organizaciones afectadas por las actividades y las decisiones de una empresa.
+|DOM real | Representación de la interfaz gráfica de nuestra aplicación.
+|DOM virtual |  Representación en memoria del DOM real que actúa de intermediario entre el estado de la aplicación.
+|Git | Sistema de control de versiones distribuido gratuito y de código abierto.
+|Arc42 | Conjunto de plantillas (Creative-Commons Sharealike) para describir una arquitectura software.
+|API | Conjunto de definiciones y protocolos que se utiliza para desarrollar e integrar el software de las aplicaciones.
+|WebID | Identificador que perite a los servicios de Internet y a los usuarios saber con quién se comunican.
+|JSX | Extensión de JavaScript creada por Facebook para el uso con su librería React.
+|CRUD | Acrónimo de crear, leer, actualizar y borrar. Las cuatro funciones básicas de la persistencia de Bases de Datos.
+|Protocolo HTTP | Protocolo de comunicación que permite las transferencias de información en la World Wide Web.
+
