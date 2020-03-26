@@ -76,10 +76,11 @@ class RouteCard extends Component {
               <Col>
                 {this.state.loaded && (
                   <div
+                    data-testid="mapa"
                     id={`mapa-${this.props.ruta.getNombre()}`}
                     className="ml-3 mb-3"
                   >
-                    <MapRuta data-testid="mapa" ruta={this.props.ruta} />
+                    <MapRuta ruta={this.props.ruta} />
                   </div>
                 )}
               </Col>

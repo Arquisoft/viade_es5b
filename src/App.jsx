@@ -19,7 +19,7 @@ class App extends Component {
     //BackMain.añadirAmigo("https://pedro223.inrupt.net/profile/card#me");
     //BackMain.listarAmigos();
     return (
-      <div>
+      <div data-testid="aplicacion">
         <Router>
           <div>
             <Switch>
