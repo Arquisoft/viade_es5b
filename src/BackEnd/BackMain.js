@@ -16,9 +16,8 @@ export default class BackMain {
     static listarAmigos() {
         return listFriends()
     };
-    //No usar
-    static añadirAmigo(uuid){
-        addFriend(uuid);
+    static añadirAmigo(friendWebId,friendAlias){
+        return addFriend(friendWebId,friendAlias);
     };
     
 }
