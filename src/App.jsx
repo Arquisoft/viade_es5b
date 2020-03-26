@@ -16,7 +16,7 @@ class App extends Component {
     //BackMain.añadirRuta(new Ruta('ruta 2',{nombre: 'primer puntoj', latitud: 989.8, longitud: -288.6},'mi segunda ruta',[{nombre: 'primer hito', latitud: -36666, longitud: -3838},{nombre: 'segundo hito', latitud: -77777, longitud: 88888}]));
     //BackMain.listarRutas();
     return (
-      <div>
+      <div data-testid="aplicacion">
         <Router>
           <div>
             <Switch>
