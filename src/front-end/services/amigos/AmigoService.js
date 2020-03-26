@@ -32,6 +32,13 @@ class AmigoService {
     //return BackMain.listarAmigos();
     return this.BDAmigos;
   }
+    /*
+   * Añade un amigo al mi perfil (alias es un nombre que le doy yo al amigo, no tiene porque ser el suyo)
+   * si logro añadirlo devuelve true, sino false;
+   */
+  addAmigo(webId,alias){
+    return BackMain.añadirAmigo(webId,alias);
+  }
 
 }
 
