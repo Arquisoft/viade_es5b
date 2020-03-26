@@ -54,13 +54,18 @@ export async function listRoutes() {
         );
         ruta.setUUID(route.getString(schema.identifier));
 
-        for (var e = 1; e < puntos.length; e++)
-        {
-                ruta.addHito(new Hito(puntos[e].getString(schema.name),puntos[e].getDecimal(schema.latitude),puntos[e].getDecimal(schema.longitude)));
+        for (var e = 1; e < puntos.length; e++) {
+          ruta.addHito(
+            new Hito(
+              puntos[e].getString(schema.name),
+              puntos[e].getDecimal(schema.latitude),
+              puntos[e].getDecimal(schema.longitude)
+            )
+          );
         }
-        result=[...result,ruta];
+        result = [...result, ruta];
       }
-    };
+    }
   }
   return result;
 }
