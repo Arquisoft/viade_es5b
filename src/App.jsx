@@ -10,11 +10,14 @@ import "leaflet/dist/leaflet.css";
 import NotLoggedInLayout from "./front-end/layouts/NotLoggedInLayout/not-logged-in.layout";
 import PrivateLayout from "./front-end/layouts/PrivateLayout/private.layout";
 import PublicLayout from "./front-end/layouts/PublicLayout/public.layout";
+//import BackMain from "./BackEnd/BackMain.js";
+
 
 class App extends Component {
   render() {
     //BackMain.añadirRuta(new Ruta('ruta 2',{nombre: 'primer puntoj', latitud: 989.8, longitud: -288.6},'mi segunda ruta',[{nombre: 'primer hito', latitud: -36666, longitud: -3838},{nombre: 'segundo hito', latitud: -77777, longitud: 88888}]));
-    //BackMain.listarRutas();
+    //BackMain.añadirAmigo("https://pedro223.inrupt.net/profile/card#me");
+    //BackMain.listarAmigos();
     return (
       <div data-testid="aplicacion">
         <Router>
