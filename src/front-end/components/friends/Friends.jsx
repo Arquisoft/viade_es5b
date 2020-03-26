@@ -31,7 +31,10 @@ class Friends extends Component {
    * Será invocado cuando se agregue un nuevo amigo en el pod
    * del usuario logueado.
    */
-  handleAddFriend = v => {
+  handleAddFriend = webID => {
+    // Agregamos el nuevo amigo
+    alert(webID);
+    this.service.addAmigo(webID);
     this.setState({ amigos: this.service.getAmigos() });
   };
 }

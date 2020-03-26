@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Card, Form, InputGroup, Button } from "react-bootstrap";
 import "../../css/position.css";
+import "../../css/font-style.css";
 
 class AddFriend extends Component {
   state = {
+    value: "",
     disabled: true
   };
 
@@ -11,9 +13,8 @@ class AddFriend extends Component {
     return (
       <div className="centered-container">
         <Card style={{ width: "30rem" }} className="text-center">
-          <Card.Header></Card.Header>
+          <Card.Header className="bold">Agregar nuevo amigo</Card.Header>
           <Card.Body>
-            <Card.Title>Agregar nuevo amigo</Card.Title>
             <Card.Text>
               Para agregar un nuevo amigo, introduce su WebID.
             </Card.Text>
@@ -35,7 +36,11 @@ class AddFriend extends Component {
               </Form.Group>
               <Button
                 disabled={this.state.disabled}
-                onClick={() => this.props.handleAddFriend(this.state.valor)}
+                onClick={() =>
+                  this.props.handleAddFriend(
+                    this.state.value + "/profile/card#me"
+                  )
+                }
                 type="submit"
                 variant="success"
               >
@@ -56,6 +61,8 @@ class AddFriend extends Component {
     let string = event.target.value;
     if (string.length > 0) this.setState({ disabled: false });
     else this.setState({ disabled: true });
+    // Guardamos el valor en el estado
+    this.setState({ value: string });
   };
 }
 
