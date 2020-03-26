@@ -4,7 +4,7 @@ const auth = require('solid-auth-client')
 
 
 //Añade el usuario a amigos, si logra añadirlo devuelve true sino false.
-export async function addFriend(friendWebId,friendAlias) {
+export async function addFriend(friendWebId) {
     let session = await auth.currentSession();
     if (!session) { window.location.href = "/login"; }
 
@@ -28,16 +28,17 @@ export async function addFriend(friendWebId,friendAlias) {
     //Si no es amigo lo añado
     if(!friend)
     {
-        console.log(friendWebId+" "+friendAlias+" "+" no existe");
-        await insertData(webId,friendWebId,friendAlias);
+        console.log(friendWebId+" no existe");
+        await insertData(webId,friendWebId);
         result=true;
     }
+    console.log(result);
     return result;
 }
 
 //https://unhosted.org/using-solid/
 //https://codesandbox.io/s/peaceful-payne-su5t6?fontsize=14
-async function insertData(webId,friendWebId, alias) {
+async function insertData(webId,friendWebId) {
     const profileDocument = await fetchDocument(webId);
 
     // Inicializamos un Subject Persona:
@@ -48,7 +49,7 @@ async function insertData(webId,friendWebId, alias) {
     newFriend.addRef(rdf.type, 'http://xmlns.com/foaf/0.1/person');
 
     // Le añadimos con su alias
-    newFriend.addString('http://xmlns.com/foaf/0.1/label', alias);
+    //newFriend.addString('http://xmlns.com/foaf/0.1/label', alias);
 
     //Añadimos un nuevo Subject de que Conocemos a la Persona (es amigo)
     const newKnown = profileDocument.addSubject({

@@ -18,8 +18,8 @@ class AmigoService {
   inicializarBD() {
     console.log("------ Inicializando BDD ------");
 
-    var amigo1 = new Amigo("Pedro","Fernandez","Peter","https://pedro223.inrupt.net/profile/card#me");
-    var amigo2 = new Amigo("Alex","","","https://hamalawindows.solid.community/profile/card#me");
+    var amigo1 = new Amigo("Pedro","https://pedro223.inrupt.net/profile/card#me");
+    var amigo2 = new Amigo("Alex","https://hamalawindows.solid.community/profile/card#me");
 
     this.BDAmigos = [...this.BDAmigos, amigo1];
     this.BDAmigos = [...this.BDAmigos, amigo2];
@@ -29,15 +29,15 @@ class AmigoService {
    * Devuelve los amigos que tengo
    */
   getAmigos() {
-    //return BackMain.listarAmigos();
-    return this.BDAmigos;
+    return BackMain.listarAmigos();
+    //return this.BDAmigos;
   }
     /*
    * Añade un amigo al mi perfil (alias es un nombre que le doy yo al amigo, no tiene porque ser el suyo)
    * si logro añadirlo devuelve true, sino false;
    */
-  addAmigo(webId,alias){
-    return BackMain.añadirAmigo(webId,alias);
+  addAmigo(webId){
+    return BackMain.añadirAmigo(webId);
   }
 
 }
