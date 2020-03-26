@@ -92,6 +92,7 @@ crearRuta=e=>{
     descripcion:'',
     hitos: []
   })
+  alert ('La ruta '+ this.state.nombre+' ha sido añadida correctamente');
 }
 
   render() {
