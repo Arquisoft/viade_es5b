@@ -48,12 +48,9 @@ export async function listRoutes() {
                 ruta.setUUID(route.getString(schema.identifier));
 
 
-                for(var e in puntos)
+                for (var e = 1; e < puntos.length; e++)
                 {
-                    if(e!==0)
-                    {
                         ruta.addHito(new Hito(puntos[e].getString(schema.name),puntos[e].getDecimal(schema.latitude),puntos[e].getDecimal(schema.longitude)));
-                    }
                 }
                 result=[...result,ruta];
             }
