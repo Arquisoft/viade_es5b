@@ -17,9 +17,10 @@ export async function addFriend(friendWebId) {
     var friends = profile.getAllNodeRefs("http://xmlns.com/foaf/0.1/knows");
     for (var i = 0; i < friends.length; i += 1) {
         if (friends[i] === friendWebId) {
-        console.log(friends[i] + " vs " + friendWebId);
-        friend = true;
+          friend = true;
         }
+        console.log(friends[i] + " vs " + friendWebId);
+      }
         //Si no es amigo lo añado
         if(!friend)
         {
@@ -29,7 +30,7 @@ export async function addFriend(friendWebId) {
         }
         console.log(result);
         return result;
-    }
+    
 }
 
 //https://unhosted.org/using-solid/
