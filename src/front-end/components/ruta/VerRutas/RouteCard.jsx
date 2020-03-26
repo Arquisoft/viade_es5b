@@ -54,9 +54,16 @@ class RouteCard extends Component {
                     </tr>
                   </thead>
                   <tbody data-testid="r-hitos">
+                    <tr>
+                      <td>
+                        <b>Inicio</b>
+                      </td>
+                      <td>{this.props.ruta.getInicio()[0]}</td>
+                      <td>{this.props.ruta.getInicio()[1]}</td>
+                    </tr>
                     {this.props.ruta.getHitos().map((h, key) => (
                       <tr key={key++}>
-                        <td>{key === 1 ? <b>Inicio</b> : h.getNombre()}</td>
+                        <td>{h.getNombre()}</td>
                         <td>{h.getLat()}</td>
                         <td>{h.getLong()}</td>
                       </tr>
