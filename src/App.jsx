@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
-import LogInComponent from "./front-end/components/authentication/Login";
-import RegisterContainer from "./front-end/components/authentication/RegistroContainer";
+import { HashRouter as Router, Switch } from "react-router-dom";
+import LogInComponent from "./front-end/components/authentication/login/Login";
+import RegisterContainer from "./front-end/components/authentication/register/RegistroContainer";
 import Home from "./front-end/components/Home";
 import AddRuta from "./front-end/components/ruta/AddRuta";
 import VerRutas from "./front-end/components/ruta/VerRutas/VerRutas";
@@ -17,17 +17,26 @@ class App extends Component {
     //BackMain.listarRutas();
     return (
       <div>
-        <Router basename="/viade_es5b">
+        <Router>
           <div>
             <Switch>
               <PublicLayout exact path="/" component={Home} />
               <PrivateLayout
+                exact
                 path="/ver-rutas"
                 component={VerRutas}
               ></PrivateLayout>
-              <PrivateLayout path="/add-ruta" component={AddRuta} />
-              <NotLoggedInLayout path="/login" component={LogInComponent} />
-              <NotLoggedInLayout path="/signup" component={RegisterContainer} />
+              <PrivateLayout exact path="/add-ruta" component={AddRuta} />
+              <NotLoggedInLayout
+                exact
+                path="/login"
+                component={LogInComponent}
+              />
+              <NotLoggedInLayout
+                exact
+                path="/signup"
+                component={RegisterContainer}
+              />
             </Switch>
           </div>
         </Router>

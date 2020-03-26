@@ -26,8 +26,7 @@ class RouteList extends Component {
         {this.state.noRoutes && (
           <Alert variant="warning">
             Actualmente no dispones de ninguna ruta en tu POD. Accede a
-            <a href="/viade_es5b/add-ruta"> Añadir Ruta </a> para añadir una
-            nueva ruta.
+            <a href="#/add-ruta"> Añadir Ruta </a> para añadir una nueva ruta.
           </Alert>
         )}
         {!this.state.noRoutes &&
@@ -43,11 +42,30 @@ class RouteList extends Component {
     );
   }
 
-  handleDeleteRoute = async uuid => {
-    await this.service.deleteRuta(uuid);
-    const rutas = await this.service.getRutas();
-    this.setState({ rutas: rutas });
+  handleDeleteRoute = uuid => {
+    this.service.deleteRuta(uuid);
   };
+
+  /*
+  handleDeleteRoute = uuid => {
+    let promise = new Promise((resolve, reject) => {
+      this.deleteRoute(uuid).then(() => {
+        let rutas = this.service.getRutas();
+        resolve(rutas);
+      });
+    });
+
+    promise.then(rutas => this.setState({ rutas: rutas }));
+  };
+
+  deleteRoute = uuid => {
+    let promise = new Promise((resolve, reject) => {
+      this.service.deleteRuta(uuid);
+      resolve();
+    });
+    return promise;
+  };
+  */
 }
 
 export default RouteList;
