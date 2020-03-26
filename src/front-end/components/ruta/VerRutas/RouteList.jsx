@@ -20,9 +20,8 @@ class RouteList extends Component {
   }
 
   render() {
-    console.log(this.state.rutas);
     return (
-      <Accordion defaultActiveKey="0">
+      <Accordion data-testid="acordeon" defaultActiveKey="0">
         {this.state.noRoutes && (
           <Alert variant="warning">
             Actualmente no dispones de ninguna ruta en tu POD. Accede a

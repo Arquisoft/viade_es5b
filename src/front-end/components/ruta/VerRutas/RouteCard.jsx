@@ -21,6 +21,7 @@ class RouteCard extends Component {
         <Card.Header>
           <h3 data-testid="r-title">{this.props.ruta.getNombre()}</h3>
           <Button
+            data-testid="rb-ver"
             variant="success"
             className="mr-2"
             onClick={this.handleViewInMap}
@@ -28,6 +29,7 @@ class RouteCard extends Component {
             Ver en el mapa
           </Button>
           <Button
+            data-testid="rb-eliminar"
             variant="danger"
             className="mr-2"
             onClick={() => this.props.handleDelete(this.props.ruta.getUUID())}
@@ -77,7 +79,7 @@ class RouteCard extends Component {
                     id={`mapa-${this.props.ruta.getNombre()}`}
                     className="ml-3 mb-3"
                   >
-                    <MapRuta ruta={this.props.ruta} />
+                    <MapRuta data-testid="mapa" ruta={this.props.ruta} />
                   </div>
                 )}
               </Col>
