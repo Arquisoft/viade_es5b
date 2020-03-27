@@ -8,6 +8,14 @@ import "@testing-library/jest-dom";
 import AddRuta from "../front-end/components/ruta/AddRuta";
 
 
+
+//Componente AddRuta
+test("Comprobar que se renderiza sin fallos el componente AddRuta", () => {
+    const div = document.createElement("div");
+    const { getByTestId } = render(<AddRuta ></AddRuta>, div);
+    
+});
+
 //PRUEBAS PARA EL FORMULARIO DE AÑADIR RUTA
 test("Comprobar que se visualizan los encabezados del formulario para añadir una ruta", () => {
     const { getByTestId } = render(<AddRuta ></AddRuta>);
@@ -31,6 +39,8 @@ test("Comprobar que se visualiza el botón para añadir/guardar una ruta", () =>
 });
 
 
+
+
 //PRUEBAS PARA EL FORMULARIO DE AÑADIR HITO
 test("Comprobar que se visualizan los encabezados del formulario para añadir un hito", () => {
     const { getByTestId } = render(<AddRuta ></AddRuta>);
@@ -50,3 +60,4 @@ test("Comprobar que se visualiza el botón para añadir un hito", () => {
     const { getByTestId } = render(<AddRuta ></AddRuta>);
     expect(getByTestId("addHitoButton")).toHaveTextContent("Añadir hito");
 });
+
