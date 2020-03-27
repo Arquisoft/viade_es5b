@@ -12,10 +12,12 @@ import PrivateLayout from "./front-end/layouts/PrivateLayout/private.layout";
 import PublicLayout from "./front-end/layouts/PublicLayout/public.layout";
 import Friends from "./front-end/components/friends/Friends";
 //import BackMain from "./BackEnd/BackMain.js";
+//import Ruta from "./front-end/model/Ruta";
+
 
 class App extends Component {
   render() {
-    //BackMain.añadirRuta(new Ruta('ruta 2',{nombre: 'primer puntoj', latitud: 989.8, longitud: -288.6},'mi segunda ruta',[{nombre: 'primer hito', latitud: -36666, longitud: -3838},{nombre: 'segundo hito', latitud: -77777, longitud: 88888}]));
+    //BackMain.compartirRuta("https://pedro223.inrupt.net/profile/card#me",new Ruta('ruta 2',[989.8, -288.6],'mi segunda ruta'));
     //BackMain.añadirAmigo("https://pedro223.inrupt.net/profile/card#me");
     //BackMain.listarAmigos();
     return (
