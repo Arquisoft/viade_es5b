@@ -11,7 +11,7 @@ class AddFriend extends Component {
 
   render() {
     return (
-      <div className="centered-container">
+      <div>
         <Card style={{ width: "30rem" }} className="text-center">
           <Card.Header className="bold">Agregar nuevo amigo</Card.Header>
           <Card.Body>
