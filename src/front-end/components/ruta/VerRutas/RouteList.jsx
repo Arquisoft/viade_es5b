@@ -14,18 +14,16 @@ class RouteList extends Component {
   }
 
   async componentDidMount() {
-    console.log("MONTANDOO");
     const response = await this.props.rutas;
     this.setState({ rutas: response });
     if (this.state.rutas.length === 0) this.setState({ noRoutes: true });
   }
 
   render() {
-    console.log(this.state.rutas);
     return (
-      <Accordion defaultActiveKey="0">
+      <Accordion data-testid="acordeon" defaultActiveKey="0">
         {this.state.noRoutes && (
-          <Alert variant="warning">
+          <Alert data-testid="alerta" variant="warning">
             Actualmente no dispones de ninguna ruta en tu POD. Accede a
             <a href="#/add-ruta"> Añadir Ruta </a> para añadir una nueva ruta.
           </Alert>
@@ -33,6 +31,7 @@ class RouteList extends Component {
         {!this.state.noRoutes &&
           this.state.rutas.map((r, key) => (
             <RouteCard
+              role="r-card"
               handleDelete={this.handleDeleteRoute}
               ruta={r}
               key={key++}
