@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Form, InputGroup, Button } from "react-bootstrap";
+import { Card, Form, InputGroup, Button, Alert } from "react-bootstrap";
 import "../../css/position.css";
 import "../../css/font-style.css";
 
@@ -12,7 +12,7 @@ class AddFriend extends Component {
   render() {
     return (
       <div>
-        <Card style={{ width: "30rem" }} className="text-center">
+        <Card>
           <Card.Header className="bold">Agregar nuevo amigo</Card.Header>
           <Card.Body>
             <Card.Text>

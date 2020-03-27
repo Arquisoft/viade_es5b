@@ -3,6 +3,7 @@ import AmigoService from "../../services/amigos/AmigoService";
 import AddFriend from "./AddFriend";
 import FriendList from "./FriendList";
 import MessageDialog from "../util/MessageDialog";
+import { Alert } from "react-bootstrap";
 
 class Friends extends Component {
   constructor() {
@@ -14,7 +15,8 @@ class Friends extends Component {
     amigos: [],
     noFriends: false,
     showDialog: false,
-    dialogMessage: ""
+    dialogMessage: "",
+    showError: false
   };
 
   /**
@@ -31,10 +33,16 @@ class Friends extends Component {
         <h2>Amigos</h2>
         <p>Desde aquí puedes realizar la gestión de tus amigos.</p>
         <AddFriend handleAddFriend={webID => this.handleAddFriend(webID)} />
+        {this.state.showError && (
+          <Alert variant="danger">
+            No existe el usuario o ya está presente en tu lista de amigos.
+          </Alert>
+        )}
         <FriendList
           amigos={this.state.amigos}
           noFriends={this.state.noFriends}
         />
+
         <MessageDialog
           show={this.state.showDialog}
           title="Agregar un amigo"
@@ -57,14 +65,13 @@ class Friends extends Component {
       // Se ha agregado correctamente
       this.setState({
         showDialog: true,
+        showError: false,
         dialogMessage: "El usuario ha sido agregado a tu lista de amigos.",
         amigos: await this.service.getAmigos()
       });
     } else {
       this.setState({
-        showDialog: true,
-        dialogMessage:
-          "El usuario que has introducido no existe, o ya está en tu lista de amigos."
+        showError: true
       });
     }
     this.setState({ noFriends: this.state.amigos.length === 0 });
