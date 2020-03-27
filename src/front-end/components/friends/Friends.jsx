@@ -16,7 +16,8 @@ class Friends extends Component {
     noFriends: false,
     showDialog: false,
     dialogMessage: "",
-    showError: false
+    showError: false,
+    loading: false
   };
 
   /**
@@ -32,12 +33,11 @@ class Friends extends Component {
       <div>
         <h2>Amigos</h2>
         <p>Desde aquí puedes realizar la gestión de tus amigos.</p>
-        <AddFriend handleAddFriend={webID => this.handleAddFriend(webID)} />
-        {this.state.showError && (
-          <Alert variant="danger">
-            No existe el usuario o ya está presente en tu lista de amigos.
-          </Alert>
-        )}
+        <AddFriend
+          handleAddFriend={webID => this.handleAddFriend(webID)}
+          isLoading={this.state.loading}
+        />
+        {this.showError()}
         <FriendList
           amigos={this.state.amigos}
           noFriends={this.state.noFriends}
@@ -59,6 +59,7 @@ class Friends extends Component {
    */
   handleAddFriend = async webID => {
     // Agregamos el nuevo amigo
+    this.setState({ loading: true });
     console.log("---- Intentando agregar amigo " + webID);
     let response = await this.service.addAmigo(webID);
     if (response) {
@@ -74,7 +75,21 @@ class Friends extends Component {
         showError: true
       });
     }
-    this.setState({ noFriends: this.state.amigos.length === 0 });
+    this.setState({
+      noFriends: this.state.amigos.length === 0,
+      loading: false
+    });
+  };
+
+  // Handlers de errores
+  showError = () => {
+    return (
+      this.state.showError && (
+        <Alert variant="danger">
+          No existe el usuario o ya está presente en tu lista de amigos.
+        </Alert>
+      )
+    );
   };
 }
 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Form, InputGroup, Button, Alert } from "react-bootstrap";
+import { Card, Form, InputGroup, Button, Spinner } from "react-bootstrap";
 import "../../css/position.css";
 import "../../css/font-style.css";
 
@@ -41,7 +41,7 @@ class AddFriend extends Component {
               type="submit"
               variant="success"
             >
-              Agregar
+              {this.loading()}
             </Button>
           </Card.Body>
         </Card>
@@ -60,6 +60,28 @@ class AddFriend extends Component {
     // Guardamos el valor en el estado
     this.setState({ value: string });
   };
+
+  /**
+   * Se encarga de rendedirzar el contenido del botón
+   * según esté llevándose a cabo la operación de agregar un amigo o no.
+   */
+  loading() {
+    if (this.props.isLoading) {
+      return (
+        <div>
+          <Spinner
+            className="mr-2"
+            as="span"
+            size="sm"
+            animation="border"
+            role="status"
+          />
+          Cargando...
+        </div>
+      );
+    }
+    return "Agregar";
+  }
 }
 
 export default AddFriend;
