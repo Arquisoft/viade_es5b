@@ -35,8 +35,8 @@ class AmigoService {
    * Devuelve los amigos que tengo
    */
   getAmigos() {
-    //return BackMain.listarAmigos();
-    return this.BDAmigos;
+    return BackMain.listarAmigos();
+    //return this.BDAmigos;
   }
   /*
    * Añade un amigo al mi perfil (alias es un nombre que le doy yo al amigo, no tiene porque ser el suyo)
