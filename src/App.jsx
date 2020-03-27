@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { HashRouter as Router, Switch, Redirect } from "react-router-dom";
+import { HashRouter as Router, Switch } from "react-router-dom";
 import LogInComponent from "./front-end/components/authentication/login/Login";
 import RegisterContainer from "./front-end/components/authentication/register/RegistroContainer";
 import Home from "./front-end/components/Home";
@@ -10,8 +10,8 @@ import "leaflet/dist/leaflet.css";
 import NotLoggedInLayout from "./front-end/layouts/NotLoggedInLayout/not-logged-in.layout";
 import PrivateLayout from "./front-end/layouts/PrivateLayout/private.layout";
 import PublicLayout from "./front-end/layouts/PublicLayout/public.layout";
+import Friends from "./front-end/components/friends/Friends";
 //import BackMain from "./BackEnd/BackMain.js";
-
 
 class App extends Component {
   render() {
@@ -30,6 +30,7 @@ class App extends Component {
                 component={VerRutas}
               ></PrivateLayout>
               <PrivateLayout exact path="/add-ruta" component={AddRuta} />
+              <PrivateLayout exact path="/friends" component={Friends} />
               <NotLoggedInLayout
                 exact
                 path="/login"
@@ -40,7 +41,6 @@ class App extends Component {
                 path="/signup"
                 component={RegisterContainer}
               />
-              <Redirect to="/holaa" />
             </Switch>
           </div>
         </Router>
