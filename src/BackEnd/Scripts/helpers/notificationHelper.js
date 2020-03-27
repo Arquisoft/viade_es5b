@@ -1,5 +1,7 @@
 import { fetchDocument } from 'tripledoc';
+import { ldp } from "rdf-namespaces";
 const request = require('request')
+
 
 
 export async function getInboxUrl(webId) {
@@ -14,7 +16,7 @@ export async function getInboxUrl(webId) {
     var profile = profileDoc.getSubject('#me');
     if(profile!==null)
     {
-      var url = profile.getRef('http://www.w3.org/ns/ldp#inbox');
+      var url = profile.getRef(ldp.inbox);
       console.log(url);
       return  url;
     }
@@ -22,6 +24,7 @@ export async function getInboxUrl(webId) {
   return null;
 }
 
+//Devuelve true si logro mandar la notificacion, false si no
 export async function sendNotification(webId,targetWebId, type) {
   var inbox=await getInboxUrl(targetWebId);
   request({
@@ -34,8 +37,18 @@ export async function sendNotification(webId,targetWebId, type) {
     headers: {
       'Content-Type': 'text/turtle'
     }
+  },
+  function (error, response, body) {
+    if (error) 
+      return false;
+    else
+    {
+      console.log('Upload successful!  Server responded with:', body);
+      return true;
+    }
   });
 }
+//Devuelve true si logro mandar la notificacion, false si no
 export async function sendNotificationBody(webId,targetWebId, body) {
   var inbox=await getInboxUrl(targetWebId);
   request({
@@ -45,5 +58,39 @@ export async function sendNotificationBody(webId,targetWebId, body) {
     headers: {
       'Content-Type': 'text/turtle'
     }
+  },
+  function (error, response, body) {
+    if (error) 
+      return false;
+    else
+    {
+      console.log('Upload successful!  Server responded with:', body);
+      return true;
+    }
   });
+}
+
+//devuelve todos los documentos en la bandeja de entrada del usuario
+export async function getNotificationDocuments(webId){
+  var inbox=await getInboxUrl(webId);
+
+  var containerDoc = await fetchDocument(inbox);
+  if (containerDoc) {
+    var containerSub = containerDoc.getSubject(inbox);
+    var containerItemUrls = containerSub.getAllRefs(ldp.contains);
+    var result = [];
+    for(var i=0;i<containerItemUrls.length;i++)
+    {
+      console.log('documento', containerItemUrls[i]);
+      try {
+        var doc = await fetchDocument(containerItemUrls[i]);
+        if (doc) {
+          result = [...result, doc];
+        }
+      } catch (e) {
+      }
+    }
+    return result;
+  }
+  return [];
 }
