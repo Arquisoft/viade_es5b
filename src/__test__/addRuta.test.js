@@ -38,7 +38,13 @@ test("Comprobar que se visualiza el botón para añadir/guardar una ruta", () =>
     expect(getByTestId("saveRouteButton")).toHaveTextContent("Guardar ruta");
 });
 
-
+test("Comprobar que se visualizan los inputs para añadir una ruta", () => {
+    const { getByTestId } = render(<AddRuta ></AddRuta>);
+    expect(getByTestId("in-nombreRuta")).toBeInTheDocument();
+    expect(getByTestId("in-latitudRuta")).toBeInTheDocument();
+    expect(getByTestId("in-longitudRuta")).toBeInTheDocument();
+    expect(getByTestId("in-descripcionRuta")).toBeInTheDocument();
+});
 
 
 //PRUEBAS PARA EL FORMULARIO DE AÑADIR HITO
@@ -59,5 +65,12 @@ test("Comprobar que se visualizan las etiquetas del formulario para añadir un h
 test("Comprobar que se visualiza el botón para añadir un hito", () => {
     const { getByTestId } = render(<AddRuta ></AddRuta>);
     expect(getByTestId("addHitoButton")).toHaveTextContent("Añadir hito");
+});
+
+test("Comprobar que se visualizan los inputs para añadir un hito", () => {
+    const { getByTestId } = render(<AddRuta ></AddRuta>);
+    expect(getByTestId("in-nombreHito")).toBeInTheDocument();
+    expect(getByTestId("in-latitudHito")).toBeInTheDocument();
+    expect(getByTestId("in-longitudHito")).toBeInTheDocument();
 });
 
