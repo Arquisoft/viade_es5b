@@ -5,7 +5,7 @@ class FriendList extends Component{
     constructor(props){
         super(props);
         this.amigos=this.props.amigos;
-        console.log("lista de amigos1:")
+        console.log("lista de amigos:")
         console.log(this.amigos);
        
     }
@@ -16,10 +16,8 @@ class FriendList extends Component{
 
     async componentDidMount() {
         const response = await this.props.amigos;
-        this.setState({ amigos: response });
-        console.log("lista de amigos2:")
-        console.log(this.state.amigos);
-      }
+        this.setState({ amigos: response }); 
+    }
 
     render(){
         return (
@@ -35,9 +33,10 @@ class FriendList extends Component{
                         </thead>
                         <tbody>
                             {
+                                
                                 this.state.amigos.map((amigo,key)=>(
-                                    <tr>
-                                        <th scope="row">{key++}</th>
+                                    <tr key={key++}>
+                                        <th scope="row">{key}</th>
                                         <td>{amigo.getNombre()}</td>
                                     </tr>
                                 ))

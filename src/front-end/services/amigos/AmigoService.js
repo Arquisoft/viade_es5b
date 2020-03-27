@@ -27,8 +27,14 @@ class AmigoService {
       "https://hamalawindows.solid.community/profile/card#me"
     );
 
+    var amigo3 = new Amigo(
+      "Lucía",
+      "https://uo265060.solid.community/profile/card#me"
+    );
+
     this.BDAmigos = [...this.BDAmigos, amigo1];
     this.BDAmigos = [...this.BDAmigos, amigo2];
+    this.BDAmigos = [...this.BDAmigos, amigo3];
   }
 
   /*
