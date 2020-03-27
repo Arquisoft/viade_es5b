@@ -30,7 +30,6 @@ test("El componente se renderiza aunque no haya amigos.", () => {
 
   test("Hay dos amigos y se muestran dos filas en la tabla", async () => {
     setUp();//Rellenamos la lista de amigos.
-    const div = document.createElement("div");
     const { getByTestId }=render(<FriendList amigos={amigos}></FriendList>);
     let tablaAmigos = await waitForElement(() => getByTestId("tablaAmigos"));
     expect(tablaAmigos.children.length).toBe(2);
