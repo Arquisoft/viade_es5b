@@ -20,7 +20,7 @@ console.log("-------------------" + ruta.getHitos().length);
 
 test("RouteCard contiene el botón de eliminar.", () => {
     const { getByTestId } = render(<RouteCard ruta={ruta}></RouteCard>);
-    expect(getByTestId("deleteButton")).toHaveTextContent("Eliminar");
+    expect(getByTestId("rb-eliminar")).toHaveTextContent("Eliminar");
 });
 
   
