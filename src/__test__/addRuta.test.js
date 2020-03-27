@@ -123,6 +123,8 @@ test("Comprobar que los botones para añadir un hito y para guardar una ruta est
 //PRUEBAS PARA EL FORMULARIO DE AÑADIR RUTA
 test("Comprobar que los inputs para añadir una ruta están desactivados", () => {
     const { getByTestId } = render(<AddRuta ></AddRuta>);
+    getByTestId("addRouteButton").click();
+
     expect(getByTestId("in-nombreRuta")).toBeDisabled();
     expect(getByTestId("in-latitudRuta")).toBeDisabled();
     expect(getByTestId("in-longitudRuta")).toBeDisabled();
@@ -131,12 +133,14 @@ test("Comprobar que los inputs para añadir una ruta están desactivados", () =>
 
 test("Comprobar que el botón para añadir una ruta está desactivado", () => {
     const { getByTestId } = render(<AddRuta ></AddRuta>);
+    getByTestId("addRouteButton").click();
     expect(getByTestId("addRouteButton")).toBeDisabled();
 });
 
 //PRUEBAS PARA EL FORMULARIO DE AÑADIR HITO
 test("Comprobar que los inputs para añadir un hito están activados", () => {
     const { getByTestId } = render(<AddRuta ></AddRuta>);
+    getByTestId("addRouteButton").click();
     expect(getByTestId("in-nombreHito")).toBeEnabled();
     expect(getByTestId("in-latitudHito")).toBeEnabled();
     expect(getByTestId("in-longitudHito")).toBeEnabled();
@@ -144,6 +148,21 @@ test("Comprobar que los inputs para añadir un hito están activados", () => {
 
 test("Comprobar que los botones para añadir un hito y para guardar una ruta están activados", () => {
     const { getByTestId } = render(<AddRuta ></AddRuta>);
+    getByTestId("addRouteButton").click();
     expect(getByTestId("addHitoButton")).toBeEnabled();
     expect(getByTestId("saveRouteButton")).toBeEnabled();
 });
+
+
+//-------------------- PRUEBAS AL PINCHAR EN EL BOTÓN DE AÑADIR HITO --------------------\\
+
+test("Comprobar que los inputs para añadir un hito están otra vez vacíos", () => {
+    const { getByTestId } = render(<AddRuta ></AddRuta>);
+    getByTestId("addRouteButton").click();
+    getByTestId("addHitoButton").click();
+    expect(getByTestId("in-nombreHito")).toBeEmpty();
+    expect(getByTestId("in-latitudHito")).toBeEmpty();
+    expect(getByTestId("in-longitudHito")).toBeEmpty();
+});
+
+//-------------------- PRUEBAS AL PINCHAR EN EL BOTÓN DE GUARDAR RUTA --------------------\\
