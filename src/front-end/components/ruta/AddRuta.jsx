@@ -136,10 +136,10 @@ crearRuta=e=>{
                 <label data-testid="e-longitudHito">Longitud del hito:</label>
                 <input data-testid="in-longitudHito" disabled={this.state.formulario2} className="form-control" placeholder="200" type="text" name="longitudHito" value={this.state.longitudHito} onChange={this.onChange}/>
               </div>
-              <button type="submit" className="btn btn-primary" data-testid="addHitoButton">Añadir hito</button>
+              <button type="submit" className="btn btn-primary" data-testid="addHitoButton" disabled={this.state.formulario2}>Añadir hito</button>
         </form>
         <br/>
-        <button onClick={this.crearRuta} className="btn btn-primary" data-testid="saveRouteButton">Guardar ruta</button>
+        <button onClick={this.crearRuta} className="btn btn-primary" data-testid="saveRouteButton" disabled={this.state.formulario2}>Guardar ruta</button>
       </div>
       
     );
