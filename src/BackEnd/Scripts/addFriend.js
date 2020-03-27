@@ -1,51 +1,82 @@
-import { space, schema } from 'rdf-namespaces';
-import { fetchDocument, createDocument } from 'tripledoc';
+import { rdf } from "rdf-namespaces";
+import { fetchDocument } from "tripledoc";
+const auth = require("solid-auth-client");
 
-const auth = require('solid-auth-client')
-
-export async function addFriend(newFriend) {
+//Añade el usuario a amigos, si logra añadirlo devuelve true sino false.
+export async function addFriend(friendWebId) {
     let session = await auth.currentSession();
     if (!session) { window.location.href = "/login"; }
-    const friendsRoute = 'private/friends/' + newFriend.nombre + '.ttl';
+
     const webId = session.webId;
-
-    await newDocument(webId, friendsRoute);
-    await insertData(webId, friendsRoute, newFriend);
-
+    //Compruebo si ya es mi amigo, si no lo es lo añado (y si no soy yo mismo)
+    var friend = false;
+    var result = false;
+    const profileDoc = await fetchDocument(webId);
+    const profile = profileDoc.getSubject(webId);
+    var friends = profile.getAllNodeRefs("http://xmlns.com/foaf/0.1/knows");
+    for (var i = 0; i < friends.length; i += 1) {
+        if (friends[i] === friendWebId) {
+          friend = true;
+        }
+        console.log(friends[i] + " vs " + friendWebId);
+      }
+        //Si no es amigo lo añado
+        if(await isValidProfile(friendWebId) && !friend && friendWebId!==webId)
+        {
+            console.log(friendWebId+" no existe");
+            await insertData(webId,friendWebId);
+            result=true;
+        }
+        console.log(result);
+        return result;
+    
 }
 
-async function newDocument(webId, friend) {
-
+//https://unhosted.org/using-solid/
+//https://codesandbox.io/s/peaceful-payne-su5t6?fontsize=14
+async function insertData(webId,friendWebId) {
     const profileDocument = await fetchDocument(webId);
-    const profile = profileDocument.getSubject(webId);
 
-    // Get the root URL of the user's Pod:
-    const storage = profile.getRef(space.storage);
+  // Inicializamos un Subject Persona:
+  const newFriend = profileDocument.addSubject({
+    identifier: friendWebId
+  });
+  // Indicamos que el Subject es Una Persona
+  newFriend.addRef(rdf.type, "http://xmlns.com/foaf/0.1/person");
 
-    // Decide at what URL within the user's Pod the new Document should be stored:
-    const userListRef = storage + friend;
-    // Create the new Document:
-    const userList = createDocument(userListRef);
-    await userList.save();
+    // Le añadimos con su alias
+    //newFriend.addString('http://xmlns.com/foaf/0.1/label', alias);
+
+  //Añadimos un nuevo Subject de que Conocemos a la Persona (es amigo)
+  const newKnown = profileDocument.addSubject({
+    identifier: "me"
+  });
+
+  newKnown.addRef("http://xmlns.com/foaf/0.1/knows", friendWebId);
+
+  await profileDocument.save([newFriend, newKnown]);
 }
-async function insertData(webId, friendsRoute, friend) {
-    const profileDocument = await fetchDocument(webId);
-    const routeDocument = await fetchDocument(profileDocument.getSubject(webId).getRef(space.storage) + friendsRoute);
 
-
-    // Initialise the new Subject:
-    const newFriend = routeDocument.addSubject({
-        identifier: friend,
-        identifierPrefix: 'Name:'
-    });
-    //Guardar
-    await routeDocument.save([newFriend]);
-
-    // Initialise the new Subject:
-    const saveNewFeiend = routeDocument.addSubject({
-        identifier: 'friend'
-    });
-    saveNewFeiend.addString(schema.name, friend);
-    await routeDocument.save([saveNewFeiend]);
+//Si puedo acceder a su perfil y tiene un nombre, es amigo válido
+async function isValidProfile(friendWebId)
+{
+  var isValid=false;
+  let profileDoc;
+  await fetchDocument(friendWebId)
+    .then(content => {
+      profileDoc = content;
+    })
+    .catch(err => (profileDoc = null));
+  if(profileDoc!==null)
+  {
+    var profile = profileDoc.getSubject(friendWebId);
+    if(profile!==null)
+    {
+      var name= profile.getString('http://xmlns.com/foaf/0.1/name');
+      if(name!==null && name!=='')
+        isValid=true;
+    }
+  }
+  return isValid;
 }
 
