@@ -46,6 +46,14 @@ test("Comprobar que se visualizan los inputs para añadir una ruta", () => {
     expect(getByTestId("in-descripcionRuta")).toBeInTheDocument();
 });
 
+test("Comprobar que los inputs para añadir una ruta están inicialmente vacios", () => {
+    const { getByTestId } = render(<AddRuta ></AddRuta>);
+    expect(getByTestId("in-nombreRuta")).toBeEmpty();
+    expect(getByTestId("in-latitudRuta")).toBeEmpty();
+    expect(getByTestId("in-longitudRuta")).toBeEmpty();
+    expect(getByTestId("in-descripcionRuta")).toBeEmpty();
+});
+
 
 //PRUEBAS PARA EL FORMULARIO DE AÑADIR HITO
 test("Comprobar que se visualizan los encabezados del formulario para añadir un hito", () => {
@@ -72,5 +80,25 @@ test("Comprobar que se visualizan los inputs para añadir un hito", () => {
     expect(getByTestId("in-nombreHito")).toBeInTheDocument();
     expect(getByTestId("in-latitudHito")).toBeInTheDocument();
     expect(getByTestId("in-longitudHito")).toBeInTheDocument();
+});
+
+test("Comprobar que los inputs para añadir un hito están inicialmente vacíos", () => {
+    const { getByTestId } = render(<AddRuta ></AddRuta>);
+    expect(getByTestId("in-nombreHito")).toBeEmpty();
+    expect(getByTestId("in-latitudHito")).toBeEmpty();
+    expect(getByTestId("in-longitudHito")).toBeEmpty();
+});
+
+test("Comprobar que los inputs para añadir un hito están inicialmente desactivados", () => {
+    const { getByTestId } = render(<AddRuta ></AddRuta>);
+    expect(getByTestId("in-nombreHito")).toBeDisabled();
+    expect(getByTestId("in-latitudHito")).toBeDisabled();
+    expect(getByTestId("in-longitudHito")).toBeDisabled();
+});
+
+test("Comprobar que los botones para añadir un hito y para guardar una ruta está inicialmente desactivados", () => {
+    const { getByTestId } = render(<AddRuta ></AddRuta>);
+    expect(getByTestId("addHitoButton")).toBeDisabled();
+    expect(getByTestId("saveRouteButton")).toBeDisabled();
 });
 
