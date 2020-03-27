@@ -13,8 +13,8 @@ class Friends extends Component {
   /**
    * Se ejecutará cuando se monte el componente en el DOM.
    */
-  componentDidMount() {
-    this.setState({ amigos: this.service.getAmigos() });
+  async componentDidMount() {
+    this.setState({ amigos: await this.service.getAmigos() });
   }
 
   render() {
@@ -23,6 +23,11 @@ class Friends extends Component {
         <h2>Amigos</h2>
         <p>Desde aquí puedes realizar la gestión de tus amigos.</p>
         <AddFriend handleAddFriend={this.handleAddFriend} />
+        <ul>
+          {this.state.amigos.map((a, key) => {
+            return <li key={key++}>{a.getNombre()}</li>;
+          })}
+        </ul>
       </div>
     );
   }
@@ -31,11 +36,16 @@ class Friends extends Component {
    * Será invocado cuando se agregue un nuevo amigo en el pod
    * del usuario logueado.
    */
-  handleAddFriend = webID => {
+  handleAddFriend = async webID => {
     // Agregamos el nuevo amigo
-    alert(webID);
-    this.service.addAmigo(webID);
-    this.setState({ amigos: this.service.getAmigos() });
+    //alert(webID);
+    let response = await this.service.addAmigo(webID);
+    if (response) {
+      console.log("---------------- Agregado amigo");
+      this.setState({ amigos: await this.service.getAmigos() });
+    } else {
+      console.log("---------- Error al agregar amigo");
+    }
   };
 }
 
