@@ -24,7 +24,7 @@ class FriendList extends Component{
             <div>
                 <h3>Tus amigos:</h3>
                 <div className="centered-container">
-                    <table  className="table table-striped">
+                    <table  className="table table-striped" data-testid="tablaAmigos">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
