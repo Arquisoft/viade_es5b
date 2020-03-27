@@ -119,7 +119,7 @@ crearRuta=e=>{
                 <label data-testid="e-descripcionRuta">Descripción de la ruta:</label>
                 <textarea data-testid="in-descripcionRuta" disabled={this.state.formulario1} className="form-control" rows="3" name="descripcion" value={this.state.descripcion} onChange={this.onChange}></textarea>
             </div> 
-            <button type="submit" className="btn btn-primary" data-testid="addRouteButton">Añadir ruta</button>
+            <button type="submit" className="btn btn-primary" data-testid="addRouteButton" disabled={this.state.formulario1}>Añadir ruta</button>
         </form>
         
         <h2 data-testid="titleAñadirHito">Añadir hitos para la ruta:</h2>

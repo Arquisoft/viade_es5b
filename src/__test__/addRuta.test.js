@@ -9,6 +9,8 @@ import AddRuta from "../front-end/components/ruta/AddRuta";
 
 
 
+//------------------------------------------------ PRUEBAS INICIALES ------------------------------------------------\\
+
 //Componente AddRuta
 test("Comprobar que se renderiza sin fallos el componente AddRuta", () => {
     const div = document.createElement("div");
@@ -52,6 +54,11 @@ test("Comprobar que los inputs para añadir una ruta están inicialmente vacios"
     expect(getByTestId("in-latitudRuta")).toBeEmpty();
     expect(getByTestId("in-longitudRuta")).toBeEmpty();
     expect(getByTestId("in-descripcionRuta")).toBeEmpty();
+});
+
+test("Comprobar que el botón para añadir una ruta está inicialmente activado", () => {
+    const { getByTestId } = render(<AddRuta ></AddRuta>);
+    expect(getByTestId("addRouteButton")).toBeEnabled();
 });
 
 
@@ -101,4 +108,7 @@ test("Comprobar que los botones para añadir un hito y para guardar una ruta est
     expect(getByTestId("addHitoButton")).toBeDisabled();
     expect(getByTestId("saveRouteButton")).toBeDisabled();
 });
+
+
+//-------------------- PRUEBAS AL PINCHAR EN EL BOTÓN DE AÑADIR RUTA --------------------\\
 
