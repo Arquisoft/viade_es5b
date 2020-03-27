@@ -48,6 +48,14 @@ test("Comprobar que se visualizan los inputs para añadir una ruta", () => {
     expect(getByTestId("in-descripcionRuta")).toBeInTheDocument();
 });
 
+test("Comprobar que los inputs para añadir una ruta están inicialmente activados", () => {
+    const { getByTestId } = render(<AddRuta ></AddRuta>);
+    expect(getByTestId("in-nombreRuta")).toBeEnabled();
+    expect(getByTestId("in-latitudRuta")).toBeEnabled();
+    expect(getByTestId("in-longitudRuta")).toBeEnabled();
+    expect(getByTestId("in-descripcionRuta")).toBeEnabled();
+});
+
 test("Comprobar que los inputs para añadir una ruta están inicialmente vacios", () => {
     const { getByTestId } = render(<AddRuta ></AddRuta>);
     expect(getByTestId("in-nombreRuta")).toBeEmpty();
@@ -112,3 +120,30 @@ test("Comprobar que los botones para añadir un hito y para guardar una ruta est
 
 //-------------------- PRUEBAS AL PINCHAR EN EL BOTÓN DE AÑADIR RUTA --------------------\\
 
+//PRUEBAS PARA EL FORMULARIO DE AÑADIR RUTA
+test("Comprobar que los inputs para añadir una ruta están desactivados", () => {
+    const { getByTestId } = render(<AddRuta ></AddRuta>);
+    expect(getByTestId("in-nombreRuta")).toBeDisabled();
+    expect(getByTestId("in-latitudRuta")).toBeDisabled();
+    expect(getByTestId("in-longitudRuta")).toBeDisabled();
+    expect(getByTestId("in-descripcionRuta")).toBeDisabled();
+});
+
+test("Comprobar que el botón para añadir una ruta está desactivado", () => {
+    const { getByTestId } = render(<AddRuta ></AddRuta>);
+    expect(getByTestId("addRouteButton")).toBeDisabled();
+});
+
+//PRUEBAS PARA EL FORMULARIO DE AÑADIR HITO
+test("Comprobar que los inputs para añadir un hito están activados", () => {
+    const { getByTestId } = render(<AddRuta ></AddRuta>);
+    expect(getByTestId("in-nombreHito")).toBeEnabled();
+    expect(getByTestId("in-latitudHito")).toBeEnabled();
+    expect(getByTestId("in-longitudHito")).toBeEnabled();
+});
+
+test("Comprobar que los botones para añadir un hito y para guardar una ruta están activados", () => {
+    const { getByTestId } = render(<AddRuta ></AddRuta>);
+    expect(getByTestId("addHitoButton")).toBeEnabled();
+    expect(getByTestId("saveRouteButton")).toBeEnabled();
+});
