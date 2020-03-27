@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AmigoService from "../../services/amigos/AmigoService";
 import AddFriend from "./AddFriend";
+import FriendList from "./FriendList";
 
 class Friends extends Component {
   constructor() {
@@ -23,11 +24,7 @@ class Friends extends Component {
         <h2>Amigos</h2>
         <p>Desde aquí puedes realizar la gestión de tus amigos.</p>
         <AddFriend handleAddFriend={this.handleAddFriend} />
-        <ul>
-          {this.state.amigos.map((a, key) => {
-            return <li key={key++}>{a.getNombre()}</li>;
-          })}
-        </ul>
+        <FriendList amigos={this.state.amigos} />
       </div>
     );
   }
@@ -38,7 +35,6 @@ class Friends extends Component {
    */
   handleAddFriend = async webID => {
     // Agregamos el nuevo amigo
-    //alert(webID);
     let response = await this.service.addAmigo(webID);
     if (response) {
       console.log("---------------- Agregado amigo");
