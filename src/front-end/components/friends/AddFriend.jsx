@@ -16,37 +16,33 @@ class AddFriend extends Component {
           <Card.Header className="bold">Agregar nuevo amigo</Card.Header>
           <Card.Body>
             <Card.Text>
-              Para agregar un nuevo amigo, introduce su WebID.
+              Para agregar un nuevo amigo, introduce su WebID. El WebID puede
+              cambiar según el provedor del POD del usuario.
             </Card.Text>
-            <Form>
-              <Form.Group>
-                <InputGroup>
-                  <InputGroup.Prepend>
-                    <InputGroup.Text>WebID</InputGroup.Text>
-                  </InputGroup.Prepend>
-                  <Form.Control
-                    type="url"
-                    placeholder="https://alex123.inrupt.net"
-                    onChange={this.handleKeyPress}
-                  />
-                </InputGroup>
-                <Form.Text>
-                  La URL cambiará según el provedor del usuario
-                </Form.Text>
-              </Form.Group>
-              <Button
-                disabled={this.state.disabled}
-                onClick={() =>
-                  this.props.handleAddFriend(
-                    this.state.value + "/profile/card#me"
-                  )
-                }
-                type="submit"
-                variant="success"
-              >
-                Agregar
-              </Button>
-            </Form>
+
+            <InputGroup>
+              <InputGroup.Prepend>
+                <InputGroup.Text>WebID</InputGroup.Text>
+              </InputGroup.Prepend>
+              <Form.Control
+                placeholder="https://alex123.solid.community"
+                onChange={this.handleKeyPress}
+              />
+            </InputGroup>
+
+            <Button
+              className="mt-2"
+              disabled={this.state.disabled}
+              onClick={() =>
+                this.props.handleAddFriend(
+                  this.state.value + "/profile/card#me"
+                )
+              }
+              type="submit"
+              variant="success"
+            >
+              Agregar
+            </Button>
           </Card.Body>
         </Card>
       </div>
