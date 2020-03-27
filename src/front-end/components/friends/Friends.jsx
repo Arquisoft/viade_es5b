@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import AmigoService from "../../services/amigos/AmigoService";
 import AddFriend from "./AddFriend";
+import FriendList from "./FriendList";
 
 class Friends extends Component {
   constructor() {
     super();
     this.service = new AmigoService();
+    
   }
 
   state = { amigos: [] };
@@ -13,8 +15,9 @@ class Friends extends Component {
   /**
    * Se ejecutará cuando se monte el componente en el DOM.
    */
-  componentDidMount() {
+  async componentDidMount() {
     this.setState({ amigos: this.service.getAmigos() });
+    
   }
 
   render() {
@@ -23,6 +26,7 @@ class Friends extends Component {
         <h2>Amigos</h2>
         <p>Desde aquí puedes realizar la gestión de tus amigos.</p>
         <AddFriend handleAddFriend={this.handleAddFriend} />
+        <FriendList amigos={this.service.getAmigos()}/>
       </div>
     );
   }
