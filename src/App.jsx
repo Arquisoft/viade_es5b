@@ -43,8 +43,13 @@ class App extends Component {
   }
   async componentDidMount() {
     //Cada 10 segundos proceso las rutas compartidas
-    window.setInterval(this.procesarRutas(), 10000);
+    var intervalId = setInterval(this.procesarRutas, 10000);
+    this.setState({intervalId: intervalId});  
   }
+  componentWillUnmount() {
+    // use intervalId from the state to clear the interval
+    clearInterval(this.state.intervalId);
+ }
   render() {
     return (
       <div data-testid="aplicacion">
