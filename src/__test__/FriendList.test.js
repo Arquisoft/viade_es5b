@@ -29,7 +29,7 @@ test("El componente se renderiza aunque no haya amigos.", () => {
   });
 
   test("Se muestra la alerta: 'Aún no tienes ningún amigo, agrega uno introduciendo su WebID' cuando no tenemos amigos", async () => {
-    const { getByTestId } = render(<FriendList amigos={[]}></FriendList>);
+    const { getByTestId } = render(<FriendList amigos={[]} noFriends="true"></FriendList>);
     let alertaNoAmigos = await waitForElement(() => getByTestId("alertaNoAmigos"));
     expect(alertaNoAmigos).toHaveTextContent("Aún no tienes ningún amigo, agrega uno introduciendo su WebID");
   });
