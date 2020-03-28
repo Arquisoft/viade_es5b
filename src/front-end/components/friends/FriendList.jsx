@@ -11,6 +11,7 @@ class FriendList extends Component {
     );
   }
 
+
   /**
    * Devuelve un componente u otro en función del estado.
    */
@@ -18,13 +19,14 @@ class FriendList extends Component {
     if (this.props.noFriends) {
       // Aún no tiene amigos
       return (
-        <Alert variant="warning">
+        <Alert variant="warning" data-testid="alertaNoAmigos">
           Aún no tienes ningún amigo, agrega uno introduciendo su WebID
         </Alert>
       );
+
     }
     return (
-      <table className="table table-striped">
+      <table className="table table-striped" data-testid="tablaAmigos">
         <thead>
           <tr>
             <th scope="col">#</th>
