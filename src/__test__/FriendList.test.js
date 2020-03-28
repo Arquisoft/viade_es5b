@@ -28,6 +28,12 @@ test("El componente se renderiza aunque no haya amigos.", () => {
     ReactDOM.render(<FriendList amigos={[]}></FriendList>, div);
   });
 
+  test("Se muestra la alerta: 'Aún no tienes ningún amigo, agrega uno introduciendo su WebID' cuando no tenemos amigos", async () => {
+    const { getByTestId } = render(<FriendList amigos={[]}></FriendList>);
+    let alertaNoAmigos = await waitForElement(() => getByTestId("alertaNoAmigos"));
+    expect(alertaNoAmigos).toHaveTextContent("Aún no tienes ningún amigo, agrega uno introduciendo su WebID");
+  });
+
   test("Hay dos amigos y se muestran dos filas en la tabla", async () => {
     setUp();//Rellenamos la lista de amigos.
     const { getByTestId }=render(<FriendList amigos={amigos}></FriendList>);
