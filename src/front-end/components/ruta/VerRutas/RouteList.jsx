@@ -44,7 +44,6 @@ class RouteList extends Component {
 
   handleDeleteRoute = uuid => {
     this.service.deleteRuta(uuid);
-    //this.service.shareRuta('https://pedro223.inrupt.net/profile/card#me',uuid);
   };
 
   /*

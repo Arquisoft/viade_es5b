@@ -4,6 +4,9 @@ import { listRoutes } from './Scripts/listRoutes.js'
 import { listFriends } from './Scripts/listFriends.js'
 import {addFriend} from './Scripts/addFriend.js'
 import {shareRoute} from './Scripts/shareRoute.js'
+import {processSharedRoutes} from './Scripts/processSharedRoutes.js'
+import {listSharedRoutes} from './Scripts/listSharedRoutes.js'
+
 
 export default class BackMain {
     static listarRutas() {
@@ -23,6 +26,12 @@ export default class BackMain {
     };
     static compartirRuta(friendWebId,rutaUUID){
         shareRoute(friendWebId,rutaUUID);
+    };
+    static procesarRutasCompartidas(){
+        return processSharedRoutes();
+    };
+    static listarRutasCompartidasConmigo(){
+        return listSharedRoutes();
     };
     
 }

@@ -35,9 +35,9 @@ async function sendShareInvitation(webId,friendWebId,routeUUID) {
     return sendNotificationBody(webId,friendWebId,
     `@prefix as: <https://www.w3.org/ns/activitystreams#> .
     @prefix schema: <http://schema.org/> .
-    
-    <> a as:${'SharedRoute'} ;
+    <> a as:Follow ;
     schema:agent <${webId}> ;
-    schema:identifier <${routeUUID}> .
+    schema:action "shareRoute" ;
+    schema:identifier "${routeUUID}" .
     `);
 }
