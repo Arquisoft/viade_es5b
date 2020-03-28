@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Form, InputGroup, Button } from "react-bootstrap";
+import { Card, Form, InputGroup, Button, Spinner } from "react-bootstrap";
 import "../../css/position.css";
 import "../../css/font-style.css";
 
@@ -11,42 +11,38 @@ class AddFriend extends Component {
 
   render() {
     return (
-      <div className="centered-container">
-        <Card style={{ width: "30rem" }} className="text-center">
+      <div>
+        <Card>
           <Card.Header className="bold">Agregar nuevo amigo</Card.Header>
           <Card.Body>
             <Card.Text>
-              Para agregar un nuevo amigo, introduce su WebID.
+              Para agregar un nuevo amigo, introduce su WebID. El WebID puede
+              cambiar según el provedor del POD del usuario.
             </Card.Text>
-            <Form>
-              <Form.Group>
-                <InputGroup>
-                  <InputGroup.Prepend>
-                    <InputGroup.Text>WebID</InputGroup.Text>
-                  </InputGroup.Prepend>
-                  <Form.Control
-                    type="url"
-                    placeholder="https://alex123.inrupt.net"
-                    onChange={this.handleKeyPress}
-                  />
-                </InputGroup>
-                <Form.Text>
-                  La URL cambiará según el provedor del usuario
-                </Form.Text>
-              </Form.Group>
-              <Button
-                disabled={this.state.disabled}
-                onClick={() =>
-                  this.props.handleAddFriend(
-                    this.state.value + "/profile/card#me"
-                  )
-                }
-                type="submit"
-                variant="success"
-              >
-                Agregar
-              </Button>
-            </Form>
+
+            <InputGroup>
+              <InputGroup.Prepend>
+                <InputGroup.Text>WebID</InputGroup.Text>
+              </InputGroup.Prepend>
+              <Form.Control
+                placeholder="https://alex123.solid.community"
+                onChange={this.handleKeyPress}
+              />
+            </InputGroup>
+
+            <Button
+              className="mt-2"
+              disabled={this.state.disabled}
+              onClick={() =>
+                this.props.handleAddFriend(
+                  this.state.value + "/profile/card#me"
+                )
+              }
+              type="submit"
+              variant="success"
+            >
+              {this.loading()}
+            </Button>
           </Card.Body>
         </Card>
       </div>
@@ -64,6 +60,28 @@ class AddFriend extends Component {
     // Guardamos el valor en el estado
     this.setState({ value: string });
   };
+
+  /**
+   * Se encarga de rendedirzar el contenido del botón
+   * según esté llevándose a cabo la operación de agregar un amigo o no.
+   */
+  loading() {
+    if (this.props.isLoading) {
+      return (
+        <div>
+          <Spinner
+            className="mr-2"
+            as="span"
+            size="sm"
+            animation="border"
+            role="status"
+          />
+          Cargando...
+        </div>
+      );
+    }
+    return "Agregar";
+  }
 }
 
 export default AddFriend;

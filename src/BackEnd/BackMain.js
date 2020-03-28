@@ -3,6 +3,8 @@ import { deleteRoute } from './Scripts/deleteRoute.js'
 import { listRoutes } from './Scripts/listRoutes.js'
 import { listFriends } from './Scripts/listFriends.js'
 import {addFriend} from './Scripts/addFriend.js'
+import {shareRoute} from './Scripts/shareRoute.js'
+
 export default class BackMain {
     static listarRutas() {
         return listRoutes()
@@ -18,6 +20,9 @@ export default class BackMain {
     };
     static añadirAmigo(friendWebId){
         return addFriend(friendWebId);
+    };
+    static compartirRuta(friendWebId,Ruta){
+        shareRoute(friendWebId,Ruta);
     };
     
 }
