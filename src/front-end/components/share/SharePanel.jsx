@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import { Modal, Button, ListGroup, Spinner } from "react-bootstrap";
+import { Modal, Button, Spinner } from "react-bootstrap";
 import AmigoService from "../../services/amigos/AmigoService";
+import GroupSelect from "./GroupSelect";
 
 class SharePanel extends Component {
   constructor() {
     super();
     this.service = new AmigoService();
+    this.selectedItems = [];
   }
 
   state = { amigos: [], loadingFriends: true };
@@ -38,11 +40,11 @@ class SharePanel extends Component {
             </>
           )}
           {!this.state.loadingFriends && (
-            <ListGroup>
-              {this.state.amigos.map((a, key) => (
-                <ListGroup.Item key={key++}>{a.getNombre()}</ListGroup.Item>
-              ))}
-            </ListGroup>
+            <GroupSelect
+              amigos={this.state.amigos}
+              add={this.addFriend}
+              delete={this.deleteFriend}
+            ></GroupSelect>
           )}
         </Modal.Body>
         <Modal.Footer>
@@ -54,6 +56,25 @@ class SharePanel extends Component {
       </Modal>
     );
   }
+
+  /**
+   * Invocado cuando se marca el checkbox de un amigo.
+   */
+  addFriend = webID => {
+    this.selectedItems.push(webID);
+    console.log(this.selectedItems);
+  };
+
+  /**
+   * Invocado cuando se desmarca el checkbox de un amigo.
+   */
+  deleteFriend = webID => {
+    let index = this.selectedItems.indexOf(webID);
+    if (index !== -1) {
+      this.selectedItems.splice(index, 1);
+    }
+    console.log(this.selectedItems);
+  };
 }
 
 export default SharePanel;
