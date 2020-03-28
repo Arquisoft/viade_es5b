@@ -71,7 +71,7 @@ class RouteCard extends Component {
                     id={`mapa-${this.props.ruta.getNombre()}`}
                     className="ml-3 mb-3"
                   >
-                    <MapRuta ruta={this.props.ruta} />
+                    <MapRuta className="map" ruta={this.props.ruta} />
                   </div>
                 )}
               </Col>

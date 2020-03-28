@@ -33,3 +33,9 @@ test("RouteCard contiene la información del inicio y los hitos de la ruta.", ()
 
   //expect(body.children.length).toBe(3);// TODO: esperar a que arregle lucia AñadirRuta
 });
+
+test("Comprobando que genera el elemento map", () =>{
+  const div = document.createElement("div");
+  ReactDOM.render(<RouteCard ruta={ruta}></RouteCard>, div);
+  div.querySelector("map");
+});
