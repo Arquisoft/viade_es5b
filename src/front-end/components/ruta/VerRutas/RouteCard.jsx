@@ -21,6 +21,7 @@ class RouteCard extends Component {
         <Card.Header>
           <h3 data-testid="r-title">{this.props.ruta.getNombre()}</h3>
           <Button
+            data-testid="rb-ver"
             variant="success"
             className="mr-2"
             onClick={this.handleViewInMap}
@@ -28,10 +29,10 @@ class RouteCard extends Component {
             Ver en el mapa
           </Button>
           <Button
+            data-testid="rb-eliminar"
             variant="danger"
             className="mr-2"
             onClick={() => this.props.handleDelete(this.props.ruta.getUUID())}
-            data-testid="deleteButton"
           >
             Eliminar
           </Button>
@@ -55,9 +56,16 @@ class RouteCard extends Component {
                     </tr>
                   </thead>
                   <tbody data-testid="r-hitos">
+                    <tr>
+                      <td>
+                        <b>Inicio</b>
+                      </td>
+                      <td>{this.props.ruta.getInicio()[0]}</td>
+                      <td>{this.props.ruta.getInicio()[1]}</td>
+                    </tr>
                     {this.props.ruta.getHitos().map((h, key) => (
                       <tr key={key++}>
-                        <td>{key === 1 ? <b>Inicio</b> : h.getNombre()}</td>
+                        <td>{h.getNombre()}</td>
                         <td>{h.getLat()}</td>
                         <td>{h.getLong()}</td>
                       </tr>
@@ -68,6 +76,7 @@ class RouteCard extends Component {
               <Col>
                 {this.state.loaded && (
                   <div
+                    data-testid="mapa"
                     id={`mapa-${this.props.ruta.getNombre()}`}
                     className="ml-3 mb-3"
                   >

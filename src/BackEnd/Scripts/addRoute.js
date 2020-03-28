@@ -3,15 +3,10 @@ import { fetchDocument, createDocument } from 'tripledoc';
 
 const auth = require('solid-auth-client')
 
-
-
-
-
-
 export async function addRoute(ruta) {
     let session = await auth.currentSession();
     if (!session) { window.location.href = "/login"; }
-    const route = 'private/routes/' + ruta.nombre + '.ttl';
+    const route = 'private/routes/' + ruta.getUUID() + '.ttl';
     const webId = session.webId;
 
     await newDocument(webId, route);

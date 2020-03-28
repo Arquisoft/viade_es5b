@@ -1,3 +1,5 @@
 [0311/175715.523:ERROR:crash_report_database_win.cc(428)] unexpected header
 [0311/182154.909:ERROR:crash_report_database_win.cc(428)] unexpected header
 [0311/191310.535:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0326/202532.833:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0327/165110.231:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0

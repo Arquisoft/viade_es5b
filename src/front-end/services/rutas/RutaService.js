@@ -83,6 +83,10 @@ class RutaService {
     }
     BackMain.añadirRuta(ruta);
   }
+  shareRuta(friendWebId,rutaUUID)
+  {
+    return BackMain.compartirRuta(friendWebId,rutaUUID);
+  }
 }
 
 export default RutaService;
