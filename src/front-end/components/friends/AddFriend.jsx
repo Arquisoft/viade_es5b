@@ -12,7 +12,7 @@ class AddFriend extends Component {
   render() {
     return (
       <div>
-        <Card>
+        <Card className="first">
           <Card.Header className="bold">Agregar nuevo amigo</Card.Header>
           <Card.Body>
             <Card.Text>
@@ -20,7 +20,7 @@ class AddFriend extends Component {
               cambiar según el provedor del POD del usuario.
             </Card.Text>
 
-            <InputGroup>
+            <InputGroup className="input">
               <InputGroup.Prepend>
                 <InputGroup.Text>WebID</InputGroup.Text>
               </InputGroup.Prepend>
@@ -31,6 +31,7 @@ class AddFriend extends Component {
             </InputGroup>
 
             <Button
+              data-testid="buttonAdd"
               className="mt-2"
               disabled={this.state.disabled}
               onClick={() =>
@@ -70,6 +71,7 @@ class AddFriend extends Component {
       return (
         <div>
           <Spinner
+            data-testid="spinner"
             className="mr-2"
             as="span"
             size="sm"

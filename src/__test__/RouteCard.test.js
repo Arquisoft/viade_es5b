@@ -61,11 +61,10 @@ test("RouteCard contiene la información del inicio y los hitos de la ruta.", ()
   }
 });
 
-/* No funciona
 test("Al hacer click en Ver en el map se muestra el componente MapRuta", async () => {
   window.HTMLElement.prototype.scrollIntoView = function() {};
   const { getByTestId } = render(<RouteCard ruta={ruta}></RouteCard>);
   fireEvent.click(getByTestId("rb-ver"));
   let mapa = await waitForElement(() => getByTestId("mapa"));
   expect(mapa).toBeInTheDocument();
-}); */
+}); 
