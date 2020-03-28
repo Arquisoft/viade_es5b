@@ -71,6 +71,8 @@ class RouteList extends Component {
     this.setState({ routeToShare: null, showSharePanel: false });
   };
 
+  share = amigos => {};
+
   toggleSharePanel = () => {
     return (
       this.state.showSharePanel && (
