@@ -82,14 +82,15 @@ class SharePanel extends Component {
   /**
    * Método que comparte la ruta con los amigos seleccionados.
    */
-  share = () => {
+  share = async () => {
     console.log("---- SHARING ----");
     for (let i = 0; i < this.selectedFriends.length; i++) {
-      this.rutaService.shareRuta(
+      await this.rutaService.shareRuta(
         this.selectedFriends[i].getWebId(),
         this.ruta.getUUID()
       );
     }
+    this.props.cancel();
   };
 }
 
