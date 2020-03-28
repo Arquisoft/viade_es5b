@@ -51,7 +51,7 @@ export async function sendNotification(webId,targetWebId, type) {
 //Devuelve true si logro mandar la notificacion, false si no
 export async function sendNotificationBody(webId,targetWebId, body) {
   var inbox=await getInboxUrl(targetWebId);
-  request({
+  await request({
     method: 'POST',
     uri: inbox,
     body: body,

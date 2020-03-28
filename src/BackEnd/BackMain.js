@@ -21,8 +21,8 @@ export default class BackMain {
     static añadirAmigo(friendWebId){
         return addFriend(friendWebId);
     };
-    static compartirRuta(friendWebId,Ruta){
-        shareRoute(friendWebId,Ruta);
+    static compartirRuta(friendWebId,rutaUUID){
+        shareRoute(friendWebId,rutaUUID);
     };
     
 }

@@ -1,5 +1,6 @@
 import { schema } from "rdf-namespaces";
 import { fetchDocument } from 'tripledoc';
+import {readFolder} from "../helpers/fileHelper";
 import Ruta from "../../../front-end/model/Ruta.js";
 import Hito from "../../../front-end/model/Hito.js";
 
@@ -41,4 +42,31 @@ export async function readRouteFromUrl(url)
         } 
     }
     return ruta;
+}
+export async function findRouteURL(folderUrl,uuid)
+{
+    let folder= await readFolder(folderUrl);
+    if (folder) 
+    {
+        for (var i = 0; i < folder.files.length; i++) 
+        {
+            console.log(folder.files[i].url)
+            let routeDoc;
+            await fetchDocument(folder.files[i].url).then((content) => {
+                routeDoc=content;
+            })
+            .catch(err => routeDoc=null);
+
+            if(routeDoc!=null)
+            {
+                var route = routeDoc.getSubject('#ruta');
+                var ID=route.getString(schema.identifier);
+                if(ID===uuid)
+                {
+                    return folder.files[i].url;
+                }
+            }
+        };
+    }
+    return null;
 }
