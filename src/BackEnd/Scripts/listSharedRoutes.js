@@ -1,7 +1,10 @@
 import { space, schema } from 'rdf-namespaces';
 import { fetchDocument } from "tripledoc";
-import {readRouteFromUrl} from "./helpers/routeHelper";
 import {existsFile} from "./helpers/fileHelper";
+import {getAmigoByWebId} from "./helpers/friendHelper";
+import {readRouteFromUrl} from "./helpers/routeHelper";
+
+import RutaAmigo from "../../front-end/model/RutaAmigo.js";
 
 const auth = require("solid-auth-client");
 
@@ -26,7 +29,8 @@ export async function listSharedRoutes() {
       //ya tengo todas las url
       for (var e = 0; e < rutas.length; e++) {
         var routeUrl=rutas[e].getRef(schema.url);
-        result = [...result, await readRouteFromUrl(routeUrl)];
+        var friendWebId=rutas[e].getRef(schema.agent);
+        result = [...result,new RutaAmigo(await readRouteFromUrl(routeUrl), await getAmigoByWebId(friendWebId))];
       }
     }
   }

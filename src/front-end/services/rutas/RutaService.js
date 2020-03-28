@@ -36,8 +36,6 @@ class RutaService {
    */
   getRutas() {
     return BackMain.listarRutas();
-    //return BackMain.listarRutasCompartidasConmigo();
-
   }
     /*
    * Devuelve TODAS las rutas que alguien haya compartido conmigo
