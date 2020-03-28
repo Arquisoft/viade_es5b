@@ -11,17 +11,18 @@ import NotLoggedInLayout from "./front-end/layouts/NotLoggedInLayout/not-logged-
 import PrivateLayout from "./front-end/layouts/PrivateLayout/private.layout";
 import PublicLayout from "./front-end/layouts/PublicLayout/public.layout";
 import Friends from "./front-end/components/friends/Friends";
-import BackMain from "./BackEnd/BackMain.js";
 import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import { store } from 'react-notifications-component';
+import * as i from "./front-end/components/InstanciaRutas";
+
 
 
 
 class App extends Component {
   procesarRutas()
   {
-    BackMain.procesarRutasCompartidas().then(result => {
+    i.service.procesarRutasCompartidas().then(result => {
     for(var i=0;i<result.length;i++)
     {
       //Agregamos la notificacion de ruta compartida
