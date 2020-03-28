@@ -32,14 +32,28 @@ async function newDocument(route) {
 }
 async function insertData(route, friend, routeUrl) {
     const sharedRoutesDocument = await fetchDocument(route);
-    // Initialise the new Subject:
-    const newShare = sharedRoutesDocument.addSubject();
+    //Compruebo si esta repetida, si lo esta no hago nada
+    var repeated=false;
+    let rutas = sharedRoutesDocument.getAllSubjectsOfType('http://arquisoft.github.io/viadeSpec/route');
+    for (var e = 0; e < rutas.length; e++) {
+      if(rutas[e].getRef(schema.url)===routeUrl)
+      {
+          console.log("repeated friend route: "+routeUrl);
+          repeated=true;
+          break;
+      }
+    }
+    if(!repeated)
+    {
+        // Initialise the new Subject:
+        const newShare = sharedRoutesDocument.addSubject();
 
-    newShare.addRef(schema.agent,friend);
-    newShare.addRef(schema.url,routeUrl);
-    newShare.addRef(rdf.type, 'http://arquisoft.github.io/viadeSpec/route');
+        newShare.addRef(schema.agent,friend);
+        newShare.addRef(schema.url,routeUrl);
+        newShare.addRef(rdf.type, 'http://arquisoft.github.io/viadeSpec/route');
 
-    await sharedRoutesDocument.save([newShare]);
+        await sharedRoutesDocument.save([newShare]);
+    }
 }
  
 
