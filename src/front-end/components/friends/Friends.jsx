@@ -86,7 +86,7 @@ class Friends extends Component {
   showError = () => {
     return (
       this.state.showError && (
-        <Alert variant="danger">
+        <Alert variant="danger" data-testid="alertNoExisteUsuario">
           No existe el usuario o ya está presente en tu lista de amigos.
         </Alert>
       )
