@@ -1,11 +1,12 @@
 class Comentario {
-  constructor(fecha) {
+  constructor(fecha,texto) {
     this.fecha = fecha;
+    this.texto = texto;
   }
   getFecha() {
     return this.fecha;
   }
-  setFecha(persona)
+  setFecha(fecha)
   {
     this.fecha=fecha
   }
@@ -16,38 +17,17 @@ class Comentario {
   {
     this.autor=persona
   }
+  getTexto() {
+    return this.texto;
+  }
   setTexto(texto)
   {
-    this.contenido=texto;
-    this.tipoContenido='Text';
+    this.texto=texto;
   }
-  setVideo(video)
-  {
-    this.contenido=video;
-    this.tipoContenido='Video';
-
-  }
-  setImagen(imagen)
-  {
-    this.contenido=imagen;
-    this.tipoContenido='Image';
-  }
-  getContenido()
-  {
-    return this.contenido;
-  }
-  getTipoContenido()
-  {
-    return this.tipoContenido;
-  }
-
-
   toString(){
     console.log("-Comentario:");
     console.log("--Autor: "+this.autor.getWebId());
-    console.log("--Contenido: "+this.contenido);
-    console.log("--TipoContenido: "+this.tipoContenido);
-
+    console.log("--Texto: "+this.texto);
   }
 }
 

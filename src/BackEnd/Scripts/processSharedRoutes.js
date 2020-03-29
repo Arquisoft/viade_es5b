@@ -3,7 +3,7 @@ import { schema } from "rdf-namespaces";
 import {findRouteURL} from "./helpers/routeHelper";
 import {getRootStorage,deleteFile} from "./helpers/fileHelper";
 import {addSharedRoute} from "./addSharedRoute";
-import {getAmigoByWebId} from "./helpers/friendHelper";
+import {getPersonaByWebId} from "./helpers/personHelper";
 import {readRouteFromUrl} from "./helpers/routeHelper";
 
 import RutaAmigo from "../../front-end/model/RutaAmigo.js";
@@ -40,10 +40,11 @@ export async function processSharedRoutes() {
                         console.log('url',routeUrl);
                         //Si lo encontro entonces insertamos en el apartado de rutas compartidas y borramos el mensaje
                         addSharedRoute(friendWebId,routeUrl);
-                        deleteFile(documents[i].asRef());
                         //Añadimos al resultado la ruta y el amigo que la añadio
-                        result = [...result,new RutaAmigo(await readRouteFromUrl(routeUrl), await getAmigoByWebId(friendWebId))];
+                        result = [...result,new RutaAmigo(await readRouteFromUrl(routeUrl), await getPersonaByWebId(friendWebId))];
                     }
+                    //borramos la notificacion
+                    deleteFile(documents[i].asRef());
                 }
             }
         }

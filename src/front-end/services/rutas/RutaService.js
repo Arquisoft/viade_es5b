@@ -1,5 +1,7 @@
 import Ruta from "../../model/Ruta";
 import Hito from "../../model/Hito";
+import Comentario from "../../model/Comentario";
+
 import BackMain from "../../../BackEnd/BackMain.js";
 
 /*
@@ -78,6 +80,10 @@ class RutaService {
   procesarRutasCompartidas()
   {
     return BackMain.procesarRutasCompartidas();
+  }
+  comentarMiRuta(comentario,rutaUUID)
+  {
+    BackMain.comentarMiRuta(comentario,rutaUUID);
   }
 }
 
