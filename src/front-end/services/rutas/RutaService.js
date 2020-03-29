@@ -1,7 +1,5 @@
 import Ruta from "../../model/Ruta";
 import Hito from "../../model/Hito";
-import Comentario from "../../model/Comentario";
-
 import BackMain from "../../../BackEnd/BackMain.js";
 
 /*
@@ -84,6 +82,10 @@ class RutaService {
   comentarMiRuta(comentario,rutaUUID)
   {
     BackMain.comentarMiRuta(comentario,rutaUUID);
+  }
+  obtenerComentariosRuta(rutaUUID)
+  {
+    return BackMain.obtenerComentariosRuta(rutaUUID);
   }
 }
 
