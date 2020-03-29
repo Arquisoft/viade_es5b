@@ -17,7 +17,7 @@ export async function getInboxUrl(webId) {
     if(profile!==null)
     {
       var url = profile.getRef(ldp.inbox);
-      console.log(url);
+      //console.log(url);
       return  url;
     }
   }

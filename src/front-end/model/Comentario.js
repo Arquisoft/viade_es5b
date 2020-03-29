@@ -23,8 +23,9 @@ class Comentario {
   }
 
   getFormattedDate() {
-    let commentDate =
-      "Publicado: " +
+    let commentDate ='';
+    if (!this.fecha == null ){
+      commentDate = "Publicado: " +
       this.fecha.getDate() +
       "/" +
       (this.fecha.getMonth() + 1) +
@@ -36,6 +37,7 @@ class Comentario {
       ((this.fecha.getMinutes() < 10 ? "0" : "") + this.fecha.getMinutes()) +
       ":" +
       this.fecha.getSeconds();
+    }
     return commentDate;
   }
 
