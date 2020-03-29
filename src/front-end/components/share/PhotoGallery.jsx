@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  Image,
-  Col,
-  Card,
-  Accordion,
-  Button,
-  Container,
-  Row
-} from "react-bootstrap";
+import { Card, Accordion, Button } from "react-bootstrap";
 import Gallery from "react-grid-gallery";
 
 class PhotoGallery extends Component {
