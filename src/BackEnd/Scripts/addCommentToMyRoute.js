@@ -5,8 +5,6 @@ import {getRootStorage,existsFile} from "./helpers/fileHelper";
 import {sendNotificationBody} from "./helpers/notificationHelper";
 import {listCommentsOfRoute} from "./listCommentsOfRoute";
 
-import { result } from 'rdf-namespaces/dist/schema';
-
 
 
 
