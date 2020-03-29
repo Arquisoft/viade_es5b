@@ -83,27 +83,47 @@ Usuario -> App: Escoge la ruta a eliminar y pulsa el botón "Eliminar"
 App -> BBDD: Elimina la ruta del POD
 App -> Usuario: Mensaje de "Ruta eliminada"
 ----
-=== Modificar ruta
+=== Agregar amigo que existe
 
-. Click en "Ver rutas" en la barra de navegación.
-. Escoger la ruta a modificar.
-. Click en el botón de "Editar" de la ruta elegida.
-. Modificar los campos de la ruta.
-. Click en el botón "Editar" para modificar la ruta en el POD.
+. Click en "Amigos"
+. Escribimos el WebId del amigo que queremos agregar.
+. Click en el botón de "Agregar"
+. Existe el amigo y lo agrega en la lista de amigos del usuario.
 
-
-[plantuml,"DiagramaModificarRuta",png]
+[plantuml,"DiagramaAgregarAmigoExistente",png]
 ----
 Usuario -> App: Seleccionamos "Ver rutas"
 App -> BBDD : Solicitar las rutas del usuario al POD
 BBDD -> App: Devuelve las rutas
 App -> Usuario: Devuelve la vista con las rutas del usuario
-Usuario -> App: Escoge la ruta a modificar y pulsa el botón "Editar"
-App -> Usuario: Devuelve la vista con el formulario de Modificar ruta y los campos actuales de la ruta a modificar
-Usuario -> App: Modifica los campos del formulario y pulsa el botón "Editar"
-App -> BBDD: Modifica los campos de la ruta en el POD
 ----
 
+=== Agregar amigo que no existe
+
+. Click en "Amigos"
+. Escribimos el WebId del amigo que queremos agregar.
+. Click en el botón de "Agregar".
+. No existe el webId del amigo que queremos agregar, por tanto, no se añade un nuevo amigo en la lista de amigos.
+
+[plantuml,"DiagramaAgregarAmigoNoExistente",png]
+----
+Usuario -> App: Seleccionamos "Ver rutas"
+App -> BBDD : Solicitar las rutas del usuario al POD
+BBDD -> App: Devuelve las rutas
+App -> Usuario: Devuelve la vista con las rutas del usuario
+----
+
+=== Listar amigos
+
+. Click en "Amigos" en la barra de navegación.
+
+[plantuml,"DiagramaVerAmigos",png]
+----
+Usuario -> App: Seleccionamos "Amigos"
+App -> BBDD : Solicitar los amigos del usuario al POD
+BBDD -> App: Devuelve los amigos
+App -> Usuario: Devuelve la vista con los amigos del usuario
+----
 
 
 
