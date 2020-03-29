@@ -146,11 +146,11 @@ App -> Usuario: Devuelve la vista con las rutas del usuario
 Usuario -> App: Escoge la ruta a compartir y pulsa el botón "Compartir"
 App -> BBDD: Solicita los amigos del usuario al POD
 BBDD -> App: Devuelve los amigos del usuario
-App -> Usuario: Muestra la lista de amigos al usuario.
+App -> Usuario: Muestra la lista de amigos al usuario
 Usuario -> App: Selecciona los amigos a los que quiere compartir la ruta y pulsa el botón "Compartir"
-App -> BBDD: Guarda la ruta en los PODs de los amigos seleccionados.
-BBDD -> AppAmigo: Obtiene la ruta compartida.
-AppAmigo -> Usuario: Notifica que le han compartido una ruta.
+App -> BBDD: Guarda la ruta con el usuario que la compartió en los PODs de los amigos seleccionados
+BBDD -> AppAmigo: Obtiene la ruta compartida
+AppAmigo -> Usuario: Notifica que le han compartido una ruta
 
 ----
 
