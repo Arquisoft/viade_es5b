@@ -57,7 +57,7 @@ class CommentBox extends Component {
 
               {this.state.commentList.map((c, key) => {
                 return (
-                  <Card className="mb-4">
+                  <Card className="mb-4" key={key++}>
                     <Card.Header>{`${c
                       .getAutor()
                       .getNombre()} ${c.getFormattedDate()}`}</Card.Header>
@@ -87,13 +87,9 @@ class CommentBox extends Component {
     // Creamos el objeto Comment
     let comment = new Comentario(date, commentText);
     // Lo guardamos en el pod del autor
-    await this.rutaService.comentarMiRuta(comment, routeUUID);
-    let cs = await this.rutaService.obtenerComentariosRuta(routeUUID);
-    console.log("---Comentarios:");
-    console.log(cs);
     // Recuperamos los comentarios
     this.setState({
-      commentList: cs
+      commentList: await this.rutaService.comentarMiRuta(comment, routeUUID)
     });
   };
 }

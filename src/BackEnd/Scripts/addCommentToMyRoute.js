@@ -3,6 +3,9 @@ import { fetchDocument } from 'tripledoc';
 import {findRouteURL} from "./helpers/routeHelper";
 import {getRootStorage,existsFile} from "./helpers/fileHelper";
 import {sendNotificationBody} from "./helpers/notificationHelper";
+import {listCommentsOfRoute} from "./listCommentsOfRoute";
+
+import { result } from 'rdf-namespaces/dist/schema';
 
 
 
@@ -10,6 +13,7 @@ import {sendNotificationBody} from "./helpers/notificationHelper";
 const auth = require('solid-auth-client')
 
 export async function addCommentToMyRoute(comentario,routeUUID){
+    var result=[];
     let session = await auth.currentSession();
     if (!session) { window.location.href = "/login"; }    
     let storage= await getRootStorage(session.webId);
@@ -23,6 +27,7 @@ export async function addCommentToMyRoute(comentario,routeUUID){
     if (url!==null) 
     {
         insertData(comentario,url,webId);
+        result = await listCommentsOfRoute(routeUUID);
         //Busco a que amigos mandar la circular y las mando
         var friends = await getSharedRouteFriends(storage,routeUUID);
         for(let i=0;i<friends.length;i++)
@@ -30,6 +35,7 @@ export async function addCommentToMyRoute(comentario,routeUUID){
             sendCommentNotification(webId,friends[i],routeUUID);
         }
     }
+    return result;
 }
 
 async function insertData(comentario, routeUrl,myWebId) {
