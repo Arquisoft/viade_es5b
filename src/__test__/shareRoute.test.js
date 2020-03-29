@@ -5,6 +5,7 @@ import Ruta from "../front-end/model/Ruta";
 import Hito from "../front-end/model/Hito";
 import { render, cleanup, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import SharePanel from "../front-end/components/share/SharePanel";
 
 
 
@@ -17,8 +18,37 @@ ruta.addHito(hito2);
 
 console.log("-------------------" + ruta.getHitos().length);
 
+//Lista de amigos de prueba:
+// Rutas de prueba
+let amigos = [];
+function setUp() {
+  let amigo1 = new Amigo(
+    "Pedro",
+    "https://pedro223.inrupt.net/profile/card#me"
+  );
+  
+  let amigo2 = new Amigo(
+    "Alex",
+    "https://hamalawindows.solid.community/profile/card#me"
+  );
+
+  amigos.push(amigo1);
+  amigos.push(amigo2);
+}
+
 
 test("RouteCard contiene el botón de compartir.", () => {
     const { getByTestId } = render(<RouteCard ruta={ruta}></RouteCard>);
     expect(getByTestId("rb-compartir")).toHaveTextContent("Compartir");
+});
+
+test("Se renderizan bien los componentes de SharePanel", () => {
+    const { getByTestId } = render(<SharePanel ruta={ruta} show="true"></SharePanel>);
+    let dialogo = await waitForElement(() => getByTestId("componenteModal"));
+
+    expect(getByTestId("titleCompartir")).toHaveTextContent("Compartir esta ruta");
+    expect(getByTestId("nombreRutaCompartir")).toHaveTextContent("Ruta: "+ruta.getNombre());
+    expect(getByTestId("titleCompartir")).toHaveTextContent("Selecciona a los amigos con los que deseas compartir esta ruta:");
+    expect(getByTestId("cancelarCompartirButton")).toHaveTextContent("Cancelar");
+    expect(getByTestId("compartirButton")).toHaveTextContent("Compartir");
 });
