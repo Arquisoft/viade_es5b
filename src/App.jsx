@@ -23,9 +23,8 @@ class App extends Component {
       for (var i = 0; i < result.length; i++) {
         //Agregamos la notificacion de ruta compartida
         store.addNotification({
-          title:
-            result[0].getAmigo().getNombre() + " te ha Compartido una ruta!",
-          message: "Ruta : " + result[0].getRuta().getNombre(),
+          title: result[0].getTitulo(),
+          message: result[0].getMensaje(),
           type: "success",
           insert: "top",
           container: "top-right",

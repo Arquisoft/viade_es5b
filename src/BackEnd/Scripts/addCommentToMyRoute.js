@@ -30,7 +30,7 @@ export async function addCommentToMyRoute(comentario,routeUUID){
         var friends = await getSharedRouteFriends(storage,routeUUID);
         for(let i=0;i<friends.length;i++)
         {
-            sendCommentNotification(webId,friends[i],routeUUID);
+            sendCommentNotification(webId,friends[i],routeUUID,comentario);
         }
     }
     return result;
@@ -74,13 +74,14 @@ async function getSharedRouteFriends(storage,routeUUID) {
     return result;
 }
 
-async function sendCommentNotification(webId,friendWebId,routeUUID) {
+async function sendCommentNotification(webId,friendWebId,routeUUID,comentario) {
     return sendNotificationBody(webId,friendWebId,
     `@prefix as: <https://www.w3.org/ns/activitystreams#> .
     @prefix schema: <http://schema.org/> .
     <> a as:Follow ;
     schema:agent <${webId}> ;
     schema:action "commentRoute" ;
+    schema:comment "${comentario.getTexto()}" ;
     schema:identifier "${routeUUID}" .
     `);
 }
