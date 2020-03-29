@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import MapRuta from "../../map/MapRuta";
 import "../../../css/map-style.css";
 import CommentBox from "../../share/CommentBox";
+import Gallery from "../../share/Gallery";
 
 /**
  * Representa un elemento Card con la
@@ -94,7 +95,10 @@ class RouteCard extends Component {
             </Row>
             <Row>
               <Col>
-                <CommentBox onlyRead={true}></CommentBox>
+                <CommentBox onlyRead={false}></CommentBox>
+              </Col>
+              <Col>
+                <Gallery></Gallery>
               </Col>
             </Row>
           </Container>

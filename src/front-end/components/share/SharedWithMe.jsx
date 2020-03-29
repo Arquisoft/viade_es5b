@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Accordion, Card, Button, Col, Row } from "react-bootstrap";
-import Comment from "./Comment";
+
 import RutaService from "../../services/rutas/RutaService";
 import MapRuta from "../map/MapRuta";
 
@@ -45,16 +45,7 @@ class SharedWithMe extends Component {
                       </Accordion.Toggle>
                     </Card.Header>
                     <Accordion.Collapse eventKey={key}>
-                      <Card.Body>
-                        <Comment
-                          comment="Esta muy chula esta ruta"
-                          author="Alex Flórez"
-                        />
-                        <Comment
-                          comment="He vuelto a hacer la ruta!"
-                          author="Alex Flórez"
-                        />
-                      </Card.Body>
+                      <Card.Body></Card.Body>
                     </Accordion.Collapse>
                   </Card>
                 </Col>

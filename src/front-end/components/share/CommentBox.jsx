@@ -39,6 +39,16 @@ class CommentBox extends Component {
                 </div>
               )}
 
+              {this.state.commentList.map((c, key) => {
+                return (
+                  <Card className="mb-4">
+                    <Card.Header>Alex Florez 15:36</Card.Header>
+                    <Card.Body>
+                      <Card.Text>Comentario1</Card.Text>
+                    </Card.Body>
+                  </Card>
+                );
+              })}
               <Card className="mb-4">
                 <Card.Header>Alex Florez 15:36</Card.Header>
                 <Card.Body>
@@ -59,8 +69,26 @@ class CommentBox extends Component {
   handleAddComment = () => {
     let comment = this.state.comment;
     this.setState({ comment: "" });
-    alert(comment);
+    alert(comment + " " + this.getFormattedDate());
   };
+
+  getFormattedDate() {
+    let date = new Date();
+    let commentDate =
+      "Publicado: " +
+      date.getDate() +
+      "/" +
+      (date.getMonth() + 1) +
+      "/" +
+      date.getFullYear() +
+      " " +
+      date.getHours() +
+      ":" +
+      ((date.getMinutes() < 10 ? "0" : "") + date.getMinutes()) +
+      ":" +
+      date.getSeconds();
+    return commentDate;
+  }
 }
 
 export default CommentBox;
