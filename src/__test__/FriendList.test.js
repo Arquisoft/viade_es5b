@@ -40,3 +40,7 @@ test("El componente se renderiza aunque no haya amigos.", () => {
     let tablaAmigos = await waitForElement(() => getByTestId("tablaAmigos"));
     expect(tablaAmigos.children.length).toBe(2);
   });
+
+  //PRUEBAS DE RENDERIZADO DE LOS COMPONENTES
+
+  

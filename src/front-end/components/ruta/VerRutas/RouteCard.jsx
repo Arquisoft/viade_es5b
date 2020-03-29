@@ -37,8 +37,8 @@ class RouteCard extends Component {
           >
             Eliminar
           </Button>
-          <Button className="mr-2">Editar</Button>
           <Button
+            data-testid="rb-compartir"
             variant="info"
             onClick={() => this.props.handleShare(this.props.ruta)}
           >
