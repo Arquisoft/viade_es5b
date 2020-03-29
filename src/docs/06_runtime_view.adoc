@@ -50,7 +50,7 @@ image:inicioSesion.png[inicioSesionDiagrama]
 ----
 Usuario -> App: Seleccionamos "Añadir ruta"
 App -> Usuario: Devuelve la vista con el formulario de Añadir ruta
-Usuario -> App: Rellenar campos de ruta e hitos.
+Usuario -> App: Rellenar campos de ruta e hitos
 App -> BBDD: Guarda la ruta en el POD
 App -> Usuario: Mensaje de "Ruta guardada"
 ----
@@ -87,34 +87,34 @@ App -> Usuario: Mensaje de "Ruta eliminada"
 
 . Click en "Amigos".
 . Escribimos el WebId del usuario que queremos agregar como amigo.
-. Click en el botón de "Agregar"
+. Click en el botón de "Agregar".
 . Existe el amigo y lo agrega en la lista de amigos del usuario.
 
 [plantuml,"DiagramaAgregarAmigoExistente",png]
 ----
 Usuario -> App: Seleccionamos "Amigos"
-App -> Usuario: Devuelve la vista que nos permite agregar un amigo y listar los amigos.
+App -> Usuario: Devuelve la vista que nos permite agregar un amigo y listar los amigos
 Usuario -> App: Rellenamos el campo con el webId del usuario que queremos agregar como amigo y click en "Agregar"
-App -> BBDD: Guarda el amigo en el POD del usuario.
-App -> Usuario: Muestra el nuevo amigo en la lista de amigos.
+App -> BBDD: Guarda el amigo en el POD del usuario
+App -> Usuario: Muestra el nuevo amigo en la lista de amigos
 ----
 
 === Agregar amigo que no existe o ya es amigo del usuario
 
 . Click en "Amigos".
 . Escribimos el WebId del usuario que queremos agregar como amigo.
-. Click en el botón de "Agregar"
+. Click en el botón de "Agregar".
 . No existe el webId del amigo que queremos agregar o ya es un amigo, no se añade un nuevo amigo en la lista de amigos.
 
 [plantuml,"DiagramaAgregarAmigoNoExistenteOYaAmigo",png]
 ----
 Usuario -> App: Seleccionamos "Amigos"
-App -> Usuario: Devuelve la vista que nos permite agregar un amigo y listar los amigos.
-Usuario -> App: Rellenamos el campo con el webId del usuario que queremos agregar como amigo y click en "Agregar".
-App -> BBDD: Intenta guardar el amigo en el POD del usuario.
-BBDD -> BBDD: No encuentra un usuario con ese webID o comprueba que ya es amigo del usuario.
-BBDD -> App: Notifica que no se ha agregado el nuevo amigo.
-App -> Usuario: Notifica que "No existe el usuario o ya está presente en tu lista de amigos." y muestra la lista de amigos sin añadir un nuevo amigo.
+App -> Usuario: Devuelve la vista que nos permite agregar un amigo y listar los amigos
+Usuario -> App: Rellenamos el campo con el webId del usuario que queremos agregar como amigo y click en "Agregar"
+App -> BBDD: Intenta guardar el amigo en el POD del usuario
+BBDD -> BBDD: No encuentra un usuario con ese webID o comprueba que ya es amigo del usuario
+BBDD -> App: Notifica que no se ha agregado el nuevo amigo
+App -> Usuario: Notifica que "No existe el usuario o ya está presente en tu lista de amigos." y muestra la lista de amigos sin añadir un nuevo amigo
 ----
 
 === Listar amigos
@@ -129,7 +129,7 @@ BBDD -> App: Devuelve los amigos
 App -> Usuario: Devuelve la vista con los amigos del usuario
 ----
 
-=== Compartir ruta con amigos.
+=== Compartir ruta con amigos
 
 . Click en "Mis rutas".
 . Escoger la ruta a compartir.
@@ -149,8 +149,8 @@ BBDD -> App: Devuelve los amigos del usuario
 App -> Usuario: Muestra la lista de amigos al usuario
 Usuario -> App: Selecciona los amigos a los que quiere compartir la ruta y pulsa el botón "Compartir"
 App -> BBDD: Guarda la ruta con el usuario que la compartió en los PODs de los amigos seleccionados
-BBDD -> AppAmigo: Obtiene la ruta compartida
-AppAmigo -> Usuario: Notifica que le han compartido una ruta
+BBDD -> AppAmigo: Notifica que se le ha compartido una ruta
+AppAmigo -> Usuario: Notifica al usuario que le han compartido una ruta
 
 ----
 
