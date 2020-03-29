@@ -8,6 +8,7 @@ class Ruta {
     this.inicio = inicio; // Coordenadas del lugar de inicio
     this.descripcion = descripcion;
     this.hitos = []; // Hitos de la ruta
+    this.comentarios=[] //Comentarios de la ruta
   }
 
   /*
@@ -46,6 +47,15 @@ class Ruta {
   }
   setUUID(uuid){
     this.uuid=uuid;
+  }
+  getComentarios() {
+    return this.comentarios;
+  }
+  setComentarios(comentarios) {
+    this.comentarios=comentarios;
+  }
+  addComentario(comentario) {
+    this.comentarios.push(comentario);
   }
 
   /*

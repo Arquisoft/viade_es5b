@@ -1,8 +1,10 @@
 import { schema } from "rdf-namespaces";
 import { fetchDocument } from 'tripledoc';
 import {readFolder} from "../helpers/fileHelper";
+import {getPersonaByWebId} from "../helpers/personHelper";
 import Ruta from "../../../front-end/model/Ruta.js";
 import Hito from "../../../front-end/model/Hito.js";
+import Comentario from "../../../front-end/model/Comentario.js";
 
 export async function readRouteFromUrl(url)
 {
@@ -39,7 +41,18 @@ export async function readRouteFromUrl(url)
                 puntos[e].getDecimal(schema.longitude)
                 )
             );
-        } 
+        }
+        
+        let comentarios = routeDoc.getSubjectsOfType(
+            "http://arquisoft.github.io/viadeSpec/userComment"
+            );
+        for (var i = 1; i < comentarios.length; i++) {
+            let comentario = new Comentario(comentarios[i].getDateTime(schema.datePublished),comentarios[i].getString(schema.text));
+            let autor= await getPersonaByWebId(comentarios[i].getRef(schema.author));
+            comentario.setAutor(autor);
+            ruta.addComentario(comentario);
+        }
+        
     }
     return ruta;
 }

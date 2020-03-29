@@ -1,6 +1,8 @@
 import {sendNotificationBody} from "./helpers/notificationHelper";
 import {findRouteURL} from "./helpers/routeHelper";
 import {moveFile,getRootStorage} from "./helpers/fileHelper";
+import {addToMySharedRoutes} from "./addToMySharedRoutes";
+
 
 const auth = require("solid-auth-client");
 
@@ -16,19 +18,25 @@ export async function shareRoute(friendWebId,routeUUID) {
     // Get the root URL of the user's Pod:
     let storage= await getRootStorage(session.webId);
 
-    await sendShareInvitation(session.webId,friendWebId,routeUUID)
-    //Si no esta en la carpeta publica lo muevo a la misma
-    let url= await findRouteURL(storage + 'private/routes/',routeUUID);
-    if(url!==null){
-        return await moveFile(url,storage + 'public/routes/' + routeUUID + '.ttl');
-    }
-    else {
-        //Compruebo que si no esta en la privada, este en la publica
-        url= await findRouteURL(storage + 'public/routes/',routeUUID);
-        if(url!==null)
-            return true
-        else
-            return false;
+    //Añado a rutas compartidas
+    //Si no estaba compartido ya continuo
+    if(await addToMySharedRoutes(friendWebId,routeUUID))
+    {
+        //mando notificacion
+        await sendShareInvitation(session.webId,friendWebId,routeUUID);
+        //Si no esta en la carpeta publica lo muevo a la misma
+        let url= await findRouteURL(storage + 'private/routes/',routeUUID);
+        if(url!==null){
+            return await moveFile(url,storage + 'public/routes/' + routeUUID + '.ttl');
+        }
+        else {
+            //Compruebo que si no esta en la privada, este en la publica
+            url= await findRouteURL(storage + 'public/routes/',routeUUID);
+            if(url!==null)
+                return true
+            else
+                return false;
+        }
     }
 }
 async function sendShareInvitation(webId,friendWebId,routeUUID) {
