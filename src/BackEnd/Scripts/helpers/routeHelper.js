@@ -9,7 +9,7 @@ import Comentario from "../../../front-end/model/Comentario.js";
 export async function readRouteFromUrl(url)
 {
     let routeDoc;
-    let ruta;
+    let ruta = null;
     await fetchDocument(url)
       .then(content => {
         routeDoc = content;
