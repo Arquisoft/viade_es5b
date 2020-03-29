@@ -26,7 +26,7 @@ export async function addCommentToMyRoute(comentario,routeUUID){
     //Si la encuentro entonces inserto el comentario y mando una circular
     if (url!==null) 
     {
-        insertData(comentario,url,webId);
+        await insertData(comentario,url,webId);
         result = await listCommentsOfRoute(routeUUID);
         //Busco a que amigos mandar la circular y las mando
         var friends = await getSharedRouteFriends(storage,routeUUID);
