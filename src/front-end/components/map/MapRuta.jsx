@@ -21,7 +21,7 @@ class MapRuta extends Component {
     this.ruta = this.props.ruta; // Ruta a representar en el mapa
     this.mapID = `mapa-${this.props.ruta.getNombre()}`; // ID del mapa
     this.hitos = this.getCoords(this.props.ruta); // obtenemos la lista de coordenadas de los hitos
-    this.zoom = 14;
+    this.zoom = 10;
     this.inicio = this.props.ruta.getInicio(); // Coordenadas de inicio de la ruta
   }
 
