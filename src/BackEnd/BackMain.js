@@ -35,7 +35,7 @@ export default class BackMain {
         return listSharedRoutes();
     };
     static comentarMiRuta(comentario,rutaUUID){
-        addCommentToMyRoute(comentario,rutaUUID);
+        return addCommentToMyRoute(comentario,rutaUUID);
     };
     static obtenerComentariosRuta(rutaUUID)
     {

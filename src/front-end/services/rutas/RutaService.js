@@ -81,7 +81,7 @@ class RutaService {
   }
   comentarMiRuta(comentario,rutaUUID)
   {
-    BackMain.comentarMiRuta(comentario,rutaUUID);
+    return BackMain.comentarMiRuta(comentario,rutaUUID);
   }
   obtenerComentariosRuta(rutaUUID)
   {

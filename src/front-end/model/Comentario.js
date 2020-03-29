@@ -24,7 +24,7 @@ class Comentario {
 
   getFormattedDate() {
     let commentDate ='';
-    if (!this.fecha == null ){
+    if (this.fecha != null ){
       commentDate = "Publicado: " +
       this.fecha.getDate() +
       "/" +
