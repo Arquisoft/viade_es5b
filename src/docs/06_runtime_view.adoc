@@ -86,16 +86,17 @@ App -> Usuario: Mensaje de "Ruta eliminada"
 === Agregar amigo que existe
 
 . Click en "Amigos"
-. Escribimos el WebId del amigo que queremos agregar.
+. Escribimos el WebId del usuario que queremos agregar como amigo.
 . Click en el botón de "Agregar"
 . Existe el amigo y lo agrega en la lista de amigos del usuario.
 
 [plantuml,"DiagramaAgregarAmigoExistente",png]
 ----
-Usuario -> App: Seleccionamos "Ver rutas"
-App -> BBDD : Solicitar las rutas del usuario al POD
-BBDD -> App: Devuelve las rutas
-App -> Usuario: Devuelve la vista con las rutas del usuario
+Usuario -> App: Seleccionamos "Amigos"
+App -> Usuario: Devuelve la vista que nos permite agregar un amigo y listar los amigos.
+Usuario -> App: Rellenamos el campo con el webId del usuario que queremos agregar como amigo.
+App -> BBDD: Guarda la ruta en el POD
+App -> Usuario: Mensaje de "Ruta guardada"
 ----
 
 === Agregar amigo que no existe
