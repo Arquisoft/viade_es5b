@@ -16,7 +16,6 @@ class AmigoService {
    * que simula la base de datos.
    */
   inicializarBD() {
-    console.log("------ Inicializando BDD ------");
 
     var amigo1 = new Amigo(
       "Pedro",

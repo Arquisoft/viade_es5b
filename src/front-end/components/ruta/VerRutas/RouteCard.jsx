@@ -37,7 +37,13 @@ class RouteCard extends Component {
           >
             Eliminar
           </Button>
-          <Button>Editar</Button>
+          <Button className="mr-2">Editar</Button>
+          <Button
+            variant="info"
+            onClick={() => this.props.handleShare(this.props.ruta)}
+          >
+            Compartir
+          </Button>
         </Card.Header>
         <Card.Body>
           <Container fluid>

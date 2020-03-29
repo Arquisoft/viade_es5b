@@ -17,8 +17,6 @@ class RutaService {
    * que simula la base de datos.
    */
   inicializarBD() {
-    console.log("------ Inicializando BDD ------");
-
     var r1 = new Ruta("Ruta-1", [43.534401, -5.909476], "Genial");
     var r2 = new Ruta("Ruta-2", [43.361763, -5.847995], "Bien");
 
@@ -39,25 +37,15 @@ class RutaService {
   getRutas() {
     return BackMain.listarRutas();
   }
-
-  /*
-   * Devuelve TODAS las rutas del usuario en sesión.
+    /*
+   * Devuelve TODAS las rutas que alguien haya compartido conmigo
    */
-  getRutasUsuarioLogeado(webId) {}
+  getRutasCompartidasConmigo() {
+    return BackMain.listarRutasCompartidasConmigo();
+  }
 
-  /*función splice() se le pasan dos parámetros: 
-  -el primero será el índice partir del cual queremos borrar elementos
-  -el segundo, el número de elementos que queremos borrar a partir de la posición dada*/
   deleteRuta(uuid) {
     BackMain.borrarRuta(uuid);
-    /*
-    var rutaToDelete = this.findRouteById(uuid);
-    var posicion = this.BDRutas.indexOf(rutaToDelete);
-    console.log(rutaToDelete);
-    if(posicion > -1){
-      this.BDRutas.splice(posicion, 1);
-    }
-    */
   }
 
   findRouteById(uuid) {
@@ -86,6 +74,10 @@ class RutaService {
   shareRuta(friendWebId,rutaUUID)
   {
     return BackMain.compartirRuta(friendWebId,rutaUUID);
+  }
+  procesarRutasCompartidas()
+  {
+    return BackMain.procesarRutasCompartidas();
   }
 }
 

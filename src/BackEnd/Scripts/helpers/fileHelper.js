@@ -24,6 +24,19 @@ export async function readFolder(route)
     .catch(err => (folder = null));
     return folder;
 }
+export async function existsFile(route,file)
+{
+  let folder;
+  folder =await readFolder(route);
+  if (folder) {
+    for (var i = 0; i < folder.files.length; i++) {
+      console.log(folder.files[i]);
+      if(folder.files[i].name === file)
+        return true;
+    }
+  }
+  return false;
+}
 export async function moveFile(sourceURL,targetURL)
 {
   let result=false;
