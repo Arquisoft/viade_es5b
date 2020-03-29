@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { Accordion, Card, Button } from "react-bootstrap";
+import { Accordion, Card, Button, Col, Row } from "react-bootstrap";
 import Comment from "./Comment";
+import RutaService from "../../services/rutas/RutaService";
+import MapRuta from "../map/MapRuta";
 
 /**
  * Componente que representa la vista de 'Compartido
@@ -8,33 +10,62 @@ import Comment from "./Comment";
  * amigos del usuario.
  */
 class SharedWithMe extends Component {
-  state = {};
+  constructor() {
+    super();
+    this.rutaService = new RutaService();
+  }
+
+  state = { rutasCompartidas: [] };
+
+  async componentDidMount() {
+    this.setState({
+      rutasCompartidas: await this.rutaService.getRutasCompartidasConmigo()
+    });
+  }
+
   render() {
     return (
       <div>
         <h2>Compartido conmigo</h2>
         <Accordion>
-          <Card.Header>
-            <h3>Ruta de Avilés</h3>
-            <p>Autor: Alex Florez</p>
-            <Accordion.Toggle as={Button} variant="link" eventKey="0">
-              Comentarios
-            </Accordion.Toggle>
-            <Button variant="success">Ver</Button>
-
-            <Accordion.Collapse eventKey="0">
-              <Card.Body>
-                <Comment
-                  comment="Esta muy chula esta ruta"
-                  author="Alex Flórez"
-                />
-                <Comment
-                  comment="He vuelto a hacer la ruta!"
-                  author="Alex Flórez"
-                />
-              </Card.Body>
-            </Accordion.Collapse>
-          </Card.Header>
+          {this.state.rutasCompartidas.map((sharedRoute, key) => {
+            return (
+              <Row>
+                <Col>
+                  <Card key={key++}>
+                    <Card.Header>
+                      <h3>{sharedRoute.getRuta().getNombre()}</h3>
+                      <p>Autor: {sharedRoute.getAmigo().getNombre()}</p>
+                      <Accordion.Toggle
+                        as={Button}
+                        variant="link"
+                        eventKey={key}
+                      >
+                        Comentarios
+                      </Accordion.Toggle>
+                    </Card.Header>
+                    <Accordion.Collapse eventKey={key}>
+                      <Card.Body>
+                        <Comment
+                          comment="Esta muy chula esta ruta"
+                          author="Alex Flórez"
+                        />
+                        <Comment
+                          comment="He vuelto a hacer la ruta!"
+                          author="Alex Flórez"
+                        />
+                      </Card.Body>
+                    </Accordion.Collapse>
+                  </Card>
+                </Col>
+                <Col>
+                  <Card>
+                    <MapRuta ruta={sharedRoute.getRuta()}></MapRuta>
+                  </Card>
+                </Col>
+              </Row>
+            );
+          })}
         </Accordion>
       </div>
     );

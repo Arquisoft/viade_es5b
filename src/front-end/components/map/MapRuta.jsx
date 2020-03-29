@@ -4,6 +4,8 @@ import { Map, Marker, Popup, TileLayer, Polyline } from "react-leaflet";
 import L from "leaflet";
 import * as icons from "./MarkerIcons";
 
+import "leaflet/dist/leaflet.css";
+
 // Sin esto no se muestran los Markers
 delete L.Icon.Default.prototype._getIconUrl;
 
