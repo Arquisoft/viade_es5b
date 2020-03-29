@@ -17,7 +17,7 @@ export default class BackMain {
         addRoute(Ruta)
     };
     static borrarRuta(uuid) {
-        deleteRoute(uuid)
+       return deleteRoute(uuid)
     };
     static listarAmigos() {
         return listFriends()

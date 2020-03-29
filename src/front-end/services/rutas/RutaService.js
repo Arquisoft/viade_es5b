@@ -45,7 +45,7 @@ class RutaService {
   }
 
   deleteRuta(uuid) {
-    BackMain.borrarRuta(uuid);
+    return BackMain.borrarRuta(uuid);
   }
 
   findRouteById(uuid) {
