@@ -21,10 +21,11 @@ class RouteCard extends Component {
         <Card.Header>
           <h3 data-testid="r-title">{this.props.ruta.getNombre()}</h3>
           <Button
-            data-testid="rb-ver"
+            
             variant="success"
             className="mr-2"
             onClick={this.handleViewInMap}
+            data-testid="rb-ver"
           >
             Ver en el mapa
           </Button>
@@ -76,11 +77,11 @@ class RouteCard extends Component {
               <Col>
                 {this.state.loaded && (
                   <div
-                    data-testid="mapa"
+                    
                     id={`mapa-${this.props.ruta.getNombre()}`}
                     className="ml-3 mb-3"
                   >
-                    <MapRuta className="map" ruta={this.props.ruta} />
+                    <MapRuta className="map" ruta={this.props.ruta} data-testid="mapa"/>
                   </div>
                 )}
               </Col>

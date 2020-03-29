@@ -5,6 +5,7 @@ import Ruta from "../front-end/model/Ruta";
 import Hito from "../front-end/model/Hito";
 import { render, getByText } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import RouteList from "../front-end/components/ruta/VerRutas/RouteList";
 
 // Ruta de prueba
 let ruta = new Ruta("Ruta Avilés", [4.5, 5.4], "Muy buena ruta, entretenida.");
@@ -16,7 +17,7 @@ console.log("-------------------" + ruta.getHitos().length);
 
 test("se renderiza sin fallos", () => {
   const div = document.createElement("div");
-  ReactDOM.render(<VerRutas></VerRutas>, div);
+  ReactDOM.render(<VerRutas ></VerRutas>, div);
 });
 
 /*test("RouteCard contiene la información básica de la ruta.", () => {
