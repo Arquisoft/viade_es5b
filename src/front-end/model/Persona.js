@@ -20,7 +20,7 @@ class Persona {
   toString(){
     console.log("-Persona:");
     console.log("--Nombre: "+this.nombre);
-    console.log("--WebID: "+this.webID);
+    console.log("--WebID: "+this.webId);
   }
 }
 
