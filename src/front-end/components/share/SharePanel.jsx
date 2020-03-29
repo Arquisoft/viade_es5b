@@ -4,6 +4,10 @@ import AmigoService from "../../services/amigos/AmigoService";
 import GroupSelect from "./GroupSelect";
 import RutaService from "../../services/rutas/RutaService";
 
+/**
+ * Componente que modela un panel para compartir la ruta seleccionada
+ * con un grupo de amigos.
+ */
 class SharePanel extends Component {
   constructor(props) {
     super(props);

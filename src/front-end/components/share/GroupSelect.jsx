@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { ListGroup } from "react-bootstrap";
 
+/**
+ * Componente que modela una lista clickable de amigos,
+ * que permite seleccionar a varios amigos con los que compartir
+ * una ruta.
+ */
 class GroupSelect extends Component {
   constructor(props) {
     super(props);
