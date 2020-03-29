@@ -4,7 +4,6 @@ import Button from "react-bootstrap/Button";
 import MapRuta from "../../map/MapRuta";
 import "../../../css/map-style.css";
 import CommentBox from "../../share/CommentBox";
-import Gallery from "../../share/PhotoGallery";
 import PhotoGallery from "../../share/PhotoGallery";
 
 /**

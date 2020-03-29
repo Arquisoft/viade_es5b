@@ -87,10 +87,13 @@ class CommentBox extends Component {
     // Creamos el objeto Comment
     let comment = new Comentario(date, commentText);
     // Lo guardamos en el pod del autor
-    this.rutaService.comentarMiRuta(comment, routeUUID);
+    await this.rutaService.comentarMiRuta(comment, routeUUID);
+    let cs = await this.rutaService.obtenerComentariosRuta(routeUUID);
+    console.log("---Comentarios:");
+    console.log(cs);
     // Recuperamos los comentarios
     this.setState({
-      commentList: await this.rutaService.obtenerComentariosRuta(routeUUID)
+      commentList: cs
     });
   };
 }
