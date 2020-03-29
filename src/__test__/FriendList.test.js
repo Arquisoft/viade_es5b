@@ -41,6 +41,6 @@ test("El componente se renderiza aunque no haya amigos.", () => {
     expect(tablaAmigos.children.length).toBe(2);
   });
 
-  //PRUEBAS DE RENDERIZADO DE LOS COMPONENTES
+  ;
 
   

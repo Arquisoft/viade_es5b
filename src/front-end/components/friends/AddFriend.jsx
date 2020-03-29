@@ -13,20 +13,21 @@ class AddFriend extends Component {
     return (
       <div>
         <Card className="first">
-          <Card.Header className="bold">Agregar nuevo amigo</Card.Header>
+          <Card.Header className="bold" data-testid="titleAgregarAmigo">Agregar nuevo amigo</Card.Header>
           <Card.Body>
-            <Card.Text>
+            <Card.Text data-testid="nuevoAmigo">
               Para agregar un nuevo amigo, introduce su WebID. El WebID puede
               cambiar según el provedor del POD del usuario.
             </Card.Text>
 
             <InputGroup className="input">
               <InputGroup.Prepend>
-                <InputGroup.Text>WebID</InputGroup.Text>
+                <InputGroup.Text data-testid="webID">WebID</InputGroup.Text>
               </InputGroup.Prepend>
               <Form.Control
                 placeholder="https://alex123.solid.community"
                 onChange={this.handleKeyPress}
+                data-testid="formAddFriend"
               />
             </InputGroup>
 

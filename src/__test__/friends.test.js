@@ -40,3 +40,19 @@ it('AddFriend', () => {
 
     expect(getByTestId("buttonAdd")).toHaveTextContent("Agregar");
 });*/
+
+//PRUEBAS DE RENDERIZADO DE LOS COMPONENTES
+
+test("Se renderizan bien titulos, forms, etiquetas", async () => {
+  const { getByTestId }=render(<Friend></Friend>);
+  
+  expect(getByTestId("titleAmigos")).toHaveTextContent("Amigos");
+  expect(getByTestId("gestionAmigos")).toHaveTextContent("Desde aquí puedes realizar la gestión de tus amigos.");
+  expect(getByTestId("componenteAddFriend")).toBeInTheDocument();
+  //dentro del componente addFriend
+  expect(getByTestId("nuevoAmigo")).toHaveTextContent("Para agregar un nuevo amigo, introduce su WebID. El WebID puede cambiar según el provedor del POD del usuario.");
+  expect(getByTestId("webID")).toHaveTextContent("WebID");
+  expect(getByTestId("formAddFriend")).toBeInTheDocument();
+  expect(getByTestId("buttonAdd")).toBeInTheDocument();
+
+})
