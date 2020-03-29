@@ -1,10 +1,10 @@
 import { fetchDocument } from 'tripledoc';
-import Amigo from "../../../front-end/model/Amigo.js";
+import Persona from "../../../front-end/model/Persona.js";
 
 
 export async function getAmigoByWebId(webId) {
     const profileDoc = await fetchDocument(webId);
     var profile = profileDoc.getSubject(webId);
-    return new Amigo(profile.getString('http://xmlns.com/foaf/0.1/name'),webId);
+    return new Persona(profile.getString('http://xmlns.com/foaf/0.1/name'),webId);
   }
   
