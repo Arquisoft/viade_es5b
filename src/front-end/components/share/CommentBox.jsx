@@ -58,7 +58,9 @@ class CommentBox extends Component {
               {this.state.commentList.map((c, key) => {
                 return (
                   <Card className="mb-4">
-                    <Card.Header>{`${c.getAutor()} ${c.getFormattedDate()}`}</Card.Header>
+                    <Card.Header>{`${c
+                      .getAutor()
+                      .getNombre()} ${c.getFormattedDate()}`}</Card.Header>
                     <Card.Body>
                       <Card.Text>{c.getTexto()}</Card.Text>
                     </Card.Body>
