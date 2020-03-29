@@ -11,9 +11,18 @@ class CommentBox extends Component {
 
   state = {
     comment: "",
-    commentList: this.props.ruta.getComentarios(),
+    commentList: [],
     onlyRead: this.props.onlyRead
   };
+
+  async componentDidMount() {
+    this.setState({
+      commentList: await this.rutaService.obtenerComentariosRuta(
+        this.props.ruta.getUUID()
+      )
+    });
+  }
+
   render() {
     return (
       <Accordion>
@@ -49,9 +58,9 @@ class CommentBox extends Component {
               {this.state.commentList.map((c, key) => {
                 return (
                   <Card className="mb-4">
-                    <Card.Header>Alex Florez 15:36</Card.Header>
+                    <Card.Header>{`${c.getAutor()} ${c.getFormattedDate()}`}</Card.Header>
                     <Card.Body>
-                      <Card.Text>Comentario1</Card.Text>
+                      <Card.Text>{c.getTexto()}</Card.Text>
                     </Card.Body>
                   </Card>
                 );
@@ -70,7 +79,7 @@ class CommentBox extends Component {
   handleAddComment = async () => {
     //Recolección de datos del comentario
     let commentText = this.state.comment;
-    let date = this.getFormattedDate();
+    let date = new Date();
     let routeUUID = this.props.ruta.getUUID();
     this.setState({ comment: "" });
     // Creamos el objeto Comment
@@ -78,27 +87,10 @@ class CommentBox extends Component {
     // Lo guardamos en el pod del autor
     this.rutaService.comentarMiRuta(comment, routeUUID);
     // Recuperamos los comentarios
-    let updatedComments = "";
-    alert(comment + " " + date + " " + routeUUID);
+    this.setState({
+      commentList: await this.rutaService.obtenerComentariosRuta(routeUUID)
+    });
   };
-
-  getFormattedDate() {
-    let date = new Date();
-    let commentDate =
-      "Publicado: " +
-      date.getDate() +
-      "/" +
-      (date.getMonth() + 1) +
-      "/" +
-      date.getFullYear() +
-      " " +
-      date.getHours() +
-      ":" +
-      ((date.getMinutes() < 10 ? "0" : "") + date.getMinutes()) +
-      ":" +
-      date.getSeconds();
-    return commentDate;
-  }
 }
 
 export default CommentBox;
