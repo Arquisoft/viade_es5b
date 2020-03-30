@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Alert } from "react-bootstrap";
-import imageFile from '../../static/defaultProfile.png';
 
 
 class FriendList extends Component {
@@ -40,7 +39,7 @@ class FriendList extends Component {
           {this.props.amigos.map((amigo, key) => (
             <tr key={key++}>
               <th scope="row">
-                <img src={amigo.getFoto()!==null?amigo.getFoto():imageFile} 
+                <img src={amigo.getFoto()!==null?amigo.getFoto():process.env.PUBLIC_URL +"/img/defaultProfile.png"} 
                   className="rounded-circle" alt="" width="50" height="50"/></th>
               <td>{amigo.getNombre()}</td>
               <td>{amigo.getWebId()}</td>
