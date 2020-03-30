@@ -81,7 +81,7 @@ export async function processSharedRoutes() {
                         //Si la encontro entonces mostramos una notificacion al usuario
                         let ruta=await readRouteFromUrl(routeUrl)
                         let persona=await getPersonaByWebId(friendWebId)
-                        result = [...result,new Notificacion(persona.getNombre() + " ha comentado","En "+ruta.getNombre()+": "+message.getString(schema.MediaObject) )];
+                        result = [...result,new Notificacion(persona.getNombre() + " subio un archivo","En "+ruta.getNombre()+": "+message.getString(schema.MediaObject) )];
 
                     }
                     //borramos la notificacion

@@ -25,7 +25,7 @@ export async function addMediaToMyRoute(files,routeUUID){
         for(var i=0;i<files.length;i++){
             const file=files[i];
             const fileName=uuidv4()+file.name;
-            let folder = storage + "public/"+fileName;
+            let folder = storage + "public/files/"+fileName;
             console.log("leyendo fichero");
             const reader = new FileReader();
     
@@ -45,7 +45,7 @@ export async function addMediaToMyRoute(files,routeUUID){
                   });
                   if (response.ok) {
                     console.log("fichero subido");
-                    insertData(fileName,url,webId)
+                    insertData(folder,url,webId)
 
                     //Busco a que amigos mandar la circular y las mando
                     var friends = await getSharedRouteFriends(storage,routeUUID);
@@ -57,8 +57,9 @@ export async function addMediaToMyRoute(files,routeUUID){
                 };
              reader.readAsArrayBuffer(file);
             }
-            result = listMediaOfRoute(webId,routeUUID);
+            result = await listMediaOfRoute(routeUUID,webId);
     }
+    console.log(result);
     return result;
 }
 
