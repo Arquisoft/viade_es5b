@@ -18,6 +18,17 @@
 |Visual Studio Code
 |IDE para la codificación de la solución y de la documentación.
 |===
+.Enfoques para alcanzar objetivos de calidad
+
+* Uso de funciones Async/await para escribir código completamente síncrono mientras realizamos tareas asíncronas en segundo plano.
+* Uso de Bootstrap para el diseño de nuestra aplicación web. 
+
+.Descomposición de alto nivel
+
+A continuación se muestra el diagrama de la descomposición de alto nivel de nuestra aplicación web. En el cual podemos observar que se divide en
+dos funcionalidades principales: usuarios y servicio de rutas.
+
+
 .Decisiones Organizativas
 
 Division en capas de la arquitectura para una mayor mantenibilidad.

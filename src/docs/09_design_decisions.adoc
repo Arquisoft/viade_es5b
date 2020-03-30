@@ -26,6 +26,10 @@ Las "branches" o ramas, permiten trabajar con una base de código paralela al pr
 Empezar a trabajar desde otro entorno es tan fácil como "clonar" el proyecto a tu nuevo entorno.
 
 Proporciona un sistema de etiquetas, para etiquetar las distintas versiones del proyecto.
+| Arc42
+| Nos proporciona una plantilla con los principales puntos para documentar la arquitectura software de nuestra aplicación web.
+| AsciiDoctor
+| Sistema de documentación dinámico y con sintaxis clara que nos permite mantener actualizada la documentación.
 
 
 |===
