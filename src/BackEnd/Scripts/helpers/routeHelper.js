@@ -46,13 +46,17 @@ export async function readRouteFromUrl(url)
         let comentarios = routeDoc.getSubjectsOfType(
             "http://arquisoft.github.io/viadeSpec/userComment"
             );
-        for (var i = 0; i < comentarios.length; i++) {
+        for (let i = 0; i < comentarios.length; i++) {
             let comentario = new Comentario(comentarios[i].getDateTime(schema.datePublished),comentarios[i].getString(schema.text));
             let autor= await getPersonaByWebId(comentarios[i].getRef(schema.author));
             comentario.setAutor(autor);
             ruta.addComentario(comentario);
         }
-        
+        let ficheros = routeDoc.getSubjectsOfType(schema.MediaObject);
+        for (let i = 0; i < ficheros.length; i++) {
+            let fichero = ficheros[i].getRef(schema.contentUrl)
+            ruta.addFichero(fichero);
+          }       
     }
     return ruta;
 }
