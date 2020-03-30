@@ -12,25 +12,27 @@ class AddFriend extends Component {
   render() {
     return (
       <div>
-        <Card>
-          <Card.Header className="bold">Agregar nuevo amigo</Card.Header>
+        <Card className="first">
+          <Card.Header className="bold" data-testid="titleAgregarAmigo">Agregar nuevo amigo</Card.Header>
           <Card.Body>
-            <Card.Text>
+            <Card.Text data-testid="nuevoAmigo">
               Para agregar un nuevo amigo, introduce su WebID. El WebID puede
               cambiar según el provedor del POD del usuario.
             </Card.Text>
 
-            <InputGroup>
+            <InputGroup className="input">
               <InputGroup.Prepend>
-                <InputGroup.Text>WebID</InputGroup.Text>
+                <InputGroup.Text data-testid="webID">WebID</InputGroup.Text>
               </InputGroup.Prepend>
               <Form.Control
                 placeholder="https://alex123.solid.community"
                 onChange={this.handleKeyPress}
+                data-testid="formAddFriend"
               />
             </InputGroup>
 
             <Button
+              data-testid="buttonAdd"
               className="mt-2"
               disabled={this.state.disabled}
               onClick={() =>
@@ -70,6 +72,7 @@ class AddFriend extends Component {
       return (
         <div>
           <Spinner
+            data-testid="spinner"
             className="mr-2"
             as="span"
             size="sm"
