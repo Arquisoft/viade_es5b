@@ -3,6 +3,7 @@ import { fetchDocument } from 'tripledoc';
 import {findRouteURL} from "./helpers/routeHelper";
 import {getRootStorage,existsFile} from "./helpers/fileHelper";
 import {sendNotificationBody} from "./helpers/notificationHelper";
+import {listMediaOfRoute} from "./listMediaOfRoute";
 import { v4 as uuidv4 } from "uuid";
 const auth = require("solid-auth-client");
 
@@ -56,6 +57,7 @@ export async function addMediaToMyRoute(files,routeUUID){
                 };
              reader.readAsArrayBuffer(file);
             }
+            result = listMediaOfRoute(webId,routeUUID);
     }
     return result;
 }
