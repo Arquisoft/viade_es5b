@@ -8,6 +8,7 @@ import {processSharedRoutes} from './Scripts/processSharedRoutes.js'
 import {listSharedRoutes} from './Scripts/listSharedRoutes.js'
 import {addCommentToMyRoute} from './Scripts/addCommentToMyRoute.js'
 import {listCommentsOfRoute} from './Scripts/listCommentsOfRoute.js'
+import {addMediaToMyRoute} from './Scripts/addMediaToMyRoute.js'
 
 export default class BackMain {
     static listarRutas() {
@@ -41,4 +42,7 @@ export default class BackMain {
     {
         return listCommentsOfRoute(rutaUUID);
     }
+    static subirFicheroAMiRuta(fichero,rutaUUID){
+        return addMediaToMyRoute(fichero,rutaUUID);
+    };
 }

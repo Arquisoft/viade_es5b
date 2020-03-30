@@ -87,6 +87,10 @@ class RutaService {
   {
     return BackMain.obtenerComentariosRuta(rutaUUID);
   }
+  subirFicheroAMiRuta(fichero,rutaUUID)
+  {
+    return BackMain.subirFicheroAMiRuta(fichero,rutaUUID);
+  }
 }
 
 export default RutaService;
