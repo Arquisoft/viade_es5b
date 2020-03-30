@@ -22,8 +22,10 @@ export async function addMediaToMyRoute(files,routeUUID){
     //Si la encuentro entonces inserto el archivo y mando una circular
     if (url!==null) 
     {
+        var filenames='';
         for(var i=0;i<files.length;i++){
             const file=files[i];
+            filenames=filenames+", "+file.name;
             const fileName=uuidv4()+file.name;
             let folder = storage + "public/files/"+fileName;
             console.log("leyendo fichero");
@@ -46,16 +48,18 @@ export async function addMediaToMyRoute(files,routeUUID){
                   if (response.ok) {
                     console.log("fichero subido");
                     insertData(folder,url,webId)
-
-                    //Busco a que amigos mandar la circular y las mando
-                    var friends = await getSharedRouteFriends(storage,routeUUID);
-                    for(let i=0;i<friends.length;i++)
-                    {
-                        sendMediaNotification(webId,friends[i],routeUUID,file.name);
-                    }
                   }
                 };
              reader.readAsArrayBuffer(file);
+            }
+            //Busco a que amigos mandar la circular y las mando
+            if(filenames.length>0)
+            {
+                var friends = await getSharedRouteFriends(storage,routeUUID);
+                for(let i=0;i<friends.length;i++)
+                {
+                    sendMediaNotification(webId,friends[i],routeUUID,filenames);
+                }
             }
             result = await listMediaOfRoute(routeUUID,webId);
     }
@@ -99,14 +103,14 @@ async function getSharedRouteFriends(storage,routeUUID) {
     }
     return result;
 }
-async function sendMediaNotification(webId,friendWebId,routeUUID,nombreFichero) {
+async function sendMediaNotification(webId,friendWebId,routeUUID,nombreFicheros) {
     return sendNotificationBody(webId,friendWebId,
     `@prefix as: <https://www.w3.org/ns/activitystreams#> .
     @prefix schema: <http://schema.org/> .
     <> a as:Follow ;
     schema:agent <${webId}> ;
     schema:action "mediaRoute" ;
-    schema:MediaObject "${nombreFichero}" ;
+    schema:MediaObject "${nombreFicheros}" ;
     schema:identifier "${routeUUID}" .
     `);
 }
