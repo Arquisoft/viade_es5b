@@ -30,7 +30,8 @@ Proporciona un sistema de etiquetas, para etiquetar las distintas versiones del 
 | Nos proporciona una plantilla con los principales puntos para documentar la arquitectura software de nuestra aplicación web.
 | AsciiDoctor
 | Sistema de documentación dinámico y con sintaxis clara que nos permite mantener actualizada la documentación.
-
+| Google maps
+| API que nos permite visualizar un mapa que muestre la ruta del usuario con sus respectivos hitos.
 
 |===
 ****
