@@ -28,6 +28,8 @@
 A continuación se muestra el diagrama de la descomposición de alto nivel de nuestra aplicación web. En el cual podemos observar que se divide en
 dos funcionalidades principales: usuarios y servicio de rutas.
 
+image::DescAltoNivel.JPG[]
+
 
 .Decisiones Organizativas
 
