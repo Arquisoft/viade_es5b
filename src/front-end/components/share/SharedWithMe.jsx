@@ -3,6 +3,7 @@ import { Accordion, Card, Button, Col, Row } from "react-bootstrap";
 
 import RutaService from "../../services/rutas/RutaService";
 import MapRuta from "../map/MapRuta";
+import CommentBox from "./CommentBox";
 
 /**
  * Componente que representa la vista de 'Compartido
@@ -36,17 +37,12 @@ class SharedWithMe extends Component {
                     <Card.Header>
                       <h3>{sharedRoute.getRuta().getNombre()}</h3>
                       <p>Autor: {sharedRoute.getAmigo().getNombre()}</p>
-                      <Accordion.Toggle
-                        as={Button}
-                        variant="link"
-                        eventKey={key}
-                      >
-                        Comentarios
-                      </Accordion.Toggle>
                     </Card.Header>
-                    <Accordion.Collapse eventKey={key}>
-                      <Card.Body></Card.Body>
-                    </Accordion.Collapse>
+                    <CommentBox
+                      author={sharedRoute.getAmigo()}
+                      ruta={sharedRoute.getRuta()}
+                      onlyRead={true}
+                    ></CommentBox>
                   </Card>
                 </Col>
                 <Col>
