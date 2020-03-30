@@ -30,20 +30,20 @@ class FriendList extends Component {
     return (
       <table className="table table-striped" data-testid="tablaAmigos">
         <thead>
-          <tr class="d-flex">
-            <th class="col-1" scope="col"></th>
-            <th class="col-5" scope="col">Nombre</th>
-            <th class="col-6" scope="col">WebID</th>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Nombre</th>
+            <th scope="col">WebID</th>
           </tr>
         </thead>
         <tbody>
           {this.props.amigos.map((amigo, key) => (
-            <tr class="d-flex" key={key++}>
-              <th class="col-1" scope="row">
+            <tr key={key++}>
+              <th scope="row">
                 <img src={amigo.getFoto()!==null?amigo.getFoto():imageFile} 
-                  className="rounded-circle img-fluid"/></th>
-              <td class="col-5">{amigo.getNombre()}</td>
-              <td class="col-6">{amigo.getWebId()}</td>
+                  className="rounded-circle" alt="" width="50" height="50"/></th>
+              <td>{amigo.getNombre()}</td>
+              <td>{amigo.getWebId()}</td>
             </tr>
           ))}
         </tbody>

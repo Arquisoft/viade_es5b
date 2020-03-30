@@ -30,12 +30,9 @@ class GroupSelect extends Component {
               key={key++}
               onClick={() => this.clickItem(key - 1)}
             >
-            <div className="d-flex">
-              <div className="col-2">
                 <img src={a.getFoto()!==null?a.getFoto():imageFile} 
-                  className="rounded-circle img-fluid"/></div>
-              <div className="col-10">{a.getNombre()}</div>
-            </div>
+                  className="rounded-circle img-fluid" alt="" width="50" height="50"/>
+              {a.getNombre()}
             </ListGroup.Item>
           );
         })}
