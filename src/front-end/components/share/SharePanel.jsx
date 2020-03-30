@@ -28,13 +28,13 @@ class SharePanel extends Component {
 
   render() {
     return (
-      <Modal show={this.props.show} size="lg" centered>
+      <Modal data-testid="componenteModal" show={this.props.show} size="lg" centered>
         <Modal.Header>
-          <Modal.Title>Compartir esta ruta</Modal.Title>
+          <Modal.Title data-testid="titleCompartir">Compartir esta ruta</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Ruta: {this.props.ruta.getNombre()}</h4>
-          <p>Selecciona a los amigos con los que deseas compartir esta ruta:</p>
+          <h4 data-testid="nombreRutaCompartir">Ruta: {this.props.ruta.getNombre()}</h4>
+          <p data-testid="parrafoSeleccion">Selecciona a los amigos con los que deseas compartir esta ruta:</p>
           {this.state.loadingFriends && (
             <>
               <Spinner
@@ -51,14 +51,15 @@ class SharePanel extends Component {
               amigos={this.state.amigos}
               add={this.addFriend}
               delete={this.deleteFriend}
+              data-testid="Selector"
             ></GroupSelect>
           )}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={this.props.cancel}>
+          <Button data-testid="cancelarCompartirButton"variant="secondary" onClick={this.props.cancel}>
             Cancelar
           </Button>
-          <Button variant="success" onClick={this.share}>
+          <Button data-testid="compartirButton" variant="success" onClick={this.share}>
             Compartir
           </Button>
         </Modal.Footer>

@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { Accordion, Card, InputGroup, Form, Button } from "react-bootstrap";
+import {
+  Accordion,
+  Card,
+  InputGroup,
+  Form,
+  Button,
+  Spinner,
+  Alert
+} from "react-bootstrap";
 import RutaService from "../../services/rutas/RutaService";
 import Comentario from "../../model/Comentario";
 
@@ -12,7 +20,9 @@ class CommentBox extends Component {
   state = {
     comment: "",
     commentList: [],
-    onlyRead: this.props.onlyRead
+    onlyRead: this.props.onlyRead,
+    loading: true,
+    empty: false
   };
 
   async componentDidMount() {
@@ -20,18 +30,18 @@ class CommentBox extends Component {
       commentList: await this.rutaService.obtenerComentariosRuta(
         this.props.ruta.getUUID(),
         this.props.author == null ? null : this.props.author.getWebId()
-      )
+      ),
+      loading: false
     });
-    console.log("*************************************");
-    console.log(this.props.author);
+    this.setState({ empty: this.state.commentList.length === 0 });
   }
 
   render() {
     return (
-      <Accordion>
-        <Card>
+      <Accordion data-testid="Acordeon">
+        <Card data-testid="cardEnv">
           <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="0">
+            <Accordion.Toggle as={Button} variant="link" eventKey="0" data-testid="btComment">
               Comentarios
             </Accordion.Toggle>
           </Card.Header>
@@ -39,7 +49,7 @@ class CommentBox extends Component {
             <Card.Body>
               {!this.state.onlyRead && (
                 <div>
-                  <InputGroup>
+                  <InputGroup data-testid="cajaComent">
                     <Form.Control
                       placeholder="Haz un comentario..."
                       as="textarea"
@@ -49,6 +59,7 @@ class CommentBox extends Component {
                     />
                   </InputGroup>
                   <Button
+                    data-testid="btPublicar"
                     className="mt-2 mb-2"
                     variant="success"
                     onClick={this.handleAddComment}
@@ -70,6 +81,17 @@ class CommentBox extends Component {
                   </Card>
                 );
               })}
+              {this.state.loading && (
+                <Spinner
+                  className="mt-2"
+                  as="span"
+                  animation="border"
+                  role="status"
+                />
+              )}
+              {this.state.empty && (
+                <Alert variant="warning">Aún no hay comentarios</Alert>
+              )}
             </Card.Body>
           </Accordion.Collapse>
         </Card>
@@ -82,6 +104,7 @@ class CommentBox extends Component {
   };
 
   handleAddComment = async () => {
+    this.setState({ loading: true, empty: false });
     //Recolección de datos del comentario
     let commentText = this.state.comment;
     let date = new Date();
@@ -93,6 +116,10 @@ class CommentBox extends Component {
     // Recuperamos los comentarios
     this.setState({
       commentList: await this.rutaService.comentarMiRuta(comment, routeUUID)
+    });
+    this.setState({
+      loading: false,
+      empty: this.state.commentList.length === 0
     });
   };
 }

@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import { Card, Accordion, Button, Form, Modal } from "react-bootstrap";
+import { Card, Accordion, Button } from "react-bootstrap";
 import Gallery from "react-grid-gallery";
 import bsCustomFileInput from "bs-custom-file-input";
 import $ from "jquery";
-import Uploader from "@inrupt/solid-react-components";
-import PhotoUploader from "./PhotoUploader";
 
 class PhotoGallery extends Component {
   state = {

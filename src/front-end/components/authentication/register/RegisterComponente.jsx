@@ -97,6 +97,7 @@ class RegisterComponent extends Component<Props, State> {
                     <ul>
                       {providers.map(providerData => (
                         <ProviderItem
+                          className="providerItem"
                           data={providerData}
                           key={providerData.id}
                           onSelect={this.selectProvider}
