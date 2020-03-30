@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { ListGroup } from "react-bootstrap";
+import imageFile from '../../static/defaultProfile.png';
+
 
 /**
  * Componente que modela una lista clickable de amigos,
@@ -28,7 +30,12 @@ class GroupSelect extends Component {
               key={key++}
               onClick={() => this.clickItem(key - 1)}
             >
-              {a.getNombre()}
+            <div className="d-flex">
+              <div className="col-2">
+                <img src={a.getFoto()!==null?a.getFoto():imageFile} 
+                  className="rounded-circle img-fluid"/></div>
+              <div className="col-10">{a.getNombre()}</div>
+            </div>
             </ListGroup.Item>
           );
         })}

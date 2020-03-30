@@ -1,7 +1,8 @@
 class Persona {
-  constructor(nombre, webId) {
+  constructor(nombre, webId, foto) {
     this.nombre = nombre;
     this.webId=webId;
+    this.foto=foto;
   }
 
   /*
@@ -16,11 +17,19 @@ class Persona {
   getWebId() {
     return this.webId;
   }
+    /*
+   * Devuelve la url de la foto de la persona
+   */
+  getFoto() {
+    return this.foto;
+  }
 
   toString(){
     console.log("-Persona:");
     console.log("--Nombre: "+this.nombre);
     console.log("--WebID: "+this.webId);
+    console.log("--Foto: "+this.foto);
+
   }
 }
 

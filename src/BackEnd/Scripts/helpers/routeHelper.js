@@ -63,7 +63,7 @@ export async function findRouteURL(folderUrl,uuid)
     {
         for (var i = 0; i < folder.files.length; i++) 
         {
-            console.log(folder.files[i].url)
+            //console.log(folder.files[i].url)
             let routeDoc;
             await fetchDocument(folder.files[i].url).then((content) => {
                 routeDoc=content;

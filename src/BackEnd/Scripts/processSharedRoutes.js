@@ -6,7 +6,6 @@ import {addSharedRoute} from "./addSharedRoute";
 import {getPersonaByWebId} from "./helpers/personHelper";
 import {readRouteFromUrl} from "./helpers/routeHelper";
 
-import RutaAmigo from "../../front-end/model/RutaAmigo.js";
 import Notificacion from "../../front-end/model/Notificacion.js";
 
 
