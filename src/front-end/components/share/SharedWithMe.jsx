@@ -26,13 +26,13 @@ class SharedWithMe extends Component {
   render() {
     return (
       <div>
-        <h2>Compartido conmigo</h2>
+        <h2 data-testid="title">Compartido conmigo</h2>
         <Accordion>
           {this.state.rutasCompartidas.map((sharedRoute, key) => {
             return (
-              <Row>
-                <Col>
-                  <Card key={key++}>
+              <Row data-testid="rowComp">
+                <Col data-testid="colComp">
+                  <Card data-testid="cardComp" key={key++}>
                     <Card.Header>
                       <h3>{sharedRoute.getRuta().getNombre()}</h3>
                       <p>Autor: {sharedRoute.getAmigo().getNombre()}</p>
@@ -40,6 +40,7 @@ class SharedWithMe extends Component {
                         as={Button}
                         variant="link"
                         eventKey={key}
+                        data-testid="commentbt"
                       >
                         Comentarios
                       </Accordion.Toggle>
@@ -51,7 +52,7 @@ class SharedWithMe extends Component {
                 </Col>
                 <Col>
                   <Card>
-                    <MapRuta ruta={sharedRoute.getRuta()}></MapRuta>
+                    <MapRuta data-testid="map" ruta={sharedRoute.getRuta()}></MapRuta>
                   </Card>
                 </Col>
               </Row>
