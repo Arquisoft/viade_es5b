@@ -42,8 +42,8 @@ export async function processSharedRoutes() {
                         //Si lo encontro entonces insertamos en el apartado de rutas compartidas y borramos el mensaje
                         addSharedRoute(friendWebId,routeUrl);
                         //Añadimos al resultado una nueva notificacion
-                        var ruta=await readRouteFromUrl(routeUrl)
-                        var persona=await getPersonaByWebId(friendWebId)
+                        let ruta=await readRouteFromUrl(routeUrl)
+                        let persona=await getPersonaByWebId(friendWebId)
                         result = [...result,new Notificacion(persona.getNombre() + " te ha Compartido una ruta!","Ruta : " + ruta.getNombre())];
                     }
                     //borramos la notificacion
@@ -60,8 +60,8 @@ export async function processSharedRoutes() {
                     if(routeUrl!==null){
                         console.log('url',routeUrl);
                         //Si la encontro entonces mostramos una notificacion al usuario
-                        var ruta=await readRouteFromUrl(routeUrl)
-                        var persona=await getPersonaByWebId(friendWebId)
+                        let ruta=await readRouteFromUrl(routeUrl)
+                        let persona=await getPersonaByWebId(friendWebId)
                         result = [...result,new Notificacion(persona.getNombre() + " ha comentado","En "+ruta.getNombre()+": "+message.getString(schema.comment) )];
 
                     }
