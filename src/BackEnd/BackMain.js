@@ -6,7 +6,8 @@ import {addFriend} from './Scripts/addFriend.js'
 import {shareRoute} from './Scripts/shareRoute.js'
 import {processSharedRoutes} from './Scripts/processSharedRoutes.js'
 import {listSharedRoutes} from './Scripts/listSharedRoutes.js'
-
+import {addCommentToMyRoute} from './Scripts/addCommentToMyRoute.js'
+import {listCommentsOfRoute} from './Scripts/listCommentsOfRoute.js'
 
 export default class BackMain {
     static listarRutas() {
@@ -16,7 +17,7 @@ export default class BackMain {
         addRoute(Ruta)
     };
     static borrarRuta(uuid) {
-        deleteRoute(uuid)
+       return deleteRoute(uuid)
     };
     static listarAmigos() {
         return listFriends()
@@ -33,5 +34,11 @@ export default class BackMain {
     static listarRutasCompartidasConmigo(){
         return listSharedRoutes();
     };
-    
+    static comentarMiRuta(comentario,rutaUUID){
+        return addCommentToMyRoute(comentario,rutaUUID);
+    };
+    static obtenerComentariosRuta(rutaUUID)
+    {
+        return listCommentsOfRoute(rutaUUID);
+    }
 }

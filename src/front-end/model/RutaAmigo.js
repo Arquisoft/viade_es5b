@@ -1,7 +1,7 @@
 class RutaAmigo {
-  constructor(ruta, amigo) {
+  constructor(ruta, persona) {
     this.ruta = ruta;
-    this.amigo = amigo; 
+    this.amigo = persona; 
   }
   /*
    * Devuelve el amigo

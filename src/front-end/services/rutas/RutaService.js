@@ -45,7 +45,7 @@ class RutaService {
   }
 
   deleteRuta(uuid) {
-    BackMain.borrarRuta(uuid);
+    return BackMain.borrarRuta(uuid);
   }
 
   findRouteById(uuid) {
@@ -78,6 +78,14 @@ class RutaService {
   procesarRutasCompartidas()
   {
     return BackMain.procesarRutasCompartidas();
+  }
+  comentarMiRuta(comentario,rutaUUID)
+  {
+    return BackMain.comentarMiRuta(comentario,rutaUUID);
+  }
+  obtenerComentariosRuta(rutaUUID)
+  {
+    return BackMain.obtenerComentariosRuta(rutaUUID);
   }
 }
 

@@ -1,7 +1,7 @@
 import { space, schema } from 'rdf-namespaces';
 import { fetchDocument } from "tripledoc";
 import {existsFile} from "./helpers/fileHelper";
-import {getAmigoByWebId} from "./helpers/friendHelper";
+import {getPersonaByWebId} from "./helpers/personHelper";
 import {readRouteFromUrl} from "./helpers/routeHelper";
 
 import RutaAmigo from "../../front-end/model/RutaAmigo.js";
@@ -30,7 +30,13 @@ export async function listSharedRoutes() {
       for (var e = 0; e < rutas.length; e++) {
         var routeUrl=rutas[e].getRef(schema.url);
         var friendWebId=rutas[e].getRef(schema.agent);
-        result = [...result,new RutaAmigo(await readRouteFromUrl(routeUrl), await getAmigoByWebId(friendWebId))];
+        //comprobamos que existan las rutas, si existen las añadimos al resultado
+        var route=await readRouteFromUrl(routeUrl);
+        var person=await getPersonaByWebId(friendWebId);
+        if(route!== null && person!== null)
+        {
+          result = [...result,new RutaAmigo(route,person)];
+        }
       }
     }
   }

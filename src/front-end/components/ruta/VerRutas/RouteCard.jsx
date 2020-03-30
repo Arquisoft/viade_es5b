@@ -3,6 +3,8 @@ import { Card, Container, Row, Col, Table } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import MapRuta from "../../map/MapRuta";
 import "../../../css/map-style.css";
+import CommentBox from "../../share/CommentBox";
+import PhotoGallery from "../../share/PhotoGallery";
 
 /**
  * Representa un elemento Card con la
@@ -90,6 +92,17 @@ class RouteCard extends Component {
                     <MapRuta className="map" ruta={this.props.ruta} data-testid="mapa"/>
                   </div>
                 )}
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <CommentBox
+                  ruta={this.props.ruta}
+                  onlyRead={false}
+                ></CommentBox>
+              </Col>
+              <Col>
+                <PhotoGallery></PhotoGallery>
               </Col>
             </Row>
           </Container>

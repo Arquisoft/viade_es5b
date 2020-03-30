@@ -1,5 +1,5 @@
 import { fetchDocument } from "tripledoc";
-import {getAmigoByWebId} from "./helpers/friendHelper";
+import {getPersonaByWebId} from "./helpers/personHelper";
 
 const auth = require("solid-auth-client");
 
@@ -16,7 +16,7 @@ export async function listFriends() {
   var friendWebIds= profileDoc.getSubject(session.webId).getAllNodeRefs('http://xmlns.com/foaf/0.1/knows');
   for(var i=0;i<friendWebIds.length;i++)
   {
-    var friend=await getAmigoByWebId(friendWebIds[i]);
+    var friend=await getPersonaByWebId(friendWebIds[i]);
     result = [...result, friend];
   }
   console.log(result);

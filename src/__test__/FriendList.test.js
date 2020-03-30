@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import FriendList from "../front-end/components/friends/FriendList"
-import Amigo from "../front-end/model/Amigo"
+import Persona from "../front-end/model/Persona"
 import { render, waitForElement } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
@@ -9,12 +9,12 @@ import "@testing-library/jest-dom";
 // Rutas de prueba
 let amigos = [];
 function setUp() {
-  let amigo1 = new Amigo(
+  let amigo1 = new Persona(
     "Pedro",
     "https://pedro223.inrupt.net/profile/card#me"
   );
   
-  let amigo2 = new Amigo(
+  let amigo2 = new Persona(
     "Alex",
     "https://hamalawindows.solid.community/profile/card#me"
   );

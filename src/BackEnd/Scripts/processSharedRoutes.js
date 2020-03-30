@@ -3,10 +3,11 @@ import { schema } from "rdf-namespaces";
 import {findRouteURL} from "./helpers/routeHelper";
 import {getRootStorage,deleteFile} from "./helpers/fileHelper";
 import {addSharedRoute} from "./addSharedRoute";
-import {getAmigoByWebId} from "./helpers/friendHelper";
+import {getPersonaByWebId} from "./helpers/personHelper";
 import {readRouteFromUrl} from "./helpers/routeHelper";
 
-import RutaAmigo from "../../front-end/model/RutaAmigo.js";
+import Notificacion from "../../front-end/model/Notificacion.js";
+
 
 const auth = require("solid-auth-client");
 
@@ -40,10 +41,32 @@ export async function processSharedRoutes() {
                         console.log('url',routeUrl);
                         //Si lo encontro entonces insertamos en el apartado de rutas compartidas y borramos el mensaje
                         addSharedRoute(friendWebId,routeUrl);
-                        deleteFile(documents[i].asRef());
-                        //Añadimos al resultado la ruta y el amigo que la añadio
-                        result = [...result,new RutaAmigo(await readRouteFromUrl(routeUrl), await getAmigoByWebId(friendWebId))];
+                        //Añadimos al resultado una nueva notificacion
+                        let ruta=await readRouteFromUrl(routeUrl)
+                        let persona=await getPersonaByWebId(friendWebId)
+                        result = [...result,new Notificacion(persona.getNombre() + " te ha Compartido una ruta!","Ruta : " + ruta.getNombre())];
                     }
+                    //borramos la notificacion
+                    deleteFile(documents[i].asRef());
+                }
+                //Si es del tipo commentRoute es que alguien ha comentado en una ruta compartida
+                if(action === 'commentRoute')
+                {
+                    //Comprobamos si existe de verdad la ruta en la parte publica del usuario, si existe
+                    //continuamos
+                    let friendWebId=message.getRef(schema.agent);
+                    let storage = await getRootStorage(friendWebId);
+                    let routeUrl= await findRouteURL(storage + 'public/routes/',message.getString(schema.identifier));
+                    if(routeUrl!==null){
+                        console.log('url',routeUrl);
+                        //Si la encontro entonces mostramos una notificacion al usuario
+                        let ruta=await readRouteFromUrl(routeUrl)
+                        let persona=await getPersonaByWebId(friendWebId)
+                        result = [...result,new Notificacion(persona.getNombre() + " ha comentado","En "+ruta.getNombre()+": "+message.getString(schema.comment) )];
+
+                    }
+                    //borramos la notificacion
+                    deleteFile(documents[i].asRef());
                 }
             }
         }
