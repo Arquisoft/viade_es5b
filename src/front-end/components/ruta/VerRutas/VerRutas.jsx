@@ -3,6 +3,10 @@ import RouteList from "./RouteList";
 import * as i from "../../InstanciaRutas";
 
 class VerRutas extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div>

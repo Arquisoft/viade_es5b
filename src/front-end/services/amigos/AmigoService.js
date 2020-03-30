@@ -16,7 +16,6 @@ class AmigoService {
    * que simula la base de datos.
    */
   inicializarBD() {
-
     var amigo1 = new Persona(
       "Pedro",
       "https://pedro223.inrupt.net/profile/card#me",
@@ -52,6 +51,13 @@ class AmigoService {
    */
   addAmigo(webId) {
     return BackMain.añadirAmigo(webId);
+  }
+
+  /*
+   * Devuelve una persona de webID pasado como parámetro.
+   */
+  getPersonByWebID(webID) {
+    return BackMain.getPersonByWebID(webID);
   }
 }
 

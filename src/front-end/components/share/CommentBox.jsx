@@ -18,10 +18,12 @@ class CommentBox extends Component {
   async componentDidMount() {
     this.setState({
       commentList: await this.rutaService.obtenerComentariosRuta(
-        this.props.ruta.getUUID()
+        this.props.ruta.getUUID(),
+        this.props.author == null ? null : this.props.author.getWebId()
       )
     });
-    console.log(this.props.ruta.getUUID());
+    console.log("*************************************");
+    console.log(this.props.author);
   }
 
   render() {

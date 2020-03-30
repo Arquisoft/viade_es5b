@@ -96,6 +96,7 @@ class RouteCard extends Component {
             <Row>
               <Col>
                 <CommentBox
+                  author={null}
                   ruta={this.props.ruta}
                   onlyRead={false}
                 ></CommentBox>

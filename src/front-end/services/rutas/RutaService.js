@@ -37,7 +37,7 @@ class RutaService {
   getRutas() {
     return BackMain.listarRutas();
   }
-    /*
+  /*
    * Devuelve TODAS las rutas que alguien haya compartido conmigo
    */
   getRutasCompartidasConmigo() {
@@ -59,33 +59,29 @@ class RutaService {
   }
 
   addRuta(nombre, latitud, longitud, descripcion, hitos) {
-    latitud = parseFloat(latitud.replace(/\s+/g, ''));
-    longitud = parseFloat(longitud.replace(/\s+/g, ''));
+    latitud = parseFloat(latitud.replace(/\s+/g, ""));
+    longitud = parseFloat(longitud.replace(/\s+/g, ""));
     var ruta = new Ruta(nombre, [latitud, longitud], descripcion);
     for (var i in hitos) {
-      hitos[i].latitud = parseFloat(hitos[i].latitud.replace(/\s+/g, ''));
-      hitos[i].longitud = parseFloat(hitos[i].longitud.replace(/\s+/g, ''));
+      hitos[i].latitud = parseFloat(hitos[i].latitud.replace(/\s+/g, ""));
+      hitos[i].longitud = parseFloat(hitos[i].longitud.replace(/\s+/g, ""));
       ruta.addHito(
         new Hito(hitos[i].nombre, hitos[i].latitud, hitos[i].longitud)
       );
     }
     BackMain.añadirRuta(ruta);
   }
-  shareRuta(friendWebId,rutaUUID)
-  {
-    return BackMain.compartirRuta(friendWebId,rutaUUID);
+  shareRuta(friendWebId, rutaUUID) {
+    return BackMain.compartirRuta(friendWebId, rutaUUID);
   }
-  procesarRutasCompartidas()
-  {
+  procesarRutasCompartidas() {
     return BackMain.procesarRutasCompartidas();
   }
-  comentarMiRuta(comentario,rutaUUID)
-  {
-    return BackMain.comentarMiRuta(comentario,rutaUUID);
+  comentarMiRuta(comentario, rutaUUID) {
+    return BackMain.comentarMiRuta(comentario, rutaUUID);
   }
-  obtenerComentariosRuta(rutaUUID)
-  {
-    return BackMain.obtenerComentariosRuta(rutaUUID);
+  obtenerComentariosRuta(rutaUUID, webId) {
+    return BackMain.obtenerComentariosRuta(rutaUUID, webId);
   }
 }
 

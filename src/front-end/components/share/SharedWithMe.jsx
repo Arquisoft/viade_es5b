@@ -39,6 +39,7 @@ class SharedWithMe extends Component {
                       <p>Autor: {sharedRoute.getAmigo().getNombre()}</p>
                     </Card.Header>
                     <CommentBox
+                      author={sharedRoute.getAmigo()}
                       ruta={sharedRoute.getRuta()}
                       onlyRead={true}
                     ></CommentBox>
