@@ -10,7 +10,7 @@ import {addCommentToMyRoute} from './Scripts/addCommentToMyRoute.js'
 import {listCommentsOfRoute} from './Scripts/listCommentsOfRoute.js'
 import {addMediaToMyRoute} from './Scripts/addMediaToMyRoute.js'
 import { getPersonaByWebId } from "./Scripts/helpers/personHelper";
-
+import { listMediaOfRoute } from "./Scripts/listMediaOfRoute";
 export default class BackMain {
   static listarRutas() {
     return listRoutes();
@@ -45,7 +45,10 @@ export default class BackMain {
   static getPersonByWebID(webID) {
     return getPersonaByWebId(webID);
   }
-    static subirFicheroAMiRuta(fichero,rutaUUID){
-        return addMediaToMyRoute(fichero,rutaUUID);
-    };
+  static subirFicheroAMiRuta(fichero,rutaUUID){
+      return addMediaToMyRoute(fichero,rutaUUID);
+  };
+  static obtenerFicherosRuta(rutaUUID, webId) {
+    return listMediaOfRoute(rutaUUID, webId);
+  }
 }

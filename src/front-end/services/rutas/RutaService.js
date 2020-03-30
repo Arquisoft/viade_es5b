@@ -87,6 +87,9 @@ class RutaService {
   {
     return BackMain.subirFicheroAMiRuta(fichero,rutaUUID);
   }
+  obtenerFicherosRuta(rutaUUID, webId) {
+    return BackMain.obtenerFicherosRuta(rutaUUID, webId);
+  }
 }
 
 export default RutaService;
