@@ -21,6 +21,7 @@ class CommentBox extends Component {
         this.props.ruta.getUUID()
       )
     });
+    console.log(this.props.ruta.getUUID());
   }
 
   render() {

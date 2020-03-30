@@ -3,7 +3,8 @@ import { Card, Accordion, Button, Form, Modal } from "react-bootstrap";
 import Gallery from "react-grid-gallery";
 import bsCustomFileInput from "bs-custom-file-input";
 import $ from "jquery";
-import axios from "axios";
+import Uploader from "@inrupt/solid-react-components";
+import PhotoUploader from "./PhotoUploader";
 
 class PhotoGallery extends Component {
   state = {
@@ -52,33 +53,10 @@ class PhotoGallery extends Component {
             <Accordion.Collapse eventKey="0">
               <Card.Body>
                 <Gallery images={this.state.images} />
-                <Form>
-                  <Form.File
-                    onChange={this.onChangeHandler}
-                    label="Selecciona una imagen"
-                    multiple
-                    accept="image/*"
-                    custom
-                  />
-                </Form>
-                <Button
-                  className="mt-2"
-                  variant="success"
-                  onClick={this.handleUpload}
-                >
-                  Subir
-                </Button>
               </Card.Body>
             </Accordion.Collapse>
           </Card>
         </Accordion>
-        {this.state.loadedImg != null && (
-          <Modal show={true}>
-            <Modal.Body>
-              <img src={this.state.loadedImg} />
-            </Modal.Body>
-          </Modal>
-        )}
       </>
     );
   }
