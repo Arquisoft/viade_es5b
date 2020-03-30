@@ -33,6 +33,7 @@ Por una parte el "Actor" sube su ruta y se guarda en su POD, en esa ruta comenta
 image::DWInfrastructureE2.JPG[dwE2]
 
 Por otra parte, cuando un usuario desea añadir a otro como amigo, esto se guardará en ambos PODs, para que cada uno pueda ver quien está en su lista de amigos en su propio POD.
+Además, cuando un usuario comparte una ruta con un amigo se guarda en un archivo para que pueda acceder siempre que el POD de su amigo esté activo.
 
 ****
 
