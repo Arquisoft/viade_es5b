@@ -23,7 +23,6 @@ class RouteCard extends Component {
         <Card.Header>
           <h3 data-testid="r-title">{this.props.ruta.getNombre()}</h3>
           <Button
-            
             variant="success"
             className="mr-2"
             onClick={this.handleViewInMap}
@@ -85,11 +84,14 @@ class RouteCard extends Component {
               <Col>
                 {this.state.loaded && (
                   <div
-                    
                     id={`mapa-${this.props.ruta.getNombre()}`}
                     className="ml-3 mb-3"
                   >
-                    <MapRuta className="map" ruta={this.props.ruta} data-testid="mapa"/>
+                    <MapRuta
+                      className="map"
+                      ruta={this.props.ruta}
+                      data-testid="mapa"
+                    />
                   </div>
                 )}
               </Col>
@@ -103,7 +105,7 @@ class RouteCard extends Component {
                 ></CommentBox>
               </Col>
               <Col>
-                <PhotoGallery></PhotoGallery>
+                <PhotoGallery ruta={this.props.ruta}></PhotoGallery>
               </Col>
             </Row>
           </Container>

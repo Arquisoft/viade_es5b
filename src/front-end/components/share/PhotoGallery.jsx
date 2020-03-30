@@ -1,11 +1,18 @@
 import React, { Component } from "react";
-import { Card, Accordion, Button } from "react-bootstrap";
+import { Form, Card, Accordion, Button } from "react-bootstrap";
 import Gallery from "react-grid-gallery";
 import bsCustomFileInput from "bs-custom-file-input";
 import $ from "jquery";
+import RutaService from "../../services/rutas/RutaService";
 
 class PhotoGallery extends Component {
+  constructor(props) {
+    super(props);
+    this.rutaService = new RutaService();
+  }
+
   state = {
+    route: this.props.ruta,
     images: [
       {
         src: "https://pedro223.solid.community/public/_1585583190000_.jpeg",
@@ -27,8 +34,7 @@ class PhotoGallery extends Component {
         thumbnailHeight: 174
       }
     ],
-    selectedImages: [],
-    loadedImg: null
+    selectedImages: []
   };
 
   componentDidMount() {
@@ -51,6 +57,22 @@ class PhotoGallery extends Component {
             <Accordion.Collapse eventKey="0">
               <Card.Body>
                 <Gallery images={this.state.images} />
+                <Form>
+                  <Form.File
+                    label="Selecciona una imagen"
+                    multiple
+                    accept="image/*"
+                    custom
+                    onChange={this.onChangeHandler}
+                  />
+                </Form>
+                <Button
+                  className="mt-2"
+                  variant="success"
+                  onClick={this.handleUpload}
+                >
+                  Subir
+                </Button>
               </Card.Body>
             </Accordion.Collapse>
           </Card>
@@ -66,7 +88,14 @@ class PhotoGallery extends Component {
   /**
    * Se encarga de subir las imagenes al servidor.
    */
-  handleUpload = () => {
+  handleUpload = async () => {
+    console.log("Ruta id: " + this.state.route.getUUID());
+    console.log(this.state.selectedImages);
+    await this.rutaService.subirFicheroAMiRuta(
+      this.state.selectedImages,
+      this.state.route.getUUID()
+    );
+    /*
     let reader = new FileReader();
     reader.readAsDataURL(this.state.selectedImages[0]);
     reader.onloadend = e => {
@@ -82,6 +111,7 @@ class PhotoGallery extends Component {
         ]
       });
     };
+    */
   };
 
   /**
