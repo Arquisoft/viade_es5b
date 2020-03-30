@@ -37,14 +37,6 @@ class SharedWithMe extends Component {
                     <Card.Header>
                       <h3>{sharedRoute.getRuta().getNombre()}</h3>
                       <p>Autor: {sharedRoute.getAmigo().getNombre()}</p>
-                      <Accordion.Toggle
-                        as={Button}
-                        variant="link"
-                        eventKey={key}
-                        data-testid="commentbt"
-                      >
-                        Comentarios
-                      </Accordion.Toggle>
                     </Card.Header>
                     <CommentBox
                       author={sharedRoute.getAmigo()}
