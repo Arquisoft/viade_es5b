@@ -38,27 +38,30 @@ function setUp() {
 
 
 test("RouteCard contiene el botón de compartir.", () => {
+    afterAll(cleanup);
     const { getByTestId } = render(<RouteCard ruta={ruta}></RouteCard>);
     expect(getByTestId("rb-compartir")).toHaveTextContent("Compartir");
 });
 
 test("Se renderizan bien los componentes de SharePanel", () => {
+    afterAll(cleanup);
     const { getByTestId } = render(<SharePanel ruta={ruta} show="true"></SharePanel>);
-    let dialogo = await waitForElement(() => getByTestId("componenteModal"));
-
+    //let dialogo = await waitForElement(() => getByTestId("componenteModal"));
+    expect(getByTestId("componenteModal")).toBeTruthy();
     expect(getByTestId("titleCompartir")).toHaveTextContent("Compartir esta ruta");
     expect(getByTestId("nombreRutaCompartir")).toHaveTextContent("Ruta: "+ruta.getNombre());
-    expect(getByTestId("titleCompartir")).toHaveTextContent("Selecciona a los amigos con los que deseas compartir esta ruta:");
+    expect(getByTestId("parrafoSeleccion")).toHaveTextContent("Selecciona a los amigos con los que deseas compartir esta ruta:");
     expect(getByTestId("cancelarCompartirButton")).toHaveTextContent("Cancelar");
     expect(getByTestId("compartirButton")).toHaveTextContent("Compartir");
 });
 
 
 test("Se renderizan bien los componentes de SharePanel al pinchar en el botón de -compartir-", () => {
+    afterAll(cleanup);
     const { getByTestId } = render(<RouteCard ruta={ruta}></RouteCard>);
     getByTestId("rb-compartir").click();
-    let dialogo = await waitForElement(() => getByTestId("componenteModal"));
-
+    //let dialogo = await waitForElement(() => getByTestId("componenteModal"));
+    expect(getByTestId("componenteModal")).toBeTruthy();
     expect(getByTestId("titleCompartir")).toHaveTextContent("Compartir esta ruta");
     expect(getByTestId("nombreRutaCompartir")).toHaveTextContent("Ruta: "+ruta.getNombre);
     expect(getByTestId("titleCompartir")).toHaveTextContent("Selecciona a los amigos con los que deseas compartir esta ruta:");
@@ -68,10 +71,11 @@ test("Se renderizan bien los componentes de SharePanel al pinchar en el botón d
 
 
 test("Se ven los amigos para poder compartir con ellos la ruta", () => {
+    afterAll(cleanup);
     const { getByTestId } = render(<RouteCard ruta={ruta}></RouteCard>);
     getByTestId("rb-compartir").click();
-    let dialogo = await waitForElement(() => getByTestId("componenteModal"));
-
+    //let dialogo = await waitForElement(() => getByTestId("componenteModal"));
+    expect(getByTestId("componenteModal")).toBeTruthy();
     expect(getByTestId("modalBody")).toHaveTextContent("Cargando amigos..."); //o contains
     expect(getByTestId("amigosCompartir")).contains("Pedro");
     expect(getByTestId("amigosCompartir")).contains("Alex");

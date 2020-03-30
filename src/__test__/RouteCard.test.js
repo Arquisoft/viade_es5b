@@ -32,39 +32,43 @@ test("RouteCard contiene la información básica de la ruta.", () => {
 });
 
 test("RouteCard contiene la información del inicio y los hitos de la ruta.", () => {
-  const { getByTestId } = render(<RouteCard ruta={ruta}></RouteCard>);
-  const body = getByTestId("r-hitos");
-  const rows = body.children;
-
-  expect(rows.length).toBe(3);
-  expect(rows[0].children[0].textContent).toBe("Inicio");
-  for (let i = 0; i < rows.length; i++) {
-    if (i == 0) {
-      expect(rows[i].children[0].textContent).toBe("Inicio");
-      expect(parseFloat(rows[i].children[1].textContent)).toBe(
-        ruta.getInicio()[0]
-      );
-      expect(parseFloat(rows[i].children[2].textContent)).toBe(
-        ruta.getInicio()[1]
-      );
-    } else {
-      expect(rows[i].children[0].textContent).toBe(
-        ruta.getHitos()[i - 1].getNombre()
-      );
-      expect(parseFloat(rows[i].children[1].textContent)).toBe(
-        ruta.getHitos()[i - 1].getLat()
-      );
-      expect(parseFloat(rows[i].children[2].textContent)).toBe(
-        ruta.getHitos()[i - 1].getLong()
-      );
+  const { getByTestId, getAllByTestId } = render(<RouteCard ruta={ruta}></RouteCard>);
+  const body = getAllByTestId("r-hitos");
+  for(let i=0; i < body.length; i++){
+    const rows = body[i].children;
+    expect(rows.length).toBe(3);
+    expect(rows[0].children[0].textContent).toBe("Inicio");
+    for (let i = 0; i < rows.length; i++) {
+      if (i == 0) {
+        expect(rows[i].children[0].textContent).toBe("Inicio");
+        expect(parseFloat(rows[i].children[1].textContent)).toBe(
+          ruta.getInicio()[0]
+        );
+        expect(parseFloat(rows[i].children[2].textContent)).toBe(
+          ruta.getInicio()[1]
+        );
+      } else {
+        expect(rows[i].children[0].textContent).toBe(
+          ruta.getHitos()[i - 1].getNombre()
+        );
+        expect(parseFloat(rows[i].children[1].textContent)).toBe(
+          ruta.getHitos()[i - 1].getLat()
+        );
+        expect(parseFloat(rows[i].children[2].textContent)).toBe(
+          ruta.getHitos()[i - 1].getLong()
+        );
+      }
     }
   }
 });
 
 test("Al hacer click en Ver en el map se muestra el componente MapRuta", async () => {
 
-  const { getByTestId } = render(<RouteCard ruta={ruta}></RouteCard>);
-  getByTestId("rb-ver").click();
+  const { getByTestId, getAllByTestId } = render(<RouteCard ruta={ruta}></RouteCard>);
+  const elem = getAllByTestId("rb-ver");
+  for(let i = 0; i < elem.length; i++){
+    elem[i].click();
+  }
   let mapa = await waitForElement(() => getByTestId("mapa"));
   expect(mapa).toBeInTheDocument();
 }); 
