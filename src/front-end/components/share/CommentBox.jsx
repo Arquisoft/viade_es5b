@@ -25,10 +25,10 @@ class CommentBox extends Component {
 
   render() {
     return (
-      <Accordion>
-        <Card>
+      <Accordion data-testid="Acordeon">
+        <Card data-testid="cardEnv">
           <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="0">
+            <Accordion.Toggle as={Button} variant="link" eventKey="0" data-testid="btComment">
               Comentarios
             </Accordion.Toggle>
           </Card.Header>
@@ -36,7 +36,7 @@ class CommentBox extends Component {
             <Card.Body>
               {!this.state.onlyRead && (
                 <div>
-                  <InputGroup>
+                  <InputGroup data-testid="cajaComent">
                     <Form.Control
                       placeholder="Haz un comentario..."
                       as="textarea"
@@ -46,6 +46,7 @@ class CommentBox extends Component {
                     />
                   </InputGroup>
                   <Button
+                    data-testid="btPublicar"
                     className="mt-2 mb-2"
                     variant="success"
                     onClick={this.handleAddComment}

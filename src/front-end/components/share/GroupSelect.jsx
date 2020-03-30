@@ -19,10 +19,11 @@ class GroupSelect extends Component {
   state = {};
   render() {
     return (
-      <ListGroup>
+      <ListGroup data-testid="envoltorio">
         {this.amigos.map((a, key) => {
           return (
             <ListGroup.Item
+              data-testid="itemLista"
               className={
                 this.state.selected[key] === true ? "active mb-1" : "mb-1"
               }

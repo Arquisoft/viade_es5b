@@ -51,6 +51,7 @@ class SharePanel extends Component {
               amigos={this.state.amigos}
               add={this.addFriend}
               delete={this.deleteFriend}
+              data-testid="Selector"
             ></GroupSelect>
           )}
         </Modal.Body>
