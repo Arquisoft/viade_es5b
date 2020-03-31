@@ -6,13 +6,9 @@
 .Content/contenido
 Los requisitos de calidad se iran ampliando durante el proyecto.
 
-La pagina debe ser funcional, rapida y accesible.
-Es importante que los tiempos de carga sean minimos, aunque la parte mas pesada del trabajo es tarea de la conexion a internet del usuario.
 
 .Motivation/Motivación
-Planteamos nuestros criterios de calidad en funcion de nuestra experiencia, las pruebas, y el feedback de la comunidad.
-Se buscan los siguientes puntos:
-Usabilidad, eficiencia, accesibilidad, descentralización y peso de la app.
+Planteamos nuestros criterios de calidad en funcion de nuestra experiencia.
 
 
 ****
