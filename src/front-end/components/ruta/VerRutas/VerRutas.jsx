@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import RouteList from "./RouteList";
-import LoadingOverlay from "react-loading-overlay";
-import "../../../css/loading.css";
-import PacmanLoader from "react-spinners/PacmanLoader";
+import PacmanViewLoader from "../../util/Loaders/PacmanViewLoader";
 
 class VerRutas extends Component {
   state = {
@@ -19,27 +17,11 @@ class VerRutas extends Component {
             en un mapa, ver sus detalles o bien eliminarlas.
           </p>
         </header>
-
-        <LoadingOverlay
-          active={this.state.loading}
-          spinner={
-            <PacmanLoader
-              size={25}
-              color={"#50E3C2"}
-              css={{ display: "block", margin: "0 20vh 5vh" }}
-            />
-          }
-          text="Espera un momento, estamos recuperando tus rutas..."
-          styles={{
-            wrapper: {
-              width: "100%",
-              height: "100vh",
-              overflow: this.state.loading ? "hidden" : "scroll"
-            }
-          }}
-        >
-          <RouteList handleLoaded={this.handleLoaded} />
-        </LoadingOverlay>
+        <PacmanViewLoader // Overlay de carga para mostrar la vista de las rutas.
+          text={"Espera un momento, estamos recuperando tus rutas..."}
+          children={<RouteList handleLoaded={this.handleLoaded} />}
+          loading={this.state.loading}
+        />
       </div>
     );
   }
