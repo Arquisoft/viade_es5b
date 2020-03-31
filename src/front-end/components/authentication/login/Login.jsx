@@ -13,7 +13,7 @@ export const LogInComponent = () => {
           <PanelBody className="panel-body">
             <ProviderLogin
               className="solid-provider-login-component"
-              callbackUri={`${window.location.origin}/#/`}
+              callbackUri={`${window.location.protocol}//${window.location.host}/viade_es5b/#/`}
               selectPlaceHolder="Seleccione su proveedor"
               inputPlaceholder="Introduza la url de su webId"
               formButtonText="Login"
