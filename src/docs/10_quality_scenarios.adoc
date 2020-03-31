@@ -21,18 +21,17 @@ Usabilidad, eficiencia, accesibilidad, descentralización y peso de la app.
 
 ****
 .Content
-image::mind_map.png[Mapa de la filosofia de trabajo]
+image::qualityTree.png[qualityTreeFoto]
 
 .Explicacion
-En este mapa mental podemos observar nuestra "filosofia" de trabajo. +
-A lo largo del tiempo, y usando nuestra propia experiencia, mejoraremos la aplicacion y la usabilidad. +
-Un proceso constante de autoevaluacion nos ayudará a proporcionar una mejor experiencia a usarios y futuros desarolladores.
+En este árbol de calidad podemos observar nuestros escenarios de calidad que explicaremos en el siguiente apartado. 
+
+
 ****
 === Quality Scenarios/Escenarios de calidad
 
 ****
-.Contents/Contenidos
-Escenarios de calidad, estos pueden cambiar
+
 
 .Escenarios de uso
 |===
