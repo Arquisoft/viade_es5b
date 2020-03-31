@@ -233,6 +233,38 @@ App -> BBDD : Solicitar las rutas del usuario al POD
 BBDD -> App: Devuelve las rutas con sus galerías
 ----
 
+=== Ver comentarios de una ruta compartida
+
+. Click en "Compartido conmigo".
+. Escogemos la ruta de la que queremos ver los comentarios.
+. Click en "Comentarios".
+
+[plantuml,"DiagramaVerComentariosRutaCompartida",png]
+----
+Usuario -> App: Seleccionamos "Compartido conmigo"
+App -> BBDD : Solicitar las rutas compartidas al usuario al POD
+BBDD -> App: Devuelve las rutas compartidas
+App -> Usuario: Devuelve la vista con las rutas compartidas al usuario
+Usuario -> App: Escoge la ruta compartida de la que queremos ver los comentarios y click en "Comentarios"
+App -> BBDD: Solicita los comentarios de la ruta compartida al POD
+App -> Usuario: Visualizamos los comentarios de la ruta compartida
+----
+
+=== Ver galería de una ruta compartida
+
+. Click en "Compartido conmigo".
+. Escogemos la ruta de la que queremos ver la galería.
+. Visualizamos en la galería de la ruta las imágenes.
+
+[plantuml,"DiagramaVerGaleriaRutaCompartida",png]
+----
+Usuario -> App: Seleccionamos "Compartido conmigo"
+App -> BBDD : Solicitar las rutas compartidas al usuario al POD
+BBDD -> App: Devuelve las rutas que nos han compartido con sus galerías
+----
+
+
+
 
 
 
