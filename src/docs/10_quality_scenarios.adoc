@@ -1,54 +1,62 @@
 [[section-quality-scenarios]]
 == Quality Requirements/Requisitos de calidad
-Alejandro Iglesias Calvo <uo247346@uniovi.es>;
 
 ****
 
 .Content/contenido
 Los requisitos de calidad se iran ampliando durante el proyecto.
 
-La pagina debe ser funcional, rapida y accesible.
-Es importante que los tiempos de carga sean minimos, aunque la parte mas pesada del trabajo es tarea de la conexion a internet del usuario.
 
 .Motivation/Motivación
-Planteamos nuestros criterios de calidad en funcion de nuestra experiencia, las pruebas, y el feedback de la comunidad.
-Se buscan los siguientes puntos:
-Usabilidad, eficiencia, accesibilidad, descentralización y peso de la app.
+Planteamos nuestros criterios de calidad en funcion de nuestra experiencia.
+
+
 ****
 
 === Quality Tree/Arbol de calidad
 
 ****
 .Content
-image::mind_map.png[Mapa de la filosofia de trabajo]
+image::qualityTree.png[qualityTreeFoto]
 
 .Explicacion
-En este mapa mental podemos observar nuestra "filosofia" de trabajo. +
-A lo largo del tiempo, y usando nuestra propia experiencia, mejoraremos la aplicacion y la usabilidad. +
-Un proceso constante de autoevaluacion nos ayudará a proporcionar una mejor experiencia a usarios y futuros desarolladores.
+En este árbol de calidad podemos observar nuestros escenarios de calidad que explicaremos en el siguiente apartado. 
+
+
 ****
 === Quality Scenarios/Escenarios de calidad
 
 ****
-.Contents/Contenidos
-Escenarios de calidad, estos pueden cambiar
+
 
 .Escenarios de uso
 |===
-| *Uso*  | *Explicación*
+| *Escenario*  | *Explicación*  | *Prioridad*
 
-| *Lanzamiento de la app*
-| La aplicacion debe ser de facil acceso
-| *Subir una ruta*
-| Debe ser sencillo en extremo
-| *Accesibilidad*
+| *Usabilidad*
+| Facilitar el uso de sistema para que el usuario no lo abandone. Interfaz amigable, con indicadores de tiempos de carga. 
+| Alta
+| *Seguridad*
+| Un usuario no podrá ver rutas privadas de otros usuarios.
+| Alta
+| *Seguridad*
+| Un Usuario no podrá acceder a la aplicación sin tener una cuenta creada.
+| Muy alta
+| *Disponibilidad*
 | La aplicacion debe ser apta para el mayor numero de personas posibles.
+| Media
+| *Escalabilidad*
+| Si la aplicación tuviera un número elevado de usuarios seguiría funcionando correctamente.
+| Baja
+| *Descentralización*
+| Los datos de los usuarios están guardados en sus respectivos PODs haciendo así la aplicación descentralizada.
+| Muy alta
+| *Eficiencia*
+| Minimizar los tiempos de respuesta a las peticiones del usuario. En caso de un tiempo de respuesta largo indicarlo mediante un aviso.
+| Media
+| *Portabilidad*
+| La aplicación web podrá ser utilizada en diferentes plataformas para llegar a más usuarios.
+| Media
 |===
 
-.Escenarios de cambio
-|===
-| *Cambio*  | *Explicación*
-| *Aun no tenemos cambios*
-| -----
-|===
 ****

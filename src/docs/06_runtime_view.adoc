@@ -154,6 +154,18 @@ AppAmigo -> Usuario: Notifica al usuario que le han compartido una ruta
 
 ----
 
+=== Ver rutas compartidas por usuarios
+
+. Click en "Compartido conmigo".
+
+[plantuml,"DiagramaRutasCompartidas",png]
+----
+Usuario -> App: Seleccionamos "Compartido conmigo"
+App -> BBDD : Solicitar las rutas que han compartido al usuario al POD
+BBDD -> App: Devuelve las rutas
+App -> Usuario: Devuelve la vista con las rutas que se han compartido al usuario
+----
+
 
 
 

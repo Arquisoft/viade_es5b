@@ -1,15 +1,14 @@
 import { rdf, schema } from 'rdf-namespaces';
 import { fetchDocument } from 'tripledoc';
-import {findRouteURL} from "./helpers/routeHelper";
-import {getRootStorage,existsFile} from "./helpers/fileHelper";
+import {findRouteURL,getSharedRouteFriends} from "./helpers/routeHelper";
+import {getRootStorage} from "./helpers/fileHelper";
 import {sendNotificationBody} from "./helpers/notificationHelper";
-import {listMediaOfRoute} from "./listMediaOfRoute";
 import { v4 as uuidv4 } from "uuid";
 const auth = require("solid-auth-client");
 
 
 export async function addMediaToMyRoute(files,routeUUID){
-    var result=[];
+    var result=false;
     let session = await auth.currentSession();
     if (!session) { window.location.href = "/login"; }    
     const storage= await getRootStorage(session.webId);
@@ -60,10 +59,9 @@ export async function addMediaToMyRoute(files,routeUUID){
                 {
                     sendMediaNotification(webId,friends[i],routeUUID,filenames);
                 }
+                result = true;
             }
-            result = await listMediaOfRoute(routeUUID,webId);
     }
-    console.log(result);
     return result;
 }
 
@@ -77,31 +75,6 @@ async function insertData(fileRoute, routeUrl,myWebId) {
     newComment.addRef(rdf.type, schema.MediaObject);
 
     await routeDocument.save([newComment]);
-}
-async function getSharedRouteFriends(storage,routeUUID) {
-    var result=[];
-    var exists=await existsFile(storage + 'private','mySharedRoutes.ttl');
-    if(exists)
-    {
-        const mySharedRoutesDocument = await fetchDocument(storage + 'private/mySharedRoutes.ttl');
-        
-        let rutas = mySharedRoutesDocument.getAllSubjectsOfType('http://arquisoft.github.io/viadeSpec/route');
-        for (var e = 0; e < rutas.length; e++) {
-          //Miro a ver si estoy compartiendo esta ruta
-          if(rutas[e].getLiteral(schema.identifier)===routeUUID)
-          {
-              //Si la estoy compartiendo entonces saco los amigos con los que la comparto
-              let amigos=rutas[e].getAllRefs(schema.agent)
-              for (var i = 0; i < amigos.length; i++) {
-                  //los añado a result
-                  result = [...result, amigos];
-              }
-              //Ya encontre lo que busco asi que salgo
-              break;
-          }
-        }
-    }
-    return result;
 }
 async function sendMediaNotification(webId,friendWebId,routeUUID,nombreFicheros) {
     return sendNotificationBody(webId,friendWebId,
