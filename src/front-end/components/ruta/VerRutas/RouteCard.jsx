@@ -105,7 +105,10 @@ class RouteCard extends Component {
                 ></CommentBox>
               </Col>
               <Col>
-                <PhotoGallery ruta={this.props.ruta}></PhotoGallery>
+                <PhotoGallery
+                  author={null}
+                  ruta={this.props.ruta}
+                ></PhotoGallery>
               </Col>
             </Row>
           </Container>

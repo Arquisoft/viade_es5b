@@ -34,7 +34,9 @@ class PhotoGallery extends Component {
         thumbnailHeight: 174
       }
     ],
-    selectedImages: []
+    imageList: [],
+    selectedImages: [],
+    ableToUpload: false
   };
 
   componentDidMount() {
@@ -50,13 +52,18 @@ class PhotoGallery extends Component {
         <Accordion>
           <Card>
             <Card.Header>
-              <Accordion.Toggle as={Button} variant="link" eventKey="0">
+              <Accordion.Toggle
+                as={Button}
+                variant="link"
+                eventKey="0"
+                onClick={this.loadImages}
+              >
                 Galería
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="0">
               <Card.Body>
-                <Gallery images={this.state.images} />
+                <Gallery images={this.state.imageList} />
                 <Form>
                   <Form.File
                     label="Selecciona una imagen"
@@ -70,6 +77,7 @@ class PhotoGallery extends Component {
                   className="mt-2"
                   variant="success"
                   onClick={this.handleUpload}
+                  disabled={!this.state.ableToUpload}
                 >
                   Subir
                 </Button>
@@ -82,7 +90,10 @@ class PhotoGallery extends Component {
   }
 
   onChangeHandler = event => {
-    this.setState({ selectedImages: event.target.files });
+    this.setState({
+      selectedImages: event.target.files,
+      ableToUpload: event.target.files.length > 0
+    });
   };
 
   /**
@@ -92,26 +103,11 @@ class PhotoGallery extends Component {
     console.log("Ruta id: " + this.state.route.getUUID());
     console.log(this.state.selectedImages);
     await this.rutaService.subirFicheroAMiRuta(
+      // añadimos los ficheros a la ruta del pod.
       this.state.selectedImages,
       this.state.route.getUUID()
     );
-    /*
-    let reader = new FileReader();
-    reader.readAsDataURL(this.state.selectedImages[0]);
-    reader.onloadend = e => {
-      console.log([reader.result]);
-      this.setState({
-        images: [
-          {
-            src: reader.result,
-            thumbnail: reader.result,
-            thumbnailWidth: 320,
-            thumbnailHeight: 174
-          }
-        ]
-      });
-    };
-    */
+    this.loadImages();
   };
 
   /**
@@ -122,6 +118,30 @@ class PhotoGallery extends Component {
     let base = url.protocol + "//" + url.host;
     return base;
   }
+
+  /**
+   * Carga las imágenes asociadas a la ruta de UUID indicado, desde el pod
+   * del usuario indicado en las props. Si el usuario es null, se interpreta
+   * que el webId es el del usuario loggeado.
+   */
+  loadImages = async () => {
+    console.log("Trayendo imagenes del pod");
+    let uuid = this.state.route.getUUID();
+    let webID = this.props.author == null ? null : this.props.author.getWebId();
+    let urls = await this.rutaService.obtenerFicherosRuta(uuid, webID);
+    let imageObjects = urls.map(url => {
+      return {
+        src: url,
+        thumbnail: url,
+        thumbnailWidth: 320,
+        thumbnailHeight: 174
+      };
+    });
+    //console.log(await this.rutaService.obtenerFicherosRuta(uuid, webID));
+    this.setState({
+      imageList: imageObjects
+    });
+  };
 }
 
 export default PhotoGallery;
