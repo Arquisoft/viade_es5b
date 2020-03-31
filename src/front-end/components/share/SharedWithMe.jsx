@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Card, Col, Row } from "react-bootstrap";
+import { Alert, Container, Card, Col, Row } from "react-bootstrap";
 
 import RutaService from "../../services/rutas/RutaService";
 import MapRuta from "../map/MapRuta";
@@ -17,11 +17,13 @@ class SharedWithMe extends Component {
     this.rutaService = new RutaService();
   }
 
-  state = { rutasCompartidas: [] };
+  state = { rutasCompartidas: [], emptyList: false };
 
   async componentDidMount() {
+    let sharedRoutes = await this.rutaService.getRutasCompartidasConmigo();
     this.setState({
-      rutasCompartidas: await this.rutaService.getRutasCompartidasConmigo()
+      rutasCompartidas: sharedRoutes,
+      emptyList: sharedRoutes.length === 0
     });
   }
 
@@ -29,7 +31,11 @@ class SharedWithMe extends Component {
     return (
       <div>
         <h2 data-testid="title">Compartido conmigo</h2>
-
+        {this.state.emptyList && (
+          <Alert variant="warning">
+            Aún no te han compartido ninguna ruta.
+          </Alert>
+        )}
         {this.state.rutasCompartidas.map((sharedRoute, key) => {
           return (
             <Card>

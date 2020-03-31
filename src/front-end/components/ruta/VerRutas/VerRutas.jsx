@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import RouteList from "./RouteList";
-import * as i from "../../InstanciaRutas";
 
 class VerRutas extends Component {
+  state = {
+    loaded: false
+  };
+
   render() {
     return (
       <div>
@@ -13,12 +16,20 @@ class VerRutas extends Component {
             en un mapa, ver sus detalles o bien eliminarlas.
           </p>
           <div>
-            <RouteList service={i.service} rutas={i.service.getRutas()} />
+            <RouteList />
           </div>
         </header>
       </div>
     );
   }
+
+  /**
+   * Invocado desde la lista de rutas para indicar que ya se han
+   * cargado las rutas del usuario.
+   */
+  handleLoaded = () => {
+    this.setState({ loaded: true });
+  };
 }
 
 export default VerRutas;
