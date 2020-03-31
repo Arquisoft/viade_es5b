@@ -50,8 +50,8 @@ compañeros de la asignatura.
 
 === Testing
 ****
-La aplicación dispondrá de casos de prueba que muestren su eficiencia, pero aún no se ha asignado la tecnología sobre la
-que se harán dichas pruebas.
+La aplicación dispone de casos de prueba que muestren su eficiencia. Para ello la aplicación cuenta tanto con test TDD como BDD que comprueban las funcionalidades de la aplicación y aseguran el correcto funcionamiento de la aplicación. 
+
 ****
 
 === Modelo De Dominio
