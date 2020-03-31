@@ -11,7 +11,7 @@ export async function readFolder(route)
     .then(content => {
       folder = content;
     })
-    .catch(err => (folder = null));
+    .catch((err) => (folder = null));
     return folder;
 }
 export async function moveFile(sourceURL,targetURL)
