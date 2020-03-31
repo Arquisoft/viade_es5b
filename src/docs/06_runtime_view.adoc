@@ -208,7 +208,7 @@ App -> Usuario: Visualizamos la imagen añadida en la galería de la ruta
 . Escogemos la ruta de la que queremos ver los comentarios.
 . Click en "Comentarios".
 
-[plantuml,"DiagramaSubirImagenRuta",png]
+[plantuml,"DiagramaVerComentariosRuta",png]
 ----
 Usuario -> App: Seleccionamos "Mis rutas"
 App -> BBDD : Solicitar las rutas del usuario al POD
@@ -223,18 +223,14 @@ App -> Usuario: Visualizamos los comentarios de la ruta
 === Ver galería de una ruta
 
 . Click en "Mis rutas".
-. Escogemos la ruta en la que queremos añadir una imagen.
-. En Galería seleccionamos la imagen y click en el botón de "Subir".
+. Escogemos la ruta de la que queremos ver la galería.
+. Visualizamos en la galería de la ruta las imágenes.
 
-[plantuml,"DiagramaSubirImagenRuta",png]
+[plantuml,"DiagramaVerGaleriaRuta",png]
 ----
 Usuario -> App: Seleccionamos "Mis rutas"
 App -> BBDD : Solicitar las rutas del usuario al POD
-BBDD -> App: Devuelve las rutas
-App -> Usuario: Devuelve la vista con las rutas del usuario
-Usuario -> App: Escoge la ruta a la que quiere añadir una foto, selecciona la imagen y click en el botón "Subir"
-App -> BBDD: Añade una foto para la ruta en el POD
-App -> Usuario: Visualizamos la imagen añadida en la galería de la ruta
+BBDD -> App: Devuelve las rutas con sus galerías
 ----
 
 
