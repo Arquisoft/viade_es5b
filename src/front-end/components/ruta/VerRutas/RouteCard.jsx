@@ -13,7 +13,6 @@ import PhotoGallery from "../../share/PhotoGallery";
 class RouteCard extends Component {
   constructor(props) {
     super(props);
-    this.state = { loaded: false };
     this.eventKey = this.props.eventKey;
   }
 
@@ -23,16 +22,8 @@ class RouteCard extends Component {
         <Card.Header>
           <h3 data-testid="r-title">{this.props.ruta.getNombre()}</h3>
           <Button
-            variant="success"
-            className="mr-2"
-            onClick={this.handleViewInMap}
-            data-testid="rb-ver"
-          >
-            Ver en el mapa
-          </Button>
-          <Button
             data-testid="rb-compartir"
-            variant="info"
+            variant="success"
             className="mr-2"
             onClick={() => this.props.handleShare(this.props.ruta)}
           >
@@ -104,18 +95,16 @@ class RouteCard extends Component {
               <Col md={4}>
                 <Row>
                   <Col>
-                    {this.state.loaded && (
-                      <div
-                        id={`mapa-${this.props.ruta.getNombre()}`}
-                        className="ml-3 mb-3"
-                      >
-                        <MapRuta
-                          className="map"
-                          ruta={this.props.ruta}
-                          data-testid="mapa"
-                        />
-                      </div>
-                    )}
+                    <div
+                      id={`mapa-${this.props.ruta.getNombre()}`}
+                      className="ml-3 mb-3"
+                    >
+                      <MapRuta
+                        className="map"
+                        ruta={this.props.ruta}
+                        data-testid="mapa"
+                      />
+                    </div>
                   </Col>
                 </Row>
               </Col>
@@ -125,26 +114,6 @@ class RouteCard extends Component {
       </Card>
     );
   }
-
-  /**
-   * Se ejecuta cada vez que se actualiza el componente
-   * para mover el scroll al mapa recién mostrado.
-   */
-  componentDidUpdate() {
-    if (this.state.loaded) {
-      document
-        .getElementById(`mapa-${this.props.ruta.getNombre()}`)
-        .scrollIntoView(false);
-    }
-  }
-
-  /**
-   * Función flecha invocada cuando se hace click
-   * sobre el link para ver la ruta en el mapa.
-   */
-  handleViewInMap = () => {
-    this.setState({ loaded: !this.state.loaded });
-  };
 }
 
 export default RouteCard;
