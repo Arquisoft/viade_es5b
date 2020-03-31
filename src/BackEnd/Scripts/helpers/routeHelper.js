@@ -17,6 +17,8 @@ export async function readRouteFromUrl(url)
       .catch(err => (routeDoc = null));
 
     if (routeDoc != null) {
+        try
+        {
         const route = routeDoc.getSubject("#ruta");
 
         let puntos = routeDoc.getSubjectsOfType(
@@ -56,7 +58,13 @@ export async function readRouteFromUrl(url)
         for (let i = 0; i < ficheros.length; i++) {
             let fichero = ficheros[i].getRef(schema.contentUrl)
             ruta.addFichero(fichero);
-          }       
+          } 
+        }
+        catch(error)
+        {
+            console.log(error);
+            return null;
+        }      
     }
     return ruta;
 }
