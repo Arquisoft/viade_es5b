@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import RutaService from "../../services/rutas/RutaService"
+import RutaService from "../../services/rutas/RutaService";
 
 class AddRuta extends Component {
 
   constructor(props){
-    super(props)
+    super(props);
     this.rutaService= new RutaService();
   }
   
@@ -26,7 +26,7 @@ state ={
 onChange = (e) =>{ 
     this.setState({
         [e.target.name] : e.target.value
-    })  //De esta manera cogemos el nombre del input y modificamos el atributo con ese nombre.  
+    });  //De esta manera cogemos el nombre del input y modificamos el atributo con ese nombre.  
 }
 
 onSubmit= (e) =>{//Creamos ruta sin hitos.
@@ -83,7 +83,7 @@ crearRuta= (e) =>{
       formulario1:false,
       formulario2:true    
     }
-  )
+  );
   this.rutaService.addRuta(this.state.nombre, this.state.latitudInicio, this.state.longitudInicio,this.state.descripcion,this.state.hitos);
   this.setState({
     nombre:'',

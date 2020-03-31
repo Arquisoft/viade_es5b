@@ -12,7 +12,7 @@
     "@types/react-leaflet": "^2.5.1",
     "bootstrap": "^4.4.1",
     "leaflet": "^1.6.0",
-    "node": "12.14.0",
+    "node": "^12.14.0",
     "rdf-namespaces": "^1.8.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
