@@ -23,13 +23,13 @@ state ={
 };
 
 
-onChange = e=>{ 
+onChange = (e) =>{ 
     this.setState({
         [e.target.name] : e.target.value
     })  //De esta manera cogemos el nombre del input y modificamos el atributo con ese nombre.  
 }
 
-onSubmit=e=>{//Creamos ruta sin hitos.
+onSubmit= (e) =>{//Creamos ruta sin hitos.
   
   
   //Modificamos los formularios:
@@ -44,7 +44,7 @@ onSubmit=e=>{//Creamos ruta sin hitos.
 
 
 
-onSubmit2=e=>{//Creamos hitos.
+onSubmit2= (e) =>{//Creamos hitos.
   this.addHito();
   e.preventDefault();
   console.log(this.state.hitos);
@@ -73,7 +73,7 @@ addHito = () =>{
   })
 }
 
-crearRuta=e=>{
+crearRuta= (e) =>{
   console.log("Añadimos la ruta: "+this.state.nombre+", con "+this.state.hitos.length+" hitos");
   for (var h of this.state.hitos){
     console.log(h);
@@ -91,7 +91,7 @@ crearRuta=e=>{
     latitudInicio:'',
     descripcion:'',
     hitos: []
-  })
+  });
   alert ('La ruta '+ this.state.nombre+' ha sido añadida correctamente');
 }
 
