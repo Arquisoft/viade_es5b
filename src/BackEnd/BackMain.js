@@ -1,22 +1,22 @@
-import { addRoute } from './Scripts/addRoute.js'
-import { deleteRoute } from './Scripts/deleteRoute.js'
-import { listRoutes } from './Scripts/listRoutes.js'
-import { listFriends } from './Scripts/listFriends.js'
-import {addFriend} from './Scripts/addFriend.js'
-import {shareRoute} from './Scripts/shareRoute.js'
+import { addRoute } from './Scripts/addRoute.js';
+import { deleteRoute } from './Scripts/deleteRoute.js';
+import { listRoutes } from './Scripts/listRoutes.js';
+import { listFriends } from './Scripts/listFriends.js';
+import {addFriend} from './Scripts/addFriend.js';
+import {shareRoute} from './Scripts/shareRoute.js';
 
 export default class BackMain {
     static listarRutas() {
-        return listRoutes()
+        return listRoutes();
     }
     static añadirRuta(Ruta) {
-        addRoute(Ruta)
+        addRoute(Ruta);
     };
     static borrarRuta(uuid) {
-        deleteRoute(uuid)
+        deleteRoute(uuid);
     };
     static listarAmigos() {
-        return listFriends()
+        return listFriends();
     };
     static añadirAmigo(friendWebId){
         return addFriend(friendWebId);
@@ -24,5 +24,4 @@ export default class BackMain {
     static compartirRuta(friendWebId,Ruta){
         shareRoute(friendWebId,Ruta);
     };
-    
 }
