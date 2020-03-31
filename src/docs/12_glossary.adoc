@@ -24,7 +24,6 @@ Potentially more columns in case you need translations.
 ****
 
 [cols="2*"]
-Glosario
 |===
 |Solid | Conjunto de especificaciones modulares que se basan y amplían la tecnología de fundación de la red mundial (HTTP, REST, HTML).
 |React | Biblioteca de JavaScript para construir interfaces de usuario
@@ -41,4 +40,5 @@ Glosario
 |JSX | Extensión de JavaScript creada por Facebook para el uso con su librería React.
 |CRUD | Acrónimo de crear, leer, actualizar y borrar. Las cuatro funciones básicas de la persistencia de Bases de Datos.
 |Protocolo HTTP | Protocolo de comunicación que permite las transferencias de información en la World Wide Web.
+|===
 
