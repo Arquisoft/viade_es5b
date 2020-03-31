@@ -1,14 +1,26 @@
 import React, { Component } from "react";
-import { Alert, Spinner, Form, Card, Accordion, Button } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Alert,
+  Spinner,
+  Form,
+  Card,
+  Button,
+  Col
+} from "react-bootstrap";
 import Gallery from "react-grid-gallery";
 import bsCustomFileInput from "bs-custom-file-input";
 import $ from "jquery";
 import RutaService from "../../services/rutas/RutaService";
+import "../../css/photo-gallery.css";
 
 class PhotoGallery extends Component {
   constructor(props) {
     super(props);
     this.rutaService = new RutaService();
+    this.tWidth = 85;
+    this.tHeight = 85;
   }
 
   state = {
@@ -18,7 +30,8 @@ class PhotoGallery extends Component {
     ableToUpload: false,
     loading: true,
     loaded: false,
-    empty: false
+    empty: false,
+    onlyRead: this.props.onlyRead
   };
 
   componentDidMount() {
@@ -26,61 +39,64 @@ class PhotoGallery extends Component {
     $(document).ready(function() {
       bsCustomFileInput.init();
     });
+    this.loadImages();
   }
 
   render() {
     return (
       <>
-        <Accordion>
-          <Card>
-            <Card.Header>
-              <Accordion.Toggle
-                as={Button}
-                variant="link"
-                eventKey="0"
-                onClick={this.handleOnClick}
-              >
-                Galería
-              </Accordion.Toggle>
-            </Card.Header>
-            <Accordion.Collapse eventKey="0">
-              <Card.Body>
-                <Gallery images={this.state.imageList} />
-                {this.state.loading && (
-                  <>
-                    <Spinner
+        <Card>
+          <Card.Header>
+            <Card.Title>Galería</Card.Title>
+          </Card.Header>
+          <Card.Body>
+            <Gallery images={this.state.imageList} />
+            {this.state.loading && (
+              <>
+                <Spinner
+                  className="mr-2"
+                  as="span"
+                  animation="border"
+                  role="status"
+                />
+                Cargando imágenes...
+              </>
+            )}
+            {this.state.empty && (
+              <Alert variant="warning">Aún no hay imágenes.</Alert>
+            )}
+          </Card.Body>
+          <Card.Footer>
+            {!this.state.onlyRead && (
+              <Container fluid>
+                <Row>
+                  <Col>
+                    <Form className="input-img">
+                      <Form.File
+                        label="Selecciona una imagen"
+                        multiple
+                        accept="image/*"
+                        custom
+                        onChange={this.onChangeHandler}
+                        data-browse="Examinar"
+                      />
+                    </Form>
+                  </Col>
+                  <Col>
+                    <Button
                       className="mt-2"
-                      as="span"
-                      animation="border"
-                      role="status"
-                    />
-                    Cargando imágenes...
-                  </>
-                )}
-                {this.state.empty && (
-                  <Alert variant="warning">Aún no hay imágenes.</Alert>
-                )}
-                <Form>
-                  <Form.File
-                    label="Selecciona una imagen"
-                    multiple
-                    accept="image/*"
-                    custom
-                    onChange={this.onChangeHandler}
-                  />
-                </Form>
-                <Button
-                  className="mt-2"
-                  variant="success"
-                  onClick={this.handleUpload}
-                  disabled={!this.state.ableToUpload}
-                >
-                  Subir
-                </Button>
-              </Card.Body>
-            </Accordion.Collapse>
-          </Card>
-        </Accordion>
+                      variant="success"
+                      onClick={this.handleUpload}
+                      disabled={!this.state.ableToUpload}
+                    >
+                      Subir
+                    </Button>
+                  </Col>
+                </Row>
+              </Container>
+            )}
+          </Card.Footer>
+        </Card>
       </>
     );
   }
@@ -130,8 +146,8 @@ class PhotoGallery extends Component {
       return {
         src: url,
         thumbnail: url,
-        thumbnailWidth: 290,
-        thumbnailHeight: 174
+        thumbnailWidth: this.tWidth,
+        thumbnailHeight: this.tHeight
       };
     });
     this.setState({

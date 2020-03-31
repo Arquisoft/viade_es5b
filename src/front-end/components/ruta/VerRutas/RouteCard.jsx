@@ -31,84 +31,93 @@ class RouteCard extends Component {
             Ver en el mapa
           </Button>
           <Button
-            data-testid="rb-eliminar"
-            variant="danger"
-            className="mr-2"
-            onClick={() => this.props.handleDelete(this.props.ruta.getUUID())}
-          >
-            Eliminar
-          </Button>
-          <Button
             data-testid="rb-compartir"
             variant="info"
+            className="mr-2"
             onClick={() => this.props.handleShare(this.props.ruta)}
           >
             Compartir
+          </Button>
+          <Button
+            data-testid="rb-eliminar"
+            variant="danger"
+            onClick={() => this.props.handleDelete(this.props.ruta.getUUID())}
+          >
+            Eliminar
           </Button>
         </Card.Header>
         <Card.Body>
           <Container fluid>
             <Row>
-              <Col md="auto">
-                <Card.Title>Descripción</Card.Title>
-                <Card.Text data-testid="r-description">
-                  {this.props.ruta.getDescripcion()}
-                </Card.Text>
-                <Card.Title>Hitos</Card.Title>
-                <Table striped bordered hover>
-                  <thead>
-                    <tr>
-                      <th>Nombre</th>
-                      <th>Latitud</th>
-                      <th>Longitud</th>
-                    </tr>
-                  </thead>
-                  <tbody data-testid="r-hitos">
-                    <tr>
-                      <td>
-                        <b>Inicio</b>
-                      </td>
-                      <td>{this.props.ruta.getInicio()[0]}</td>
-                      <td>{this.props.ruta.getInicio()[1]}</td>
-                    </tr>
-                    {this.props.ruta.getHitos().map((h, key) => (
-                      <tr key={key++}>
-                        <td>{h.getNombre()}</td>
-                        <td>{h.getLat()}</td>
-                        <td>{h.getLong()}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </Table>
-              </Col>
-              <Col>
-                {this.state.loaded && (
-                  <div
-                    id={`mapa-${this.props.ruta.getNombre()}`}
-                    className="ml-3 mb-3"
-                  >
-                    <MapRuta
-                      className="map"
+              <Col md={8}>
+                <Row>
+                  <Col md="auto">
+                    <Card.Title>Descripción</Card.Title>
+                    <Card.Text data-testid="r-description">
+                      {this.props.ruta.getDescripcion()}
+                    </Card.Text>
+                    <Card.Title>Hitos</Card.Title>
+                    <Table striped bordered hover>
+                      <thead>
+                        <tr>
+                          <th>Nombre</th>
+                          <th>Latitud</th>
+                          <th>Longitud</th>
+                        </tr>
+                      </thead>
+                      <tbody data-testid="r-hitos">
+                        <tr>
+                          <td>
+                            <b>Inicio</b>
+                          </td>
+                          <td>{this.props.ruta.getInicio()[0]}</td>
+                          <td>{this.props.ruta.getInicio()[1]}</td>
+                        </tr>
+                        {this.props.ruta.getHitos().map((h, key) => (
+                          <tr key={key++}>
+                            <td>{h.getNombre()}</td>
+                            <td>{h.getLat()}</td>
+                            <td>{h.getLong()}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </Table>
+                  </Col>
+                  <Col>
+                    <CommentBox
+                      author={null}
                       ruta={this.props.ruta}
-                      data-testid="mapa"
-                    />
-                  </div>
-                )}
+                      onlyRead={false}
+                    ></CommentBox>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <PhotoGallery
+                      author={null}
+                      ruta={this.props.ruta}
+                      onlyRead={false}
+                    ></PhotoGallery>
+                  </Col>
+                </Row>
               </Col>
-            </Row>
-            <Row>
-              <Col>
-                <CommentBox
-                  author={null}
-                  ruta={this.props.ruta}
-                  onlyRead={false}
-                ></CommentBox>
-              </Col>
-              <Col>
-                <PhotoGallery
-                  author={null}
-                  ruta={this.props.ruta}
-                ></PhotoGallery>
+              <Col md={4}>
+                <Row>
+                  <Col>
+                    {this.state.loaded && (
+                      <div
+                        id={`mapa-${this.props.ruta.getNombre()}`}
+                        className="ml-3 mb-3"
+                      >
+                        <MapRuta
+                          className="map"
+                          ruta={this.props.ruta}
+                          data-testid="mapa"
+                        />
+                      </div>
+                    )}
+                  </Col>
+                </Row>
               </Col>
             </Row>
           </Container>

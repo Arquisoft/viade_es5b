@@ -10,6 +10,7 @@ import {
 } from "react-bootstrap";
 import RutaService from "../../services/rutas/RutaService";
 import Comentario from "../../model/Comentario";
+import "../../css/scroll.css";
 
 class CommentBox extends Component {
   constructor(props) {
@@ -22,9 +23,11 @@ class CommentBox extends Component {
     commentList: [],
     onlyRead: this.props.onlyRead,
     loading: true,
-    empty: false
+    empty: false,
+    loaded: false
   };
 
+  /*
   async componentDidMount() {
     this.setState({
       commentList: await this.rutaService.obtenerComentariosRuta(
@@ -35,13 +38,20 @@ class CommentBox extends Component {
     });
     this.setState({ empty: this.state.commentList.length === 0 });
   }
+  */
 
   render() {
     return (
       <Accordion data-testid="Acordeon">
         <Card data-testid="cardEnv">
           <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="0" data-testid="btComment">
+            <Accordion.Toggle
+              as={Button}
+              variant="link"
+              eventKey="0"
+              data-testid="btComment"
+              onClick={this.handleClick}
+            >
               Comentarios
             </Accordion.Toggle>
           </Card.Header>
@@ -68,19 +78,6 @@ class CommentBox extends Component {
                   </Button>
                 </div>
               )}
-
-              {this.state.commentList.map((c, key) => {
-                return (
-                  <Card className="mb-4" key={key++}>
-                    <Card.Header>{`${c
-                      .getAutor()
-                      .getNombre()} ${c.getFormattedDate()}`}</Card.Header>
-                    <Card.Body>
-                      <Card.Text>{c.getTexto()}</Card.Text>
-                    </Card.Body>
-                  </Card>
-                );
-              })}
               {this.state.loading && (
                 <Spinner
                   className="mt-2"
@@ -91,6 +88,22 @@ class CommentBox extends Component {
               )}
               {this.state.empty && (
                 <Alert variant="warning">Aún no hay comentarios</Alert>
+              )}
+              {this.state.commentList.length > 0 && (
+                <div className="scroll-container">
+                  {this.state.commentList.map((c, key) => {
+                    return (
+                      <Card className="mb-4 mr-2" key={key++}>
+                        <Card.Header>{`${c
+                          .getAutor()
+                          .getNombre()} ${c.getFormattedDate()}`}</Card.Header>
+                        <Card.Body>
+                          <Card.Text>{c.getTexto()}</Card.Text>
+                        </Card.Body>
+                      </Card>
+                    );
+                  })}
+                </div>
               )}
             </Card.Body>
           </Accordion.Collapse>
@@ -112,15 +125,34 @@ class CommentBox extends Component {
     this.setState({ comment: "" });
     // Creamos el objeto Comment
     let comment = new Comentario(date, commentText);
-    // Lo guardamos en el pod del autor
-    // Recuperamos los comentarios
+    await this.rutaService.comentarMiRuta(comment, routeUUID); // Lo guardamos en el pod del autor
+    this.loadComments(); // Recuperamos los comentarios
+  };
+
+  /**
+   * Carga los comentarios desde el pod del usuario indicado,
+   * asociados a esta ruta.
+   */
+  loadComments = async () => {
+    this.setState({ loading: true });
+    let uuid = this.props.ruta.getUUID();
+    let webID = this.props.author == null ? null : this.props.author.getWebId();
     this.setState({
-      commentList: await this.rutaService.comentarMiRuta(comment, routeUUID)
+      commentList: await this.rutaService.obtenerComentariosRuta(uuid, webID),
+      loading: false
     });
-    this.setState({
-      loading: false,
-      empty: this.state.commentList.length === 0
-    });
+    this.setState({ empty: this.state.commentList.length === 0 });
+  };
+
+  /**
+   * Se ejecutará cuando se haga click sobre el link
+   * para desplegar la caja de comentarios.
+   */
+  handleClick = () => {
+    if (!this.state.loaded) {
+      this.loadComments();
+      this.setState({ loaded: true });
+    }
   };
 }
 
