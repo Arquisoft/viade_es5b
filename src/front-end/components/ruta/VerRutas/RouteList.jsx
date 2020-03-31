@@ -23,6 +23,7 @@ class RouteList extends Component {
   async componentDidMount() {
     let rutas = await this.rutaService.getRutas();
     this.setState({ rutas: rutas, emptyList: rutas.length === 0 });
+    this.props.handleLoaded(); // Indicamos al padre que ya se ha cargado la vista.
   }
 
   render() {
