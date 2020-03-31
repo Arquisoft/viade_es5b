@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Card, Accordion, Button } from "react-bootstrap";
+import { Alert, Spinner, Form, Card, Accordion, Button } from "react-bootstrap";
 import Gallery from "react-grid-gallery";
 import bsCustomFileInput from "bs-custom-file-input";
 import $ from "jquery";
@@ -13,30 +13,12 @@ class PhotoGallery extends Component {
 
   state = {
     route: this.props.ruta,
-    images: [
-      {
-        src: "https://pedro223.solid.community/public/_1585583190000_.jpeg",
-        thumbnail:
-          "https://pedro223.solid.community/public/_1585583190000_.jpeg",
-        thumbnailWidth: 320,
-        thumbnailHeight: 174
-      },
-      {
-        src: "https://www.youtube.com/watch?v=OzXQ7biJIfs",
-        thumbnail: process.env.PUBLIC_URL + "/img/ruta-avs-2.jpg",
-        thumbnailWidth: 320,
-        thumbnailHeight: 174
-      },
-      {
-        src: process.env.PUBLIC_URL + "/img/avs.jpg",
-        thumbnail: process.env.PUBLIC_URL + "/img/avs.jpg",
-        thumbnailWidth: 320,
-        thumbnailHeight: 174
-      }
-    ],
     imageList: [],
     selectedImages: [],
-    ableToUpload: false
+    ableToUpload: false,
+    loading: true,
+    loaded: false,
+    empty: false
   };
 
   componentDidMount() {
@@ -56,7 +38,7 @@ class PhotoGallery extends Component {
                 as={Button}
                 variant="link"
                 eventKey="0"
-                onClick={this.loadImages}
+                onClick={this.handleOnClick}
               >
                 Galería
               </Accordion.Toggle>
@@ -64,6 +46,20 @@ class PhotoGallery extends Component {
             <Accordion.Collapse eventKey="0">
               <Card.Body>
                 <Gallery images={this.state.imageList} />
+                {this.state.loading && (
+                  <>
+                    <Spinner
+                      className="mt-2"
+                      as="span"
+                      animation="border"
+                      role="status"
+                    />
+                    Cargando imágenes...
+                  </>
+                )}
+                {this.state.empty && (
+                  <Alert variant="warning">Aún no hay imágenes.</Alert>
+                )}
                 <Form>
                   <Form.File
                     label="Selecciona una imagen"
@@ -100,8 +96,7 @@ class PhotoGallery extends Component {
    * Se encarga de subir las imagenes al servidor.
    */
   handleUpload = async () => {
-    console.log("Ruta id: " + this.state.route.getUUID());
-    console.log(this.state.selectedImages);
+    this.setState({ loading: true, empty: false });
     await this.rutaService.subirFicheroAMiRuta(
       // añadimos los ficheros a la ruta del pod.
       this.state.selectedImages,
@@ -126,21 +121,35 @@ class PhotoGallery extends Component {
    */
   loadImages = async () => {
     console.log("Trayendo imagenes del pod");
+    this.setState({ loading: true });
     let uuid = this.state.route.getUUID();
     let webID = this.props.author == null ? null : this.props.author.getWebId();
     let urls = await this.rutaService.obtenerFicherosRuta(uuid, webID);
     let imageObjects = urls.map(url => {
+      // parseamos la lista de urls para obtener objetos imagen
       return {
         src: url,
         thumbnail: url,
-        thumbnailWidth: 320,
+        thumbnailWidth: 290,
         thumbnailHeight: 174
       };
     });
-    //console.log(await this.rutaService.obtenerFicherosRuta(uuid, webID));
     this.setState({
-      imageList: imageObjects
+      imageList: imageObjects,
+      loading: false,
+      empty: imageObjects.length === 0
     });
+  };
+
+  /**
+   * Se invoca cuando se hace click sobre el link para
+   * desplegar la galería.
+   */
+  handleOnClick = () => {
+    if (!this.state.loaded) {
+      this.loadImages();
+      this.setState({ loaded: true });
+    }
   };
 }
 
