@@ -25,6 +25,7 @@ class SharedWithMe extends Component {
       rutasCompartidas: sharedRoutes,
       emptyList: sharedRoutes.length === 0
     });
+    this.props.handleLoaded(); // Indicar al padre que ya se han cargado las rutas.
   }
 
   render() {

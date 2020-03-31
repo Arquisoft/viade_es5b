@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import LoadingOverlay from "react-loading-overlay";
-import PacmanLoader from "react-spinners/PacmanLoader";
+import HashLoader from "react-spinners/HashLoader";
 
-class PacmanViewLoader extends Component {
+class HashViewLoader extends Component {
   state = {};
   render() {
     return (
       <LoadingOverlay
         active={this.props.loading}
         spinner={
-          <PacmanLoader
-            size={25}
+          <HashLoader
+            size={35}
             color={"#50E3C2"}
-            css={{ display: "block", margin: "0 20vh 5vh" }}
+            css={{ display: "block", margin: "0 43% 2vh" }}
           />
         }
         text={this.props.text}
@@ -30,4 +30,4 @@ class PacmanViewLoader extends Component {
   }
 }
 
-export default PacmanViewLoader;
+export default HashViewLoader;
