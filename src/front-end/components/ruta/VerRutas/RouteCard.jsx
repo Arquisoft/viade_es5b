@@ -13,7 +13,6 @@ import PhotoGallery from "../../share/PhotoGallery";
 class RouteCard extends Component {
   constructor(props) {
     super(props);
-    this.state = { loaded: false };
     this.eventKey = this.props.eventKey;
   }
 
@@ -23,89 +22,91 @@ class RouteCard extends Component {
         <Card.Header>
           <h3 data-testid="r-title">{this.props.ruta.getNombre()}</h3>
           <Button
+            data-testid="rb-compartir"
             variant="success"
             className="mr-2"
-            onClick={this.handleViewInMap}
-            data-testid="rb-ver"
+            onClick={() => this.props.handleShare(this.props.ruta)}
           >
-            Ver en el mapa
+            Compartir
           </Button>
           <Button
             data-testid="rb-eliminar"
             variant="danger"
-            className="mr-2"
             onClick={() => this.props.handleDelete(this.props.ruta.getUUID())}
           >
             Eliminar
-          </Button>
-          <Button
-            data-testid="rb-compartir"
-            variant="info"
-            onClick={() => this.props.handleShare(this.props.ruta)}
-          >
-            Compartir
           </Button>
         </Card.Header>
         <Card.Body>
           <Container fluid>
             <Row>
-              <Col md="auto">
-                <Card.Title>Descripción</Card.Title>
-                <Card.Text data-testid="r-description">
-                  {this.props.ruta.getDescripcion()}
-                </Card.Text>
-                <Card.Title>Hitos</Card.Title>
-                <Table striped bordered hover>
-                  <thead>
-                    <tr>
-                      <th>Nombre</th>
-                      <th>Latitud</th>
-                      <th>Longitud</th>
-                    </tr>
-                  </thead>
-                  <tbody data-testid="r-hitos">
-                    <tr>
-                      <td>
-                        <b>Inicio</b>
-                      </td>
-                      <td>{this.props.ruta.getInicio()[0]}</td>
-                      <td>{this.props.ruta.getInicio()[1]}</td>
-                    </tr>
-                    {this.props.ruta.getHitos().map((h, key) => (
-                      <tr key={key++}>
-                        <td>{h.getNombre()}</td>
-                        <td>{h.getLat()}</td>
-                        <td>{h.getLong()}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </Table>
-              </Col>
-              <Col>
-                {this.state.loaded && (
-                  <div
-                    id={`mapa-${this.props.ruta.getNombre()}`}
-                    className="ml-3 mb-3"
-                  >
-                    <MapRuta
-                      className="map"
+              <Col md={8}>
+                <Row>
+                  <Col md="auto">
+                    <Card.Title>Descripción</Card.Title>
+                    <Card.Text data-testid="r-description">
+                      {this.props.ruta.getDescripcion()}
+                    </Card.Text>
+                    <Card.Title>Hitos</Card.Title>
+                    <Table striped bordered hover>
+                      <thead>
+                        <tr>
+                          <th>Nombre</th>
+                          <th>Latitud</th>
+                          <th>Longitud</th>
+                        </tr>
+                      </thead>
+                      <tbody data-testid="r-hitos">
+                        <tr>
+                          <td>
+                            <b>Inicio</b>
+                          </td>
+                          <td>{this.props.ruta.getInicio()[0]}</td>
+                          <td>{this.props.ruta.getInicio()[1]}</td>
+                        </tr>
+                        {this.props.ruta.getHitos().map((h, key) => (
+                          <tr key={key++}>
+                            <td>{h.getNombre()}</td>
+                            <td>{h.getLat()}</td>
+                            <td>{h.getLong()}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </Table>
+                  </Col>
+                  <Col>
+                    <CommentBox
+                      author={null}
                       ruta={this.props.ruta}
-                      data-testid="mapa"
-                    />
-                  </div>
-                )}
+                      onlyRead={false}
+                    ></CommentBox>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <PhotoGallery
+                      author={null}
+                      ruta={this.props.ruta}
+                      onlyRead={false}
+                    ></PhotoGallery>
+                  </Col>
+                </Row>
               </Col>
-            </Row>
-            <Row>
-              <Col>
-                <CommentBox
-                  author={null}
-                  ruta={this.props.ruta}
-                  onlyRead={false}
-                ></CommentBox>
-              </Col>
-              <Col>
-                <PhotoGallery ruta={this.props.ruta}></PhotoGallery>
+              <Col md={4}>
+                <Row>
+                  <Col>
+                    <div
+                      id={`mapa-${this.props.ruta.getNombre()}`}
+                      className="ml-3 mb-3"
+                    >
+                      <MapRuta
+                        className="map"
+                        ruta={this.props.ruta}
+                        data-testid="mapa"
+                      />
+                    </div>
+                  </Col>
+                </Row>
               </Col>
             </Row>
           </Container>
@@ -113,26 +114,6 @@ class RouteCard extends Component {
       </Card>
     );
   }
-
-  /**
-   * Se ejecuta cada vez que se actualiza el componente
-   * para mover el scroll al mapa recién mostrado.
-   */
-  componentDidUpdate() {
-    if (this.state.loaded) {
-      document
-        .getElementById(`mapa-${this.props.ruta.getNombre()}`)
-        .scrollIntoView(false);
-    }
-  }
-
-  /**
-   * Función flecha invocada cuando se hace click
-   * sobre el link para ver la ruta en el mapa.
-   */
-  handleViewInMap = () => {
-    this.setState({ loaded: !this.state.loaded });
-  };
 }
 
 export default RouteCard;
