@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Accordion, Alert } from "react-bootstrap";
 import RouteCard from "./RouteCard";
 import SharePanel from "../../share/SharePanel";
+import RutaService from "../../../services/rutas/RutaService";
 
 /**
  * Representa una lista que encapsula componentes
@@ -10,31 +11,31 @@ import SharePanel from "../../share/SharePanel";
 class RouteList extends Component {
   constructor(props) {
     super(props);
-    this.service = this.props.service;
+    this.rutaService = new RutaService();
     this.state = {
       rutas: [],
-      noRoutes: false,
       showSharePanel: false,
-      routeToShare: null
+      routeToShare: null,
+      emptyList: false
     };
   }
 
   async componentDidMount() {
-    const response = await this.props.rutas;
-    this.setState({ rutas: response });
-    if (this.state.rutas.length === 0) this.setState({ noRoutes: true });
+    let rutas = await this.rutaService.getRutas();
+    this.setState({ rutas: rutas, emptyList: rutas.length === 0 });
+    this.props.handleLoaded(); // Indicamos al padre que ya se ha cargado la vista.
   }
 
   render() {
     return (
       <Accordion data-testid="acordeon" defaultActiveKey="0">
-        {this.state.noRoutes && (
+        {this.state.emptyList && (
           <Alert data-testid="alerta" variant="warning">
             Actualmente no dispones de ninguna ruta en tu POD. Accede a
             <a href="#/add-ruta"> Añadir Ruta </a> para añadir una nueva ruta.
           </Alert>
         )}
-        {!this.state.noRoutes &&
+        {this.state.rutas.length > 0 &&
           this.state.rutas.map((r, key) => (
             <RouteCard
               role="r-card"
