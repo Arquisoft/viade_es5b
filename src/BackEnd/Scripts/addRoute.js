@@ -1,6 +1,18 @@
 import { space, rdf, schema } from 'rdf-namespaces';
 import { fetchDocument, createDocument } from 'tripledoc';
-const auth = require('solid-auth-client');
+
+const auth = require('solid-auth-client')
+
+export async function addRoute(ruta) {
+    let session = await auth.currentSession();
+    if (!session) { window.location.href = "/login"; }
+    const route = 'private/routes/' + ruta.getUUID() + '.ttl';
+    const webId = session.webId;
+
+    await newDocument(webId, route);
+    await insertData(webId, route, ruta);
+
+}
 
 //https://github.com/solid/solidproject.org/blob/staging/_posts/for-developers/apps/first-app/2019-01-01-04_data-model.md
 //https://vincenttunru.gitlab.io/tripledoc/

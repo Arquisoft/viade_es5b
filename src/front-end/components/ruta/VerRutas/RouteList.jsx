@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Accordion, Alert } from "react-bootstrap";
 import RouteCard from "./RouteCard";
+import SharePanel from "../../share/SharePanel";
 
 /**
  * Representa una lista que encapsula componentes
@@ -10,7 +11,12 @@ class RouteList extends Component {
   constructor(props) {
     super(props);
     this.service = this.props.service;
-    this.state = { rutas: [], noRoutes: false };
+    this.state = {
+      rutas: [],
+      noRoutes: false,
+      showSharePanel: false,
+      routeToShare: null
+    };
   }
 
   async componentDidMount() {
@@ -33,17 +39,49 @@ class RouteList extends Component {
             <RouteCard
               role="r-card"
               handleDelete={this.handleDeleteRoute}
+              handleShare={this.handleShare}
               ruta={r}
               key={key++}
               eventKey={key}
             />
           ))}
+
+        {this.toggleSharePanel()}
       </Accordion>
     );
   }
 
-  handleDeleteRoute = uuid => {
-    this.service.deleteRuta(uuid);
+  handleDeleteRoute = async uuid => {
+    this.setState({ rutas: await this.service.deleteRuta(uuid) });
+  };
+
+  /**
+   * Manejador de eventos para compartir una ruta.
+   */
+  handleShare = ruta => {
+    this.setState({ routeToShare: ruta, showSharePanel: true });
+  };
+
+  /**
+   * Manejador de evento de click cuando se cancela
+   * compartir la ruta.
+   */
+  cancelShare = () => {
+    this.setState({ routeToShare: null, showSharePanel: false });
+  };
+
+  share = amigos => {};
+
+  toggleSharePanel = () => {
+    return (
+      this.state.showSharePanel && (
+        <SharePanel
+          ruta={this.state.routeToShare}
+          show={this.state.showSharePanel}
+          cancel={this.cancelShare}
+        ></SharePanel>
+      )
+    );
   };
 
   /*

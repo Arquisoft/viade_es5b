@@ -1,12 +1,15 @@
 import { schema } from "rdf-namespaces";
 import { fetchDocument } from 'tripledoc';
+import {readFolder} from "../helpers/fileHelper";
+import {getPersonaByWebId} from "../helpers/personHelper";
 import Ruta from "../../../front-end/model/Ruta.js";
 import Hito from "../../../front-end/model/Hito.js";
+import Comentario from "../../../front-end/model/Comentario.js";
 
 export async function readRouteFromUrl(url)
 {
     let routeDoc;
-    let ruta;
+    let ruta = null;
     await fetchDocument(url)
       .then(content => {
         routeDoc = content;
@@ -38,7 +41,49 @@ export async function readRouteFromUrl(url)
                 puntos[e].getDecimal(schema.longitude)
                 )
             );
-        } 
+        }
+        
+        let comentarios = routeDoc.getSubjectsOfType(
+            "http://arquisoft.github.io/viadeSpec/userComment"
+            );
+        for (let i = 0; i < comentarios.length; i++) {
+            let comentario = new Comentario(comentarios[i].getDateTime(schema.datePublished),comentarios[i].getString(schema.text));
+            let autor= await getPersonaByWebId(comentarios[i].getRef(schema.author));
+            comentario.setAutor(autor);
+            ruta.addComentario(comentario);
+        }
+        let ficheros = routeDoc.getSubjectsOfType(schema.MediaObject);
+        for (let i = 0; i < ficheros.length; i++) {
+            let fichero = ficheros[i].getRef(schema.contentUrl)
+            ruta.addFichero(fichero);
+          }       
     }
     return ruta;
+}
+export async function findRouteURL(folderUrl,uuid)
+{
+    let folder= await readFolder(folderUrl);
+    if (folder) 
+    {
+        for (var i = 0; i < folder.files.length; i++) 
+        {
+            //console.log(folder.files[i].url)
+            let routeDoc;
+            await fetchDocument(folder.files[i].url).then((content) => {
+                routeDoc=content;
+            })
+            .catch(err => routeDoc=null);
+
+            if(routeDoc!=null)
+            {
+                var route = routeDoc.getSubject('#ruta');
+                var ID=route.getString(schema.identifier);
+                if(ID===uuid)
+                {
+                    return folder.files[i].url;
+                }
+            }
+        };
+    }
+    return null;
 }

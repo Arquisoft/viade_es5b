@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 type Props = {
   data: any,
   onSelect: Function,
@@ -18,7 +19,7 @@ const ProviderItem = ({ data, onSelect, radioName, id, checked }: Props) => (
           value={data.registerLink}
           checked={checked}
         />
-        <img src={data.image} alt={data.label} />
+        <img src={data.image} alt="" width="50" height="50"/>
         <span className="label">{data.label}</span>
       </div>
 );

@@ -102,17 +102,17 @@ crearRuta= (e) =>{
         <form onSubmit={this.onSubmit}>
             <div className="form-group">
                 <label data-testid="e-nombreRuta">Nombre de la ruta:</label>
-                <input data-testid="in-nombreRuta" disabled={this.state.formulario1} className="form-control" placeholder="Ruta 21" type="text" name="nombre" value={this.state.nombre} onChange={this.onChange}/>
+                <input required data-testid="in-nombreRuta" disabled={this.state.formulario1} className="form-control" placeholder="Ruta 21" type="text" name="nombre" value={this.state.nombre} onChange={this.onChange}/>
             </div>    
             <div className="form-group">    
                 <h3 data-testid="titlelugarInicio">Lugar de inicio:</h3>
                 <div className="form-group">    
                   <label data-testid="e-latitudRuta">Latitud de la ruta:</label>
-                  <input data-testid="in-latitudRuta" disabled={this.state.formulario1} className="form-control" placeholder="200" type="text" name="latitudInicio" value={this.state.latitudInicio} onChange={this.onChange}/>
+                  <input required data-testid="in-latitudRuta" disabled={this.state.formulario1} className="form-control" placeholder="200" type="text" name="latitudInicio" value={this.state.latitudInicio} onChange={this.onChange}/>
                 </div>
                 <div className="form-group">
                   <label data-testid="e-longitudRuta">Longitud de la ruta:</label>
-                  <input data-testid="in-longitudRuta" disabled={this.state.formulario1} className="form-control" placeholder="100" type="text" name="longitudInicio" value={this.state.longitudInicio} onChange={this.onChange}/>
+                  <input required data-testid="in-longitudRuta" disabled={this.state.formulario1} className="form-control" placeholder="100" type="text" name="longitudInicio" value={this.state.longitudInicio} onChange={this.onChange}/>
                 </div>
             </div> 
             <div className="form-group">
@@ -126,15 +126,15 @@ crearRuta= (e) =>{
         <form onSubmit={this.onSubmit2} disabled={this.state.formulario}>
               <div className="form-group"> 
                 <label data-testid="e-nombreHito">Nombre del hito:</label>
-                <input data-testid="in-nombreHito" disabled={this.state.formulario2} className="form-control" placeholder="Hito 1" type="text" name="nombreHito" value={this.state.nombreHito} onChange={this.onChange}/>
+                <input required data-testid="in-nombreHito" disabled={this.state.formulario2} className="form-control" placeholder="Hito 1" type="text" name="nombreHito" value={this.state.nombreHito} onChange={this.onChange}/>
               </div>  
               <div className="form-group">
                 <label data-testid="e-latitudHito">Latitud del hito:</label>
-                <input data-testid="in-latitudHito" disabled={this.state.formulario2} className="form-control" placeholder="300" type="text" name="latitudHito" value={this.state.latitudHito} onChange={this.onChange}/>
+                <input required data-testid="in-latitudHito" disabled={this.state.formulario2} className="form-control" placeholder="300" type="text" name="latitudHito" value={this.state.latitudHito} onChange={this.onChange}/>
               </div>
               <div className="form-group">
                 <label data-testid="e-longitudHito">Longitud del hito:</label>
-                <input data-testid="in-longitudHito" disabled={this.state.formulario2} className="form-control" placeholder="200" type="text" name="longitudHito" value={this.state.longitudHito} onChange={this.onChange}/>
+                <input required data-testid="in-longitudHito" disabled={this.state.formulario2} className="form-control" placeholder="200" type="text" name="longitudHito" value={this.state.longitudHito} onChange={this.onChange}/>
               </div>
               <button type="submit" className="btn btn-primary" data-testid="addHitoButton" disabled={this.state.formulario2}>Añadir hito</button>
         </form>

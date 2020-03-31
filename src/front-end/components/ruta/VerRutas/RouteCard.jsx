@@ -3,6 +3,8 @@ import { Card, Container, Row, Col, Table } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import MapRuta from "../../map/MapRuta";
 import "../../../css/map-style.css";
+import CommentBox from "../../share/CommentBox";
+import PhotoGallery from "../../share/PhotoGallery";
 
 /**
  * Representa un elemento Card con la
@@ -21,10 +23,10 @@ class RouteCard extends Component {
         <Card.Header>
           <h3 data-testid="r-title">{this.props.ruta.getNombre()}</h3>
           <Button
-            data-testid="rb-ver"
             variant="success"
             className="mr-2"
             onClick={this.handleViewInMap}
+            data-testid="rb-ver"
           >
             Ver en el mapa
           </Button>
@@ -36,7 +38,13 @@ class RouteCard extends Component {
           >
             Eliminar
           </Button>
-          <Button>Editar</Button>
+          <Button
+            data-testid="rb-compartir"
+            variant="info"
+            onClick={() => this.props.handleShare(this.props.ruta)}
+          >
+            Compartir
+          </Button>
         </Card.Header>
         <Card.Body>
           <Container fluid>
@@ -76,13 +84,28 @@ class RouteCard extends Component {
               <Col>
                 {this.state.loaded && (
                   <div
-                    data-testid="mapa"
                     id={`mapa-${this.props.ruta.getNombre()}`}
                     className="ml-3 mb-3"
                   >
-                    <MapRuta ruta={this.props.ruta} />
+                    <MapRuta
+                      className="map"
+                      ruta={this.props.ruta}
+                      data-testid="mapa"
+                    />
                   </div>
                 )}
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <CommentBox
+                  author={null}
+                  ruta={this.props.ruta}
+                  onlyRead={false}
+                ></CommentBox>
+              </Col>
+              <Col>
+                <PhotoGallery ruta={this.props.ruta}></PhotoGallery>
               </Col>
             </Row>
           </Container>

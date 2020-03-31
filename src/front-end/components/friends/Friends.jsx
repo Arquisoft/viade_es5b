@@ -31,11 +31,12 @@ class Friends extends Component {
   render() {
     return (
       <div>
-        <h2>Amigos</h2>
-        <p>Desde aquí puedes realizar la gestión de tus amigos.</p>
+        <h2 data-testid="titleAmigos">Amigos</h2>
+        <p data-testid="gestionAmigos">Desde aquí puedes realizar la gestión de tus amigos.</p>
         <AddFriend
           handleAddFriend={webID => this.handleAddFriend(webID)}
           isLoading={this.state.loading}
+          data-testid="componenteAddFriend"
         />
         {this.showError()}
         <FriendList
@@ -85,7 +86,7 @@ class Friends extends Component {
   showError = () => {
     return (
       this.state.showError && (
-        <Alert variant="danger">
+        <Alert variant="danger" data-testid="alertNoExisteUsuario">
           No existe el usuario o ya está presente en tu lista de amigos.
         </Alert>
       )
