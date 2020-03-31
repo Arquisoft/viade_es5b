@@ -22,6 +22,7 @@
     "react-dom": "^16.13.1",
     "react-grid-gallery": "^0.5.5",
     "react-leaflet": "^2.6.3",
+    "react-mock-component": "^2.3.1",
     "react-notifications-component": "^2.4.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
@@ -29,7 +30,7 @@
     "solid-auth-client": "^2.4.1",
     "solid-file-client": "^1.0.2",
     "styled-components": "^5.0.1",
-    "tripledoc": "^4.3.0"
+    "tripledoc": "^4.3.1"
   },
   "scripts": {
     "start": "react-scripts --max_old_space_size=4096 start",
@@ -72,6 +73,7 @@
     "jest-cucumber": "^2.0.11",
     "jest-dom": "^4.0.0",
     "jest-puppeteer": "^4.4.0",
+    "jest-react-mock": "^1.0.1",
     "puppeteer": "^2.1.1",
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.13.1"
