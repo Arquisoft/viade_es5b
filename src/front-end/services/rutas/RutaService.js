@@ -83,9 +83,8 @@ class RutaService {
   obtenerComentariosRuta(rutaUUID, webId) {
     return BackMain.obtenerComentariosRuta(rutaUUID, webId);
   }
-  subirFicheroAMiRuta(fichero,rutaUUID)
-  {
-    return BackMain.subirFicheroAMiRuta(fichero,rutaUUID);
+  subirFicheroAMiRuta(fichero, rutaUUID) {
+    return BackMain.subirFicheroAMiRuta(fichero, rutaUUID);
   }
   obtenerFicherosRuta(rutaUUID, webId) {
     return BackMain.obtenerFicherosRuta(rutaUUID, webId);
