@@ -53,3 +53,19 @@ compañeros de la asignatura.
 La aplicación dispondrá de casos de prueba que muestren su eficiencia, pero aún no se ha asignado la tecnología sobre la
 que se harán dichas pruebas.
 ****
+
+=== Modelo De Dominio
+****
+
+* Persona: Usuario de la aplicación que tiene una cuenta creada en solid. Como atibutos tiene un nombre, un webId para identificarlo y una foto personalizable.
+
+* Ruta: Camino dibujado en un mapa distinguida con un nombre, un punto de inicio, una descripción una lista de comentarios,una lista de ficheros y una lista de hitos.
+
+* Hito:  Punto en el mapa que forma parte de una ruta. Como atributos tiene un nombre, latitud y longitud.
+
+* Comentario: Nota sobre la ruta. Como atributos tiene una fecha y el texto del comentario.
+
+* RutaAmigo: Ruta que ha sido compartida con el usuario. Como atributos tiene una ruta y la persona que la ha compartido.
+
+* Notificación: Aviso de alguna interacción con el usuario (cuando le comparten una ruta). COmo atributos tiene fecha y texto.
+****
