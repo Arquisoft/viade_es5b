@@ -22,7 +22,7 @@ class PhotoGallery extends Component {
         thumbnailHeight: 174
       },
       {
-        src: process.env.PUBLIC_URL + "/img/ruta-avs-2.jpg",
+        src: "https://www.youtube.com/watch?v=OzXQ7biJIfs",
         thumbnail: process.env.PUBLIC_URL + "/img/ruta-avs-2.jpg",
         thumbnailWidth: 320,
         thumbnailHeight: 174
