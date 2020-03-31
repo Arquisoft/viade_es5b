@@ -57,6 +57,9 @@ que se harán dichas pruebas.
 === Modelo De Dominio
 ****
 
+image:modeloDeDominio.png[modeloDeDominioFoto]
+
+
 * Persona: Usuario de la aplicación que tiene una cuenta creada en solid. Como atibutos tiene un nombre, un webId para identificarlo y una foto personalizable.
 
 * Ruta: Camino dibujado en un mapa distinguida con un nombre, un punto de inicio, una descripción una lista de comentarios,una lista de ficheros y una lista de hitos.
@@ -68,4 +71,6 @@ que se harán dichas pruebas.
 * RutaAmigo: Ruta que ha sido compartida con el usuario. Como atributos tiene una ruta y la persona que la ha compartido.
 
 * Notificación: Aviso de alguna interacción con el usuario (cuando le comparten una ruta). COmo atributos tiene fecha y texto.
+
+
 ****
