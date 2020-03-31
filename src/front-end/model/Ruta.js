@@ -9,6 +9,7 @@ class Ruta {
     this.descripcion = descripcion;
     this.hitos = []; // Hitos de la ruta
     this.comentarios=[] //Comentarios de la ruta
+    this.ficheros=[] //ficheros de la ruta
   }
 
   /*
@@ -56,6 +57,15 @@ class Ruta {
   }
   addComentario(comentario) {
     this.comentarios.push(comentario);
+  }
+  addFichero(fichero) {
+    this.ficheros.push(fichero);
+  }
+  setFicheros(ficheros) {
+    this.ficheros=ficheros;
+  }
+  getFicheros() {
+    return this.ficheros;
   }
 
   /*

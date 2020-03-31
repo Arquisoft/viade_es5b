@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { ListGroup } from "react-bootstrap";
-import imageFile from '../../static/defaultProfile.png';
 
 
 /**
@@ -20,22 +19,20 @@ class GroupSelect extends Component {
   state = {};
   render() {
     return (
-      <ListGroup>
+      <ListGroup data-testid="envoltorio">
         {this.amigos.map((a, key) => {
           return (
             <ListGroup.Item
+              data-testid="itemLista"
               className={
                 this.state.selected[key] === true ? "active mb-1" : "mb-1"
               }
               key={key++}
               onClick={() => this.clickItem(key - 1)}
             >
-            <div className="d-flex">
-              <div className="col-2">
-                <img src={a.getFoto()!==null?a.getFoto():imageFile} 
-                  className="rounded-circle img-fluid"/></div>
-              <div className="col-10">{a.getNombre()}</div>
-            </div>
+                <img src={a.getFoto()!==null?a.getFoto():process.env.PUBLIC_URL +"/img/defaultProfile.png"} 
+                  className="rounded-circle img-fluid" alt="" width="50" height="50"/>
+              {a.getNombre()}
             </ListGroup.Item>
           );
         })}
