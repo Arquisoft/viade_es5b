@@ -38,7 +38,7 @@ export async function processSharedRoutes () {
             // Añadimos al resultado una nueva notificacion
             const ruta = await readRouteFromUrl(routeUrl)
             const persona = await getPersonaByWebId(friendWebId)
-            result = [...result, new Notificacion(persona.getNombre() + " te ha Compartido una ruta!", "Ruta : " + ruta.getNombre())]
+            result = [...result, new Notificacion(persona.getNombre() + " te ha Compartido una ruta!", "Ruta : " + ruta.getNombre(),"success")]
           }
           // borramos la notificacion
           await deleteFile(documents[i].asRef())
@@ -54,7 +54,7 @@ export async function processSharedRoutes () {
             // Si la encontro entonces mostramos una notificacion al usuario
             const ruta = await readRouteFromUrl(routeUrl)
             const persona = await getPersonaByWebId(friendWebId)
-            result = [...result, new Notificacion(persona.getNombre() + " ha comentado", "En " + ruta.getNombre() + ": " + message.getString(schema.comment))]
+            result = [...result, new Notificacion(persona.getNombre() + " ha comentado", "En " + ruta.getNombre() + ": " + message.getString(schema.comment),"info")]
           }
           // borramos la notificacion
           await deleteFile(documents[i].asRef())
@@ -70,7 +70,7 @@ export async function processSharedRoutes () {
             // Si la encontro entonces mostramos una notificacion al usuario
             const ruta = await readRouteFromUrl(routeUrl)
             const persona = await getPersonaByWebId(friendWebId)
-            result = [...result, new Notificacion(persona.getNombre() + " subio un archivo", "En " + ruta.getNombre() + ": " + message.getString(schema.MediaObject))]
+            result = [...result, new Notificacion(persona.getNombre() + " subio un archivo", "En " + ruta.getNombre() + ": " + message.getString(schema.MediaObject),"info")]
           }
           // borramos la notificacion
           await deleteFile(documents[i].asRef())
@@ -80,7 +80,7 @@ export async function processSharedRoutes () {
           await deleteFromfriendSharedRoutes(message.getRef(schema.agent), message.getString(schema.identifier))
           // Mostramos que se borro la ruta
           const persona = await getPersonaByWebId(message.getRef(schema.agent))
-          result = [...result, new Notificacion(persona.getNombre() + " Ha borrado la ruta", "Ruta : " + message.getString(schema.comment))]
+          result = [...result, new Notificacion(persona.getNombre() + " Ha borrado la ruta", "Ruta : " + message.getString(schema.comment),"danger")]
           // borramos la notificacion
           await deleteFile(documents[i].asRef())
         }

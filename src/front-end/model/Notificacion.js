@@ -1,7 +1,8 @@
 class Notificacion {
-  constructor (titulo, mensaje) {
+  constructor (titulo, mensaje, tipo) {
     this.titulo = titulo
     this.mensaje = mensaje
+    this.tipo = tipo
   }
 
   getTitulo () {
@@ -18,6 +19,13 @@ class Notificacion {
 
   setMensaje (mensaje) {
     this.mensaje = mensaje
+  }
+  getTipo () {
+    return this.tipo
+  }
+
+  setTipo (tipo) {
+    this.tipo = tipo
   }
 
   toString () {
