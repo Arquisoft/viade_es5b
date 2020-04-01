@@ -4,6 +4,11 @@ import PacmanViewLoader from "../../util/Loaders/PacmanViewLoader";
 import RutaService from "../../../services/rutas/RutaService";
 import AmigoService from "../../../services/amigos/AmigoService";
 
+/**
+ * Clase VerRutas que representa la vista general para ver
+ * el listado de las rutas del POD del usuario loggeado.
+ * COMPONENTE PADRE - Hijos: RouteList.
+ */
 class VerRutas extends Component {
   constructor() {
     super();
@@ -38,6 +43,7 @@ class VerRutas extends Component {
               getAmigos={this.amigoService.getAmigos}
               comentarMiRuta={this.rutaService.comentarMiRuta}
               obtenerComentariosRuta={this.rutaService.obtenerComentariosRuta}
+              showMap={false}
             />
           }
           loading={this.state.loading}

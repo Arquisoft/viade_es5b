@@ -19,6 +19,13 @@ import ShareView from "./front-end/components/share/ShareView";
 
 const rutaService = new RutaService();
 
+/**
+ * COMPONENTE PADRE APP
+ * Representa el componente principal y central de la aplicación.
+ * Contiene el componente Router con un Switch para gestionar el enrutamiento
+ * de los componentes. Suele contener componentes Padres, los cuales a su vez contienen
+ * componentes hijos, a los que se les pasa referencias a las funciones de los servicios.
+ */
 class App extends Component {
   procesarRutas() {
     rutaService.procesarRutasCompartidas().then(result => {
