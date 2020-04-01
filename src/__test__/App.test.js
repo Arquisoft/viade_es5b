@@ -9,5 +9,5 @@ test('Test temporal', () => {
 /*test('Prueba de que la aplicación ejecuta', () => {
   afterAll(cleanup)
   var { getByTestId } = render(<App />)
-  expect(getByTestId('aplicacion')).toBeInTheDocument()
+  expect(getByTestId('iniciada')).toBeInTheDocument()
 })*/
