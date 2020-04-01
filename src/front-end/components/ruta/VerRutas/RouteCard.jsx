@@ -11,11 +11,6 @@ import PhotoGallery from "../../share/PhotoGallery";
  * información de la ruta que encapsula.
  */
 class RouteCard extends Component {
-  constructor(props) {
-    super(props);
-    this.eventKey = this.props.eventKey;
-  }
-
   render() {
     return (
       <Card>

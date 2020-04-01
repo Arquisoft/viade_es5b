@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import RouteList from "./RouteList";
 import PacmanViewLoader from "../../util/Loaders/PacmanViewLoader";
+import RutaService from "../../../services/rutas/RutaService";
 
 class VerRutas extends Component {
+  constructor() {
+    super();
+    this.rutaService = new RutaService();
+  }
+
   state = {
     loading: true
   };
@@ -19,7 +25,14 @@ class VerRutas extends Component {
         </header>
         <PacmanViewLoader // Overlay de carga para mostrar la vista de las rutas.
           text={"Espera un momento, estamos recuperando tus rutas..."}
-          children={<RouteList handleLoaded={this.handleLoaded} />}
+          children={
+            <RouteList
+              handleLoaded={this.handleLoaded}
+              getRutas={this.rutaService.getRutas}
+              deleteRuta={this.rutaService.deleteRuta}
+              shareRuta={this.rutaService.shareRuta}
+            />
+          }
           loading={this.state.loading}
         />
       </div>

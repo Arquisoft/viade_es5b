@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Modal, Button, Spinner } from "react-bootstrap";
-import AmigoService from "../../services/amigos/AmigoService";
 import GroupSelect from "./GroupSelect";
-import RutaService from "../../services/rutas/RutaService";
 
 /**
  * Componente que modela un panel para compartir la ruta seleccionada
@@ -12,8 +10,6 @@ class SharePanel extends Component {
   constructor(props) {
     super(props);
     this.ruta = props.ruta;
-    this.amigoService = new AmigoService();
-    this.rutaService = new RutaService();
     this.selectedFriends = []; // lista de amigos seleccionados.
   }
 
@@ -21,20 +17,31 @@ class SharePanel extends Component {
 
   async componentDidMount() {
     this.setState({
-      amigos: await this.amigoService.getAmigos(),
+      amigos: await this.props.getAmigos(),
       loadingFriends: false
     });
   }
 
   render() {
     return (
-      <Modal data-testid="componenteModal" show={this.props.show} size="lg" centered>
+      <Modal
+        data-testid="componenteModal"
+        show={this.props.show}
+        size="lg"
+        centered
+      >
         <Modal.Header>
-          <Modal.Title data-testid="titleCompartir">Compartir esta ruta</Modal.Title>
+          <Modal.Title data-testid="titleCompartir">
+            Compartir esta ruta
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4 data-testid="nombreRutaCompartir">Ruta: {this.props.ruta.getNombre()}</h4>
-          <p data-testid="parrafoSeleccion">Selecciona a los amigos con los que deseas compartir esta ruta:</p>
+          <h4 data-testid="nombreRutaCompartir">
+            Ruta: {this.props.ruta.getNombre()}
+          </h4>
+          <p data-testid="parrafoSeleccion">
+            Selecciona a los amigos con los que deseas compartir esta ruta:
+          </p>
           {this.state.loadingFriends && (
             <>
               <Spinner
@@ -56,10 +63,18 @@ class SharePanel extends Component {
           )}
         </Modal.Body>
         <Modal.Footer>
-          <Button data-testid="cancelarCompartirButton"variant="secondary" onClick={this.props.cancel}>
+          <Button
+            data-testid="cancelarCompartirButton"
+            variant="secondary"
+            onClick={this.props.cancel}
+          >
             Cancelar
           </Button>
-          <Button data-testid="compartirButton" variant="success" onClick={this.share}>
+          <Button
+            data-testid="compartirButton"
+            variant="success"
+            onClick={this.share}
+          >
             Compartir
           </Button>
         </Modal.Footer>
@@ -90,7 +105,7 @@ class SharePanel extends Component {
   share = async () => {
     console.log("---- SHARING ----");
     for (let i = 0; i < this.selectedFriends.length; i++) {
-      await this.rutaService.shareRuta(
+      await this.props.shareRuta(
         this.selectedFriends[i].getWebId(),
         this.ruta.getUUID()
       );

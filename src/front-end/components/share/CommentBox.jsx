@@ -27,19 +27,6 @@ class CommentBox extends Component {
     loaded: false
   };
 
-  /*
-  async componentDidMount() {
-    this.setState({
-      commentList: await this.rutaService.obtenerComentariosRuta(
-        this.props.ruta.getUUID(),
-        this.props.author == null ? null : this.props.author.getWebId()
-      ),
-      loading: false
-    });
-    this.setState({ empty: this.state.commentList.length === 0 });
-  }
-  */
-
   render() {
     return (
       <Accordion data-testid="Acordeon">
@@ -112,6 +99,10 @@ class CommentBox extends Component {
     );
   }
 
+  /**
+   * Manejador para recolectar el texto del comentario
+   * que introduce el usuario en el input.
+   */
   handleOnChange = e => {
     this.setState({ comment: e.target.value });
   };

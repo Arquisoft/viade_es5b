@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Accordion, Alert } from "react-bootstrap";
 import RouteCard from "./RouteCard";
 import SharePanel from "../../share/SharePanel";
-import RutaService from "../../../services/rutas/RutaService";
+import AmigoService from "../../../services/amigos/AmigoService";
 
 /**
  * Representa una lista que encapsula componentes
@@ -11,7 +11,7 @@ import RutaService from "../../../services/rutas/RutaService";
 class RouteList extends Component {
   constructor(props) {
     super(props);
-    this.rutaService = new RutaService();
+    this.amigoService = new AmigoService();
     this.state = {
       rutas: [],
       showSharePanel: false,
@@ -21,7 +21,7 @@ class RouteList extends Component {
   }
 
   async componentDidMount() {
-    let rutas = await this.rutaService.getRutas();
+    let rutas = await this.props.getRutas();
     this.setState({ rutas: rutas, emptyList: rutas.length === 0 });
     this.props.handleLoaded(); // Indicamos al padre que ya se ha cargado la vista.
   }
@@ -43,7 +43,6 @@ class RouteList extends Component {
               handleShare={this.handleShare}
               ruta={r}
               key={key++}
-              eventKey={key}
             />
           ))}
 
@@ -52,12 +51,15 @@ class RouteList extends Component {
     );
   }
 
+  /**
+   * Manejador para el borrado de una ruta.
+   */
   handleDeleteRoute = async uuid => {
-    let rutas= await this.rutaService.deleteRuta(uuid)
+    let rutas = await this.props.deleteRuta(uuid);
     this.setState({
-       rutas: rutas,
-       emptyList: rutas.length === 0 
-     });
+      rutas: rutas,
+      emptyList: rutas.length === 0
+    });
   };
 
   /**
@@ -75,8 +77,10 @@ class RouteList extends Component {
     this.setState({ routeToShare: null, showSharePanel: false });
   };
 
-  share = amigos => {};
-
+  /**
+   * Muestra el panel Modal para compartir rutas, solo cuando
+   * se pulsa sobre el botón de Compartir.
+   */
   toggleSharePanel = () => {
     return (
       this.state.showSharePanel && (
@@ -84,31 +88,12 @@ class RouteList extends Component {
           ruta={this.state.routeToShare}
           show={this.state.showSharePanel}
           cancel={this.cancelShare}
+          getAmigos={this.amigoService.getAmigos}
+          shareRuta={this.props.shareRuta}
         ></SharePanel>
       )
     );
   };
-
-  /*
-  handleDeleteRoute = uuid => {
-    let promise = new Promise((resolve, reject) => {
-      this.deleteRoute(uuid).then(() => {
-        let rutas = this.service.getRutas();
-        resolve(rutas);
-      });
-    });
-
-    promise.then(rutas => this.setState({ rutas: rutas }));
-  };
-
-  deleteRoute = uuid => {
-    let promise = new Promise((resolve, reject) => {
-      this.service.deleteRuta(uuid);
-      resolve();
-    });
-    return promise;
-  };
-  */
 }
 
 export default RouteList;
