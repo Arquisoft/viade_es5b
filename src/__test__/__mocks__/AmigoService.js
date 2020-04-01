@@ -42,8 +42,28 @@ class AmigoService {
    */
   getAmigos() {
     //return BackMain.listarAmigos();
-    console.log(this.BDAmigos);
-    return this.BDAmigos;
+    var amigo1 = new Persona(
+      "Pedro",
+      "https://pedro223.inrupt.net/profile/card#me",
+      ""
+    );
+    var amigo2 = new Persona(
+      "Alex",
+      "https://hamalawindows.solid.community/profile/card#me",
+      ""
+    );
+
+    var amigo3 = new Persona(
+      "Lucía",
+      "https://uo265060.solid.community/profile/card#me",
+      ""
+    );
+
+    var BDAmigos2=[];
+    BDAmigos2 = [...BDAmigos2, amigo1];
+    BDAmigos2 = [...BDAmigos2, amigo2];
+    BDAmigos2 = [...BDAmigos2, amigo3];
+    return BDAmigos2;
   }
   /*
    * Añade un amigo al mi perfil (alias es un nombre que le doy yo al amigo, no tiene porque ser el suyo)
