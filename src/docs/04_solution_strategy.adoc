@@ -46,7 +46,7 @@ Division del trabajo en dos equipos (backend y frontend).
 
 |Alejandro Iglesias
 |Diego Marcos
-|Francisco Barrio
+|Francisco Barriocanal
 |Adnane Moulud
 |Pedro José Fernández
 |Lucía Prado

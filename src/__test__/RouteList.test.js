@@ -13,40 +13,25 @@ test("Componente se renderiza sin crahsear.", () => {
   const div = document.createElement("div");
   console.log(rutaService.getRutas());
   ReactDOM.render(<RouteList 
-    getRutas={rutaService.getRutas}
-    deleteRuta={rutaService.deleteRuta}
-    shareRuta={rutaService.shareRuta}
-    obtenerFicherosRuta={rutaService.obtenerFicherosRuta}
-    subirFicheroAMiRuta={rutaService.subirFicheroAMiRuta}
-    getAmigos={amigoService.getAmigos}
-    comentarMiRuta={rutaService.comentarMiRuta}
-    obtenerComentariosRuta={rutaService.obtenerComentariosRuta}></RouteList>, div);
+    getRutas={rutaService.getRutas} obtenerFicherosRuta={rutaService.obtenerFicherosRuta} handleLoaded={rutaService.handleLoaded}></RouteList>, div);
+  
 });
 
+
 test("No hay rutas, se muestra la alerta correspondiente.", async () => {
-  const { getByTestId } = render(<RouteList getRutas={[]}
-    deleteRuta={rutaService.deleteRuta}
-    shareRuta={rutaService.shareRuta}
-    obtenerFicherosRuta={rutaService.obtenerFicherosRuta}
-    subirFicheroAMiRuta={rutaService.subirFicheroAMiRuta}
-    getAmigos={amigoService.getAmigos}
-    comentarMiRuta={rutaService.comentarMiRuta}
-    obtenerComentariosRuta={rutaService.obtenerComentariosRuta}></RouteList>);
+
+  const { getByTestId } = render(<RouteList getRutas={rutaService.getNoRutas} obtenerFicherosRuta={rutaService.obtenerFicherosRuta} handleLoaded={rutaService.handleLoaded}></RouteList>);
   let alerta = await waitForElement(() => getByTestId("alerta"));
   expect(alerta).toHaveTextContent(
     "Actualmente no dispones de ninguna ruta en tu POD. Accede a Añadir Ruta para añadir una nueva ruta."
   );
+
 });
 
+
 test("Hay dos rutas, se muestran dos RouteCard con el nombre de la ruta como título.", async () => {
-  const { getByTestId } = render(<RouteList getRutas={rutaService.getRutas}
-    deleteRuta={rutaService.deleteRuta}
-    shareRuta={rutaService.shareRuta}
-    obtenerFicherosRuta={rutaService.obtenerFicherosRuta}
-    subirFicheroAMiRuta={rutaService.subirFicheroAMiRuta}
-    getAmigos={amigoService.getAmigos}
-    comentarMiRuta={rutaService.comentarMiRuta}
-    obtenerComentariosRuta={rutaService.obtenerComentariosRuta}></RouteList>);
+  const { getByTestId } = render(<RouteList getRutas={rutaService.getRutas} obtenerFicherosRuta={rutaService.obtenerFicherosRuta} handleLoaded={rutaService.handleLoaded}></RouteList>);
   let acordeon = await waitForElement(() => getByTestId("acordeon"));
   expect(acordeon.children.length).toBe(2);
+  
 });

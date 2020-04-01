@@ -11,6 +11,10 @@ import {
 import Comentario from "../../model/Comentario";
 import "../../css/scroll.css";
 
+/**
+ * Clase que representa un componente de una caja de comentarios.
+ * Recibe sus funcionalidades del padre.
+ */
 class CommentBox extends Component {
   state = {
     comment: "",
@@ -71,7 +75,7 @@ class CommentBox extends Component {
                 <Alert variant="warning">Aún no hay comentarios</Alert>
               )}
               {this.state.commentList.length > 0 && (
-                <div className="scroll-container">
+                <div className="scroll-container" data-testid="listaComentarios">
                   {this.state.commentList.map((c, key) => {
                     return (
                       <Card className="mb-4 mr-2" key={key++}>
@@ -128,6 +132,7 @@ class CommentBox extends Component {
       commentList: await this.props.obtenerComentariosRuta(uuid, webID),
       loading: false
     });
+    
     this.setState({ empty: this.state.commentList.length === 0 });
   };
 
