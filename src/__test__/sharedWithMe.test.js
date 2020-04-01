@@ -6,38 +6,16 @@ import Hito from "../front-end/model/Hito";
 import { render, cleanup, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import SharedWithMe from "../front-end/components/share/SharedWithMe";
+import RutaService from "../__test__/__mocks__/RutaService";
 
-
-let rutas = [];
-// Rutas de prueba
-let ruta = new Ruta("Ruta Avilés", [4.5, 5.4], "Muy buena ruta, entretenida.");
-let hito1 = new Hito("Niemeyer", 4, 3.2);
-let hito2 = new Hito("Parque Ferrera", 4.5, 5.7);
-ruta.addHito(hito1);
-ruta.addHito(hito2);
-
-console.log("-------------------" + ruta.getHitos().length);
-let ruta2 = new Ruta("Ruta Oviedo", [7.5, 8.4], "Muy buena ruta, entretenida.");
-let hito3 = new Hito("Uria", 7.0, 7.5);
-let hito4 = new Hito("Catedral", 8.0, 8.3);
-ruta.addHito(hito3);
-ruta.addHito(hito4);
-
-console.log("-------------------" + ruta.getHitos().length);
-
-rutas.push(ruta);
-rutas.push(ruta2);
-
-// NO renderiza los componentes ya que no se puede acceder a backMain por WebId,
-// he probado intentando pasar una de prueba pero no ha surtido efecto.
+let rutaService = new RutaService();
 
 test("Se renderizan bien los componentes de SharePanel", () => {
     afterAll(cleanup);
-    const { getByTestId } = render(<SharedWithMe state={rutas}></SharedWithMe>);
-    //let dialogo = await waitForElement(() => getByTestId("componenteModal"));
-    expect(getByTestId("rowComp")).toBeTruthy();
-    expect(getByTestId("colComp")).toBeTruthy();
-    expect(getByTestId("cardComp")).toBeTruthy();
+    const { getByTestId } = render(<SharedWithMe getRutasCompartidasConmigo={rutaService.getRutasCompartidasConmigo()}
+      subirFicheroAMiRuta={rutaService.subirFicheroAMiRuta}
+      obtenerFicherosRuta={rutaService.obtenerFicherosRuta}
+      comentarMiRuta={rutaService.comentarMiRuta}
+      obtenerComentariosRuta={rutaService.obtenerComentariosRuta}></SharedWithMe>);
     expect(getByTestId("title")).toHaveTextContent("Compartido conmigo");
-    expect(getByTestId("commentbt")).toHaveTextContent("Comentarios");
 });

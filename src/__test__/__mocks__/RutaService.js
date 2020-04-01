@@ -42,6 +42,7 @@ class RutaService {
    */
   getRutasCompartidasConmigo() {
     //return BackMain.listarRutasCompartidasConmigo();
+    return this.BDRutas;
   }
 
   deleteRuta(uuid) {

@@ -42,6 +42,7 @@ class AmigoService {
    */
   getAmigos() {
     //return BackMain.listarAmigos();
+    console.log(this.BDAmigos);
     return this.BDAmigos;
   }
   /*
@@ -50,6 +51,10 @@ class AmigoService {
    */
   addAmigo(webId) {
     //return BackMain.añadirAmigo(webId);
+  }
+
+  deleteAmigo(webId){
+
   }
 
   /*
