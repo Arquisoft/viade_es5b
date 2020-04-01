@@ -8,16 +8,10 @@ import {
   Spinner,
   Alert
 } from "react-bootstrap";
-import RutaService from "../../services/rutas/RutaService";
 import Comentario from "../../model/Comentario";
 import "../../css/scroll.css";
 
 class CommentBox extends Component {
-  constructor(props) {
-    super(props);
-    this.rutaService = new RutaService();
-  }
-
   state = {
     comment: "",
     commentList: [],
@@ -116,7 +110,7 @@ class CommentBox extends Component {
     this.setState({ comment: "" });
     // Creamos el objeto Comment
     let comment = new Comentario(date, commentText);
-    if (await this.rutaService.comentarMiRuta(comment, routeUUID)) {
+    if (await this.props.comentarMiRuta(comment, routeUUID)) {
       // Lo guardamos en el pod del autor
       this.loadComments(); // Recuperamos los comentarios
     }
@@ -131,7 +125,7 @@ class CommentBox extends Component {
     let uuid = this.props.ruta.getUUID();
     let webID = this.props.author == null ? null : this.props.author.getWebId();
     this.setState({
-      commentList: await this.rutaService.obtenerComentariosRuta(uuid, webID),
+      commentList: await this.props.obtenerComentariosRuta(uuid, webID),
       loading: false
     });
     this.setState({ empty: this.state.commentList.length === 0 });
