@@ -46,8 +46,6 @@ test("RouteCard contiene el botón de compartir.", () => {
 test("Se renderizan bien los componentes de SharePanel", () => {
     afterAll(cleanup);
     jest.mock("../__test__/__mocks__/solid-auth-client.js");
-    Foo.withProps().renders(<SharePanel ruta={ruta} show="true"></SharePanel>);
-    expect(document.body.innerHTML).toBeTruthy();
     const { getByTestId } = render(<SharePanel ruta={ruta} show="true"></SharePanel>);
     //let dialogo = await waitForElement(() => getByTestId("componenteModal"));
     expect(getByTestId("componenteModal")).toBeTruthy();
