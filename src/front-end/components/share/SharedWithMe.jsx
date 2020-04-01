@@ -28,7 +28,7 @@ class SharedWithMe extends Component {
           <h2 className="display-4" data-testid="title">
             Compartido conmigo
           </h2>
-          <p>
+          <p data-testid="textoCompartidoConmigo">
             En esta sección puedes ver los detalles de las rutas que te han
             compartido tus amigos, junto con sus comentarios y fotos.
           </p>
