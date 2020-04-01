@@ -1,12 +1,12 @@
-import { space, rdf, schema } from 'rdf-namespaces'
-import { fetchDocument, createDocument } from 'tripledoc'
+import { space, rdf, schema } from "rdf-namespaces"
+import { fetchDocument, createDocument } from "tripledoc"
 
-const auth = require('solid-auth-client')
+const auth = require("solid-auth-client")
 
 export async function addRoute (ruta) {
   const session = await auth.currentSession()
-  if (!session) { window.location.href = '/login' }
-  const route = 'private/routes/' + ruta.getUUID() + '.ttl'
+  if (!session) { window.location.href = "/login" }
+  const route = "private/routes/" + ruta.getUUID() + ".ttl"
   const webId = session.webId
 
   await newDocument(webId, route)
@@ -19,10 +19,10 @@ async function newDocument (webId, route) {
   const profileDocument = await fetchDocument(webId)
   const profile = profileDocument.getSubject(webId)
 
-  // Get the root URL of the user's Pod:
+  // Get the root URL of the user"s Pod:
   const storage = profile.getRef(space.storage)
 
-  // Decide at what URL within the user's Pod the new Document should be stored:
+  // Decide at what URL within the user"s Pod the new Document should be stored:
   const routesListRef = storage + route
   // Create the new Document:
   const routesList = createDocument(routesListRef)
@@ -37,7 +37,7 @@ async function insertData (webId, route, ruta) {
       // Initialise the new Subject:
       const newPoint = routeDocument.addSubject({
         identifier: i,
-        identifierPrefix: 'point'
+        identifierPrefix: "point"
       })
       if (i === 0) {
         if (ruta.getInicio().nombre != null) newPoint.addString(schema.name, ruta.getInicio().nombre)
@@ -49,23 +49,23 @@ async function insertData (webId, route, ruta) {
         newPoint.addDecimal(schema.longitude, ruta.getHitos()[i - 1].getLong())
       }
 
-      newPoint.addRef(rdf.type, 'http://arquisoft.github.io/viadeSpec/points')
+      newPoint.addRef(rdf.type, "http://arquisoft.github.io/viadeSpec/points")
       await routeDocument.save([newPoint])
     }
   }
 
   // Initialise the new Subject:
   const newRoute = routeDocument.addSubject({
-    identifier: 'ruta'
+    identifier: "ruta"
   })
 
   // Indicate that the Subject is a schema:TextDigitalDocument:
-  newRoute.addRef(rdf.type, 'http://arquisoft.github.io/viadeSpec/route')
+  newRoute.addRef(rdf.type, "http://arquisoft.github.io/viadeSpec/route")
 
   newRoute.addString(schema.name, ruta.getNombre())
   newRoute.addString(schema.description, ruta.getDescripcion())
   newRoute.addString(schema.identifier, ruta.getUUID())
-  newRoute.addRef('http://arquisoft.github.io/viadeSpec/points', 'http://arquisoft.github.io/viadeSpec/points')
+  newRoute.addRef("http://arquisoft.github.io/viadeSpec/points", "http://arquisoft.github.io/viadeSpec/points")
 
   await routeDocument.save([newRoute])
 }

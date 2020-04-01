@@ -1,10 +1,10 @@
-import { schema } from 'rdf-namespaces'
-import { fetchDocument } from 'tripledoc'
-import { readFolder, existsFile } from '../helpers/fileHelper'
-import { getPersonaByWebId } from '../helpers/personHelper'
-import Ruta from '../../../front-end/model/Ruta.js'
-import Hito from '../../../front-end/model/Hito.js'
-import Comentario from '../../../front-end/model/Comentario.js'
+import { schema } from "rdf-namespaces"
+import { fetchDocument } from "tripledoc"
+import { readFolder, existsFile } from "../helpers/fileHelper"
+import { getPersonaByWebId } from "../helpers/personHelper"
+import Ruta from "../../../front-end/model/Ruta.js"
+import Hito from "../../../front-end/model/Hito.js"
+import Comentario from "../../../front-end/model/Comentario.js"
 
 export async function readRouteFromUrl (url) {
   let routeDoc
@@ -17,10 +17,10 @@ export async function readRouteFromUrl (url) {
 
   if (routeDoc != null) {
     try {
-      const route = routeDoc.getSubject('#ruta')
+      const route = routeDoc.getSubject("#ruta")
 
       const puntos = routeDoc.getSubjectsOfType(
-        'http://arquisoft.github.io/viadeSpec/points'
+        "http://arquisoft.github.io/viadeSpec/points"
       )
 
       ruta = new Ruta(
@@ -44,7 +44,7 @@ export async function readRouteFromUrl (url) {
       }
 
       const comentarios = routeDoc.getSubjectsOfType(
-        'http://arquisoft.github.io/viadeSpec/userComment'
+        "http://arquisoft.github.io/viadeSpec/userComment"
       )
       for (let i = 0; i < comentarios.length; i++) {
         const comentario = new Comentario(comentarios[i].getDateTime(schema.datePublished), comentarios[i].getString(schema.text))
@@ -75,7 +75,7 @@ export async function findRouteURL (folderUrl, uuid) {
         .catch(err => routeDoc = null)
 
       if (routeDoc != null) {
-        var route = routeDoc.getSubject('#ruta')
+        var route = routeDoc.getSubject("#ruta")
         var ID = route.getString(schema.identifier)
         if (ID === uuid) {
           return folder.files[i].url
@@ -83,16 +83,16 @@ export async function findRouteURL (folderUrl, uuid) {
       }
     };
   }
-  console.log(folderUrl + ' ' + uuid + ' ruta no encontrada')
+  console.log(folderUrl + " " + uuid + " ruta no encontrada")
   return null
 }
 export async function getSharedRouteFriends (storage, routeUUID) {
   var result = []
-  var exists = await existsFile(storage + 'private', 'mySharedRoutes.ttl')
+  var exists = await existsFile(storage + "private", "mySharedRoutes.ttl")
   if (exists) {
-    const mySharedRoutesDocument = await fetchDocument(storage + 'private/mySharedRoutes.ttl')
+    const mySharedRoutesDocument = await fetchDocument(storage + "private/mySharedRoutes.ttl")
 
-    const rutas = mySharedRoutesDocument.getAllSubjectsOfType('http://arquisoft.github.io/viadeSpec/route')
+    const rutas = mySharedRoutesDocument.getAllSubjectsOfType("http://arquisoft.github.io/viadeSpec/route")
     for (var e = 0; e < rutas.length; e++) {
       // Miro a ver si estoy compartiendo esta ruta
       if (rutas[e].getLiteral(schema.identifier) === routeUUID) {

@@ -1,8 +1,8 @@
-import { rdf, space, schema } from 'rdf-namespaces'
-import { fetchDocument, createDocument } from 'tripledoc'
-import { existsFile } from './helpers/fileHelper'
+import { rdf, space, schema } from "rdf-namespaces"
+import { fetchDocument, createDocument } from "tripledoc"
+import { existsFile } from "./helpers/fileHelper"
 
-const auth = require('solid-auth-client')
+const auth = require("solid-auth-client")
 
 // agrego la ruta que le he compartido a alguien y a quien se la he compartido
 // a un fichero de rutas compartidas, para saber con quienes la he compartido y si la habia
@@ -11,17 +11,17 @@ const auth = require('solid-auth-client')
 // me devuelve false si hubo algun problema o la combinacion persona/ruta esta repetida
 export async function addToMySharedRoutes (friendWebId, routeUUID) {
   const session = await auth.currentSession()
-  if (!session) { window.location.href = '/login' }
-  const route = 'private/mySharedRoutes.ttl'
+  if (!session) { window.location.href = "/login" }
+  const route = "private/mySharedRoutes.ttl"
   const webId = session.webId
 
   const profileDocument = await fetchDocument(webId)
   const profile = profileDocument.getSubject(webId)
 
-  // Get the root URL of the user's Pod:
+  // Get the root URL of the user"s Pod:
   const storage = profile.getRef(space.storage)
 
-  var exists = await existsFile(storage + 'private', 'mySharedRoutes.ttl')
+  var exists = await existsFile(storage + "private", "mySharedRoutes.ttl")
   // si no existe el documento lo creo
   if (!exists) { await newDocument(storage + route) }
   // agrego la ruta y con quien la he compartido
@@ -37,7 +37,7 @@ async function insertData (route, friend, routeUUID) {
   const mySharedRoutesDocument = await fetchDocument(route)
 
   let ruta = null
-  const rutas = mySharedRoutesDocument.getAllSubjectsOfType('http://arquisoft.github.io/viadeSpec/route')
+  const rutas = mySharedRoutesDocument.getAllSubjectsOfType("http://arquisoft.github.io/viadeSpec/route")
   for (var e = 0; e < rutas.length; e++) {
     // Si ya existe un subject con el identificador de la ruta, entonces uso ese
     if (rutas[e].getLiteral(schema.identifier) === routeUUID) {
@@ -58,7 +58,7 @@ async function insertData (route, friend, routeUUID) {
   if (ruta === null) {
     ruta = mySharedRoutesDocument.addSubject()
     ruta.addLiteral(schema.identifier, routeUUID)
-    ruta.addRef(rdf.type, 'http://arquisoft.github.io/viadeSpec/route')
+    ruta.addRef(rdf.type, "http://arquisoft.github.io/viadeSpec/route")
   }
   if (result) {
     ruta.addRef(schema.agent, friend)
