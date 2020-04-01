@@ -3,6 +3,10 @@ import HashViewLoader from "../util/Loaders/HashViewLoader";
 import SharedWithMe from "./SharedWithMe";
 import RutaService from "../../services/rutas/RutaService";
 
+/**
+ * Clase ShareView que representa la vista de Rutas Compartidas Conmigo.
+ * COMPONENTE PADRE - Hijos: SharedWithMe
+ */
 class ShareView extends Component {
   constructor(props) {
     super(props);
@@ -24,6 +28,7 @@ class ShareView extends Component {
             obtenerFicherosRuta={this.rutaService.obtenerFicherosRuta}
             comentarMiRuta={this.rutaService.comentarMiRuta}
             obtenerComentariosRuta={this.rutaService.obtenerComentariosRuta}
+            showMap={true}
           />
         }
         loading={this.state.loading}

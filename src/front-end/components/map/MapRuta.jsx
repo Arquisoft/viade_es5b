@@ -15,6 +15,10 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require("leaflet/dist/images/marker-shadow.png")
 });
 
+/**
+ * Componente MapRuta que contiene toda la lógica necesaria
+ * para cargar una ruta en un mapa, del módulo leaflet.
+ */
 class MapRuta extends Component {
   constructor(props) {
     super(props);
