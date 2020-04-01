@@ -19,8 +19,7 @@ class PacmanViewLoader extends Component {
         styles={{
           wrapper: {
             width: "100%",
-            height: "100vh",
-            overflow: this.props.loading ? "hidden" : "scroll"
+            height: "100vh"
           }
         }}
       >

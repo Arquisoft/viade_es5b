@@ -41,7 +41,7 @@ class SharedWithMe extends Component {
         )}
         {this.state.rutasCompartidas.map((sharedRoute, key) => {
           return (
-            <Card>
+            <Card key={key++}>
               <Card.Header>
                 <h4>{sharedRoute.getRuta().getNombre()}</h4>
                 <p>
