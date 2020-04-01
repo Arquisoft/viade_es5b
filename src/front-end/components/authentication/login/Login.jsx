@@ -1,5 +1,5 @@
 import React from "react";
-import { ProviderLogin } from "@inrupt/solid-react-components";
+import {ProviderLogin} from "@inrupt/solid-react-components";
 import Provider from "../../../services/authentication/Proveedor";
 import { LoginWrapper, LoginPanel, PanelBody } from "./login.style";
 import CenterContainer from "../utils/CenterContainer/center-container.component";
