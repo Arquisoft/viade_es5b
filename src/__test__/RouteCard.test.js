@@ -35,9 +35,6 @@ test("RouteCard contiene la información básica de la ruta.", () => {
   const { getByTestId } = render(<RouteCard ruta={ruta} obtenerFicherosRuta={rutaService.obtenerFicherosRuta}></RouteCard>);
   expect(getByTestId("r-title")).toHaveTextContent(ruta.getNombre());
   expect(getByTestId("r-description")).toHaveTextContent(ruta.getDescripcion());
-  // Botones de ver en el mapa y eliminar
-  //expect(getByTestId("rb-ver")).toHaveTextContent("Ver en el mapa");
-  expect(getByTestId("rb-eliminar")).toHaveTextContent("Eliminar");
 });
 
 test("RouteCard contiene la información del inicio y los hitos de la ruta.", () => {
