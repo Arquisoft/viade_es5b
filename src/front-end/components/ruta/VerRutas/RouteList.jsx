@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Accordion, Alert } from "react-bootstrap";
 import RouteCard from "./RouteCard";
 import SharePanel from "../../share/SharePanel";
-import AmigoService from "../../../services/amigos/AmigoService";
 
 /**
  * Representa una lista que encapsula componentes
@@ -11,7 +10,6 @@ import AmigoService from "../../../services/amigos/AmigoService";
 class RouteList extends Component {
   constructor(props) {
     super(props);
-    this.amigoService = new AmigoService();
     this.state = {
       rutas: [],
       showSharePanel: false,
@@ -43,6 +41,8 @@ class RouteList extends Component {
               handleShare={this.handleShare}
               ruta={r}
               key={key++}
+              subirFicheroAMiRuta={this.props.subirFicheroAMiRuta}
+              obtenerFicherosRuta={this.props.obtenerFicherosRuta}
             />
           ))}
 
@@ -88,7 +88,7 @@ class RouteList extends Component {
           ruta={this.state.routeToShare}
           show={this.state.showSharePanel}
           cancel={this.cancelShare}
-          getAmigos={this.amigoService.getAmigos}
+          getAmigos={this.props.getAmigos}
           shareRuta={this.props.shareRuta}
         ></SharePanel>
       )

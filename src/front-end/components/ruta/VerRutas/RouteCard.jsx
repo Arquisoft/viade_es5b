@@ -83,6 +83,8 @@ class RouteCard extends Component {
                       author={null}
                       ruta={this.props.ruta}
                       onlyRead={false}
+                      subirFicheroAMiRuta={this.props.subirFicheroAMiRuta}
+                      obtenerFicherosRuta={this.props.obtenerFicherosRuta}
                     ></PhotoGallery>
                   </Col>
                 </Row>
