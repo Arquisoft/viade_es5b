@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Alert } from "react-bootstrap";
 
+
 class FriendList extends Component {
   render() {
     return (
@@ -29,7 +30,7 @@ class FriendList extends Component {
       <table className="table table-striped" data-testid="tablaAmigos">
         <thead>
           <tr>
-            <th scope="col">#</th>
+            <th scope="col"></th>
             <th scope="col">Nombre</th>
             <th scope="col">WebID</th>
           </tr>
@@ -37,7 +38,9 @@ class FriendList extends Component {
         <tbody>
           {this.props.amigos.map((amigo, key) => (
             <tr key={key++}>
-              <th scope="row">{key}</th>
+              <th scope="row">
+                <img src={amigo.getFoto()!==null?amigo.getFoto():process.env.PUBLIC_URL +"/img/defaultProfile.png"} 
+                  className="rounded-circle" alt="" width="50" height="50"/></th>
               <td>{amigo.getNombre()}</td>
               <td>{amigo.getWebId()}</td>
             </tr>

@@ -4,6 +4,8 @@ import { Map, Marker, Popup, TileLayer, Polyline } from "react-leaflet";
 import L from "leaflet";
 import * as icons from "./MarkerIcons";
 
+import "leaflet/dist/leaflet.css";
+
 // Sin esto no se muestran los Markers
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -13,13 +15,17 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require("leaflet/dist/images/marker-shadow.png")
 });
 
+/**
+ * Componente MapRuta que contiene toda la lógica necesaria
+ * para cargar una ruta en un mapa, del módulo leaflet.
+ */
 class MapRuta extends Component {
   constructor(props) {
     super(props);
     this.ruta = this.props.ruta; // Ruta a representar en el mapa
     this.mapID = `mapa-${this.props.ruta.getNombre()}`; // ID del mapa
     this.hitos = this.getCoords(this.props.ruta); // obtenemos la lista de coordenadas de los hitos
-    this.zoom = 14;
+    this.zoom = 10;
     this.inicio = this.props.ruta.getInicio(); // Coordenadas de inicio de la ruta
   }
 

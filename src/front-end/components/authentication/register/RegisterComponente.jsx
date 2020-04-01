@@ -39,7 +39,7 @@ class RegisterComponent extends Component<Props, State> {
     const { protocol, host } = window.location;
     if (canContinue) {
       //window.location = `${provider}?returnToUrl=${protocol}//${host}/register/success`;
-      window.location = `${provider}?returnToUrl=${protocol}//${host}/viade_es5b`;
+      window.location = `${provider}?returnToUrl=${protocol}//${host}/viade_es5b/#/`;
     }
   };
 
@@ -97,6 +97,7 @@ class RegisterComponent extends Component<Props, State> {
                     <ul>
                       {providers.map(providerData => (
                         <ProviderItem
+                          className="providerItem"
                           data={providerData}
                           key={providerData.id}
                           onSelect={this.selectProvider}

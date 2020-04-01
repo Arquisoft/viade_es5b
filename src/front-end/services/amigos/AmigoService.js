@@ -1,4 +1,4 @@
-import Amigo from "../../model/Amigo";
+import Persona from "../../model/Persona.js";
 import BackMain from "../../../BackEnd/BackMain.js";
 
 /*
@@ -16,20 +16,21 @@ class AmigoService {
    * que simula la base de datos.
    */
   inicializarBD() {
-    console.log("------ Inicializando BDD ------");
-
-    var amigo1 = new Amigo(
+    var amigo1 = new Persona(
       "Pedro",
-      "https://pedro223.inrupt.net/profile/card#me"
+      "https://pedro223.inrupt.net/profile/card#me",
+      ""
     );
-    var amigo2 = new Amigo(
+    var amigo2 = new Persona(
       "Alex",
-      "https://hamalawindows.solid.community/profile/card#me"
+      "https://hamalawindows.solid.community/profile/card#me",
+      ""
     );
 
-    var amigo3 = new Amigo(
+    var amigo3 = new Persona(
       "Lucía",
-      "https://uo265060.solid.community/profile/card#me"
+      "https://uo265060.solid.community/profile/card#me",
+      ""
     );
 
     this.BDAmigos = [...this.BDAmigos, amigo1];
@@ -50,6 +51,13 @@ class AmigoService {
    */
   addAmigo(webId) {
     return BackMain.añadirAmigo(webId);
+  }
+
+  /*
+   * Devuelve una persona de webID pasado como parámetro.
+   */
+  getPersonByWebID(webID) {
+    return BackMain.getPersonByWebID(webID);
   }
 }
 

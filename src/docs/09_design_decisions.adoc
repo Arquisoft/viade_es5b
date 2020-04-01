@@ -3,17 +3,78 @@
 
 
 ****
+A continuación, se detallan las diferentes decisiones de diseño/arquitectura que se han tomado para llevar a cabo la solución de los diferentes problemas con los que se ha tenido que lidiar. Se utiliza un formato de tabla, donde la primera columna contiene el nombre de la herramienta o decisión tomada, y en la segunda columna una breve descripción del motivo o para que se utiliza.
 
-En la siguiente tabla se enumeran las decisiones que hemos tomado para implementar en nuestro proyecto en cuanto a arquitectura y diseño.
+.Listado de decisiones importantes
+|===
+| Decisión | Descripción 
+| Modelado de una ruta
+| Dentro del POD del usuario, lo que se almacena es un documento para cada ruta, que contiene su nombre, coordenadas de inicio (lat y long), descripción, una lista de hitos, cada uno con un nombre y unas coordenadas. Además también se almacenan los comentarios y fotos asociadas a dicha ruta.
+| Relación de amistad
+| Por el momento, una relación de amistad entre dos usuarios se modela sin usar una petición de amistad de por medio, simplemente se busca a un usuario por su *WebID* y si existe pasa a formar parte de la lista de amigos del usuario, almacenada en su POD. Sin embargo, el usuario receptor, el que es añadido como amigo, no contiene en su lista de amigos al usuario que le agregó como amigo, es decir, no es *recíproca*, y por ello el usuario emisor podrá compartir sus rutas con el receptor, pero no a la inversa, a menos que ambos se agreguen como amigos.
+
+| Listado de rutas
+| Por el momento, al entrar en la vista del listado de rutas, se cargan automáticamente todas las rutas del POD del usuario, lo que conlleva un tiempo de respuesta considerable, que se ha tratado de paliar cargando todos los datos de la ruta salvo sus comentarios, estos serán cargados una vez se haga click sobre el botón para desplegar la caja de comentarios. Las imágenes y el mapa de cada ruta se cargan de manera asincrona, aunque los mapas cargan de manera bastante rápida. Las imágenes se cargan desde el POD, y se utiliza un Spinner para mostrar al usuario la carga de las mismas. En un futuro se propone modificar esto para que solo se muestre un listado con el nombre de las rutas del usuario, y que se pueda hacer click sobre cada una de ellas para mostrar sus detalles, será entonces cuando se carguen todos estos datos desde el POD.
+
+| Publicar comentarios y fotos
+| La publicación de comentarios y fotos solo está disponible para el autor de la ruta, es decir, el usuario que ha creado dicha ruta, de forma que aquellos usuarios con quienes la comparta, no podrán realizar comentarios ni postear fotos. Se ha tomado esta decisión dado que la política descentralizada de los PODs establecida por SOLID dificulta la gestión de estos elementos. En un futuro, se plantea la posibilidad de que un usuario al que le han compartido una ruta, pueda comentar también en dicha ruta.
+
+| Compartir rutas
+| La funcionalidad de compartir rutas es bastante compleja, y en la versión actual del proyecto se encuentra implementada de manera bastante sencilla. El usuario dispone para cada una de sus rutas de una opción *Compartir*, la cual le permite seleccionar de entre sus amigos, a aquellos a los que desea compartir la ruta. El hecho de compartir una ruta se basa en compartir el *enlace a dicha ruta dentro del POD* del autor de la misma, de forma que cuando un usuario quiera ver aquellas rutas que le han compartido, se irá al POD del usuario que le compartió la ruta para cargar sus datos, además de los comentarios y fotos asociadas.
+
+| Adaptar componentes para que sea fácil testearlos
+| A la hora de testear un componente, surgen varias complicaciones debido a que contiene varias dependencias de módulos externos como puede ser el mapa de Leaflet o bien funciones de la capa de servicios, de modo que ha sido necesario llevar a cabo una refactorización del código de los componentes para que a la hora de probar su funcionamiento sea más fácil hacerlo. Un ejemplo de ello es el componente RouteCard que contiene el mapa de la ruta. Este componente dispone en su estado de una propiedad *showMap* que recibe de su padre a través de las *props*. De esta forma se puede escoger cuándo se desea mostrar o no el mapa. Así, en los tests esta propiedad tomará el valor false y no dará problemas con Leaflet. Otro ejemplo sería el caso de los componentes de la vista de rutas, cuyo padre es el componente VerRutas. Este componente es quien dispone de las instancias de los diferentes servicios, de forma que se encargará de distribuir las referencias a las funciones de los servicios entre las props de de los componentes que renderiza, de modo que se ván *pasando las referencias a las funciones de un nodo a otro*. Esto permite el uso de funciones *Mock* a través del módulo *Jest*, que permite probar la invocación de funciones en los componentes simulando su ejecución. Permite comprobar el valor de los parámetros en su llamada, cuantas veces fue invocada...etc. De este modo se puede pasar a los componentes funciones "virtuales" para evitar problemas con la capa de persistencia, que requiere de tener acceso a los PODs de los usuarios loggeados.
+|===
+
 
 [options="header",cols="1,2"]
+.Listado de herramientas y módulos utilizados
 |===
-|Herramienta|Motivos
+|Herramienta|Utilidad
 | Solid | Cómodo para los usuarios ya que le dan permiso a las personas y a sus aplicaciones para leer o escribir en partes de su Solid POD. Por lo tanto, cada vez que abra una nueva aplicación, no tendrá que completar sus datos nunca más.
 
 Otra ventaja es la protección de la privacidad del usuario gracias a esta herramienta.
 | React
 |Nos permite un desarrollo ágil, ordenado y con una arquitectura focalizada en componentes y fácil de mantener ya que los errores sucederán en la propia funcionalidad del componente o en la comunicación con los demás.
+
+| RDF con Turtle
+| Se utiliza para el modelado de datos en los PODs de los usuarios, junto con el lenguaje Turtle para su representación.
+
+| Tripledoc
+| Módulo que facilita la gestión de los denominados Triplets, de forma que se pueden leer y escribir datos en los PODs de los usuarios, siguiendo la especificación de SOLID.
+
+| Solid-auth-client
+| Módulo imprescindible para llevar a cabo todo lo relacionado con la sesión de un usuario que dispone de una cuenta de Solid. Permite a un usuario loggearse y registrarse utilizando varios provedores de PODs (por el momento solo Solid e Inrupt) o bien utilizando un servidor de solid local. También es utilizado para los layouts de la aplicación en función de si el usuario se encuentra o no loggeado, mostrando diferentes opciones en la barra de navegación superior.
+
+| React Leaflet
+| Módulo que permite visualizar mapas de varios tipos, y con gran variedada de Layers. En nuestro caso lo utilizamos para mostrar cada una de las rutas que se procesan en la aplicación. Hace uso de la API de Leaflet, de modo que encapsula toda la lógica del mapa en un solo componente Map muy sencillo de usar. Utilizamos métodos de esta API para dibujar una polylinea que representa los diferentes hitos de la ruta, así como una serie de marcadores que contienen un PopUp con el nombre de cada hito. Un marcador verde en el mapa simboliza el inicio de una ruta.
+
+| Solid-file-client
+| Junto con la API File de HTML, recibe los ficheros que desea subir el usuario, y se encarga de almacenarlos en el POD del mismo.
+
+
+| API File de HTML
+| Es la API File normal y corriente de HTML, solo que en nuestro caso se encuentra encapsulada dentro de un componente de React denominado Form.File, que permite cargar archivos desde el equipo local. Se utiliza sobre todo a la hora de publicar fotos asociadas a la ruta del usuario.
+
+| React-router-dom
+| Consiste en un sistema de enrutación, donde disponemos de un Router que se encarga de procesar peticiones en forma de recursos URL, por ejemplo, cuando se hace una petición del recurso "/login" se renderiza el componente correspondiente con la vista para la identificación de un usuario. Se utiliza en conjunto con el componente NavBar de React Bootstrap, que permite definir Links en una barra de navegación.
+
+|React Bootstrap
+| Framework de React basado en Bootstrap que proporciona gran cantidad de componentes de React personalizables para casi cualquier elemento de la interfaz de usuario. Muy útil para mostrar la información de las rutas al usuario de manera simple y flexible.
+
+| React Spinners y Loading Overlays
+| Se trata de componentes de React que simplemente modelan iconos de carga para mejorar la usabilidad en aquellas zonas de la aplicación donde se disminuye el tiempo de respuesta debido a operaciones pesadas, como puede ser traer información del POD del usuario cuando se cargan sus rutas, o cuando se tienen que cargar todos los comentarios de una ruta.
+
+| React Notifications
+| Módulo de React que permite llevar a cabo la gestión de las notificaciones de la aplicación, por ejemplo cuando nos comparten una ruta, o hacen algún comentario...etc.
+
+| React Grid Gallery
+| Componente de React que modela una galería de fotos muy simple de utilizar, que recibe como propiedades una lista de imágenes, entre otras. Estas imágenes son objetos que contienen un enlace a la imagen así como a un thumbnail, dimensiones y otras caracterísitcas. Las imágenes se van disponiendo en un grid, y además se puede hacer click sobre ellas para mostrarlas en forma de carrousel.
+
+|JQuery
+| Esta librería basada en JavaScript se utiliza para implementar pequeños scripts de código como puede ser por ejemplo la carga dinámica de los ficheros en los Input File de HTML.
+
+
 | Git
 | Facilita el trabajo colaborativo.
 
@@ -26,7 +87,10 @@ Las "branches" o ramas, permiten trabajar con una base de código paralela al pr
 Empezar a trabajar desde otro entorno es tan fácil como "clonar" el proyecto a tu nuevo entorno.
 
 Proporciona un sistema de etiquetas, para etiquetar las distintas versiones del proyecto.
-
+| Arc42
+| Nos proporciona una plantilla con los principales puntos para documentar la arquitectura software de nuestra aplicación web.
+| AsciiDoctor
+| Sistema de documentación dinámico y con sintaxis clara que nos permite mantener actualizada la documentación.
 
 |===
 ****

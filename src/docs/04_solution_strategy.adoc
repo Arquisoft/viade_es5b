@@ -13,11 +13,32 @@
 |GitHub
 |Control de versiones.
 |Javascript
-|
-
+| Lenguaje de programación objeto/funcional basado en eventos ideal para implementar la lógica de negocio del lado del cliente/navegador.
 |Visual Studio Code
 |IDE para la codificación de la solución y de la documentación.
+|React Bootstrap| Framework de estilos que proporciona componentes React ya implementados para modelar la interfaz de usuario de manera rápida y elegante.
+|React Leaflet Map| Componente de React que nos permite visualizar un mapa con coordenadas, polilíneas, figuras, layers... Hace uso de la API de Leaflet Map.
 |===
+.Enfoques para alcanzar objetivos de calidad
+
+* Uso de funciones Async/await para escribir código completamente síncrono mientras realizamos tareas asíncronas en segundo plano, mejorando así la eficiencia.
+* Uso de Bootstrap para el diseño de nuestra aplicación web, mejorando así la usabilidad.
+* Uso de la API de Google Maps para representar las rutas del usuario y así mejorar la usabilidad ya que los usuarios están más familiarizados con ella.
+* Uso de Solid nos permite crear una aplicación descentralizada.
+* Uso de PODs de Solid proporciona seguridad a los usuarios a la hora de evitar el acceso a sus rutas a usuarios no autorizados.
+
+.Descomposición de alto nivel
+
+A continuación se muestra el diagrama de la descomposición de alto nivel de nuestra aplicación web. En el cual podemos observar que se divide en
+dos funcionalidades principales: usuarios y servicio de rutas.
+
+image::DescAltoNivel4.JPG[]
+
+Los usuarios serán capaces de crear sus propias rutas, para luego visualizarlas en un mapa. Además también tendrán la posibilidad de *añadir comentarios y fotos* a sus rutas.
+Otra funcionalidad destacable, es la posibilidad de *agregar amigos* introduciendo su *webID*. No existen las peticiones de amistad, así que una vez agregado el usuario, este ya entablará una relación de amistad con nosotros. 
+
+El usuario loggeado tendrá la posibilidad de compartir sus rutas con otros usuarios, que deben formar parte de su lista de amigos. Se puede compartir una ruta con varios amigos, de tal forma que estos podrán ver la información básica de la ruta, visualizarla en el mapa, y ver los comentarios y fotos publicadas por el autor de la ruta.
+
 .Decisiones Organizativas
 
 Division en capas de la arquitectura para una mayor mantenibilidad.
@@ -30,11 +51,20 @@ Division del trabajo en dos equipos (backend y frontend).
 
 |Alejandro Iglesias
 |Diego Marcos
-|Francisco Barrio
+|Francisco Barriocanal
 |Adnane Moulud
 |Pedro José Fernández
 |Lucía Prado
 |
 |Alejandro Flórez
 |===
+
+.Convenciones
+
+El código debe separarse en capas/módulos cohesivos y con una interfaz bien definida aumentando así la mantenibilidad del código. El front-end y el
+back-end deben estar bien delimitados para hacer que la comunicación sea lo mas sencilla posible.
+
+Relacionado con lo anterior, es útil agrupar componentes y clases relacionadas en paquetes o módulos aumentando la cohesión.
+
+De este modo, obtenemos una arquitectura en dos capas, que se conecta mediante una interfaz definida por los *servicios*, que contienen la lógica de negocio y son quienes se comunican con los servicios de persistencia.
 ****

@@ -15,7 +15,7 @@ export default class Provider {
       {
         id: 'inrupt',
         label: 'Inrupt',
-        image: '/img/inrupt.svg',
+        image: process.env.PUBLIC_URL +'/img/inrupt.svg',
         value: 'https://inrupt.net/auth',
         registerLink: 'https://inrupt.net/register',
         description: 'Lorem ipsum dolor sit amet non ipsom dolor'
@@ -23,7 +23,7 @@ export default class Provider {
       {
         id: 'solid-community',
         label: 'Solid Community',
-        image: '/img/Solid.png',
+        image: process.env.PUBLIC_URL +'/img/community.png',
         value: 'https://solid.community',
         registerLink: 'https://solid.community/register',
         description: 'Lorem ipsum dolor sit non consectetur'
@@ -31,7 +31,7 @@ export default class Provider {
       {
         id: 'local-pod-server',
         label: 'Servidor Local',
-        image: './img/server.jpg',
+        image: process.env.PUBLIC_URL +'/img/server.png',
         value: 'https://localhost:8443',
         registerLink: 'https://localhost:8443/register',
         description: 'Nuestro propio servidor de PODS'
