@@ -10,8 +10,6 @@ before_install:
   - sudo gem install asciidoctor asciidoctor-diagram
 script:
   - npm install -g codecov
-  - npm test > test.log
-  - codecov
   - npm run build
   - npm run docs
 deploy:
@@ -19,5 +17,6 @@ deploy:
   skip_cleanup: true
   github_token: $github_token
   local_dir: build
+  script: npm test && codecov
   on:
     branch: master
