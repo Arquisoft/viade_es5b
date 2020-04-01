@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { Alert, Container, Card, Col, Row } from "react-bootstrap";
-
-import RutaService from "../../services/rutas/RutaService";
 import MapRuta from "../map/MapRuta";
 import CommentBox from "./CommentBox";
 import PhotoGallery from "./PhotoGallery";
@@ -12,15 +10,10 @@ import PhotoGallery from "./PhotoGallery";
  * amigos del usuario.
  */
 class SharedWithMe extends Component {
-  constructor() {
-    super();
-    this.rutaService = new RutaService();
-  }
-
   state = { rutasCompartidas: [], emptyList: false };
 
   async componentDidMount() {
-    let sharedRoutes = await this.rutaService.getRutasCompartidasConmigo();
+    let sharedRoutes = await this.props.getRutasCompartidasConmigo();
     this.setState({
       rutasCompartidas: sharedRoutes,
       emptyList: sharedRoutes.length === 0
@@ -73,6 +66,8 @@ class SharedWithMe extends Component {
                             author={sharedRoute.getAmigo()}
                             ruta={sharedRoute.getRuta()}
                             onlyRead={true}
+                            subirFicheroAMiRuta={this.props.subirFicheroAMiRuta}
+                            obtenerFicherosRuta={this.props.obtenerFicherosRuta}
                           ></PhotoGallery>
                         </Col>
                       </Row>
