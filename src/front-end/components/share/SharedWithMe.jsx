@@ -77,10 +77,12 @@ class SharedWithMe extends Component {
                       </Row>
                     </Col>
                     <Col>
-                      <MapRuta
-                        data-testid="map"
-                        ruta={sharedRoute.getRuta()}
-                      ></MapRuta>
+                      {this.props.showMap && (
+                        <MapRuta
+                          data-testid="map"
+                          ruta={sharedRoute.getRuta()}
+                        ></MapRuta>
+                      )}
                     </Col>
                   </Row>
                 </Container>

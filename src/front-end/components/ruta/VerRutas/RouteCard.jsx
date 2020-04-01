@@ -98,11 +98,13 @@ class RouteCard extends Component {
                       id={`mapa-${this.props.ruta.getNombre()}`}
                       className="ml-3 mb-3"
                     >
-                      <MapRuta
-                        className="map"
-                        ruta={this.props.ruta}
-                        data-testid="mapa"
-                      />
+                      {this.props.showMap && (
+                        <MapRuta
+                          className="map"
+                          ruta={this.props.ruta}
+                          data-testid="mapa"
+                        />
+                      )}
                     </div>
                   </Col>
                 </Row>
