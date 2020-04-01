@@ -43,6 +43,8 @@ class RouteList extends Component {
               key={key++}
               subirFicheroAMiRuta={this.props.subirFicheroAMiRuta}
               obtenerFicherosRuta={this.props.obtenerFicherosRuta}
+              comentarMiRuta={this.props.comentarMiRuta}
+              obtenerComentariosRuta={this.props.obtenerComentariosRuta}
             />
           ))}
 
