@@ -1,4 +1,4 @@
-import { rdf, space, schema } from 'rdf-namespaces'
+import { space, schema } from 'rdf-namespaces'
 import { fetchDocument } from 'tripledoc'
 import { existsFile } from './helpers/fileHelper'
 

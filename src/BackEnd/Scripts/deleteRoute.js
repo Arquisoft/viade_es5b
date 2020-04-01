@@ -50,6 +50,7 @@ async function deleteFromSharedRoutes (storage, routeUUID) {
   }
   await mySharedRoutesDocument.save()
 }
+//
 
 async function deleteFilesFromRoute (webId, url) {
   const mySharedRoutesDocument = await fetchDocument(url)
