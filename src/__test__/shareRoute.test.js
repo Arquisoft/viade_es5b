@@ -7,7 +7,6 @@ import AmigoService from "../__test__/__mocks__/AmigoService"
 import { render, cleanup, waitForElement, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import SharePanel from "../front-end/components/share/SharePanel";
-import createReactMock from 'react-mock-component';
 import CommentBox from '../front-end/components/share/CommentBox'
 
 // Rutas de prueba
