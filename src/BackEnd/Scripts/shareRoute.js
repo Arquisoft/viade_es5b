@@ -12,6 +12,7 @@ const auth = require("solid-auth-client");
 //si logro compartirla devuelvo true sino false.
 
 export async function shareRoute(friendWebId,routeUUID) {
+    var result = false;
     let session = await auth.currentSession();
     if (!session) { window.location.href = "/login"; }
 
@@ -38,6 +39,7 @@ export async function shareRoute(friendWebId,routeUUID) {
                 return false;
         }
     }
+    return result;
 }
 async function sendShareInvitation(webId,friendWebId,routeUUID) {
     return sendNotificationBody(webId,friendWebId,
@@ -45,7 +47,7 @@ async function sendShareInvitation(webId,friendWebId,routeUUID) {
     @prefix schema: <http://schema.org/> .
     <> a as:Follow ;
     schema:agent <${webId}> ;
-    schema:action "shareRoute" ;
+    schema:Action "shareRoute" ;
     schema:identifier "${routeUUID}" .
     `);
 }

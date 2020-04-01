@@ -19,6 +19,5 @@ export async function listFriends() {
     var friend=await getPersonaByWebId(friendWebIds[i]);
     result = [...result, friend];
   }
-  console.log(result);
   return result;
 }

@@ -17,17 +17,17 @@ export async function addFriend(friendWebId) {
     for (var i = 0; i < friends.length; i += 1) {
         if (friends[i] === friendWebId) {
           friend = true;
+          console.log(friendWebId+"ya era mi amigo");
+
         }
-        console.log(friends[i] + " vs " + friendWebId);
       }
         //Si no es amigo lo añado
         if(await isValidProfile(friendWebId) && !friend && friendWebId!==webId)
         {
-            console.log(friendWebId+" no existe");
             await insertData(webId,friendWebId);
             result=true;
         }
-        console.log(result);
+        console.log(friendWebId+"agregado a amigos");
         return result;
     
 }

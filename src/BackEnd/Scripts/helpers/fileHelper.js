@@ -30,7 +30,6 @@ export async function existsFile(route,file)
   folder =await readFolder(route);
   if (folder) {
     for (var i = 0; i < folder.files.length; i++) {
-      console.log(folder.files[i]);
       if(folder.files[i].name === file)
         return true;
     }

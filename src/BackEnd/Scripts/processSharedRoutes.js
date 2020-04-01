@@ -3,8 +3,11 @@ import { schema } from "rdf-namespaces";
 import {findRouteURL} from "./helpers/routeHelper";
 import {getRootStorage,deleteFile} from "./helpers/fileHelper";
 import {addSharedRoute} from "./addSharedRoute";
+import {deleteFromfriendSharedRoutes} from "./deleteFromfriendSharedRoutes";
+
 import {getPersonaByWebId} from "./helpers/personHelper";
 import {readRouteFromUrl} from "./helpers/routeHelper";
+
 
 import Notificacion from "../../front-end/model/Notificacion.js";
 
@@ -28,7 +31,6 @@ export async function processSharedRoutes() {
             {
                 var message = documents[i].getSubject("");
                 var action = message.getString(schema.action);
-                console.log('accion',action);
                 ///Si es del tipo shareRoute es que quiere compartir una ruta con nosotros
                 if(action === 'shareRoute')
                 {
@@ -38,16 +40,15 @@ export async function processSharedRoutes() {
                     let storage = await getRootStorage(friendWebId);
                     let routeUrl= await findRouteURL(storage + 'public/routes/',message.getString(schema.identifier));
                     if(routeUrl!==null){
-                        console.log('url',routeUrl);
                         //Si lo encontro entonces insertamos en el apartado de rutas compartidas y borramos el mensaje
-                        addSharedRoute(friendWebId,routeUrl);
+                        await addSharedRoute(friendWebId,routeUrl,message.getString(schema.identifier));
                         //Añadimos al resultado una nueva notificacion
                         let ruta=await readRouteFromUrl(routeUrl)
                         let persona=await getPersonaByWebId(friendWebId)
                         result = [...result,new Notificacion(persona.getNombre() + " te ha Compartido una ruta!","Ruta : " + ruta.getNombre())];
                     }
                     //borramos la notificacion
-                    deleteFile(documents[i].asRef());
+                    await deleteFile(documents[i].asRef());
                 }
                 //Si es del tipo commentRoute es que alguien ha comentado en una ruta compartida
                 if(action === 'commentRoute')
@@ -58,7 +59,6 @@ export async function processSharedRoutes() {
                     let storage = await getRootStorage(friendWebId);
                     let routeUrl= await findRouteURL(storage + 'public/routes/',message.getString(schema.identifier));
                     if(routeUrl!==null){
-                        console.log('url',routeUrl);
                         //Si la encontro entonces mostramos una notificacion al usuario
                         let ruta=await readRouteFromUrl(routeUrl)
                         let persona=await getPersonaByWebId(friendWebId)
@@ -66,7 +66,7 @@ export async function processSharedRoutes() {
 
                     }
                     //borramos la notificacion
-                    deleteFile(documents[i].asRef());
+                    await deleteFile(documents[i].asRef());
                 }
                 //Si es del tipo mediaRoute es que alguien ha subido un fichero en una ruta compartida
                 if(action === 'mediaRoute')
@@ -77,7 +77,6 @@ export async function processSharedRoutes() {
                     let storage = await getRootStorage(friendWebId);
                     let routeUrl= await findRouteURL(storage + 'public/routes/',message.getString(schema.identifier));
                     if(routeUrl!==null){
-                        console.log('url',routeUrl);
                         //Si la encontro entonces mostramos una notificacion al usuario
                         let ruta=await readRouteFromUrl(routeUrl)
                         let persona=await getPersonaByWebId(friendWebId)
@@ -85,7 +84,17 @@ export async function processSharedRoutes() {
 
                     }
                     //borramos la notificacion
-                    deleteFile(documents[i].asRef());
+                    await deleteFile(documents[i].asRef());
+                }
+                if(action === 'deleteRoute')
+                {
+                    //Eliminamos la ruta de rutas compartidas conmigo
+                    await deleteFromfriendSharedRoutes(message.getRef(schema.agent),message.getString(schema.identifier));
+                    //Mostramos que se borro la ruta
+                    let persona=await getPersonaByWebId(message.getRef(schema.agent))
+                    result = [...result,new Notificacion(persona.getNombre() + " Ha borrado la ruta","Ruta : " + message.getString(schema.comment))];
+                    //borramos la notificacion
+                    await deleteFile(documents[i].asRef());
                 }
             }
         }

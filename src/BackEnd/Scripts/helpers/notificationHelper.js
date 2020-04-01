@@ -17,7 +17,6 @@ export async function getInboxUrl(webId) {
     if(profile!==null)
     {
       var url = profile.getRef(ldp.inbox);
-      //console.log(url);
       return  url;
     }
   }
@@ -43,7 +42,7 @@ export async function sendNotification(webId,targetWebId, type) {
       return false;
     else
     {
-      console.log('Upload successful!  Server responded with:', body);
+      console.log('Notificacion subida correctamente, el servidor respondio con :', body);
       return true;
     }
   });
@@ -64,7 +63,7 @@ export async function sendNotificationBody(webId,targetWebId, body) {
       return false;
     else
     {
-      console.log('Upload successful!  Server responded with:', body);
+      console.log('Notificacion subida correctamente, el servidor respondio con :', body);
       return true;
     }
   });

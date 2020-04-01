@@ -56,8 +56,8 @@ class RouteList extends Component {
   /**
    * Manejador para el borrado de una ruta.
    */
-  handleDeleteRoute = async uuid => {
-    let rutas = await this.props.deleteRuta(uuid);
+  handleDeleteRoute = async (uuid,nombre) => {
+    let rutas = await this.props.deleteRuta(uuid,nombre);
     this.setState({
       rutas: rutas,
       emptyList: rutas.length === 0

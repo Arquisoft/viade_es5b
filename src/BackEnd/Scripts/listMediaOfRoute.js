@@ -30,6 +30,5 @@ export async function listMediaOfRoute(routeUUID, authorWebId) {
       result = [...result, fichero];
     }
   }
-  console.log(result);
   return result;
 }

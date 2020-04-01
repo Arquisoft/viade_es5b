@@ -5,7 +5,8 @@ import {existsFile} from "./helpers/fileHelper";
 
 const auth = require('solid-auth-client')
 
-export async function addSharedRoute(friendWebId,routeUrl) {
+export async function addSharedRoute(friendWebId,routeUrl,routeUUID) {
+    var result=false;
     let session = await auth.currentSession();
     if (!session) { window.location.href = "/login"; }
     const route = 'private/friendSharedRoutes.ttl';
@@ -22,15 +23,15 @@ export async function addSharedRoute(friendWebId,routeUrl) {
     if(!exists)
         await newDocument(storage + route);
     //agrego la ruta y quien me lo compartio al fichero
-    insertData(storage + route,friendWebId,routeUrl)
-
+    result = await insertData(storage + route,friendWebId,routeUrl,routeUUID)
+    return result;
 }
 async function newDocument(route) {
     // Create the new Document:
     const sharedRoutesDocument = createDocument(route);
     await sharedRoutesDocument.save();
 }
-async function insertData(route, friend, routeUrl) {
+async function insertData(route, friend, routeUrl,routeUUID) {
     const sharedRoutesDocument = await fetchDocument(route);
     //Compruebo si esta repetida, si lo esta no hago nada
     var repeated=false;
@@ -38,7 +39,7 @@ async function insertData(route, friend, routeUrl) {
     for (var e = 0; e < rutas.length; e++) {
       if(rutas[e].getRef(schema.url)===routeUrl)
       {
-          console.log("repeated friend route: "+routeUrl);
+          console.log("ruta repetida , ya la habian compartido : "+routeUrl);
           repeated=true;
           break;
       }
@@ -50,10 +51,13 @@ async function insertData(route, friend, routeUrl) {
 
         newShare.addRef(schema.agent,friend);
         newShare.addRef(schema.url,routeUrl);
+        newShare.addString(schema.identifier,routeUUID);
         newShare.addRef(rdf.type, 'http://arquisoft.github.io/viadeSpec/route');
 
         await sharedRoutesDocument.save([newShare]);
+        return true;
     }
+    return false;
 }
  
 

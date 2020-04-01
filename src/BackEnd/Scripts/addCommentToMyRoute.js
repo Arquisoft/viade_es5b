@@ -29,8 +29,9 @@ export async function addCommentToMyRoute(comentario,routeUUID){
             //Busco a que amigos mandar la circular y las mando
             var friends = await getSharedRouteFriends(storage,routeUUID);
             for(let i=0;i<friends.length;i++){
-                sendCommentNotification(webId,friends[i],routeUUID,comentario);
+                await sendCommentNotification(webId,friends[i],routeUUID,comentario);
             }
+            console.log(routeUUID+" comentario añadido");
         }
     }
     return result;
@@ -56,7 +57,7 @@ async function sendCommentNotification(webId,friendWebId,routeUUID,comentario) {
     @prefix schema: <http://schema.org/> .
     <> a as:Follow ;
     schema:agent <${webId}> ;
-    schema:action "commentRoute" ;
+    schema:Action "commentRoute" ;
     schema:comment "${comentario.getTexto()}" ;
     schema:identifier "${routeUUID}" .
     `);

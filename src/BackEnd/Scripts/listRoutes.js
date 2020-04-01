@@ -31,7 +31,6 @@ async function readRoutes(folderRoute)
   var result = [];
   if (folder) {
     for (var i = 0; i < folder.files.length; i++) {
-      console.log(folder.files[i].url);
       let ruta=await readRouteFromUrl(folder.files[i].url);
       if(ruta!=null)
         result = [...result, ruta];

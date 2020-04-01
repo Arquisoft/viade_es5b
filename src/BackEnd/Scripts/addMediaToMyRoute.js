@@ -27,7 +27,7 @@ export async function addMediaToMyRoute(files,routeUUID){
             filenames=filenames+", "+file.name;
             const fileName=uuidv4()+file.name;
             let folder = storage + "public/files/"+fileName;
-            console.log("leyendo fichero");
+            console.log("leyendo fichero "+file.name);
             const reader = new FileReader();
     
               /* eslint no-loop-func: 0 */
@@ -45,7 +45,7 @@ export async function addMediaToMyRoute(files,routeUUID){
                     credentials: 'include'
                   });
                   if (response.ok) {
-                    console.log("fichero subido");
+                    console.log("fichero subido "+folder);
                     insertData(folder,url,webId)
                   }
                 };
@@ -57,7 +57,8 @@ export async function addMediaToMyRoute(files,routeUUID){
                 var friends = await getSharedRouteFriends(storage,routeUUID);
                 for(let i=0;i<friends.length;i++)
                 {
-                    sendMediaNotification(webId,friends[i],routeUUID,filenames);
+                  console.log("enviando notificacion subida Fichero a "+friends[i]);
+                    await sendMediaNotification(webId,friends[i],routeUUID,filenames);
                 }
                 result = true;
             }
@@ -82,7 +83,7 @@ async function sendMediaNotification(webId,friendWebId,routeUUID,nombreFicheros)
     @prefix schema: <http://schema.org/> .
     <> a as:Follow ;
     schema:agent <${webId}> ;
-    schema:action "mediaRoute" ;
+    schema:Action "mediaRoute" ;
     schema:MediaObject "${nombreFicheros}" ;
     schema:identifier "${routeUUID}" .
     `);

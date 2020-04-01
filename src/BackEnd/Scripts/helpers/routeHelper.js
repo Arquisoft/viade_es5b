@@ -75,7 +75,6 @@ export async function findRouteURL(folderUrl,uuid)
     {
         for (var i = 0; i < folder.files.length; i++) 
         {
-            //console.log(folder.files[i].url)
             let routeDoc;
             await fetchDocument(folder.files[i].url).then((content) => {
                 routeDoc=content;
@@ -93,6 +92,7 @@ export async function findRouteURL(folderUrl,uuid)
             }
         };
     }
+    console.log(folderUrl+" "+uuid+" ruta no encontrada");
     return null;
 }
 export async function getSharedRouteFriends(storage,routeUUID) {
@@ -111,7 +111,7 @@ export async function getSharedRouteFriends(storage,routeUUID) {
               let amigos=rutas[e].getAllRefs(schema.agent)
               for (var i = 0; i < amigos.length; i++) {
                   //los añado a result
-                  result = [...result, amigos];
+                  result = [...result, amigos[i]];
               }
               //Ya encontre lo que busco asi que salgo
               break;

@@ -18,8 +18,8 @@ export default class BackMain {
   static añadirRuta(Ruta) {
     addRoute(Ruta);
   }
-  static borrarRuta(uuid) {
-    return deleteRoute(uuid);
+  static borrarRuta(uuid,routeName) {
+    return deleteRoute(uuid,routeName);
   }
   static listarAmigos() {
     return listFriends();
@@ -28,7 +28,7 @@ export default class BackMain {
     return addFriend(friendWebId);
   }
   static compartirRuta(friendWebId, rutaUUID) {
-    shareRoute(friendWebId, rutaUUID);
+    return shareRoute(friendWebId, rutaUUID);
   }
   static procesarRutasCompartidas() {
     return processSharedRoutes();

@@ -40,6 +40,5 @@ export async function listSharedRoutes() {
       }
     }
   }
-  console.log(result);
   return result;
 }

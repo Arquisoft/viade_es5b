@@ -44,8 +44,8 @@ class RutaService {
     return BackMain.listarRutasCompartidasConmigo();
   }
 
-  deleteRuta(uuid) {
-    return BackMain.borrarRuta(uuid);
+  deleteRuta(uuid,rutaNombre) {
+    return BackMain.borrarRuta(uuid,rutaNombre);
   }
 
   findRouteById(uuid) {
