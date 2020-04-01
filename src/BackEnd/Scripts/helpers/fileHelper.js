@@ -1,7 +1,7 @@
 import { space } from 'rdf-namespaces';
 import { fetchDocument} from 'tripledoc';
-const auth = require("solid-auth-client");
-const FC = require("solid-file-client");
+const auth = require('solid-auth-client');
+const FC = require('solid-file-client');
 const fc = new FC(auth);
 
 
