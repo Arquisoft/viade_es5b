@@ -1,5 +1,7 @@
 import Ruta from "../../front-end/model/Ruta";
 import Hito from "../../front-end/model/Hito";
+import Comentario from "../../front-end/model/Comentario";
+import Persona from "../../front-end/model/Persona";
 
 /*
  * Clase que representa el servicio de Rutas (Fachada)
@@ -24,6 +26,14 @@ class RutaService {
 
     r2.addHito(new Hito("Hito-r2-1", 43.362182, -5.84597));
     r2.addHito(new Hito("Hito-r2-2", 43.363071, -5.846447));
+
+    let c1=new Comentario("Publicado: 31/3/2020 22:41:26","Muy bien");
+    c1.setAutor("Lucía", "123", "imagen");
+    let c2=new Comentario("Publicado: 01/4/2020 22:41:26","Genial");
+
+    r1.addComentario(c1);
+    r1.addComentario(c2);
+    
 
     this.BDRutas = [...this.BDRutas, r1];
     this.BDRutas = [...this.BDRutas, r2];
@@ -81,6 +91,8 @@ class RutaService {
     //return BackMain.comentarMiRuta(comentario, rutaUUID);
   }
   obtenerComentariosRuta(rutaUUID, webId) {
+    return [new Comentario("Publicado: 31/3/2020 22:41:26","Muy bien").setAutor(new Persona("Lucía", "123", "imagen1")), new Comentario("Publicado: 01/4/2020 22:41:26","Genial").setAutor(new Persona("Diego", "245", "imagen2"))];
+    
     //return BackMain.obtenerComentariosRuta(rutaUUID, webId);
   }
   subirFicheroAMiRuta(fichero, rutaUUID) {

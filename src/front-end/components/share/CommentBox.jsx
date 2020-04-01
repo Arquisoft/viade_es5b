@@ -71,7 +71,7 @@ class CommentBox extends Component {
                 <Alert variant="warning">Aún no hay comentarios</Alert>
               )}
               {this.state.commentList.length > 0 && (
-                <div className="scroll-container">
+                <div className="scroll-container" data-testid="listaComentarios">
                   {this.state.commentList.map((c, key) => {
                     return (
                       <Card className="mb-4 mr-2" key={key++}>
