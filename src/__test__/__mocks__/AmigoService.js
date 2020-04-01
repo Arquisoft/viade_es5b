@@ -1,4 +1,4 @@
-import Persona from "../../model/Persona.js";
+import Persona from "../../front-end/model/Persona";
 
 /*
  * Clase que representa el servicio de Amigos (Fachada)
@@ -8,6 +8,7 @@ class AmigoService {
     // Simula la base de datos
     this.BDAmigos = [];
     this.inicializarBD();
+    this.amigoService = new AmigoService();
   }
 
   /*

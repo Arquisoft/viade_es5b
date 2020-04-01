@@ -1,5 +1,5 @@
-import Ruta from "../../model/Ruta";
-import Hito from "../../model/Hito";
+import Ruta from "../../front-end/model/Ruta";
+import Hito from "../../front-end/model/Hito";
 
 /*
  * Clase que representa el servicio de Rutas (Fachada)
@@ -9,6 +9,7 @@ class RutaService {
     // Simula la base de datos
     this.BDRutas = [];
     this.inicializarBD();
+    this.RutaService = new RutaService();
   }
 
   /*
@@ -35,6 +36,7 @@ class RutaService {
    */
   getRutas() {
     //return BackMain.listarRutas();
+    return this.BDRutas;
   }
   /*
    * Devuelve TODAS las rutas que alguien haya compartido conmigo
