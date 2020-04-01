@@ -5,11 +5,12 @@
 
 === Whitebox Overall System
 ****
-image::Contexto-del-sistema.jpg[Arquitectura del Contexto del Sistema]
+image::Contexto.JPG[Arquitectura del Contexto del Sistema]
 
 Motivación::
 
-La arquitectura del contexto del sistema puede verse reflejada en la imagen superior. Esta figura refleja de forma general la relación entre los principales elementos de alto nivel, distinguiendo dos bloques principales de construcción: UserPOD y ViadeAPP. Dada la complejidad interna de estos dos bloques del nivel 0, se procede a descomponerlos en dos cajas blancas en un primer nivel (nivel 1) para especificar mejor sus detalles.
+La arquitectura del contexto del sistema puede verse reflejada en la imagen superior. Esta figura refleja de forma general la relación entre los principales elementos de alto nivel, distinguiendo dos bloques principales de construcción: UserPOD y ViadeAPP.  Por otro lado destacar el uso de componentes react y la librería react-testing que nos permite probar la aplicación y que serán explicados en el apartado 9. 
+Dada la complejidad interna de estos dos bloques del nivel 0, se procede a descomponerlos en dos cajas blancas en un primer nivel (nivel 1) para especificar mejor sus detalles. 
 
 
 Bloques de construcción contenidos::
@@ -63,7 +64,20 @@ La responsabilidad de esta caja negra es llevar a cabo el procesamiento de los d
 
 La principal interfaz es la de SOLID, en donde se definen una serie de operaciones que permiten acceder a los PODs de los usuarios, siempre con su consentimiento. Estas operaciones se asemejarían a un CRUD, y están representadas en el diagrama adjunto como *Data API* Luego podemos distinguir varias interfaces tales como Ruta, Usario, y otros elementos que modelan el dominio. También podemos distinguir una *capa intermedia* entre el Front-End y el Back-End que sirve de controlador entre ambos módulos, permitiendo su comunicación. Desde el punto de vista de la persistencia, tendremos interfaces que nos proporcionen acceso CRUD a los datos de los usuarios almacenados en sus PODs.
 
-A continuación, se adjunta una figura que muestra un esquema de esta segunda *caja blanca de la aplicación Viade*:
+A continuación, se adjuntan unas figuras que muestran un esquema de las principales funcionalidades de esta. *caja blanca de la aplicación Viade*:
+
+*Ver rutas*
+
+image::VerRutas.JPG[Diagrama de Ver Rutas]
+En la imagen se puede observar como el usuario accede a las rutas de su POD a través de nuestra aplicación que usa el fichero "VerRutas.jsx" para mostrar una lista de las rutas del usuario. Una vez elegida la rutase visualizará en la pantalla del usuario mostrando la información de la ruta y permitiendo verla en un mapa gracias a "MapRuta.jxs".
+
+*Añadir amigos*
+image::Amigos.JPG[Diagrama de Amigos]
+Una vez que tenemos las rutas creadas, nuestra aplicación permite añadirle comentarios y fotos y además compartirla con amigos. En esta imagen se puede ver un esquema del funcionamiento del módulo de amigos, en el cual, el usuario accede a la vista de amigos ("Friends.jxs") que le permitirá añadir un amigo o ver su lista de amigos con el nombre la foto y el webID de cada uno. Para añadir un amigo únicamente se necesita su webId y la propia aplicación actualiza inmediatamente la lista de amigos del usuario. Esta lista de amigos se guarda en el POD del propio usuario. 
+
+*Compartir ruta*
+image::CompartirRutas.JPG[Diagrama de Ver Rutas]
+Después de poder crear rutas, verlas y añadir amigos, podemos compartir rutas con nuestros amigos. Para ello el usuario, a traves de nuestra aplicación, cuando está visualizando una ruta "RouteCard.jsx" le proporciona la opción de borrarla o compartirla con uno o varios amigos a la vez("SharePanel.jsx"). Una vez que el usuario A comparte la ruta con su amigo B, este puede visualizar la ruta, pero esta no se guarda en su POD, si no que el usuario A le está dando acceso a B para poder verla.   
 
 image::ViadeApp.jpg[Diagrama de la caja blanca de Viade App]
 ****
