@@ -3,7 +3,7 @@ import AmigoService from "../../services/amigos/AmigoService";
 import AddFriend from "./AddFriend";
 import FriendList from "./FriendList";
 import MessageDialog from "../util/MessageDialog";
-import { Alert } from "react-bootstrap";
+import { Alert, Jumbotron } from "react-bootstrap";
 
 class Friends extends Component {
   constructor() {
@@ -31,8 +31,15 @@ class Friends extends Component {
   render() {
     return (
       <div>
-        <h2 data-testid="titleAmigos">Amigos</h2>
-        <p data-testid="gestionAmigos">Desde aquí puedes realizar la gestión de tus amigos.</p>
+        <Jumbotron>
+          <h2 className="display-4" data-testid="titleAmigos">
+            Amigos
+          </h2>
+          <p data-testid="gestionAmigos">
+            Desde aquí puedes realizar la gestión de tus amigos.
+          </p>
+        </Jumbotron>
+
         <AddFriend
           handleAddFriend={webID => this.handleAddFriend(webID)}
           isLoading={this.state.loading}
