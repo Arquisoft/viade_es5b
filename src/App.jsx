@@ -34,7 +34,7 @@ class App extends Component {
         store.addNotification({
           title: result[0].getTitulo(),
           message: result[0].getMensaje(),
-          type: "success",
+          type: result[0].getTipo(),
           insert: "top",
           container: "top-right",
           animationIn: ["animated", "fadeIn"],

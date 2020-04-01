@@ -1,14 +1,14 @@
-import { space } from 'rdf-namespaces'
-import { fetchDocument } from 'tripledoc'
-const auth = require('solid-auth-client')
-const FC = require('solid-file-client')
+import { space } from "rdf-namespaces"
+import { fetchDocument } from "tripledoc"
+const auth = require("solid-auth-client")
+const FC = require("solid-file-client")
 const fc = new FC(auth)
 
 export async function getRootStorage (webId) {
   const profileDocument = await fetchDocument(webId)
   const profile = profileDocument.getSubject(webId)
 
-  // Get the root URL of the user's Pod:
+  // Get the root URL of the user"s Pod:
   return profile.getRef(space.storage)
 }
 export async function readFolder (route) {

@@ -1,6 +1,6 @@
-import { fetchDocument } from 'tripledoc'
-import { ldp } from 'rdf-namespaces'
-const request = require('request')
+import { fetchDocument } from "tripledoc"
+import { ldp } from "rdf-namespaces"
+const request = require("request")
 
 export async function getInboxUrl (webId) {
   let profileDoc
@@ -10,7 +10,7 @@ export async function getInboxUrl (webId) {
     })
     .catch(err => (profileDoc = null))
   if (profileDoc !== null) {
-    var profile = profileDoc.getSubject('#me')
+    var profile = profileDoc.getSubject("#me")
     if (profile !== null) {
       var url = profile.getRef(ldp.inbox)
       return url
@@ -23,19 +23,19 @@ export async function getInboxUrl (webId) {
 export async function sendNotification (webId, targetWebId, type) {
   var inbox = await getInboxUrl(targetWebId)
   request({
-    method: 'POST',
+    method: "POST",
     uri: inbox,
     body: `@prefix as: <https://www.w3.org/ns/activitystreams#> .
           @prefix schema: <http://schema.org/> .
           <> a as:${type} ;
           schema:agent <${webId}> .`,
     headers: {
-      'Content-Type': 'text/turtle'
+      "Content-Type": "text/turtle"
     }
   },
   function (error, response, body) {
     if (error) { return false } else {
-      console.log('Notificacion subida correctamente, el servidor respondio con :', body)
+      console.log("Notificacion subida correctamente, el servidor respondio con :", body)
       return true
     }
   })
@@ -44,16 +44,16 @@ export async function sendNotification (webId, targetWebId, type) {
 export async function sendNotificationBody (webId, targetWebId, body) {
   var inbox = await getInboxUrl(targetWebId)
   await request({
-    method: 'POST',
+    method: "POST",
     uri: inbox,
     body: body,
     headers: {
-      'Content-Type': 'text/turtle'
+      "Content-Type": "text/turtle"
     }
   },
   function (error, response, body) {
     if (error) { return false } else {
-      console.log('Notificacion subida correctamente, el servidor respondio con :', body)
+      console.log("Notificacion subida correctamente, el servidor respondio con :", body)
       return true
     }
   })

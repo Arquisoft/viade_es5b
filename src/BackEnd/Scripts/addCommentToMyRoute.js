@@ -1,22 +1,22 @@
-import { rdf, schema } from 'rdf-namespaces'
-import { fetchDocument } from 'tripledoc'
-import { findRouteURL, getSharedRouteFriends } from './helpers/routeHelper'
-import { getRootStorage } from './helpers/fileHelper'
-import { sendNotificationBody } from './helpers/notificationHelper'
+import { rdf, schema } from "rdf-namespaces"
+import { fetchDocument } from "tripledoc"
+import { findRouteURL, getSharedRouteFriends } from "./helpers/routeHelper"
+import { getRootStorage } from "./helpers/fileHelper"
+import { sendNotificationBody } from "./helpers/notificationHelper"
 
-const auth = require('solid-auth-client')
+const auth = require("solid-auth-client")
 
 // Devuelve true si logro insertar el comentario
 export async function addCommentToMyRoute (comentario, routeUUID) {
   var result = false
   const session = await auth.currentSession()
-  if (!session) { window.location.href = '/login' }
+  if (!session) { window.location.href = "/login" }
   const storage = await getRootStorage(session.webId)
   const webId = session.webId
 
-  let url = await findRouteURL(storage + 'private/routes/', routeUUID)
+  let url = await findRouteURL(storage + "private/routes/", routeUUID)
   // Si no la encuentro la busco en publico
-  if (url === null) { url = await findRouteURL(storage + 'public/routes/', routeUUID) }
+  if (url === null) { url = await findRouteURL(storage + "public/routes/", routeUUID) }
   // Si la encuentro entonces inserto el comentario y mando una circular
   if (url !== null) {
     result = await insertData(comentario, url, webId)
@@ -26,7 +26,7 @@ export async function addCommentToMyRoute (comentario, routeUUID) {
       for (let i = 0; i < friends.length; i++) {
         await sendCommentNotification(webId, friends[i], routeUUID, comentario)
       }
-      console.log(routeUUID + ' comentario añadido')
+      console.log(routeUUID + " comentario añadido")
     }
   }
   return result
@@ -40,7 +40,7 @@ async function insertData (comentario, routeUrl, myWebId) {
   newComment.addString(schema.text, comentario.getTexto())
   newComment.addDateTime(schema.datePublished, comentario.getFecha())
   newComment.addRef(schema.author, myWebId)
-  newComment.addRef(rdf.type, 'http://arquisoft.github.io/viadeSpec/userComment')
+  newComment.addRef(rdf.type, "http://arquisoft.github.io/viadeSpec/userComment")
 
   const success = await routeDocument.save([newComment])
   return (success !== null)

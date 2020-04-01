@@ -1,30 +1,30 @@
-import { rdf, schema } from 'rdf-namespaces'
-import { fetchDocument } from 'tripledoc'
-import { findRouteURL, getSharedRouteFriends } from './helpers/routeHelper'
-import { getRootStorage } from './helpers/fileHelper'
-import { sendNotificationBody } from './helpers/notificationHelper'
-import { v4 as uuidv4 } from 'uuid'
-const auth = require('solid-auth-client')
+import { rdf, schema } from "rdf-namespaces"
+import { fetchDocument } from "tripledoc"
+import { findRouteURL, getSharedRouteFriends } from "./helpers/routeHelper"
+import { getRootStorage } from "./helpers/fileHelper"
+import { sendNotificationBody } from "./helpers/notificationHelper"
+import { v4 as uuidv4 } from "uuid"
+const auth = require("solid-auth-client")
 
 export async function addMediaToMyRoute (files, routeUUID) {
   var result = false
   const session = await auth.currentSession()
-  if (!session) { window.location.href = '/login' }
+  if (!session) { window.location.href = "/login" }
   const storage = await getRootStorage(session.webId)
   const webId = session.webId
 
-  var url = await findRouteURL(storage + 'private/routes/', routeUUID)
+  var url = await findRouteURL(storage + "private/routes/", routeUUID)
   // Si no la encuentro la busco en publico
-  if (url === null) { url = await findRouteURL(storage + 'public/routes/', routeUUID) }
+  if (url === null) { url = await findRouteURL(storage + "public/routes/", routeUUID) }
   // Si la encuentro entonces inserto el archivo y mando una circular
   if (url !== null) {
-    var filenames = ''
+    var filenames = ""
     for (var i = 0; i < files.length; i++) {
       const file = files[i]
-      filenames = filenames + ', ' + file.name
+      filenames = filenames + ", " + file.name
       const fileName = uuidv4() + file.name
-      const folder = storage + 'public/files/' + fileName
-      console.log('leyendo fichero ' + file.name)
+      const folder = storage + "public/files/" + fileName
+      console.log("leyendo fichero " + file.name)
       const reader = new FileReader()
 
       /* eslint no-loop-func: 0 */
@@ -32,16 +32,16 @@ export async function addMediaToMyRoute (files, routeUUID) {
         const data = f.target.result
         // Lo mandamos a Solid
         const response = await auth.fetch(folder, {
-          method: 'PUT',
+          method: "PUT",
           force: true,
           headers: {
-            'content-type': file.type
+            "content-type": file.type
           },
           body: data,
-          credentials: 'include'
+          credentials: "include"
         })
         if (response.ok) {
-          console.log('fichero subido ' + folder)
+          console.log("fichero subido " + folder)
           insertData(folder, url, webId)
         }
       }
@@ -51,7 +51,7 @@ export async function addMediaToMyRoute (files, routeUUID) {
     if (filenames.length > 0) {
       var friends = await getSharedRouteFriends(storage, routeUUID)
       for (let i = 0; i < friends.length; i++) {
-        console.log('enviando notificacion subida Fichero a ' + friends[i])
+        console.log("enviando notificacion subida Fichero a " + friends[i])
         await sendMediaNotification(webId, friends[i], routeUUID, filenames)
       }
       result = true

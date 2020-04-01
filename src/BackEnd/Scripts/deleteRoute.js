@@ -1,22 +1,22 @@
-import { findRouteURL, getSharedRouteFriends } from './helpers/routeHelper'
-import { getRootStorage } from './helpers/fileHelper'
-import { listRoutes } from './listRoutes'
-import { fetchDocument } from 'tripledoc'
-import { schema } from 'rdf-namespaces'
-import { sendNotificationBody } from './helpers/notificationHelper'
+import { findRouteURL, getSharedRouteFriends } from "./helpers/routeHelper"
+import { getRootStorage } from "./helpers/fileHelper"
+import { listRoutes } from "./listRoutes"
+import { fetchDocument } from "tripledoc"
+import { schema } from "rdf-namespaces"
+import { sendNotificationBody } from "./helpers/notificationHelper"
 
-const auth = require('solid-auth-client')
-const FC = require('solid-file-client')
+const auth = require("solid-auth-client")
+const FC = require("solid-file-client")
 const fc = new FC(auth)
 
 export async function deleteRoute (uuid, routeName) {
   var result = []
   const session = await auth.currentSession()
-  if (!session) { window.location.href = '/login' }
+  if (!session) { window.location.href = "/login" }
   const storage = await getRootStorage(session.webId)
-  let url = await findRouteURL(storage + 'private/routes/', uuid)
+  let url = await findRouteURL(storage + "private/routes/", uuid)
   // Si no la encuentro la busco en publico
-  if (url === null) { url = await findRouteURL(storage + 'public/routes/', uuid) }
+  if (url === null) { url = await findRouteURL(storage + "public/routes/", uuid) }
   // Si la encuentro la borro
   if (url !== null) {
     // Busco a que amigos mandar la circular
@@ -25,7 +25,7 @@ export async function deleteRoute (uuid, routeName) {
     await deleteFromSharedRoutes(storage, uuid)
     // mando mensajes de actualizacion de que se elimino la ruta
     for (let i = 0; i < friends.length; i++) {
-      console.log('enviando notificacion borrado a ' + friends[i])
+      console.log("enviando notificacion borrado a " + friends[i])
       await sendRouteDeletedNotification(session.webId, friends[i], uuid, routeName)
     }
     // Borro los ficheros asociados a la ruta
@@ -38,13 +38,13 @@ export async function deleteRoute (uuid, routeName) {
 }
 
 async function deleteFromSharedRoutes (storage, routeUUID) {
-  const route = 'private/mySharedRoutes.ttl'
+  const route = "private/mySharedRoutes.ttl"
   const mySharedRoutesDocument = await fetchDocument(storage + route)
-  const rutas = mySharedRoutesDocument.getAllSubjectsOfType('http://arquisoft.github.io/viadeSpec/route')
+  const rutas = mySharedRoutesDocument.getAllSubjectsOfType("http://arquisoft.github.io/viadeSpec/route")
   for (var e = 0; e < rutas.length; e++) {
     // Donde encuentre esta ruta la elimino
     if (rutas[e].getLiteral(schema.identifier) === routeUUID) {
-      console.log('borrando comparticion ruta ' + routeUUID)
+      console.log("borrando comparticion ruta " + routeUUID)
       mySharedRoutesDocument.removeSubject(rutas[e].asRef())
     }
   }
@@ -57,9 +57,9 @@ async function deleteFilesFromRoute (webId, url) {
   const rutas = mySharedRoutesDocument.getAllSubjectsOfType(schema.MediaObject)
   for (var e = 0; e < rutas.length; e++) {
     // Elimino los ficheros de los que sea dueño
-    console.log(rutas[e].getRef(schema.author) + ' vs ' + webId)
+    console.log(rutas[e].getRef(schema.author) + " vs " + webId)
     if (rutas[e].getRef(schema.author) === webId) {
-      console.log('borrando fichero ' + rutas[e].getRef(schema.contentUrl))
+      console.log("borrando fichero " + rutas[e].getRef(schema.contentUrl))
       fc.delete(rutas[e].getRef(schema.contentUrl))
     }
   }

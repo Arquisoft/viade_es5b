@@ -1,16 +1,16 @@
-import { addRoute } from './Scripts/addRoute.js'
-import { deleteRoute } from './Scripts/deleteRoute.js'
-import { listRoutes } from './Scripts/listRoutes.js'
-import { listFriends } from './Scripts/listFriends.js'
-import { addFriend } from './Scripts/addFriend.js'
-import { shareRoute } from './Scripts/shareRoute.js'
-import { processSharedRoutes } from './Scripts/processSharedRoutes.js'
-import { listSharedRoutes } from './Scripts/listSharedRoutes.js'
-import { addCommentToMyRoute } from './Scripts/addCommentToMyRoute.js'
-import { listCommentsOfRoute } from './Scripts/listCommentsOfRoute.js'
-import { addMediaToMyRoute } from './Scripts/addMediaToMyRoute.js'
-import { getPersonaByWebId } from './Scripts/helpers/personHelper'
-import { listMediaOfRoute } from './Scripts/listMediaOfRoute'
+import { addRoute } from "./Scripts/addRoute.js"
+import { deleteRoute } from "./Scripts/deleteRoute.js"
+import { listRoutes } from "./Scripts/listRoutes.js"
+import { listFriends } from "./Scripts/listFriends.js"
+import { addFriend } from "./Scripts/addFriend.js"
+import { shareRoute } from "./Scripts/shareRoute.js"
+import { processSharedRoutes } from "./Scripts/processSharedRoutes.js"
+import { listSharedRoutes } from "./Scripts/listSharedRoutes.js"
+import { addCommentToMyRoute } from "./Scripts/addCommentToMyRoute.js"
+import { listCommentsOfRoute } from "./Scripts/listCommentsOfRoute.js"
+import { addMediaToMyRoute } from "./Scripts/addMediaToMyRoute.js"
+import { getPersonaByWebId } from "./Scripts/helpers/personHelper"
+import { listMediaOfRoute } from "./Scripts/listMediaOfRoute"
 export default class BackMain {
   static listarRutas () {
     return listRoutes()

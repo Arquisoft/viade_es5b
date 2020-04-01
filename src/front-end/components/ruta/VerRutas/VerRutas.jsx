@@ -3,6 +3,7 @@ import RouteList from "./RouteList";
 import PacmanViewLoader from "../../util/Loaders/PacmanViewLoader";
 import RutaService from "../../../services/rutas/RutaService";
 import AmigoService from "../../../services/amigos/AmigoService";
+import { Jumbotron } from "react-bootstrap";
 
 /**
  * Clase VerRutas que representa la vista general para ver
@@ -24,11 +25,13 @@ class VerRutas extends Component {
     return (
       <div>
         <header>
-          <h1>Mis rutas</h1>
-          <p>
-            En este apartado puedes echar un vistazo a tus rutas, visualizarlas
-            en un mapa, ver sus detalles o bien eliminarlas.
-          </p>
+          <Jumbotron>
+            <h1 className="display-4">Mis rutas</h1>
+            <p>
+              En este apartado puedes echar un vistazo a tus rutas,
+              visualizarlas en un mapa, ver sus detalles o bien eliminarlas.
+            </p>
+          </Jumbotron>
         </header>
         <PacmanViewLoader // Overlay de carga para mostrar la vista de las rutas.
           text={"Espera un momento, estamos recuperando tus rutas..."}
@@ -43,7 +46,7 @@ class VerRutas extends Component {
               getAmigos={this.amigoService.getAmigos}
               comentarMiRuta={this.rutaService.comentarMiRuta}
               obtenerComentariosRuta={this.rutaService.obtenerComentariosRuta}
-              showMap={false}
+              showMap={true}
             />
           }
           loading={this.state.loading}
