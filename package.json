@@ -15,15 +15,15 @@
     "bs-custom-file-input": "^1.3.4",
     "jquery": "^3.4.1",
     "leaflet": "^1.6.0",
-    "node": "^13.11.0",
+    "node": "^13.12.0",
     "rdf-namespaces": "^1.8.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
     "react-grid-gallery": "^0.5.5",
     "react-leaflet": "^2.6.3",
-    "react-mock-component": "^2.3.1",
     "react-loading-overlay": "^1.0.1",
+    "react-mock-component": "^2.3.1",
     "react-notifications-component": "^2.4.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
@@ -32,7 +32,8 @@
     "solid-auth-client": "^2.4.1",
     "solid-file-client": "^1.0.2",
     "styled-components": "^5.0.1",
-    "tripledoc": "^4.3.1"
+    "tripledoc": "^4.3.1",
+    "standard": "*"
   },
   "scripts": {
     "start": "react-scripts --max_old_space_size=4096 start",
@@ -42,14 +43,9 @@
     "test": "react-scripts test --coverage",
     "docs": "shx rm -rf build/docs && asciidoctor -D build/docs -a imagesdir=./images -r asciidoctor-diagram src/docs/index.adoc && shx cp -R src/docs/images build/docs",
     "eject": "react-scripts eject",
-    "gem Install ascciDoctor": "gem install asciidoctor asciidoctor-diagram",
-    "Install asciidoctor": "npm install asciidoctor",
-    "execute": "react-scripts start",
-    "RunSolidServer": "init solid app",
-    "Lanzar server Pods": "cd ./ServidorPODs/ && solid start",
-    "crearServerPODs": "solid init",
     "instalacionLimpia": "cd node_modules && DEL /F/Q/S *.* > NUL && cd .. && RMDIR /Q/S node_modules && npm install node --max-old-space-size=5120",
-    "jest-test": "jest"
+    "jest-test": "jest",
+    "standard": "cd src && standard --fix"
   },
   "eslintConfig": {
     "extends": "react-app"

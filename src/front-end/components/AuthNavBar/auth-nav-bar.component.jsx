@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import auth from "solid-auth-client";
 
-const AuthNavBar = () => {
+const AuthNavBar = props => {
   const logout = () => {
     auth.logout();
     window.location = "#/login";
@@ -19,7 +19,9 @@ const AuthNavBar = () => {
       </Nav>
 
       <Nav className="ml-auto">
-        <Nav.Link className="logout" onClick={logout}>Log Out</Nav.Link>
+        <Nav.Link className="logout" onClick={logout}>
+          Log Out
+        </Nav.Link>
       </Nav>
     </Navbar>
   );

@@ -1,4 +1,3 @@
-import AmigoService from "../services/amigos/AmigoService";
+import AmigoService from '../services/amigos/AmigoService'
 
-
-export var service = new AmigoService();
+export var service = new AmigoService()
