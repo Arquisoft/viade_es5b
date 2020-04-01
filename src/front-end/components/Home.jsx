@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import HomeLogin from "./authentication/login/HomeLogin";
-/**
- * Componente que representa la página principal de la
- * aplicación.
- */
+
 class Home extends Component {
   render() {
     return (
