@@ -8,7 +8,6 @@ class Home extends Component {
     return (
       <div className="jumbotron">
         <h1 className="display-3 text-center">Bienvenido a Viade!</h1>
-        <HomeLogin
       </div>
     );
   }
