@@ -26,7 +26,7 @@ class SharedWithMe extends Component {
       <div>
         <h2 data-testid="title">Compartido conmigo</h2>
         {this.state.emptyList && (
-          <Alert variant="warning">
+          <Alert variant="warning" data-testid="alertaNoRutasCompartidas">
             Aún no te han compartido ninguna ruta.
           </Alert>
         )}

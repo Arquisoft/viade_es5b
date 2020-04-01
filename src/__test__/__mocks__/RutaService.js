@@ -154,6 +154,10 @@ class RutaService {
   getNoRutas(){
     return [];
   }
+
+  getNoRutasCompartidas(){
+    return [];
+  }
 }
 
 export default RutaService;

@@ -32,9 +32,17 @@ test("Se renderiza sin fallos", () => {
 });
 
 test("RouteCard contiene la información básica de la ruta.", () => {
-  const { getByTestId } = render(<RouteCard ruta={ruta} obtenerFicherosRuta={rutaService.obtenerFicherosRuta}></RouteCard>);
+  const { getByTestId } = render(<RouteCard ruta={ruta} obtenerFicherosRuta={rutaService.obtenerFicherosRuta} handleShare={()=>{}} handleDelete={()=>{}}></RouteCard>);
   expect(getByTestId("r-title")).toHaveTextContent(ruta.getNombre());
   expect(getByTestId("r-description")).toHaveTextContent(ruta.getDescripcion());
+});
+
+test("RouteCard contiene los botones de compartir y eliminar", () => {
+  const { getByTestId } = render(<RouteCard ruta={ruta} obtenerFicherosRuta={rutaService.obtenerFicherosRuta} handleShare={()=>{}} handleDelete={()=>{}}></RouteCard>);
+  expect(getByTestId("r-title")).toHaveTextContent(ruta.getNombre());
+  expect(getByTestId("r-description")).toHaveTextContent(ruta.getDescripcion());
+  getByTestId("rb-compartir").click();
+  getByTestId("rb-eliminar").click();
 });
 
 test("RouteCard contiene la información del inicio y los hitos de la ruta.", () => {
