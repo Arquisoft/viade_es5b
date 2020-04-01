@@ -11,6 +11,10 @@ import {
 import Comentario from "../../model/Comentario";
 import "../../css/scroll.css";
 
+/**
+ * Clase que representa un componente de una caja de comentarios.
+ * Recibe sus funcionalidades del padre.
+ */
 class CommentBox extends Component {
   state = {
     comment: "",
