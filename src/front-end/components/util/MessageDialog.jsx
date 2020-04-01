@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Modal, Button } from "react-bootstrap";
+import React, { Component } from 'react'
+import { Modal, Button } from 'react-bootstrap'
 
 class MessageDialog extends Component {
-  render() {
+  render () {
     return (
       <Modal show={this.props.show}>
         <Modal.Header>
@@ -10,13 +10,13 @@ class MessageDialog extends Component {
         </Modal.Header>
         <Modal.Body>{this.props.message}</Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={this.props.handleAceptar}>
+          <Button variant='primary' onClick={this.props.handleAceptar}>
             Aceptar
           </Button>
         </Modal.Footer>
       </Modal>
-    );
+    )
   }
 }
 
-export default MessageDialog;
+export default MessageDialog

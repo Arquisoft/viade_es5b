@@ -1,7 +1,7 @@
-import React from "react";
-import { render } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
-import VerRutas from "./front-end/components/ruta/VerRutas/VerRutas";
+import React from 'react'
+import { render } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+import VerRutas from './front-end/components/ruta/VerRutas/VerRutas'
 /*
 test("comprueba título y cabecera del componente VerRutas", () => {
   const expectedValues = {

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import  Panel  from '../utils/panel/panel.component';
+import styled from 'styled-components'
+import Panel from '../utils/panel/panel.component'
 
 export const RegisterWrapper = styled.section`
   h1 {
@@ -8,11 +8,11 @@ export const RegisterWrapper = styled.section`
 
   //Todo: figure out why this is necessary
   margin-top: 100px;
-`;
+`
 
 export const RegisterPanel = styled(Panel)`
   justify-content: space-between;
-`;
+`
 
 export const PanelHeader = styled.div`
   position: relative;
@@ -38,7 +38,7 @@ export const PanelHeader = styled.div`
     background: #5361fd;
     top: 30px;
   }
-`;
+`
 
 export const PanelBody = styled.div`
   height: 100% !important;
@@ -68,7 +68,7 @@ export const PanelBody = styled.div`
     padding: 0;
     margin: 0;
   }
-`;
+`
 
 export const Actions = styled.div`
   height: 32px;
@@ -102,4 +102,4 @@ export const Actions = styled.div`
     color: #449df5;
     filter: opacity(40%);
   }
-`;
+`
