@@ -10,31 +10,30 @@ import SharePanel from "../../share/SharePanel";
 class RouteList extends Component {
   constructor(props) {
     super(props);
-    this.service = this.props.service;
     this.state = {
       rutas: [],
-      noRoutes: false,
       showSharePanel: false,
-      routeToShare: null
+      routeToShare: null,
+      emptyList: false
     };
   }
 
   async componentDidMount() {
-    const response = await this.props.rutas;
-    this.setState({ rutas: response });
-    if (this.state.rutas.length === 0) this.setState({ noRoutes: true });
+    let rutas = await this.props.getRutas();
+    this.setState({ rutas: rutas, emptyList: rutas.length === 0 });
+    this.props.handleLoaded(); // Indicamos al padre que ya se ha cargado la vista.
   }
 
   render() {
     return (
       <Accordion data-testid="acordeon" defaultActiveKey="0">
-        {this.state.noRoutes && (
+        {this.state.emptyList && (
           <Alert data-testid="alerta" variant="warning">
             Actualmente no dispones de ninguna ruta en tu POD. Accede a
             <a href="#/add-ruta"> Añadir Ruta </a> para añadir una nueva ruta.
           </Alert>
         )}
-        {!this.state.noRoutes &&
+        {this.state.rutas.length > 0 &&
           this.state.rutas.map((r, key) => (
             <RouteCard
               role="r-card"
@@ -42,7 +41,10 @@ class RouteList extends Component {
               handleShare={this.handleShare}
               ruta={r}
               key={key++}
-              eventKey={key}
+              subirFicheroAMiRuta={this.props.subirFicheroAMiRuta}
+              obtenerFicherosRuta={this.props.obtenerFicherosRuta}
+              comentarMiRuta={this.props.comentarMiRuta}
+              obtenerComentariosRuta={this.props.obtenerComentariosRuta}
             />
           ))}
 
@@ -51,8 +53,15 @@ class RouteList extends Component {
     );
   }
 
+  /**
+   * Manejador para el borrado de una ruta.
+   */
   handleDeleteRoute = async uuid => {
-    this.setState({ rutas: await this.service.deleteRuta(uuid) });
+    let rutas = await this.props.deleteRuta(uuid);
+    this.setState({
+      rutas: rutas,
+      emptyList: rutas.length === 0
+    });
   };
 
   /**
@@ -70,8 +79,10 @@ class RouteList extends Component {
     this.setState({ routeToShare: null, showSharePanel: false });
   };
 
-  share = amigos => {};
-
+  /**
+   * Muestra el panel Modal para compartir rutas, solo cuando
+   * se pulsa sobre el botón de Compartir.
+   */
   toggleSharePanel = () => {
     return (
       this.state.showSharePanel && (
@@ -79,31 +90,12 @@ class RouteList extends Component {
           ruta={this.state.routeToShare}
           show={this.state.showSharePanel}
           cancel={this.cancelShare}
+          getAmigos={this.props.getAmigos}
+          shareRuta={this.props.shareRuta}
         ></SharePanel>
       )
     );
   };
-
-  /*
-  handleDeleteRoute = uuid => {
-    let promise = new Promise((resolve, reject) => {
-      this.deleteRoute(uuid).then(() => {
-        let rutas = this.service.getRutas();
-        resolve(rutas);
-      });
-    });
-
-    promise.then(rutas => this.setState({ rutas: rutas }));
-  };
-
-  deleteRoute = uuid => {
-    let promise = new Promise((resolve, reject) => {
-      this.service.deleteRuta(uuid);
-      resolve();
-    });
-    return promise;
-  };
-  */
 }
 
 export default RouteList;

@@ -1,6 +1,6 @@
 import { schema } from "rdf-namespaces";
 import { fetchDocument } from 'tripledoc';
-import {readFolder} from "../helpers/fileHelper";
+import {readFolder,existsFile} from "../helpers/fileHelper";
 import {getPersonaByWebId} from "../helpers/personHelper";
 import Ruta from "../../../front-end/model/Ruta.js";
 import Hito from "../../../front-end/model/Hito.js";
@@ -17,6 +17,8 @@ export async function readRouteFromUrl(url)
       .catch(err => (routeDoc = null));
 
     if (routeDoc != null) {
+        try
+        {
         const route = routeDoc.getSubject("#ruta");
 
         let puntos = routeDoc.getSubjectsOfType(
@@ -56,7 +58,13 @@ export async function readRouteFromUrl(url)
         for (let i = 0; i < ficheros.length; i++) {
             let fichero = ficheros[i].getRef(schema.contentUrl)
             ruta.addFichero(fichero);
-          }       
+          } 
+        }
+        catch(error)
+        {
+            console.log(error);
+            return null;
+        }      
     }
     return ruta;
 }
@@ -86,4 +94,29 @@ export async function findRouteURL(folderUrl,uuid)
         };
     }
     return null;
+}
+export async function getSharedRouteFriends(storage,routeUUID) {
+    var result=[];
+    var exists=await existsFile(storage + 'private','mySharedRoutes.ttl');
+    if(exists)
+    {
+        const mySharedRoutesDocument = await fetchDocument(storage + 'private/mySharedRoutes.ttl');
+        
+        let rutas = mySharedRoutesDocument.getAllSubjectsOfType('http://arquisoft.github.io/viadeSpec/route');
+        for (var e = 0; e < rutas.length; e++) {
+          //Miro a ver si estoy compartiendo esta ruta
+          if(rutas[e].getLiteral(schema.identifier)===routeUUID)
+          {
+              //Si la estoy compartiendo entonces saco los amigos con los que la comparto
+              let amigos=rutas[e].getAllRefs(schema.agent)
+              for (var i = 0; i < amigos.length; i++) {
+                  //los añado a result
+                  result = [...result, amigos];
+              }
+              //Ya encontre lo que busco asi que salgo
+              break;
+          }
+        }
+    }
+    return result;
 }

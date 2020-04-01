@@ -6,8 +6,8 @@ import Hito from "../front-end/model/Hito";
 import { render, cleanup, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import SharePanel from "../front-end/components/share/SharePanel";
-
-
+import createReactMock from 'react-mock-component';
+import CommentBox from '../front-end/components/share/CommentBox'
 
 // Rutas de prueba
 let ruta = new Ruta("Ruta Avilés", [4.5, 5.4], "Muy buena ruta, entretenida.");
@@ -39,12 +39,15 @@ function setUp() {
 
 test("RouteCard contiene el botón de compartir.", () => {
     afterAll(cleanup);
-    const { getByTestId } = render(<RouteCard ruta={ruta}></RouteCard>);
-    expect(getByTestId("rb-compartir")).toHaveTextContent("Compartir");
+    jest.mock("../__test__/__mocks__/solid-auth-client.js");
+    const { getByTestId, getAllByTestId } = render(<RouteCard ruta={ruta}></RouteCard>);
+    const bts = getAllByTestId("rb-compartir");
 });
-
 test("Se renderizan bien los componentes de SharePanel", () => {
     afterAll(cleanup);
+    jest.mock("../__test__/__mocks__/solid-auth-client.js");
+    Foo.withProps().renders(<SharePanel ruta={ruta} show="true"></SharePanel>);
+    expect(document.body.innerHTML).toBeTruthy();
     const { getByTestId } = render(<SharePanel ruta={ruta} show="true"></SharePanel>);
     //let dialogo = await waitForElement(() => getByTestId("componenteModal"));
     expect(getByTestId("componenteModal")).toBeTruthy();
@@ -58,6 +61,7 @@ test("Se renderizan bien los componentes de SharePanel", () => {
 
 test("Se renderizan bien los componentes de SharePanel al pinchar en el botón de -compartir-", () => {
     afterAll(cleanup);
+    jest.mock("../__test__/__mocks__/solid-auth-client.js");
     const { getByTestId, getAllByTestId } = render(<RouteCard ruta={ruta}></RouteCard>);
     const bts = getAllByTestId("rb-compartir");
     bts[0].click();
@@ -73,11 +77,12 @@ test("Se renderizan bien los componentes de SharePanel al pinchar en el botón d
 
 test("Se ven los amigos para poder compartir con ellos la ruta", () => {
     afterAll(cleanup);
+    jest.mock("../__test__/__mocks__/solid-auth-client.js");
     const { getByTestId, getAllByTestId } = render(<RouteCard ruta={ruta}></RouteCard>);
     const bts = getAllByTestId("rb-compartir");
     bts[0].click();
     //let dialogo = await waitForElement(() => getByTestId("componenteModal"));
-    expect(getByTestId("componenteModal")).toBeTruthy();
+    expect(getAllByTestId("componenteModal")).toBeTruthy();
     //expect(getByTestId("modalBody")).toHaveTextContent("Cargando amigos..."); //o contains
     //expect(getByTestId("amigosCompartir")).contains("Pedro");
     //expect(getByTestId("amigosCompartir")).contains("Alex");

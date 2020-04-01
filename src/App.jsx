@@ -14,12 +14,14 @@ import Friends from "./front-end/components/friends/Friends";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { store } from "react-notifications-component";
-import * as i from "./front-end/components/InstanciaRutas";
-import SharedWithMe from "./front-end/components/share/SharedWithMe";
+import RutaService from "./front-end/services/rutas/RutaService";
+import ShareView from "./front-end/components/share/ShareView";
+
+const rutaService = new RutaService();
 
 class App extends Component {
   procesarRutas() {
-    i.service.procesarRutasCompartidas().then(result => {
+    rutaService.procesarRutasCompartidas().then(result => {
       for (var i = 0; i < result.length; i++) {
         //Agregamos la notificacion de ruta compartida
         store.addNotification({
@@ -62,7 +64,7 @@ class App extends Component {
               ></PrivateLayout>
               <PrivateLayout exact path="/add-ruta" component={AddRuta} />
               <PrivateLayout exact path="/friends" component={Friends} />
-              <PrivateLayout exact path="/shared" component={SharedWithMe} />
+              <PrivateLayout exact path="/shared" component={ShareView} />
               <NotLoggedInLayout
                 exact
                 path="/login"
