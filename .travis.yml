@@ -12,11 +12,11 @@ script:
   - npm install -g codecov
   - npm run build
   - npm run docs
+  - npm test && codecov
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: $github_token
   local_dir: build
-  script: npm test && codecov
   on:
     branch: master
