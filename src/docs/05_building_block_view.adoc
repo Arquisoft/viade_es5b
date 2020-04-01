@@ -16,7 +16,10 @@ Bloques de construcción contenidos::
 En cuanto a los bloques de construcción, podemos distinguir por un lado al *POD de un usuario*, que servirá de almacén descentralizado para almacenar los datos del usuario, sus rutas, comentarios, entre otros. Por otro lado, se encuentra el bloque de la *aplicación de VIADE*, el cual se intercomunica con los PODs a través de lo que denominamos la interfaz de SOLID. Además la aplicación también se comunica con otras APIs como la API File de HTML5 o bien la API de Google Maps. En la figura también podemos observar a los usuarios, cada uno de los cuales dispone de su POD, y que son quienes decidirán si comparten o no sus datos con otros usuarios o con la aplicación.
 
 Interfaces importantes::
-En cuanto a interfaces, podemos definir por un lado la *interfaz de SOLID*, la cual detallaremos más adelante, y que proporciona operaciones sobre los PODs de los usuarios. También se encuentran las *APIs de Google y File*, que nos proporcionarán servicios para representar las rutas sobre los mapas y la carga de ficheros respectivamente.
+
+image::InterfazPrincipal.jpeg[Interfaz de visualización de ruta]
+
+En cuanto a interfaces, podemos definir por un lado la *interfaz de SOLID*, la cual podemos ver en la imagen, y que proporciona operaciones sobre los PODs de los usuarios, concretamente en este caso nos permite visualizar una ruta, compartirla, borrarla o crear una nueva. También se encuentran las *APIs de Google y File*, que nos proporcionarán servicios para representar las rutas sobre los mapas y la carga de ficheros respectivamente.
 ****
 === Nivel 1
 ****
