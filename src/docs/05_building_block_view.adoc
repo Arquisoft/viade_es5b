@@ -42,12 +42,13 @@ El propósito de esta caja negra es representar a un usuario y a su POD, junto c
 La interfaz de esta caja se resume basicamente a las operaciones de lectura y escritura en los PODs que se llevará a cabo mediante librerías que se ajustan a la especificación SOLID. Podemos distinguir las siguientes interfaces:
 
   * *Usuario*: representa a un usuario junto con sus propiedades básicas.
-  * *Ruta*: Modela una ruta con su nombre, datos básicos e hitos destacados con coordenadas que serviran para representar la ruta enn el mapa.
+  * *Ruta*: Modela una ruta con su nombre, datos básicos como comentarios y fotos e hitos destacados con coordenadas que serviran para representar la ruta enn el mapa.
   * *Hito*: representa la entidad de un hito de una ruta concreta, almacenando su nombre, descripción,...etc pero también sus coordenadas, que serán de gran importancia.
+  * *Amigo*: representa a otro usuario que se a añadido como contacto para poder compartir rutas con él, almacenando su nombre y su webID. 
 
 A continuación, se muestra una figura de la *caja blanca* del User POD con sus elementos:
 
-image::UserPOD.jpg[Caja blanca para el POD del usuario]
+image::UserPODV2.JPG[Caja blanca para el POD del usuario]
 
 ****
 ==== Viade App
