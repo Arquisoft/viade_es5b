@@ -27,7 +27,7 @@ class RouteCard extends Component {
           <Button
             data-testid="rb-eliminar"
             variant="danger"
-            onClick={() => this.props.handleDelete(this.props.ruta.getUUID())}
+            onClick={() => this.props.handleDelete(this.props.ruta.getUUID(),this.props.ruta.getNombre())}
           >
             Eliminar
           </Button>
