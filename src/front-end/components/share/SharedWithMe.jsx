@@ -35,7 +35,7 @@ class SharedWithMe extends Component {
         </Jumbotron>
 
         {this.state.emptyList && (
-          <Alert variant="warning">
+          <Alert variant="warning" data-testid="alertaNoRutasCompartidas">
             Aún no te han compartido ninguna ruta.
           </Alert>
         )}

@@ -1,4 +1,4 @@
-import EventEmitter from 'events';
+/*import EventEmitter from 'events';
 import { act } from "@testing-library/react";
 
 const fetchResponse = { ok: true, status: 200 };
@@ -7,6 +7,8 @@ class SolidAuthClient extends EventEmitter {
   constructor() {
     super();
     this.session = undefined;
+    this.mockWebId("https://pedro223.inrupt.net/profile/card#me");
+    console.log(this.session);
   }
 
   fetch = () => fetchResponse;
@@ -34,4 +36,4 @@ jest.spyOn(instance, 'popupLogin');
 jest.spyOn(instance, 'logout');
 jest.spyOn(instance, 'removeListener');
 
-export default instance;
+export default instance;*/

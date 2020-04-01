@@ -1,32 +1,20 @@
-import React from 'react'
-import { render, cleanup, fireEvent, screen } from '@testing-library/react'
-import '@testing-library/jest-dom'
-import GroupSelect from '../front-end/components/share/GroupSelect'
+import React from "react";
+import { render, cleanup, fireEvent, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import GroupSelect from "../front-end/components/share/GroupSelect";
+import AmigoService from "../__test__/__mocks__/AmigoService"
 
-// Lista de amigos de prueba:
-// Rutas de prueba
-const amigos = []
-function setUp () {
-  const amigo1 = new Amigo(
-    'Pedro',
-    'https://pedro223.inrupt.net/profile/card#me'
-  )
+let amigoService = new AmigoService();
 
-  const amigo2 = new Amigo(
-    'Alex',
-    'https://hamalawindows.solid.community/profile/card#me'
-  )
+test("Se renderizan bien los componentes de GroupSelect", () => {
+    afterAll(cleanup);
+    const { getByTestId, getAllByTestId } = render(<GroupSelect amigos={amigoService.getAmigos()}
+      add={amigoService.addAmigo}
+      delete={amigoService.deleteAmigo}></GroupSelect>);
+    //let dialogo = await waitForElement(() => getByTestId("componenteModal"));
+    expect(getByTestId("envoltorio")).toBeTruthy();
+    expect(getAllByTestId("itemLista")).toBeTruthy();
+    //let element = getAllByTestId("itemLista")
+    //expect(element.children.length).toBe(3);
 
-  amigos.push(amigo1)
-  amigos.push(amigo2)
-}
-
-test('Se renderizan bien los componentes de GroupSelect', () => {
-  afterAll(cleanup)
-  const { getByTestId, getAllByTestId } = render(<GroupSelect amigos={amigos} />)
-  // let dialogo = await waitForElement(() => getByTestId("componenteModal"));
-  expect(getByTestId('envoltorio')).toBeTruthy()
-  const elements = getAllByTestId('itemLista')
-  expect(elements[0]).toHaveTextContent(amigo1.getNombre())
-  expect(elements[1]).toHaveTextContent(amigo2.getNombre())
-})
+});
