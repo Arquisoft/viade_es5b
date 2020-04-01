@@ -73,6 +73,10 @@ class AmigoService {
     //return BackMain.añadirAmigo(webId);
   }
 
+  deleteAmigo(webId){
+
+  }
+
   /*
    * Devuelve una persona de webID pasado como parámetro.
    */
