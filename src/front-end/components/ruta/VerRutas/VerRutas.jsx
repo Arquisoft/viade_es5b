@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import RouteList from "./RouteList";
 import PacmanViewLoader from "../../util/Loaders/PacmanViewLoader";
 import RutaService from "../../../services/rutas/RutaService";
+import AmigoService from "../../../services/amigos/AmigoService";
 
 class VerRutas extends Component {
   constructor() {
     super();
     this.rutaService = new RutaService();
+    this.amigoService = new AmigoService();
   }
 
   state = {
@@ -31,6 +33,9 @@ class VerRutas extends Component {
               getRutas={this.rutaService.getRutas}
               deleteRuta={this.rutaService.deleteRuta}
               shareRuta={this.rutaService.shareRuta}
+              obtenerFicherosRuta={this.rutaService.obtenerFicherosRuta}
+              subirFicheroAMiRuta={this.rutaService.subirFicheroAMiRuta}
+              getAmigos={this.amigoService.getAmigos}
             />
           }
           loading={this.state.loading}

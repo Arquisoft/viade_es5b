@@ -12,13 +12,11 @@ import {
 import Gallery from "react-grid-gallery";
 import bsCustomFileInput from "bs-custom-file-input";
 import $ from "jquery";
-import RutaService from "../../services/rutas/RutaService";
 import "../../css/photo-gallery.css";
 
 class PhotoGallery extends Component {
   constructor(props) {
     super(props);
-    this.rutaService = new RutaService();
     this.tWidth = 85;
     this.tHeight = 85;
   }
@@ -114,7 +112,7 @@ class PhotoGallery extends Component {
   handleUpload = async () => {
     this.setState({ loading: true, empty: false });
     if (
-      await this.rutaService.subirFicheroAMiRuta(
+      await this.props.subirFicheroAMiRuta(
         // añadimos los ficheros a la ruta del pod.
         this.state.selectedImages,
         this.state.route.getUUID()
@@ -143,7 +141,7 @@ class PhotoGallery extends Component {
     this.setState({ loading: true });
     let uuid = this.state.route.getUUID();
     let webID = this.props.author == null ? null : this.props.author.getWebId();
-    let urls = await this.rutaService.obtenerFicherosRuta(uuid, webID);
+    let urls = await this.props.obtenerFicherosRuta(uuid, webID);
     let imageObjects = urls.map(url => {
       // parseamos la lista de urls para obtener objetos imagen
       return {
