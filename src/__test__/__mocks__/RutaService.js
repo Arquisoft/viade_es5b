@@ -9,7 +9,6 @@ class RutaService {
     // Simula la base de datos
     this.BDRutas = [];
     this.inicializarBD();
-    this.RutaService = new RutaService();
   }
 
   /*
@@ -17,8 +16,8 @@ class RutaService {
    * que simula la base de datos.
    */
   inicializarBD() {
-    var r1 = new Ruta("Ruta-1", [43.534401, -5.909476], "Genial");
-    var r2 = new Ruta("Ruta-2", [43.361763, -5.847995], "Bien");
+    let r1 = new Ruta("Ruta-1", [43.534401, -5.909476], "Genial");
+    let r2 = new Ruta("Ruta-2", [43.361763, -5.847995], "Bien");
 
     r1.addHito(new Hito("Hito-r1-1", 43.531484, -5.911818));
     r1.addHito(new Hito("Hito-r1-2", 43.528935, -5.914273));

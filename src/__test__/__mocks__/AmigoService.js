@@ -7,8 +7,7 @@ class AmigoService {
   constructor() {
     // Simula la base de datos
     this.BDAmigos = [];
-    this.inicializarBD();
-    this.amigoService = new AmigoService();
+    this.inicializarBD()
   }
 
   /*

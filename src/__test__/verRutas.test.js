@@ -1,11 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
+jest.mock("../front-end/services/rutas/RutaService");
+jest.mock("../front-end/services/amigos/AmigoService");
 import VerRutas from "../front-end/components/ruta/VerRutas/VerRutas";
 import Ruta from "../front-end/model/Ruta";
 import Hito from "../front-end/model/Hito";
+import RutaService from "../__test__/__mocks__/RutaService"
+import AmigoService from "../__test__/__mocks__/AmigoService"
 import { render, getByText } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import RouteList from "../front-end/components/ruta/VerRutas/RouteList";
+
+let rutaService = new RutaService();
+let amigoService = new AmigoService();
 
 // Ruta de prueba
 let ruta = new Ruta("Ruta Avilés", [4.5, 5.4], "Muy buena ruta, entretenida.");
@@ -17,7 +24,5 @@ console.log("-------------------" + ruta.getHitos().length);
 
 test("se renderiza sin fallos", () => {
   const div = document.createElement("div");
-  jest.mock("../__test__/__mocks__/RutaService.js");
-  jest.mock("../__test__/__mocks__/AmigoService.js");
-  ReactDOM.render(<VerRutas></VerRutas>, div);
+  ReactDOM.render(<VerRutas rutaService={rutaService} amigoService={amigoService}></VerRutas>, div);
 });
