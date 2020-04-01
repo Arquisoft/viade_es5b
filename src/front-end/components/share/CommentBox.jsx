@@ -132,6 +132,7 @@ class CommentBox extends Component {
       commentList: await this.props.obtenerComentariosRuta(uuid, webID),
       loading: false
     });
+    
     this.setState({ empty: this.state.commentList.length === 0 });
   };
 
