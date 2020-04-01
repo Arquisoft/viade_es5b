@@ -21,4 +21,7 @@ test("RouteCard contiene el botón de eliminar.", () => {
     expect(getByTestId("rb-eliminar")).toHaveTextContent("Eliminar");
 });
 
-  
+test('RouteCard contiene el botón de eliminar.', () => {
+  const { getByTestId } = render(<RouteCard ruta={ruta} />)
+  expect(getByTestId('rb-eliminar')).toHaveTextContent('Eliminar')
+})

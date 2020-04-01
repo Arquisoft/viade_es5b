@@ -8,11 +8,11 @@ import "@testing-library/jest-dom";
 import RutaService from "../__test__/__mocks__/RutaService"
 
 // Ruta de prueba
-let ruta = new Ruta("Ruta Avilés", [4.5, 5.4], "Muy buena ruta, entretenida.");
-let hito1 = new Hito("Niemeyer", 4, 3.2);
-let hito2 = new Hito("Parque Ferrera", 5, 5.7);
-ruta.addHito(hito1);
-ruta.addHito(hito2);
+const ruta = new Ruta('Ruta Avilés', [4.5, 5.4], 'Muy buena ruta, entretenida.')
+const hito1 = new Hito('Niemeyer', 4, 3.2)
+const hito2 = new Hito('Parque Ferrera', 5, 5.7)
+ruta.addHito(hito1)
+ruta.addHito(hito2)
 
 let rutaService=new RutaService();
 /**
@@ -54,27 +54,27 @@ test("RouteCard contiene la información del inicio y los hitos de la ruta.", ()
     expect(rows[0].children[0].textContent).toBe("Inicio");
     for (let i = 0; i < rows.length; i++) {
       if (i == 0) {
-        expect(rows[i].children[0].textContent).toBe("Inicio");
+        expect(rows[i].children[0].textContent).toBe('Inicio')
         expect(parseFloat(rows[i].children[1].textContent)).toBe(
           ruta.getInicio()[0]
-        );
+        )
         expect(parseFloat(rows[i].children[2].textContent)).toBe(
           ruta.getInicio()[1]
-        );
+        )
       } else {
         expect(rows[i].children[0].textContent).toBe(
           ruta.getHitos()[i - 1].getNombre()
-        );
+        )
         expect(parseFloat(rows[i].children[1].textContent)).toBe(
           ruta.getHitos()[i - 1].getLat()
-        );
+        )
         expect(parseFloat(rows[i].children[2].textContent)).toBe(
           ruta.getHitos()[i - 1].getLong()
-        );
+        )
       }
     }
   }
-});
+})
 
 
 /*test("Al hacer click en Ver en el map se muestra el componente MapRuta", async () => {

@@ -6,20 +6,20 @@ import { render } from "@testing-library/react";
 
 //Lista de amigos de prueba:
 // Rutas de prueba
-let amigos = [];
-function setUp() {
-  let amigo1 = new Amigo(
-    "Pedro",
-    "https://pedro223.inrupt.net/profile/card#me"
-  );
-  
-  let amigo2 = new Amigo(
-    "Alex",
-    "https://hamalawindows.solid.community/profile/card#me"
-  );
+const amigos = []
+function setUp () {
+  const amigo1 = new Amigo(
+    'Pedro',
+    'https://pedro223.inrupt.net/profile/card#me'
+  )
 
-  amigos.push(amigo1);
-  amigos.push(amigo2);
+  const amigo2 = new Amigo(
+    'Alex',
+    'https://hamalawindows.solid.community/profile/card#me'
+  )
+
+  amigos.push(amigo1)
+  amigos.push(amigo2)
 }
 
 
@@ -37,12 +37,12 @@ beforeEach(() => {
 /*
 it('AddFriend', () => {
   act(() => {
-    ReactDOM.render(<Friends />, container);
-  });
+    ReactDOM.render(<Friends />, container)
+  })
 
-  expect(container).toBeTruthy();
+  expect(container).toBeTruthy()
 
-  /*expect(container.querySelector('.first')).toBeTruthy();
+  /* expect(container.querySelector('.first')).toBeTruthy();
   expect(container.querySelector('.bold')).toBeTruthy();
 
   expect(container.querySelector('.input')).toBeTruthy();
@@ -51,7 +51,7 @@ it('AddFriend', () => {
   /*
 });
 
-/*test("Presionar boton añadir y que aparezca Agregar", () => {
+/* test("Presionar boton añadir y que aparezca Agregar", () => {
     const { getByTestId } = render(<AddFriend />);
     act(() =>{
         getByTestId("buttonAdd").click();
@@ -75,47 +75,53 @@ test("Se renderizan bien titulos, forms, etiquetas", async () => {
   expect(getByTestId("formAddFriend")).toBeInTheDocument();
   expect(getByTestId("buttonAdd")).toBeInTheDocument();
 
+// PRUEBAS DE RENDERIZADO DE LOS COMPONENTES
+
+test('Se renderizan bien titulos, forms, etiquetas', async () => {
+  const { getByTestId } = render(<Friends amigos={[]} />)
+
+  expect(getByTestId('titleAmigos')).toHaveTextContent('Amigos')
+  expect(getByTestId('gestionAmigos')).toHaveTextContent('Desde aquí puedes realizar la gestión de tus amigos.')
+  expect(getByTestId('titleAgregarAmigo')).toBeInTheDocument()
+
+  // Dentro del componente addFriend
+  expect(getByTestId('nuevoAmigo')).toHaveTextContent('Para agregar un nuevo amigo, introduce su WebID. El WebID puede cambiar según el provedor del POD del usuario.')
+  expect(getByTestId('webID')).toHaveTextContent('WebID')
+  expect(getByTestId('formAddFriend')).toBeInTheDocument()
+  expect(getByTestId('buttonAdd')).toBeInTheDocument()
 })
 
-test("input vacío para agregar nuevo webID y botón agregar desactivado inicialmente", async () => {
-  const { getByTestId, getAllByTestId }=render(<Friends amigos={[]}></Friends>);
+test('input vacío para agregar nuevo webID y botón agregar desactivado inicialmente', async () => {
+  const { getByTestId, getAllByTestId } = render(<Friends amigos={[]} />)
 
-  const bts = getAllByTestId("formAddFriend");
-  expect(bts[0]).toBeEmpty();
-  const btsAdd = getAllByTestId("buttonAdd");
-  expect(btsAdd[0]).toBeDisabled();
-
+  const bts = getAllByTestId('formAddFriend')
+  expect(bts[0]).toBeEmpty()
+  const btsAdd = getAllByTestId('buttonAdd')
+  expect(btsAdd[0]).toBeDisabled()
 })
 
-test("insertamos un webID y se tendría que activar el botón de agregar", async () => {
-  const { getByTestId, getAllByTestId }=render(<Friends amigos={[]}></Friends>);
+test('insertamos un webID y se tendría que activar el botón de agregar', async () => {
+  const { getByTestId, getAllByTestId } = render(<Friends amigos={[]} />)
 
-  const bts = getAllByTestId("formAddFriend");
-  bts[0].innerText = "https://alex123.solid.community";
-  const btsAdd = getAllByTestId("buttonAdd")
-  expect(btsAdd[0]).toBeEnabled();
-
+  const bts = getAllByTestId('formAddFriend')
+  bts[0].innerText = 'https://alex123.solid.community'
+  const btsAdd = getAllByTestId('buttonAdd')
+  expect(btsAdd[0]).toBeEnabled()
 })
 
-test("insertamos un webID que no existe", async () => {
-  const { getByTestId, getAllByTestId }=render(<Friends amigos={[]}></Friends>);
+test('insertamos un webID que no existe', async () => {
+  const { getByTestId, getAllByTestId } = render(<Friends amigos={[]} />)
 
-  const bts = getAllByTestId("formAddFriend");
-  bts[0].innerText = "12345";
-  let agregar = getAllByTestId("buttonAdd");
-  agregar[0].click();
-  //const alerts = getAllByTestId("alertNoExisteUsuario");
-  //expect(alerts[0]).toHaveTextContent("No existe el usuario o ya está presente en tu lista de amigos.");
-
+  const bts = getAllByTestId('formAddFriend')
+  bts[0].innerText = '12345'
+  const agregar = getAllByTestId('buttonAdd')
+  agregar[0].click()
+  // const alerts = getAllByTestId("alertNoExisteUsuario");
+  // expect(alerts[0]).toHaveTextContent("No existe el usuario o ya está presente en tu lista de amigos.");
 })
 
-test("insertamos un webID correcto", async () => {
-  const { getByTestId, getAllByTestId }=render(<Friends amigos={[]}></Friends>);
-
-  const bts = getAllByTestId("formAddFriend");
-  bts[0].innerText = "https://alex123.solid.community";
-  let agregar = getAllByTestId("buttonAdd");
-  agregar[0].click();
+test('insertamos un webID correcto', async () => {
+  const { getByTestId, getAllByTestId } = render(<Friends amigos={[]} />)
 
 })*/
 test("Comprobar test porque no funciona",()=>{

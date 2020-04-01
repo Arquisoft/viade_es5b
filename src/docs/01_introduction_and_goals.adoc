@@ -16,8 +16,6 @@ El objetivo  del proyecto es la creación de un sistema descentralizado de gesti
 * Los usuarios pueden tener amigos con los que compartir sus rutas.
 * El usuario puede recibir notificaciones cuando le compartan una ruta.
 * Los usuarios pueden compartir fotos, videos u otros ficheros con sus amigos.
-
-* Deben de poder verse las rutas  cargadas por usuarios de otros programas de gestión de rutas, teniendo en cuenta la interoperabilidad.
 ****
 
 === Quality Goals

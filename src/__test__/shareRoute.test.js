@@ -17,7 +17,7 @@ let hito2 = new Hito("Parque Ferrera", 4.5, 5.7);
 ruta.addHito(hito1);
 ruta.addHito(hito2);
 
-console.log("-------------------" + ruta.getHitos().length);
+console.log('-------------------' + ruta.getHitos().length)
 
 let amigoService = new AmigoService();
 
@@ -26,6 +26,10 @@ let amigoService = new AmigoService();
 // Rutas de prueba
 
 
+  const amigo2 = new Amigo(
+    'Alex',
+    'https://hamalawindows.solid.community/profile/card#me'
+  )
 
 /*test("RouteCard contiene el botón de compartir.", () => {
     afterAll(cleanup);
@@ -87,4 +91,18 @@ test("Se renderizan bien los componentes de SharePanel, seleccionamos y quitamos
  
 });	
 
+test('Se renderizan bien los componentes de SharePanel al pinchar en el botón de -compartir-', () => {
+  afterAll(cleanup)
+  jest.mock('../__test__/__mocks__/solid-auth-client.js')
+  const { getByTestId, getAllByTestId } = render(<RouteCard ruta={ruta} />)
+  const bts = getAllByTestId('rb-compartir')
+  bts[0].click()
+  // let dialogo = await waitForElement(() => getByTestId("componenteModal"));
+  expect(getByTestId('componenteModal')).toBeTruthy()
+  expect(getByTestId('titleCompartir')).toHaveTextContent('Compartir esta ruta')
+  expect(getByTestId('nombreRutaCompartir')).toHaveTextContent('Ruta: ' + ruta.getNombre())
+  expect(getByTestId('parrafoSeleccion')).toHaveTextContent('Selecciona a los amigos con los que deseas compartir esta ruta:')
+  expect(getByTestId('cancelarCompartirButton')).toHaveTextContent('Cancelar')
+  expect(getByTestId('compartirButton')).toHaveTextContent('Compartir')
+})
 
