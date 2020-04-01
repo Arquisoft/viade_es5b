@@ -17,6 +17,7 @@ console.log("-------------------" + ruta.getHitos().length);
 
 test("se renderiza sin fallos", () => {
   const div = document.createElement("div");
-  jest.mock("../__test__/__mocks__/RutaService.js");
-  ReactDOM.render(<VerRutas></VerRutas>, div);
+  const fakeRutaService = jest.mock("../__test__/__mocks__/RutaService.js");
+  const fakeAmigoService = jest.mock("../__test__/__mocks__/AmigoService.js");
+  ReactDOM.render(<VerRutas rutaService={fakeRutaService} amigoService={fakeAmigoService}></VerRutas>, div);
 });

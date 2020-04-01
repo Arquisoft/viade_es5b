@@ -1,4 +1,4 @@
-import EventEmitter from 'events';
+/*import EventEmitter from 'events';
 import { act } from "@testing-library/react";
 
 const fetchResponse = { ok: true, status: 200 };
@@ -36,4 +36,4 @@ jest.spyOn(instance, 'popupLogin');
 jest.spyOn(instance, 'logout');
 jest.spyOn(instance, 'removeListener');
 
-export default instance;
+export default instance;*/
