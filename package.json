@@ -45,7 +45,7 @@
     "eject": "react-scripts eject",
     "instalacionLimpia": "cd node_modules && DEL /F/Q/S *.* > NUL && cd .. && RMDIR /Q/S node_modules && npm install node --max-old-space-size=5120",
     "jest-test": "jest",
-    "standard": "standard --fix"
+    "standard": "cd src && standard --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
