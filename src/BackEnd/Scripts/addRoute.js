@@ -3,11 +3,6 @@ import { fetchDocument, createDocument } from 'tripledoc';
 
 const auth = require('solid-auth-client')
 
-
-
-
-
-
 export async function addRoute(ruta) {
     let session = await auth.currentSession();
     if (!session) { window.location.href = "/login"; }

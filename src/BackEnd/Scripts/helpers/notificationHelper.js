@@ -17,7 +17,7 @@ export async function getInboxUrl(webId) {
     if(profile!==null)
     {
       var url = profile.getRef(ldp.inbox);
-      console.log(url);
+      //console.log(url);
       return  url;
     }
   }
@@ -51,7 +51,7 @@ export async function sendNotification(webId,targetWebId, type) {
 //Devuelve true si logro mandar la notificacion, false si no
 export async function sendNotificationBody(webId,targetWebId, body) {
   var inbox=await getInboxUrl(targetWebId);
-  request({
+  await request({
     method: 'POST',
     uri: inbox,
     body: body,
@@ -81,7 +81,6 @@ export async function getNotificationDocuments(webId){
     var result = [];
     for(var i=0;i<containerItemUrls.length;i++)
     {
-      console.log('documento', containerItemUrls[i]);
       try {
         var doc = await fetchDocument(containerItemUrls[i]);
         if (doc) {

@@ -15,10 +15,11 @@ const AuthNavBar = () => {
         <Nav.Link href="#/ver-rutas">Mis rutas</Nav.Link>
         <Nav.Link href="#/add-ruta">Añadir ruta</Nav.Link>
         <Nav.Link href="#/friends">Amigos</Nav.Link>
+        <Nav.Link href="#/shared">Compartido conmigo</Nav.Link>
       </Nav>
 
       <Nav className="ml-auto">
-        <Nav.Link onClick={logout}>Log Out</Nav.Link>
+        <Nav.Link className="logout" onClick={logout}>Log Out</Nav.Link>
       </Nav>
     </Navbar>
   );

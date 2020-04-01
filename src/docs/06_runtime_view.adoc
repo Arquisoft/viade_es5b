@@ -57,11 +57,11 @@ App -> Usuario: Mensaje de "Ruta guardada"
 
 === Ver rutas
 
-- Click en "Ver rutas" en la barra de navegación.
+- Click en "Mis rutas" en la barra de navegación.
 
 [plantuml,"DiagramaVerRutas",png]
 ----
-Usuario -> App: Seleccionamos "Ver rutas"
+Usuario -> App: Seleccionamos "Mis rutas"
 App -> BBDD : Solicitar las rutas del usuario al POD
 BBDD -> App: Devuelve las rutas
 App -> Usuario: Devuelve la vista con las rutas del usuario
@@ -69,13 +69,13 @@ App -> Usuario: Devuelve la vista con las rutas del usuario
 
 === Eliminar ruta
 
-. Click en "Ver rutas" en la barra de navegación.
+. Click en "Mis rutas" en la barra de navegación.
 . Escoger la ruta a eliminar.
 . Click en el botón de "Eliminar" de la ruta elegida y se eliminará la ruta del POD.
 
 [plantuml,"DiagramaEliminarRuta",png]
 ----
-Usuario -> App: Seleccionamos "Ver rutas"
+Usuario -> App: Seleccionamos "Mis rutas"
 App -> BBDD : Solicitar las rutas del usuario al POD
 BBDD -> App: Devuelve las rutas
 App -> Usuario: Devuelve la vista con las rutas del usuario
@@ -83,26 +83,189 @@ Usuario -> App: Escoge la ruta a eliminar y pulsa el botón "Eliminar"
 App -> BBDD: Elimina la ruta del POD
 App -> Usuario: Mensaje de "Ruta eliminada"
 ----
-=== Modificar ruta
+=== Agregar amigo que existe
 
-. Click en "Ver rutas" en la barra de navegación.
-. Escoger la ruta a modificar.
-. Click en el botón de "Editar" de la ruta elegida.
-. Modificar los campos de la ruta.
-. Click en el botón "Editar" para modificar la ruta en el POD.
+. Click en "Amigos".
+. Escribimos el WebId del usuario que queremos agregar como amigo.
+. Click en el botón de "Agregar".
+. Existe el amigo y lo agrega en la lista de amigos del usuario.
 
-
-[plantuml,"DiagramaModificarRuta",png]
+[plantuml,"DiagramaAgregarAmigoExistente",png]
 ----
-Usuario -> App: Seleccionamos "Ver rutas"
+Usuario -> App: Seleccionamos "Amigos"
+App -> Usuario: Devuelve la vista que nos permite agregar un amigo y listar los amigos
+Usuario -> App: Rellenamos el campo con el webId del usuario que queremos agregar como amigo y click en "Agregar"
+App -> BBDD: Guarda el amigo en el POD del usuario
+App -> Usuario: Muestra el nuevo amigo en la lista de amigos
+----
+
+=== Agregar amigo que no existe o ya es amigo del usuario
+
+. Click en "Amigos".
+. Escribimos el WebId del usuario que queremos agregar como amigo.
+. Click en el botón de "Agregar".
+. No existe el webId del amigo que queremos agregar o ya es un amigo, no se añade un nuevo amigo en la lista de amigos.
+
+[plantuml,"DiagramaAgregarAmigoNoExistenteOYaAmigo",png]
+----
+Usuario -> App: Seleccionamos "Amigos"
+App -> Usuario: Devuelve la vista que nos permite agregar un amigo y listar los amigos
+Usuario -> App: Rellenamos el campo con el webId del usuario que queremos agregar como amigo y click en "Agregar"
+App -> BBDD: Intenta guardar el amigo en el POD del usuario
+BBDD -> BBDD: No encuentra un usuario con ese webID o comprueba que ya es amigo del usuario
+BBDD -> App: Notifica que no se ha agregado el nuevo amigo
+App -> Usuario: Notifica que "No existe el usuario o ya está presente en tu lista de amigos." y muestra la lista de amigos sin añadir un nuevo amigo
+----
+
+=== Listar amigos
+
+- Click en "Amigos" en la barra de navegación.
+
+[plantuml,"DiagramaVerAmigos",png]
+----
+Usuario -> App: Seleccionamos "Amigos"
+App -> BBDD : Solicitar los amigos del usuario al POD
+BBDD -> App: Devuelve los amigos
+App -> Usuario: Devuelve la vista con los amigos del usuario
+----
+
+=== Compartir ruta con amigos
+
+. Click en "Mis rutas".
+. Escoger la ruta a compartir.
+. Click en el botón de "Compartir".
+. Escogemos los amigos a los que queremos compartirle la ruta.
+. Click en "Compartir".
+
+[plantuml,"DiagramaCompartirRuta",png]
+----
+Usuario -> App: Seleccionamos "Mis rutas"
 App -> BBDD : Solicitar las rutas del usuario al POD
 BBDD -> App: Devuelve las rutas
 App -> Usuario: Devuelve la vista con las rutas del usuario
-Usuario -> App: Escoge la ruta a modificar y pulsa el botón "Editar"
-App -> Usuario: Devuelve la vista con el formulario de Modificar ruta y los campos actuales de la ruta a modificar
-Usuario -> App: Modifica los campos del formulario y pulsa el botón "Editar"
-App -> BBDD: Modifica los campos de la ruta en el POD
+Usuario -> App: Escoge la ruta a compartir y pulsa el botón "Compartir"
+App -> BBDD: Solicita los amigos del usuario al POD
+BBDD -> App: Devuelve los amigos del usuario
+App -> Usuario: Muestra la lista de amigos al usuario
+Usuario -> App: Selecciona los amigos a los que quiere compartir la ruta y pulsa el botón "Compartir"
+App -> BBDD: Guarda la ruta con el usuario que la compartió en los PODs de los amigos seleccionados
+BBDD -> AppAmigo: Notifica que se le ha compartido una ruta
+AppAmigo -> Usuario: Notifica al usuario que le han compartido una ruta
+
 ----
+
+=== Ver rutas compartidas por usuarios
+
+. Click en "Compartido conmigo".
+
+[plantuml,"DiagramaRutasCompartidas",png]
+----
+Usuario -> App: Seleccionamos "Compartido conmigo"
+App -> BBDD : Solicitar las rutas que han compartido al usuario al POD
+BBDD -> App: Devuelve las rutas
+App -> Usuario: Devuelve la vista con las rutas que se han compartido al usuario
+----
+
+=== Comentar una ruta
+
+. Click en "Mis rutas".
+. Escogemos la ruta en la que queremos crear un comentario.
+. Click en "Comentarios".
+. Escribimos el comentario y click en el botón de "Publicar".
+
+[plantuml,"DiagramaComentarRuta",png]
+----
+Usuario -> App: Seleccionamos "Mis rutas"
+App -> BBDD : Solicitar las rutas del usuario al POD
+BBDD -> App: Devuelve las rutas
+App -> Usuario: Devuelve la vista con las rutas del usuario
+Usuario -> App: Escoge la ruta a la que quiere crear un comentario y click en "Comentarios"
+Usuario -> App: Escribe el comentario y click en el botón "Publicar"
+App -> BBDD: Crea un comentario nuevo para la ruta en el POD
+App -> Usuario: Visualizamos el comentario en la lista de comentarios de la ruta
+----
+
+=== Añadir una imagen a una ruta
+
+. Click en "Mis rutas".
+. Escogemos la ruta en la que queremos añadir una imagen.
+. En Galería seleccionamos la imagen y click en el botón de "Subir".
+
+[plantuml,"DiagramaSubirImagenRuta",png]
+----
+Usuario -> App: Seleccionamos "Mis rutas"
+App -> BBDD : Solicitar las rutas del usuario al POD
+BBDD -> App: Devuelve las rutas
+App -> Usuario: Devuelve la vista con las rutas del usuario
+Usuario -> App: Escoge la ruta a la que quiere añadir una foto, selecciona la imagen y click en el botón "Subir"
+App -> BBDD: Añade una foto para la ruta en el POD
+App -> Usuario: Visualizamos la imagen añadida en la galería de la ruta
+----
+
+=== Ver comentarios de una ruta
+
+. Click en "Mis rutas".
+. Escogemos la ruta de la que queremos ver los comentarios.
+. Click en "Comentarios".
+
+[plantuml,"DiagramaVerComentariosRuta",png]
+----
+Usuario -> App: Seleccionamos "Mis rutas"
+App -> BBDD : Solicitar las rutas del usuario al POD
+BBDD -> App: Devuelve las rutas
+App -> Usuario: Devuelve la vista con las rutas del usuario
+Usuario -> App: Escoge la ruta de la que queremos ver los comentarios y click en "Comentarios"
+App -> BBDD: Solicita los comentarios de la ruta al POD
+App -> Usuario: Visualizamos los comentarios de la ruta
+----
+
+
+=== Ver galería de una ruta
+
+. Click en "Mis rutas".
+. Escogemos la ruta de la que queremos ver la galería.
+. Visualizamos en la galería de la ruta las imágenes.
+
+[plantuml,"DiagramaVerGaleriaRuta",png]
+----
+Usuario -> App: Seleccionamos "Mis rutas"
+App -> BBDD : Solicitar las rutas del usuario al POD
+BBDD -> App: Devuelve las rutas con sus galerías
+----
+
+=== Ver comentarios de una ruta compartida
+
+. Click en "Compartido conmigo".
+. Escogemos la ruta de la que queremos ver los comentarios.
+. Click en "Comentarios".
+
+[plantuml,"DiagramaVerComentariosRutaCompartida",png]
+----
+Usuario -> App: Seleccionamos "Compartido conmigo"
+App -> BBDD : Solicitar las rutas compartidas al usuario al POD
+BBDD -> App: Devuelve las rutas compartidas
+App -> Usuario: Devuelve la vista con las rutas compartidas al usuario
+Usuario -> App: Escoge la ruta compartida de la que queremos ver los comentarios y click en "Comentarios"
+App -> BBDD: Solicita los comentarios de la ruta compartida al POD
+App -> Usuario: Visualizamos los comentarios de la ruta compartida
+----
+
+=== Ver galería de una ruta compartida
+
+. Click en "Compartido conmigo".
+. Escogemos la ruta de la que queremos ver la galería.
+. Visualizamos en la galería de la ruta las imágenes.
+
+[plantuml,"DiagramaVerGaleriaRutaCompartida",png]
+----
+Usuario -> App: Seleccionamos "Compartido conmigo"
+App -> BBDD : Solicitar las rutas compartidas al usuario al POD
+BBDD -> App: Devuelve las rutas que nos han compartido con sus galerías
+----
+
+
+
+
 
 
 

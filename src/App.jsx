@@ -11,19 +11,50 @@ import NotLoggedInLayout from "./front-end/layouts/NotLoggedInLayout/not-logged-
 import PrivateLayout from "./front-end/layouts/PrivateLayout/private.layout";
 import PublicLayout from "./front-end/layouts/PublicLayout/public.layout";
 import Friends from "./front-end/components/friends/Friends";
-//import BackMain from "./BackEnd/BackMain.js";
-//import Ruta from "./front-end/model/Ruta";
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
+import { store } from "react-notifications-component";
+import RutaService from "./front-end/services/rutas/RutaService";
+import ShareView from "./front-end/components/share/ShareView";
 
+const rutaService = new RutaService();
 
 class App extends Component {
+  procesarRutas() {
+    rutaService.procesarRutasCompartidas().then(result => {
+      for (var i = 0; i < result.length; i++) {
+        //Agregamos la notificacion de ruta compartida
+        store.addNotification({
+          title: result[0].getTitulo(),
+          message: result[0].getMensaje(),
+          type: "success",
+          insert: "top",
+          container: "top-right",
+          animationIn: ["animated", "fadeIn"],
+          animationOut: ["animated", "fadeOut"],
+          dismiss: {
+            duration: 5000,
+            onScreen: true
+          }
+        });
+      }
+    });
+  }
+  async componentDidMount() {
+    //Cada 10 segundos proceso las rutas compartidas
+    var intervalId = setInterval(this.procesarRutas, 10000);
+    this.setState({ intervalId: intervalId });
+  }
+  componentWillUnmount() {
+    // use intervalId from the state to clear the interval
+    clearInterval(this.state.intervalId);
+  }
   render() {
-    //BackMain.compartirRuta("https://pedro223.inrupt.net/profile/card#me",new Ruta('ruta 2',[989.8, -288.6],'mi segunda ruta'));
-    //BackMain.añadirAmigo("https://pedro223.inrupt.net/profile/card#me");
-    //BackMain.listarAmigos();
     return (
       <div data-testid="aplicacion">
         <Router>
           <div>
+            <ReactNotification />
             <Switch>
               <PublicLayout exact path="/" component={Home} />
               <PrivateLayout
@@ -33,6 +64,7 @@ class App extends Component {
               ></PrivateLayout>
               <PrivateLayout exact path="/add-ruta" component={AddRuta} />
               <PrivateLayout exact path="/friends" component={Friends} />
+              <PrivateLayout exact path="/shared" component={ShareView} />
               <NotLoggedInLayout
                 exact
                 path="/login"
