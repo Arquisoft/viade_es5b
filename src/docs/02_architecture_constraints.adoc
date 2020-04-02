@@ -1,8 +1,5 @@
 [[section-architecture-constraints]]
 == Architecture Constraints
-Alejandro Florez Muñiz <uo264371@uniovi.es>
-
-Alejandro Iglesias Calvo <uo247346@uniovi.es>
 
 ****
 .Contenido
@@ -102,7 +99,7 @@ servidor. Para ello será necesario integrar React con SOLID.
 | *Division del proyecto de forma interna*
 | Una division estructurada del diseño de la aplicacion (en cuanto a diagrama de directorios) resulta muy util de cara a procesar cambios, o localizar componentes de forma sencilla.
 Esta directriz, aunque poco usada, es altamente recomendable.
-//Esta es nueva
+
 | *AsciiDoctor*
 | Utilizamos esta herramienta para la documentacion porque cuenta con diversas plantillas muy utiles.
 Ademas, es capaz de dar formato a multiples lenguajes (.doc, .html, etc) lo que facilita una documentacion mas accesible.

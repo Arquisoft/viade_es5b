@@ -1,15 +1,15 @@
-import styled from 'styled-components';
-import  GradientBackground from '../utils/GradientBackground/gradient-background.component';
-import Panel from '../utils/panel/panel.component';
+import styled from 'styled-components'
+import GradientBackground from '../utils/GradientBackground/gradient-background.component'
+import Panel from '../utils/panel/panel.component'
 
 export const LoginWrapper = styled(GradientBackground)`
   h1 {
     color: #ffffff;
   }
   margin-top: 60px;
-`;
+`
 
-export const LoginPanel = styled(Panel)``;
+export const LoginPanel = styled(Panel)``
 
 export const PanelBody = styled.div`
   display: grid;
@@ -21,7 +21,7 @@ export const PanelBody = styled.div`
       padding-left: 20px;
     }
   }
-`;
+`
 
 export const LoginTitle = styled.span`
   color: #656e75;
@@ -60,4 +60,4 @@ export const LoginTitle = styled.span`
   &::after {
     left: 0;
   }
-`;
+`

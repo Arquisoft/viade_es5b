@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Alert, Container, Card, Col, Row } from "react-bootstrap";
+import { Alert, Container, Card, Col, Row, Jumbotron } from "react-bootstrap";
 import MapRuta from "../map/MapRuta";
 import CommentBox from "./CommentBox";
 import PhotoGallery from "./PhotoGallery";
@@ -24,15 +24,24 @@ class SharedWithMe extends Component {
   render() {
     return (
       <div>
-        <h2 data-testid="title">Compartido conmigo</h2>
+        <Jumbotron>
+          <h2 className="display-4" data-testid="title">
+            Compartido conmigo
+          </h2>
+          <p data-testid="textoCompartidoConmigo">
+            En esta sección puedes ver los detalles de las rutas que te han
+            compartido tus amigos, junto con sus comentarios y fotos.
+          </p>
+        </Jumbotron>
+
         {this.state.emptyList && (
-          <Alert variant="warning">
+          <Alert variant="warning" data-testid="alertaNoRutasCompartidas">
             Aún no te han compartido ninguna ruta.
           </Alert>
         )}
         {this.state.rutasCompartidas.map((sharedRoute, key) => {
           return (
-            <Card>
+            <Card key={key++}>
               <Card.Header>
                 <h4>{sharedRoute.getRuta().getNombre()}</h4>
                 <p>

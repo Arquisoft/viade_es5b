@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const CenterContainerWrapper = styled.section`
   position: relative;
@@ -20,4 +20,4 @@ export const CenterContainerWrapper = styled.section`
     margin: 40px 0;
     font-weight: bold;
   }
-`;
+`

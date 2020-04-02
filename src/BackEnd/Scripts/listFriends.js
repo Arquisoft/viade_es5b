@@ -1,24 +1,22 @@
-import { fetchDocument } from "tripledoc";
-import {getPersonaByWebId} from "./helpers/personHelper";
+import { fetchDocument } from "tripledoc"
+import { getPersonaByWebId } from "./helpers/personHelper"
 
-const auth = require("solid-auth-client");
+const auth = require("solid-auth-client")
 
-export async function listFriends() {
-  var result = [];
+export async function listFriends () {
+  var result = []
 
-  let session = await auth.currentSession();
+  const session = await auth.currentSession()
   if (!session) {
-    window.location.href = "/login";
+    window.location.href = "/login"
   }
 
-  const profileDoc = await fetchDocument(session.webId);
+  const profileDoc = await fetchDocument(session.webId)
 
-  var friendWebIds= profileDoc.getSubject(session.webId).getAllNodeRefs('http://xmlns.com/foaf/0.1/knows');
-  for(var i=0;i<friendWebIds.length;i++)
-  {
-    var friend=await getPersonaByWebId(friendWebIds[i]);
-    result = [...result, friend];
+  var friendWebIds = profileDoc.getSubject(session.webId).getAllNodeRefs("http://xmlns.com/foaf/0.1/knows")
+  for (var i = 0; i < friendWebIds.length; i++) {
+    var friend = await getPersonaByWebId(friendWebIds[i])
+    result = [...result, friend]
   }
-  console.log(result);
-  return result;
+  return result
 }

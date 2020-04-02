@@ -35,9 +35,14 @@ There are many notations for describing scenarios, e.g.
 
 === Iniciar sesión
 
+****
+
 image:inicioSesion.png[inicioSesionDiagrama]
 
+****
 === Crear ruta
+
+****
 
 . Click en "Añadir ruta" en la barra de navegación.
 . Rellenar los campos sobre información de la nueva ruta.
@@ -54,9 +59,10 @@ Usuario -> App: Rellenar campos de ruta e hitos
 App -> BBDD: Guarda la ruta en el POD
 App -> Usuario: Mensaje de "Ruta guardada"
 ----
-
+****
 === Ver rutas
 
+****
 - Click en "Mis rutas" en la barra de navegación.
 
 [plantuml,"DiagramaVerRutas",png]
@@ -67,7 +73,10 @@ BBDD -> App: Devuelve las rutas
 App -> Usuario: Devuelve la vista con las rutas del usuario
 ----
 
+****
 === Eliminar ruta
+
+****
 
 . Click en "Mis rutas" en la barra de navegación.
 . Escoger la ruta a eliminar.
@@ -83,7 +92,11 @@ Usuario -> App: Escoge la ruta a eliminar y pulsa el botón "Eliminar"
 App -> BBDD: Elimina la ruta del POD
 App -> Usuario: Mensaje de "Ruta eliminada"
 ----
+
+****
 === Agregar amigo que existe
+
+****
 
 . Click en "Amigos".
 . Escribimos el WebId del usuario que queremos agregar como amigo.
@@ -99,7 +112,11 @@ App -> BBDD: Guarda el amigo en el POD del usuario
 App -> Usuario: Muestra el nuevo amigo en la lista de amigos
 ----
 
+****
+
 === Agregar amigo que no existe o ya es amigo del usuario
+
+****
 
 . Click en "Amigos".
 . Escribimos el WebId del usuario que queremos agregar como amigo.
@@ -117,7 +134,11 @@ BBDD -> App: Notifica que no se ha agregado el nuevo amigo
 App -> Usuario: Notifica que "No existe el usuario o ya está presente en tu lista de amigos." y muestra la lista de amigos sin añadir un nuevo amigo
 ----
 
+****
+
 === Listar amigos
+
+****
 
 - Click en "Amigos" en la barra de navegación.
 
@@ -129,7 +150,11 @@ BBDD -> App: Devuelve los amigos
 App -> Usuario: Devuelve la vista con los amigos del usuario
 ----
 
+****
+
 === Compartir ruta con amigos
+
+****
 
 . Click en "Mis rutas".
 . Escoger la ruta a compartir.
@@ -154,7 +179,11 @@ AppAmigo -> Usuario: Notifica al usuario que le han compartido una ruta
 
 ----
 
+****
+
 === Ver rutas compartidas por usuarios
+
+****
 
 . Click en "Compartido conmigo".
 
@@ -166,7 +195,11 @@ BBDD -> App: Devuelve las rutas
 App -> Usuario: Devuelve la vista con las rutas que se han compartido al usuario
 ----
 
+****
+
 === Comentar una ruta
+
+****
 
 . Click en "Mis rutas".
 . Escogemos la ruta en la que queremos crear un comentario.
@@ -185,7 +218,11 @@ App -> BBDD: Crea un comentario nuevo para la ruta en el POD
 App -> Usuario: Visualizamos el comentario en la lista de comentarios de la ruta
 ----
 
+****
+
 === Añadir una imagen a una ruta
+
+****
 
 . Click en "Mis rutas".
 . Escogemos la ruta en la que queremos añadir una imagen.
@@ -202,7 +239,11 @@ App -> BBDD: Añade una foto para la ruta en el POD
 App -> Usuario: Visualizamos la imagen añadida en la galería de la ruta
 ----
 
+****
+
 === Ver comentarios de una ruta
+
+****
 
 . Click en "Mis rutas".
 . Escogemos la ruta de la que queremos ver los comentarios.
@@ -219,8 +260,11 @@ App -> BBDD: Solicita los comentarios de la ruta al POD
 App -> Usuario: Visualizamos los comentarios de la ruta
 ----
 
+****
 
 === Ver galería de una ruta
+
+****
 
 . Click en "Mis rutas".
 . Escogemos la ruta de la que queremos ver la galería.
@@ -233,7 +277,11 @@ App -> BBDD : Solicitar las rutas del usuario al POD
 BBDD -> App: Devuelve las rutas con sus galerías
 ----
 
+****
+
 === Ver comentarios de una ruta compartida
+
+****
 
 . Click en "Compartido conmigo".
 . Escogemos la ruta de la que queremos ver los comentarios.
@@ -250,7 +298,11 @@ App -> BBDD: Solicita los comentarios de la ruta compartida al POD
 App -> Usuario: Visualizamos los comentarios de la ruta compartida
 ----
 
+****
+
 === Ver galería de una ruta compartida
+
+****
 
 . Click en "Compartido conmigo".
 . Escogemos la ruta de la que queremos ver la galería.
@@ -263,12 +315,4 @@ App -> BBDD : Solicitar las rutas compartidas al usuario al POD
 BBDD -> App: Devuelve las rutas que nos han compartido con sus galerías
 ----
 
-
-
-
-
-
-
-
-
-
+****

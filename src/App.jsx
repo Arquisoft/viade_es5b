@@ -27,14 +27,14 @@ const rutaService = new RutaService();
  * componentes hijos, a los que se les pasa referencias a las funciones de los servicios.
  */
 class App extends Component {
-  procesarRutas() {
+  procesarRutas () {
     rutaService.procesarRutasCompartidas().then(result => {
       for (var i = 0; i < result.length; i++) {
-        //Agregamos la notificacion de ruta compartida
+          //Agregamos la notificacion de ruta compartida
         store.addNotification({
           title: result[0].getTitulo(),
           message: result[0].getMensaje(),
-          type: "success",
+          type: result[0].getTipo(),
           insert: "top",
           container: "top-right",
           animationIn: ["animated", "fadeIn"],
@@ -91,4 +91,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App
