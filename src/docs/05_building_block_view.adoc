@@ -8,7 +8,6 @@
 image::Contexto.JPG[Arquitectura del Contexto del Sistema]
 
 Motivación::
-
 La arquitectura del contexto del sistema puede verse reflejada en la imagen superior. Esta figura refleja de forma general la relación entre los principales elementos de alto nivel, distinguiendo dos bloques principales de construcción: UserPOD y ViadeAPP.  Por otro lado destacar el uso de componentes react y la librería react-testing que nos permite probar la aplicación y que serán explicados en el apartado 9. 
 Dada la complejidad interna de estos dos bloques del nivel 0, se procede a descomponerlos en dos cajas blancas en un primer nivel (nivel 1) para especificar mejor sus detalles. 
 
@@ -17,10 +16,10 @@ Bloques de construcción contenidos::
 En cuanto a los bloques de construcción, podemos distinguir por un lado al *POD de un usuario*, que servirá de almacén descentralizado para almacenar los datos del usuario, sus rutas, comentarios, entre otros. Por otro lado, se encuentra el bloque de la *aplicación de VIADE*, el cual se intercomunica con los PODs a través de lo que denominamos la interfaz de SOLID. Además la aplicación también se comunica con otras APIs como la API File de HTML5 o bien la API de Google Maps. En la figura también podemos observar a los usuarios, cada uno de los cuales dispone de su POD, y que son quienes decidirán si comparten o no sus datos con otros usuarios o con la aplicación.
 
 Interfaces importantes::
+En cuanto a interfaces, podemos definir por un lado la *interfaz de SOLID*, la cual podemos ver en la imagen, y que proporciona operaciones sobre los PODs de los usuarios, concretamente en este caso nos permite visualizar una ruta, compartirla, borrarla o crear una nueva. También se encuentran las *APIs de Google y File*, que nos proporcionarán servicios para representar las rutas sobre los mapas y la carga de ficheros respectivamente.
 
 image::InterfazPrincipal.jpeg[Interfaz de visualización de ruta]
 
-En cuanto a interfaces, podemos definir por un lado la *interfaz de SOLID*, la cual podemos ver en la imagen, y que proporciona operaciones sobre los PODs de los usuarios, concretamente en este caso nos permite visualizar una ruta, compartirla, borrarla o crear una nueva. También se encuentran las *APIs de Google y File*, que nos proporcionarán servicios para representar las rutas sobre los mapas y la carga de ficheros respectivamente.
 ****
 === Nivel 1
 ****
@@ -69,13 +68,15 @@ A continuación, se adjuntan unas figuras que muestran un esquema de las princip
 *Ver rutas*
 
 image::VerRutas.JPG[Diagrama de Ver Rutas]
-En la imagen se puede observar como el usuario accede a las rutas de su POD a través de nuestra aplicación que usa el fichero "VerRutas.jsx" para mostrar una lista de las rutas del usuario. Una vez elegida la rutase visualizará en la pantalla del usuario mostrando la información de la ruta y permitiendo verla en un mapa gracias a "MapRuta.jxs".
+En la imagen se puede observar como el usuario accede a las rutas de su POD a través de nuestra aplicación que usa el fichero "VerRutas.jsx" para mostrar una lista de las rutas del usuario. Una vez elegida la ruta se visualizará en la pantalla del usuario mostrando la información de la ruta y permitiendo verla en un mapa gracias a "MapRuta.jsx".
 
 *Añadir amigos*
+
 image::Amigos.JPG[Diagrama de Amigos]
 Una vez que tenemos las rutas creadas, nuestra aplicación permite añadirle comentarios y fotos y además compartirla con amigos. En esta imagen se puede ver un esquema del funcionamiento del módulo de amigos, en el cual, el usuario accede a la vista de amigos ("Friends.jxs") que le permitirá añadir un amigo o ver su lista de amigos con el nombre la foto y el webID de cada uno. Para añadir un amigo únicamente se necesita su webId y la propia aplicación actualiza inmediatamente la lista de amigos del usuario. Esta lista de amigos se guarda en el POD del propio usuario. 
 
 *Compartir ruta*
+
 image::CompartirRutas.JPG[Diagrama de Ver Rutas]
 Después de poder crear rutas, verlas y añadir amigos, podemos compartir rutas con nuestros amigos. Para ello el usuario, a traves de nuestra aplicación, cuando está visualizando una ruta "RouteCard.jsx" le proporciona la opción de borrarla o compartirla con uno o varios amigos a la vez("SharePanel.jsx"). Una vez que el usuario A comparte la ruta con su amigo B, este puede visualizar la ruta, pero esta no se guarda en su POD, si no que el usuario A le está dando acceso a B para poder verla.   
 
