@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import "leaflet/dist/leaflet.css";
-import { Map, Marker, TileLayer, Popup, Polyline } from "react-leaflet";
+import {
+  Map,
+  Marker,
+  TileLayer,
+  Popup,
+  Polyline,
+  Tooltip
+} from "react-leaflet";
 import { Alert, ButtonGroup, Button, ButtonToolbar } from "react-bootstrap";
 import L from "leaflet";
 import * as icons from "./MarkerIcons";
@@ -74,6 +81,7 @@ class AddRouteMap extends Component {
                 );
               })}
               {this.getPolyline("red")}
+              <Tooltip>Hazme Click!</Tooltip>
             </Map>
           </div>
         )}
