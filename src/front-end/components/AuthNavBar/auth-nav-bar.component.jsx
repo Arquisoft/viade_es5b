@@ -21,9 +21,6 @@ const AuthNavBar = props => {
 
       <Nav className="ml-auto">
         <Nav.Link className="logout" onClick={logout}>
-          asdas
-        </Nav.Link>
-        <Nav.Link className="logout" onClick={logout}>
           Log Out
         </Nav.Link>
       </Nav>

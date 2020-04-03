@@ -3,7 +3,7 @@ import { HashRouter as Router, Switch } from "react-router-dom";
 import LogInComponent from "./front-end/components/authentication/login/Login";
 import RegisterContainer from "./front-end/components/authentication/register/RegistroContainer";
 import Home from "./front-end/components/Home";
-import AddRuta from "./front-end/components/ruta/AddRuta";
+import AddRuta from "./front-end/components/ruta/AñadirRuta/AddRuta";
 import VerRutas from "./front-end/components/ruta/VerRutas/VerRutas";
 import Footer from "./front-end/components/fragments/Footer";
 import "leaflet/dist/leaflet.css";
@@ -16,7 +16,7 @@ import "react-notifications-component/dist/theme.css";
 import { store } from "react-notifications-component";
 import RutaService from "./front-end/services/rutas/RutaService";
 import ShareView from "./front-end/components/share/ShareView";
-import AddRouteMap from "./front-end/components/map/AddRouteMap";
+import AddRutaMapView from "./front-end/components/ruta/AñadirRuta/AddRutaMapView";
 
 const rutaService = new RutaService();
 
@@ -76,7 +76,7 @@ class App extends Component {
               <PrivateLayout
                 exact
                 path="/add-ruta-map"
-                component={AddRouteMap}
+                component={AddRutaMapView}
               />
               <NotLoggedInLayout
                 exact

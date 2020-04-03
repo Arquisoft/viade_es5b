@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import RutaService from "../../services/rutas/RutaService"
+import RutaService from "../../../services/rutas/RutaService"
 
 class AddRuta extends Component {
 

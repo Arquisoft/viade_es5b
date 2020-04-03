@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "leaflet/dist/leaflet.css";
 import { Map, Marker, TileLayer, Popup, Polyline } from "react-leaflet";
-import { Alert } from "react-bootstrap";
+import { Alert, ButtonGroup, Button, ButtonToolbar } from "react-bootstrap";
 import L from "leaflet";
 import * as icons from "./MarkerIcons";
 
@@ -34,31 +34,48 @@ class AddRouteMap extends Component {
   render() {
     return (
       <div>
-        <h1>Añadir ruta con un mapa</h1>
         {this.state.center != null && this.state.center.length > 0 && (
-          <Map
-            onclick={this.handleClickOnMap}
-            center={this.state.center}
-            zoom={this.state.zoom}
-          >
-            <TileLayer
-              attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
+          <div>
+            <ButtonToolbar
+              className="ml-2 mb-2 justify-content-center"
+              aria-label="Controles del mapa"
+            >
+              <ButtonGroup className="mr-2">
+                <Button onClick={this.deleteLastPoint} variant="info">
+                  Borrar último punto
+                </Button>
+              </ButtonGroup>
+              <ButtonGroup>
+                <Button onClick={this.deleteAllPoints} variant="info">
+                  Borrar todos los puntos
+                </Button>
+              </ButtonGroup>
+            </ButtonToolbar>
 
-            {this.state.points.map((latlng, key) => {
-              return (
-                <Marker
-                  position={latlng}
-                  key={key++}
-                  icon={key === 1 ? icons.greenIcon : icons.defaultIcon}
-                >
-                  <Popup>Punto {key}</Popup>
-                </Marker>
-              );
-            })}
-            {this.getPolyline("red")}
-          </Map>
+            <Map
+              onclick={this.handleClickOnMap}
+              center={this.state.center}
+              zoom={this.state.zoom}
+            >
+              <TileLayer
+                attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+
+              {this.state.points.map((latlng, key) => {
+                return (
+                  <Marker
+                    position={latlng}
+                    key={key++}
+                    icon={key === 1 ? icons.greenIcon : icons.defaultIcon}
+                  >
+                    <Popup>Punto {key}</Popup>
+                  </Marker>
+                );
+              })}
+              {this.getPolyline("red")}
+            </Map>
+          </div>
         )}
 
         {this.state.error ? (
@@ -102,12 +119,19 @@ class AddRouteMap extends Component {
    * Se encarga de borrar el útimo punto de la ruta sobre
    * el que se hizo click.
    */
-  deleteLastPoint = () => {};
+  deleteLastPoint = () => {
+    let points = this.state.points;
+    let lastIndex = points.length - 1;
+    points.splice(lastIndex, 1);
+    this.setState({ points: points });
+  };
 
   /**
    * Elimina todos los puntos actuales sobre los que se ha hecho click.
    */
-  deleteAllPoints = () => {};
+  deleteAllPoints = () => {
+    this.setState({ points: [] });
+  };
 
   /**
    * Dada la lista de puntos, construye una linea
