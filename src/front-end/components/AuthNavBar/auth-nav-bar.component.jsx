@@ -16,6 +16,7 @@ const AuthNavBar = props => {
         <Nav.Link href="#/add-ruta">Añadir ruta</Nav.Link>
         <Nav.Link href="#/friends">Amigos</Nav.Link>
         <Nav.Link href="#/shared">Compartido conmigo</Nav.Link>
+        <Nav.Link href="#/add-ruta-map">Añadir con mapa</Nav.Link>
       </Nav>
 
       <Nav className="ml-auto">

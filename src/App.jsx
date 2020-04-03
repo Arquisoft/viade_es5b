@@ -16,6 +16,7 @@ import "react-notifications-component/dist/theme.css";
 import { store } from "react-notifications-component";
 import RutaService from "./front-end/services/rutas/RutaService";
 import ShareView from "./front-end/components/share/ShareView";
+import AddRouteMap from "./front-end/components/map/AddRouteMap";
 
 const rutaService = new RutaService();
 
@@ -27,10 +28,10 @@ const rutaService = new RutaService();
  * componentes hijos, a los que se les pasa referencias a las funciones de los servicios.
  */
 class App extends Component {
-  procesarRutas () {
+  procesarRutas() {
     rutaService.procesarRutasCompartidas().then(result => {
       for (var i = 0; i < result.length; i++) {
-          //Agregamos la notificacion de ruta compartida
+        //Agregamos la notificacion de ruta compartida
         store.addNotification({
           title: result[0].getTitulo(),
           message: result[0].getMensaje(),
@@ -72,6 +73,11 @@ class App extends Component {
               <PrivateLayout exact path="/add-ruta" component={AddRuta} />
               <PrivateLayout exact path="/friends" component={Friends} />
               <PrivateLayout exact path="/shared" component={ShareView} />
+              <PrivateLayout
+                exact
+                path="/add-ruta-map"
+                component={AddRouteMap}
+              />
               <NotLoggedInLayout
                 exact
                 path="/login"
@@ -91,4 +97,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default App;
