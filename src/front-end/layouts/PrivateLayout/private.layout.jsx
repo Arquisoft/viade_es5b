@@ -10,11 +10,11 @@ const PrivateLayout = props => {
   return (
     <Route
       {...rest}
-      component={({ history, location, match, service }) => (
+      component={({ history, location, match, service, name }) => (
         <div>
           {webId ? (
             <div>
-              <AuthNavBar {...{ history, location, match, webId }} />
+              <AuthNavBar {...{ history, location, match, webId, name }} />
               <Component {...{ history, location, match, service }} />
             </div>
           ) : (
