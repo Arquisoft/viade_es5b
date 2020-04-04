@@ -1,16 +1,10 @@
 import React, { Component } from "react";
 import "leaflet/dist/leaflet.css";
-import {
-  Map,
-  Marker,
-  TileLayer,
-  Popup,
-  Polyline,
-  Tooltip
-} from "react-leaflet";
+import { Map, Marker, TileLayer, Popup, Polyline } from "react-leaflet";
 import { Alert, ButtonGroup, Button, ButtonToolbar } from "react-bootstrap";
 import L from "leaflet";
 import * as icons from "./MarkerIcons";
+import MapPointModal from "./MapPointModal";
 
 // Sin esto no se muestran los Markers
 delete L.Icon.Default.prototype._getIconUrl;
@@ -30,8 +24,10 @@ class AddRouteMap extends Component {
   state = {
     zoom: 13,
     center: [],
-    points: [], // array de objetos LatLng que conforman la ruta.
-    error: false
+    points: [], // array de objetos {name: "nombre del punto", latlng: objeto LatLng, inicio: true si es el primer punto.}
+    error: false,
+    showModal: false,
+    clickedPoint: null
   };
 
   componentDidMount() {
@@ -63,26 +59,33 @@ class AddRouteMap extends Component {
               onclick={this.handleClickOnMap}
               center={this.state.center}
               zoom={this.state.zoom}
+              doubleClickZoom={false}
             >
               <TileLayer
                 attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
 
-              {this.state.points.map((latlng, key) => {
+              {this.state.points.map((point, key) => {
                 return (
                   <Marker
-                    position={latlng}
+                    position={point.latlng}
                     key={key++}
                     icon={key === 1 ? icons.greenIcon : icons.defaultIcon}
+                    ondblclick={() => this.showModal(point)}
                   >
-                    <Popup>Punto {key}</Popup>
+                    <Popup>{point.name}</Popup>
                   </Marker>
                 );
               })}
               {this.getPolyline("red")}
-              <Tooltip>Hazme Click!</Tooltip>
             </Map>
+
+            <MapPointModal
+              showModal={this.state.showModal}
+              handleClose={this.hideModal}
+              point={this.state.clickedPoint}
+            />
           </div>
         )}
 
@@ -92,6 +95,17 @@ class AddRouteMap extends Component {
       </div>
     );
   }
+
+  // Controles del diálogo modal
+  showModal = point => {
+    this.setState({ showModal: true, clickedPoint: point });
+  };
+
+  hideModal = () => {
+    this.setState({ showModal: false });
+  };
+
+  // ************************
 
   /**
    * Obtiene, si es posible, las coordenadas del usuario y establece el centro
@@ -118,7 +132,12 @@ class AddRouteMap extends Component {
    */
   handleClickOnMap = e => {
     let points = this.state.points;
-    points.push(e.latlng);
+    let o = {
+      name: `Punto ${points.length + 1}`,
+      latlng: e.latlng,
+      inicio: points.length === 0 ? true : false
+    };
+    points.push(o);
     this.setState({ points: points });
     console.log(this.state.points);
   };
@@ -150,7 +169,7 @@ class AddRouteMap extends Component {
       <Polyline
         color={color}
         positions={this.state.points.map(p => {
-          return [p.lat, p.lng];
+          return [p.latlng.lat, p.latlng.lng];
         })}
       />
     );
