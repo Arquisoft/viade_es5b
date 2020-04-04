@@ -39,10 +39,7 @@ class AddRouteMap extends Component {
       <div>
         {this.state.center != null && this.state.center.length > 0 && (
           <div>
-            <ButtonToolbar
-              className="ml-2 mb-2 justify-content-center"
-              aria-label="Controles del mapa"
-            >
+            <ButtonToolbar className="mb-2" aria-label="Controles del mapa">
               <ButtonGroup className="mr-2">
                 <Button onClick={this.deleteLastPoint} variant="info">
                   Borrar último punto

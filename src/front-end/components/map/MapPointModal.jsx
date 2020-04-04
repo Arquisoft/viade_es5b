@@ -18,7 +18,7 @@ class MapPointModal extends Component {
     return (
       <Modal show={this.props.showModal} centered>
         <Modal.Header>
-          <Modal.Title>Modificar Hito</Modal.Title>
+          <Modal.Title>Modificar este hito</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>Deja en blanco aquellos campos que no quieras modificar.</p>
