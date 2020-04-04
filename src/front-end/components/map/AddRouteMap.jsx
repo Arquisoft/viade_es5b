@@ -24,7 +24,7 @@ class AddRouteMap extends Component {
   state = {
     zoom: 13,
     center: [],
-    points: [], // array de objetos {name: "nombre del punto", latlng: objeto LatLng, inicio: true si es el primer punto.}
+    points: [], // array de objetos {index: indice en el array, name: "nombre del punto", latlng: objeto LatLng}
     error: false,
     showModal: false,
     clickedPoint: null
@@ -81,11 +81,14 @@ class AddRouteMap extends Component {
               {this.getPolyline("red")}
             </Map>
 
-            <MapPointModal
-              showModal={this.state.showModal}
-              handleClose={this.hideModal}
-              point={this.state.clickedPoint}
-            />
+            {this.state.showModal && (
+              <MapPointModal
+                showModal={this.state.showModal}
+                handleClose={this.hideModal}
+                handleModifyPoint={this.handleModifyPoint}
+                point={this.state.clickedPoint}
+              />
+            )}
           </div>
         )}
 
@@ -102,7 +105,7 @@ class AddRouteMap extends Component {
   };
 
   hideModal = () => {
-    this.setState({ showModal: false });
+    this.setState({ showModal: false, clickedPoint: null });
   };
 
   // ************************
@@ -133,9 +136,9 @@ class AddRouteMap extends Component {
   handleClickOnMap = e => {
     let points = this.state.points;
     let o = {
-      name: `Punto ${points.length + 1}`,
-      latlng: e.latlng,
-      inicio: points.length === 0 ? true : false
+      index: points.length,
+      name: points.length === 0 ? "Inicio" : `Punto ${points.length}`,
+      latlng: e.latlng
     };
     points.push(o);
     this.setState({ points: points });
@@ -173,6 +176,17 @@ class AddRouteMap extends Component {
         })}
       />
     );
+  };
+
+  /**
+   * Manejador para el evento de modificar un punto desde el
+   * panel modal. Recibe el punto a modificar con los datos
+   * actualizados.
+   */
+  handleModifyPoint = point => {
+    let updatedPoints = this.state.points;
+    updatedPoints.splice(point.index, 1, point);
+    this.setState({ points: updatedPoints });
   };
 }
 
