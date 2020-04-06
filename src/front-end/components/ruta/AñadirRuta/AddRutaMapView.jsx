@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import Hito from "../../../model/Hito";
 import Ruta from "../../../model/Ruta";
+import RutaService from "../../../services/rutas/RutaService";
 
 /**
  * Componente que representa la vista para añadir una ruta a través
@@ -18,6 +19,11 @@ import Ruta from "../../../model/Ruta";
  * dibujando la ruta.
  */
 class AddRutaMapView extends Component {
+  constructor() {
+    super();
+    this.rutaService = new RutaService();
+  }
+
   state = {
     name: "",
     description: "",
@@ -118,7 +124,7 @@ class AddRutaMapView extends Component {
    * seleccionado >= 2, nombre y descripción no están vacíos...). Construye un objeto Ruta
    * con los datos correspondientes y se lo pasa al servicio para almacenarlo en el pod del usuario loggeado.
    */
-  handleAdd = () => {
+  handleAdd = async () => {
     let name = this.state.name;
     let description = this.state.description;
     let points = this.state.points;
@@ -155,6 +161,10 @@ class AddRutaMapView extends Component {
     for (let i in hitos) ruta.addHito(hitos[i]);
 
     console.log(ruta);
+
+    if (await this.rutaService.addRutaObject(ruta)) {
+      alert("Ruta añadida correctamente");
+    }
   };
 
   // Manejadores onChange para los inputs de nombre y descripción.
