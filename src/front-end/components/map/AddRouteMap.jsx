@@ -12,7 +12,7 @@ delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
   iconUrl: require("leaflet/dist/images/marker-icon.png"),
-  shadowUrl: require("leaflet/dist/images/marker-shadow.png")
+  shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 });
 
 /**
@@ -24,10 +24,9 @@ class AddRouteMap extends Component {
   state = {
     zoom: 13,
     center: [],
-    points: [], // array de objetos {index: indice en el array, name: "nombre del punto", latlng: objeto LatLng}
     error: false,
     showModal: false,
-    clickedPoint: null
+    clickedPoint: null,
   };
 
   componentDidMount() {
@@ -63,7 +62,7 @@ class AddRouteMap extends Component {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
 
-              {this.state.points.map((point, key) => {
+              {this.props.points.map((point, key) => {
                 return (
                   <Marker
                     position={point.latlng}
@@ -97,7 +96,7 @@ class AddRouteMap extends Component {
   }
 
   // Controles del diálogo modal
-  showModal = point => {
+  showModal = (point) => {
     this.setState({ showModal: true, clickedPoint: point });
   };
 
@@ -114,13 +113,13 @@ class AddRouteMap extends Component {
    */
   getUserPosition = () => {
     window.navigator.geolocation.getCurrentPosition(
-      position => {
+      (position) => {
         let center = [];
         center.push(position.coords.latitude);
         center.push(position.coords.longitude);
         this.setState({ center: center });
       },
-      err => {
+      (err) => {
         this.setState({ error: true });
       }
     );
@@ -130,16 +129,15 @@ class AddRouteMap extends Component {
    * Manejador para el evento de click sobre el mapa, que añade
    * un nuevo objeto Marker a la lista de puntos del estado.
    */
-  handleClickOnMap = e => {
-    let points = this.state.points;
+  handleClickOnMap = (e) => {
+    let points = this.props.points;
     let o = {
       index: points.length,
       name: points.length === 0 ? "Inicio" : `Punto ${points.length}`,
-      latlng: e.latlng
+      latlng: e.latlng,
     };
     points.push(o);
-    this.setState({ points: points });
-    console.log(this.state.points);
+    this.props.updatePoints(points);
   };
 
   /**
@@ -147,28 +145,28 @@ class AddRouteMap extends Component {
    * el que se hizo click.
    */
   deleteLastPoint = () => {
-    let points = this.state.points;
+    let points = this.props.points;
     let lastIndex = points.length - 1;
     points.splice(lastIndex, 1);
-    this.setState({ points: points });
+    this.props.updatePoints(points);
   };
 
   /**
    * Elimina todos los puntos actuales sobre los que se ha hecho click.
    */
   deleteAllPoints = () => {
-    this.setState({ points: [] });
+    this.props.updatePoints([]);
   };
 
   /**
    * Dada la lista de puntos, construye una linea
    * que une dichos puntos, mediante el elemento <Polyline>
    */
-  getPolyline = color => {
+  getPolyline = (color) => {
     return (
       <Polyline
         color={color}
-        positions={this.state.points.map(p => {
+        positions={this.props.points.map((p) => {
           return [p.latlng.lat, p.latlng.lng];
         })}
       />
@@ -180,10 +178,10 @@ class AddRouteMap extends Component {
    * panel modal. Recibe el punto a modificar con los datos
    * actualizados.
    */
-  handleModifyPoint = point => {
-    let updatedPoints = this.state.points;
+  handleModifyPoint = (point) => {
+    let updatedPoints = this.props.points;
     updatedPoints.splice(point.index, 1, point);
-    this.setState({ points: updatedPoints });
+    this.props.updatePoints(updatedPoints);
   };
 }
 

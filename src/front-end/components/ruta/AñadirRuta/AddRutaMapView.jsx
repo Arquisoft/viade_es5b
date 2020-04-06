@@ -8,7 +8,10 @@ import { Card, InputGroup, FormControl } from "react-bootstrap";
  * dibujando la ruta.
  */
 class AddRutaMapView extends Component {
-  state = {};
+  state = {
+    points: [], // array de objetos {index: indice en el array, name: "nombre del punto", latlng: objeto LatLng}
+  };
+
   render() {
     return (
       <div>
@@ -47,12 +50,25 @@ class AddRutaMapView extends Component {
               Utiliza los botones de la barra superior para eliminar el último
               marcador o eliminar todos los marcadores.
             </Card.Text>
-            <AddRouteMap />
+            <AddRouteMap
+              points={this.state.points}
+              updatePoints={this.updatePoints}
+            />
           </Card.Body>
         </Card>
       </div>
     );
   }
+
+  /**
+   * Método invocado cada vez que se modifica la lista de puntos,
+   * bien porque se haya añadido uno nuevo, se haya eliminado o
+   * se haya modificado.
+   */
+  updatePoints = (points) => {
+    this.setState({ points: points });
+    console.log(this.state.points);
+  };
 }
 
 export default AddRutaMapView;
