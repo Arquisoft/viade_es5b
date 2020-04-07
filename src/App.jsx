@@ -3,7 +3,6 @@ import { HashRouter as Router, Switch } from "react-router-dom";
 import LogInComponent from "./front-end/components/authentication/login/Login";
 import RegisterContainer from "./front-end/components/authentication/register/RegistroContainer";
 import Home from "./front-end/components/Home";
-import AddRuta from "./front-end/components/ruta/AñadirRuta/AddRuta";
 import VerRutas from "./front-end/components/ruta/VerRutas/VerRutas";
 import Footer from "./front-end/components/fragments/Footer";
 import "leaflet/dist/leaflet.css";
@@ -18,7 +17,7 @@ import RutaService from "./front-end/services/rutas/RutaService";
 import ShareView from "./front-end/components/share/ShareView";
 import AddRutaMapView from "./front-end/components/ruta/AñadirRuta/AddRutaMapView";
 import AddMenu from "./front-end/components/ruta/AñadirRuta/AddMenu";
-
+import AddRuta from "./front-end/components/ruta/AñadirRuta/AddRuta";
 const rutaService = new RutaService();
 
 /**
@@ -71,9 +70,10 @@ class App extends Component {
                 path="/ver-rutas"
                 component={VerRutas}
               ></PrivateLayout>
-              <PrivateLayout exact path="/add-ruta" component={AddMenu} />
+              <PrivateLayout exact path="/add-menu" component={AddMenu} />
               <PrivateLayout exact path="/friends" component={Friends} />
               <PrivateLayout exact path="/shared" component={ShareView} />
+              <PrivateLayout exact path="/add-ruta" component={AddRuta} />
               <PrivateLayout
                 exact
                 path="/add-ruta-map"

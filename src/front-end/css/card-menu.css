@@ -1,4 +1,9 @@
 .card-item {
   margin-top: 24px;
   height: 60vh;
+  transition: all 0.2s ease-in-out;
+}
+
+.card-item:hover {
+  transform: scale(1.1);
 }

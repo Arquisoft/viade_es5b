@@ -11,33 +11,58 @@ class AddMenu extends Component {
   render() {
     return (
       <div>
-        <h1>Añadir una nueva ruta</h1>
+        <h1>Crear una nueva ruta</h1>
         <p>Selecciona el modo en el que deseas añadir una nueva ruta.</p>
         <Container>
           <Row>
             <Col>
-              <Card className="card-item">
-                <Card.Body>
-                  <Card.Title>Forma 1</Card.Title>
-                  <Card.Text>Esto es una prueba</Card.Text>
-                </Card.Body>
-              </Card>
+              <a href="#/add-ruta">
+                <Card className="card-item">
+                  <Card.Img
+                    variant="top"
+                    src={process.env.PUBLIC_URL + "/img/form-logo.png"}
+                  />
+                  <Card.Body>
+                    <Card.Title>Crear manualmente</Card.Title>
+                    <Card.Text>
+                      Crea una nueva ruta introduciendo sus datos a mano a
+                      través de un formulario.
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </a>
             </Col>
 
             <Col>
-              <Card className="card-item">
-                <Card.Body>
-                  <Card.Title>Forma 2</Card.Title>
-                  <Card.Text>Esto es una prueba</Card.Text>
-                </Card.Body>
-              </Card>
+              <a href="#/add-ruta-map">
+                <Card className="card-item">
+                  <Card.Img
+                    variant="top"
+                    src={process.env.PUBLIC_URL + "/img/map-logo.jpg"}
+                  />
+                  <Card.Body>
+                    <Card.Title>Crear con un mapa</Card.Title>
+                    <Card.Text>
+                      Crea una ruta con la ayuda de un mapa interactivo sobre el
+                      que puedes ir haciendo click para ir dibujando tu ruta en
+                      el mapa.
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </a>
             </Col>
-
             <Col>
               <Card className="card-item">
+                <Card.Img
+                  variant="top"
+                  src={process.env.PUBLIC_URL + "/img/file-logo.jpg"}
+                />
                 <Card.Body>
-                  <Card.Title>Forma 2</Card.Title>
-                  <Card.Text>Esto es una prueba</Card.Text>
+                  <Card.Title>Crear a partir de fichero</Card.Title>
+                  <Card.Text>
+                    Crea una nueva ruta importando sus datos a partir de un
+                    fichero.
+                  </Card.Text>
                 </Card.Body>
               </Card>
             </Col>

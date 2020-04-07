@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import auth from "solid-auth-client";
 
-const AuthNavBar = props => {
+const AuthNavBar = (props) => {
   const logout = () => {
     auth.logout();
     window.location = "#/login";
@@ -13,7 +13,7 @@ const AuthNavBar = props => {
       <Navbar.Brand href="#/">Viade-Rutas</Navbar.Brand>
       <Nav>
         <Nav.Link href="#/ver-rutas">Mis rutas</Nav.Link>
-        <Nav.Link href="#/add-ruta">Añadir ruta</Nav.Link>
+        <Nav.Link href="#/add-menu">Crear rutas</Nav.Link>
         <Nav.Link href="#/friends">Amigos</Nav.Link>
         <Nav.Link href="#/shared">Compartido conmigo</Nav.Link>
         <Nav.Link href="#/add-ruta-map">Añadir con mapa</Nav.Link>
