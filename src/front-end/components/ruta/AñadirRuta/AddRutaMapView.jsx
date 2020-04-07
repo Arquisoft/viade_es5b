@@ -33,7 +33,7 @@ class AddRutaMapView extends Component {
   render() {
     return (
       <div>
-        <Container fluid>
+        <Container>
           <Row>
             <Col>
               <h1>Añadir una ruta a través de un mapa</h1>

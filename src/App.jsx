@@ -17,6 +17,7 @@ import { store } from "react-notifications-component";
 import RutaService from "./front-end/services/rutas/RutaService";
 import ShareView from "./front-end/components/share/ShareView";
 import AddRutaMapView from "./front-end/components/ruta/AñadirRuta/AddRutaMapView";
+import AddMenu from "./front-end/components/ruta/AñadirRuta/AddMenu";
 
 const rutaService = new RutaService();
 
@@ -29,7 +30,7 @@ const rutaService = new RutaService();
  */
 class App extends Component {
   procesarRutas() {
-    rutaService.procesarRutasCompartidas().then(result => {
+    rutaService.procesarRutasCompartidas().then((result) => {
       for (var i = 0; i < result.length; i++) {
         //Agregamos la notificacion de ruta compartida
         store.addNotification({
@@ -42,8 +43,8 @@ class App extends Component {
           animationOut: ["animated", "fadeOut"],
           dismiss: {
             duration: 5000,
-            onScreen: true
-          }
+            onScreen: true,
+          },
         });
       }
     });
@@ -70,7 +71,7 @@ class App extends Component {
                 path="/ver-rutas"
                 component={VerRutas}
               ></PrivateLayout>
-              <PrivateLayout exact path="/add-ruta" component={AddRuta} />
+              <PrivateLayout exact path="/add-ruta" component={AddMenu} />
               <PrivateLayout exact path="/friends" component={Friends} />
               <PrivateLayout exact path="/shared" component={ShareView} />
               <PrivateLayout
