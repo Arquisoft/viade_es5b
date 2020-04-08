@@ -99,7 +99,7 @@ class RouteCard extends Component {
                       author={null}
                       ruta={this.props.ruta}
                       onlyRead={false}
-                      subirFicheroAMiRuta={this.props.subirFicheroAMiRuta}
+                      subirFicheroARuta={this.props.subirFicheroARuta}
                       obtenerFicherosRuta={this.props.obtenerFicherosRuta}
                     />
                   </Col>

@@ -111,11 +111,13 @@ class PhotoGallery extends Component {
    */
   handleUpload = async () => {
     this.setState({ loading: true, empty: false });
+    let webID = this.props.author == null ? null : this.props.author.getWebId();
     if (
-      await this.props.subirFicheroAMiRuta(
+      await this.props.subirFicheroARuta(
         // añadimos los ficheros a la ruta del pod.
         this.state.selectedImages,
-        this.state.route.getUUID()
+        this.state.route.getUUID(),
+        webID
       )
     ) {
       this.loadImages();

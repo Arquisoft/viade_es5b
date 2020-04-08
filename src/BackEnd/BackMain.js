@@ -8,7 +8,7 @@ import { processSharedRoutes } from "./Scripts/processSharedRoutes.js"
 import { listSharedRoutes } from "./Scripts/listSharedRoutes.js"
 import { addCommentToRoute } from "./Scripts/addCommentToRoute.js"
 import { listCommentsOfRoute } from "./Scripts/listCommentsOfRoute.js"
-import { addMediaToMyRoute } from "./Scripts/addMediaToMyRoute.js"
+import { addMediaToRoute } from "./Scripts/addMediaToRoute.js"
 import { getPersonaByWebId } from "./Scripts/helpers/personHelper"
 import { listMediaOfRoute } from "./Scripts/listMediaOfRoute"
 import { validAppPermissions } from "./Scripts/validAppPermissions"
@@ -58,8 +58,8 @@ export default class BackMain {
     return getPersonaByWebId(webID)
   }
 
-  static subirFicheroAMiRuta (fichero, rutaUUID) {
-    return addMediaToMyRoute(fichero, rutaUUID)
+  static subirFicheroARuta (file, routeUUID, routeOwnerWebID) {
+    return addMediaToRoute(file, routeUUID, routeOwnerWebID)
   };
 
   static obtenerFicherosRuta (rutaUUID, webId) {

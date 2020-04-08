@@ -85,7 +85,7 @@ class RutaService {
     return BackMain.procesarRutasCompartidas();
   }
 
-  comentarRuta(comment, routeUUID,routeOwnerWebID) {
+  comentarRuta(comment, routeUUID, routeOwnerWebID) {
     return BackMain.comentarRuta(comment, routeUUID,routeOwnerWebID);
   }
 
@@ -93,8 +93,8 @@ class RutaService {
     return BackMain.obtenerComentariosRuta(rutaUUID, webId);
   }
 
-  subirFicheroAMiRuta(fichero, rutaUUID) {
-    return BackMain.subirFicheroAMiRuta(fichero, rutaUUID);
+  subirFicheroARuta(files, routeUUID, routeOwnerWebID) {
+    return BackMain.subirFicheroARuta(files, routeUUID, routeOwnerWebID);
   }
 
   obtenerFicherosRuta(rutaUUID, webId) {

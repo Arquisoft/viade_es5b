@@ -43,7 +43,7 @@ class VerRutas extends Component {
               deleteRuta={this.rutaService.deleteRuta}
               shareRuta={this.rutaService.shareRuta}
               obtenerFicherosRuta={this.rutaService.obtenerFicherosRuta}
-              subirFicheroAMiRuta={this.rutaService.subirFicheroAMiRuta}
+              subirFicheroARuta={this.rutaService.subirFicheroARuta}
               getAmigos={this.amigoService.getAmigos}
               comentarRuta={this.rutaService.comentarRuta}
               obtenerComentariosRuta={this.rutaService.obtenerComentariosRuta}

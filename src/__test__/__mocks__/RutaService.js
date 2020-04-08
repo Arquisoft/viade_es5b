@@ -132,7 +132,7 @@ class RutaService {
   procesarRutasCompartidas() {
     //return BackMain.procesarRutasCompartidas();
   }
-  comentarRuta(comentario, rutaUUID) {
+  comentarRuta(comentario, rutaUUID, routeOwnerWebID) {
     //return BackMain.comentarRuta(comentario, rutaUUID);
   }
   obtenerComentariosRuta(rutaUUID, webId) {
@@ -140,7 +140,7 @@ class RutaService {
     
     //return BackMain.obtenerComentariosRuta(rutaUUID, webId);
   }
-  subirFicheroAMiRuta(fichero, rutaUUID) {
+  subirFicheroARuta(fichero, rutaUUID, routeOwnerWebID) {
     //return ["url1","url2"];
   }
   obtenerFicherosRuta(rutaUUID, webId) {

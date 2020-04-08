@@ -78,8 +78,8 @@ class SharedWithMe extends Component {
                           <PhotoGallery
                             author={sharedRoute.getAmigo()}
                             ruta={sharedRoute.getRuta()}
-                            onlyRead={true}
-                            subirFicheroAMiRuta={this.props.subirFicheroAMiRuta}
+                            onlyRead={false}
+                            subirFicheroARuta={this.props.subirFicheroARuta}
                             obtenerFicherosRuta={this.props.obtenerFicherosRuta}
                           ></PhotoGallery>
                         </Col>

@@ -50,7 +50,7 @@ class RouteList extends Component {
               handleShare={this.handleShare}
               ruta={r}
               key={key++}
-              subirFicheroAMiRuta={this.props.subirFicheroAMiRuta}
+              subirFicheroARuta={this.props.subirFicheroARuta}
               obtenerFicherosRuta={this.props.obtenerFicherosRuta}
               comentarRuta={this.props.comentarRuta}
               obtenerComentariosRuta={this.props.obtenerComentariosRuta}

@@ -62,11 +62,10 @@ export async function processSharedRoutes () {
           // Comprobamos si existe de verdad la ruta en la parte publica del usuario, si existe
           // continuamos
           const friendWebId = message.getRef(schema.agent)
-          const routeUrl = await findRouteURL(friendWebId, message.getString(schema.identifier))
 
-          if (routeUrl !== null) {
+          const ruta = await readRouteFromUrl(message.getRef(schema.identifier))
+          if (ruta !== null) {
             // Si la encontro entonces mostramos una notificacion al usuario
-            const ruta = await readRouteFromUrl(routeUrl)
             const persona = await getPersonaByWebId(friendWebId)
             result = [...result, new Notificacion(persona.getNombre() + " subio un archivo", "En " + ruta.getNombre() + ": " + message.getString(schema.MediaObject),"info")]
           }

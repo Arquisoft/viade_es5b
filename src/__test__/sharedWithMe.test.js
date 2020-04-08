@@ -11,7 +11,7 @@ test("Se renderizan bien los componentes de SharedWithMe", () => {
     const { getByTestId } = render(<SharedWithMe 
       handleLoaded={rutaService.handleLoaded}
       getRutasCompartidasConmigo={rutaService.getRutasCompartidasConmigo}
-      subirFicheroAMiRuta={rutaService.subirFicheroAMiRuta}
+      subirFicheroARuta={rutaService.subirFicheroARuta}
       obtenerFicherosRuta={rutaService.obtenerFicherosRuta}
       comentarRuta={rutaService.comentarRuta}
       obtenerComentariosRuta={rutaService.obtenerComentariosRuta}></SharedWithMe>);
@@ -24,7 +24,7 @@ test("No nos han compartido ninguna ruta, por tanto, se muestra la alerta",async
     const { getByTestId } = render(<SharedWithMe 
       handleLoaded={rutaService.handleLoaded}
       getRutasCompartidasConmigo={rutaService.getNoRutasCompartidas}
-      subirFicheroAMiRuta={rutaService.subirFicheroAMiRuta}
+      subirFicheroARuta={rutaService.subirFicheroARuta}
       obtenerFicherosRuta={rutaService.obtenerFicherosRuta}
       comentarRuta={rutaService.comentarRuta}
       obtenerComentariosRuta={rutaService.obtenerComentariosRuta}></SharedWithMe>);

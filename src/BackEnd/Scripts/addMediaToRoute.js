@@ -6,15 +6,18 @@ import { sendNotificationBody } from "./helpers/notificationHelper"
 import { v4 as uuidv4 } from "uuid"
 const auth = require("solid-auth-client")
 
-export async function addMediaToMyRoute (files, routeUUID) {
+export async function addMediaToRoute (files, routeUUID,routeOwnerWebID) {
   var result = false
   const session = await auth.currentSession()
   if (!session) { window.location.href = "/login" }
-  const storage = await getRootStorage(session.webId)
   const webId = session.webId
+  if(routeOwnerWebID === null) routeOwnerWebID = webId
 
-  let url = await findRouteURL(webId, routeUUID)
+  const storage = await getRootStorage(webId)
+
+  let url = await findRouteURL(routeOwnerWebID, routeUUID)
   // Si la encuentro entonces inserto el archivo y mando una circular
+  // (el fichero lo guardo en mi pod no en el del otro)
   if (url !== null) {
     var filenames = ""
     for (var i = 0; i < files.length; i++) {
@@ -25,7 +28,6 @@ export async function addMediaToMyRoute (files, routeUUID) {
       console.log("leyendo fichero " + file.name)
       const reader = new FileReader()
 
-      /* eslint no-loop-func: 0 */
       reader.onload = async f => {
         const data = f.target.result
         // Lo mandamos a Solid
@@ -45,12 +47,18 @@ export async function addMediaToMyRoute (files, routeUUID) {
       }
       reader.readAsArrayBuffer(file)
     }
-    // Busco a que amigos mandar la circular y las mando
     if (filenames.length > 0) {
-      var friends = await getSharedRouteFriends(storage, routeUUID)
-      for (let i = 0; i < friends.length; i++) {
-        console.log("enviando notificacion subida Fichero a " + friends[i])
-        await sendMediaNotification(webId, friends[i], routeUUID, filenames)
+      //Si soy el dueño de la ruta mando un mensaje a todos
+      if(webId === routeOwnerWebID) {
+        // Busco a que amigos mandar la circular y las mando
+        var friends = await getSharedRouteFriends(storage, routeUUID)
+        for (let i = 0; i < friends.length; i++) {
+          await sendMediaNotification(webId, friends[i], routeUUID, filenames)
+        }
+      }
+      //sino le mando un mensaje al dueño de la ruta
+      else {
+        await sendMediaNotification(webId, routeOwnerWebID, url, filenames)
       }
       result = true
     }
@@ -69,7 +77,7 @@ async function insertData (fileRoute, routeUrl, myWebId) {
 
   await routeDocument.save([newComment])
 }
-async function sendMediaNotification (webId, friendWebId, routeUUID, nombreFicheros) {
+async function sendMediaNotification (webId, friendWebId, routeUrl, nombreFicheros) {
   return sendNotificationBody(webId, friendWebId,
     `@prefix as: <https://www.w3.org/ns/activitystreams#> .
     @prefix schema: <http://schema.org/> .
@@ -77,6 +85,6 @@ async function sendMediaNotification (webId, friendWebId, routeUUID, nombreFiche
     schema:agent <${webId}> ;
     schema:Action "mediaRoute" ;
     schema:MediaObject "${nombreFicheros}" ;
-    schema:identifier "${routeUUID}" .
+    schema:identifier <${routeUrl}> .
     `)
 }
