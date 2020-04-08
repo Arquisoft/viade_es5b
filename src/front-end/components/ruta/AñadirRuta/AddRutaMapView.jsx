@@ -19,8 +19,8 @@ import RutaService from "../../../services/rutas/RutaService";
  * dibujando la ruta.
  */
 class AddRutaMapView extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.rutaService = new RutaService();
   }
 

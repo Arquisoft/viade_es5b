@@ -79,6 +79,7 @@ class App extends Component {
                 path="/add-ruta-map"
                 component={AddRutaMapView}
               />
+
               <NotLoggedInLayout
                 exact
                 path="/login"
