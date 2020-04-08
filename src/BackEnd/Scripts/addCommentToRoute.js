@@ -26,12 +26,12 @@ export async function addCommentToRoute (comentario, routeUUID, routeOwnerWebID)
         // Busco a que amigos mandar la circular y las mando
         var friends = await getSharedRouteFriends(storage, routeUUID)
         for (let i = 0; i < friends.length; i++) {
-          await sendCommentNotification(webId, friends[i], routeUUID, comentario)
+          await sendCommentNotification(webId, friends[i], url, comentario)
         }
       }
       //sino le mando un mensaje al dueño de la ruta
       else {
-      await sendCommentNotification(webId, routeOwnerWebID, routeUUID, comentario)
+      await sendCommentNotification(webId, routeOwnerWebID, url, comentario)
       console.log(routeUUID + " comentario añadido")
       }
     }
@@ -53,7 +53,7 @@ async function insertData (comentario, routeUrl, myWebId) {
   return (success !== null)
 }
 
-async function sendCommentNotification (webId, friendWebId, routeUUID, comentario) {
+async function sendCommentNotification (webId, friendWebId, routeUrl, comentario) {
   return sendNotificationBody(webId, friendWebId,
     `@prefix as: <https://www.w3.org/ns/activitystreams#> .
     @prefix schema: <http://schema.org/> .
@@ -61,6 +61,6 @@ async function sendCommentNotification (webId, friendWebId, routeUUID, comentari
     schema:agent <${webId}> ;
     schema:Action "commentRoute" ;
     schema:comment "${comentario.getTexto()}" ;
-    schema:identifier "${routeUUID}" .
+    schema:identifier <${routeUrl}> .
     `)
 }
