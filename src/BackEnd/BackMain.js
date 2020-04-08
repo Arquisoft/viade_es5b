@@ -17,7 +17,7 @@ export default class BackMain {
   }
 
   static añadirRuta (Ruta) {
-    addRoute(Ruta)
+    return addRoute(Ruta)
   }
 
   static borrarRuta (uuid, routeName) {

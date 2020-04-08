@@ -70,7 +70,7 @@ class RutaService {
         new Hito(hitos[i].nombre, hitos[i].latitud, hitos[i].longitud)
       );
     }
-    BackMain.añadirRuta(ruta);
+    return BackMain.añadirRuta(ruta);
   }
 
   addRutaObject(ruta) {
