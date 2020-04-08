@@ -11,6 +11,10 @@ import PhotoGallery from "../../share/PhotoGallery";
  * información de la ruta que encapsula.
  */
 class RouteCard extends Component {
+  state = {
+    isDeleting: false, // Indica si la ruta está  siendo eliminada del POD.
+  };
+
   render() {
     return (
       <Card>
@@ -27,12 +31,7 @@ class RouteCard extends Component {
           <Button
             data-testid="rb-eliminar"
             variant="danger"
-            onClick={() =>
-              this.props.handleDelete(
-                this.props.ruta.getUUID(),
-                this.props.ruta.getNombre()
-              )
-            }
+            onClick={() => this.delete()}
           >
             {this.handleIsDeleting()}
           </Button>
@@ -126,7 +125,7 @@ class RouteCard extends Component {
    * u otro en función de si se está eliminando la ruta actual.
    */
   handleIsDeleting = () => {
-    if (this.props.isDeleting) {
+    if (this.state.isDeleting) {
       return (
         <div>
           <Spinner
@@ -141,6 +140,18 @@ class RouteCard extends Component {
       );
     }
     return "Eliminar";
+  };
+
+  /**
+   * Manejador para el evento de eliminar una ruta del POD.
+   */
+  delete = async () => {
+    this.setState({ isDeleting: true });
+    await this.props.handleDelete(
+      this.props.ruta.getUUID(),
+      this.props.ruta.getNombre()
+    );
+    this.setState({ isDeleting: false });
   };
 }
 

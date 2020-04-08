@@ -15,7 +15,6 @@ class RouteList extends Component {
       showSharePanel: false,
       routeToShare: null,
       emptyList: false,
-      isDeleting: false,
     };
   }
 
@@ -47,7 +46,6 @@ class RouteList extends Component {
               comentarMiRuta={this.props.comentarMiRuta}
               obtenerComentariosRuta={this.props.obtenerComentariosRuta}
               showMap={this.props.showMap}
-              isDeleting={this.state.isDeleting}
             />
           ))}
 
@@ -60,12 +58,10 @@ class RouteList extends Component {
    * Manejador para el borrado de una ruta.
    */
   handleDeleteRoute = async (uuid, nombre) => {
-    this.setState({ isDeleting: true });
     let rutas = await this.props.deleteRuta(uuid, nombre);
     this.setState({
       rutas: rutas,
       emptyList: rutas.length === 0,
-      isDeleting: false,
     });
   };
 
