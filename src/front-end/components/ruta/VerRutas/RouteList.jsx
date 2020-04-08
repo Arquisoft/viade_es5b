@@ -15,7 +15,7 @@ class RouteList extends Component {
       permisosValidos : true,
       showSharePanel: false,
       routeToShare: null,
-      emptyList: false
+      emptyList: false,
     };
   }
 
@@ -67,18 +67,18 @@ class RouteList extends Component {
   /**
    * Manejador para el borrado de una ruta.
    */
-  handleDeleteRoute = async (uuid,nombre) => {
-    let rutas = await this.props.deleteRuta(uuid,nombre);
+  handleDeleteRoute = async (uuid, nombre) => {
+    let rutas = await this.props.deleteRuta(uuid, nombre);
     this.setState({
       rutas: rutas,
-      emptyList: rutas.length === 0
+      emptyList: rutas.length === 0,
     });
   };
 
   /**
    * Manejador de eventos para compartir una ruta.
    */
-  handleShare = ruta => {
+  handleShare = (ruta) => {
     this.setState({ routeToShare: ruta, showSharePanel: true });
   };
 

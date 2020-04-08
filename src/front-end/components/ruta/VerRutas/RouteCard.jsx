@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { Card, Container, Row, Col, Table } from 'react-bootstrap'
-import Button from 'react-bootstrap/Button'
-import MapRuta from '../../map/MapRuta'
-import '../../../css/map-style.css'
-import CommentBox from '../../share/CommentBox'
-import PhotoGallery from '../../share/PhotoGallery'
+import React, { Component } from "react";
+import { Card, Container, Row, Col, Table, Spinner } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import MapRuta from "../../map/MapRuta";
+import "../../../css/map-style.css";
+import CommentBox from "../../share/CommentBox";
+import PhotoGallery from "../../share/PhotoGallery";
 
 
 /**
@@ -12,7 +12,11 @@ import PhotoGallery from '../../share/PhotoGallery'
  * información de la ruta que encapsula.
  */
 class RouteCard extends Component {
-  render () {
+  state = {
+    isDeleting: false, // Indica si la ruta está  siendo eliminada del POD.
+  };
+
+  render() {
     return (
       <Card>
         <Card.Header>
@@ -41,9 +45,9 @@ class RouteCard extends Component {
           <Button
             data-testid='rb-eliminar'
             variant='danger'
-            onClick={() => this.props.handleDelete(this.props.ruta.getUUID(), this.props.ruta.getNombre())}
+            onClick={() => this.delete()}
           >
-            Eliminar
+            {this.handleIsDeleting()}
           </Button>
         </Card.Header>
         <Card.Body>
@@ -51,9 +55,9 @@ class RouteCard extends Component {
             <Row>
               <Col md={8}>
                 <Row>
-                  <Col md='auto'>
+                  <Col md="auto">
                     <Card.Title>Descripción</Card.Title>
-                    <Card.Text data-testid='r-description'>
+                    <Card.Text data-testid="r-description">
                       {this.props.ruta.getDescripcion()}
                     </Card.Text>
                     <Card.Title>Hitos</Card.Title>
@@ -65,7 +69,7 @@ class RouteCard extends Component {
                           <th>Longitud</th>
                         </tr>
                       </thead>
-                      <tbody data-testid='r-hitos'>
+                      <tbody data-testid="r-hitos">
                         <tr>
                           <td>
                             <b>Inicio</b>
@@ -110,13 +114,13 @@ class RouteCard extends Component {
                   <Col>
                     <div
                       id={`mapa-${this.props.ruta.getNombre()}`}
-                      className='ml-3 mb-3'
+                      className="ml-3 mb-3"
                     >
                       {this.props.showMap && (
                         <MapRuta
-                          className='map'
+                          className="map"
                           ruta={this.props.ruta}
-                          data-testid='mapa'
+                          data-testid="mapa"
                         />
                       )}
                     </div>
@@ -127,8 +131,42 @@ class RouteCard extends Component {
           </Container>
         </Card.Body>
       </Card>
-    )
+    );
   }
+
+  /**
+   * Método que se encarga de renderizar un componente
+   * u otro en función de si se está eliminando la ruta actual.
+   */
+  handleIsDeleting = () => {
+    if (this.state.isDeleting) {
+      return (
+        <div>
+          <Spinner
+            className="mr-2"
+            as="span"
+            size="sm"
+            animation="border"
+            role="status"
+          />
+          Eliminando...
+        </div>
+      );
+    }
+    return "Eliminar";
+  };
+
+  /**
+   * Manejador para el evento de eliminar una ruta del POD.
+   */
+  delete = async () => {
+    this.setState({ isDeleting: true });
+    await this.props.handleDelete(
+      this.props.ruta.getUUID(),
+      this.props.ruta.getNombre()
+    );
+    this.setState({ isDeleting: false });
+  };
 }
 
-export default RouteCard
+export default RouteCard;

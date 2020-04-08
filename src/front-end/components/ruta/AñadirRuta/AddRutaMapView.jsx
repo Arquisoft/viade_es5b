@@ -8,10 +8,15 @@ import {
   InputGroup,
   FormControl,
   Button,
+  Spinner,
+  Overlay,
+  Tooltip,
 } from "react-bootstrap";
 import Hito from "../../../model/Hito";
 import Ruta from "../../../model/Ruta";
 import RutaService from "../../../services/rutas/RutaService";
+import MessageDialog from "../../util/MessageDialog";
+import "../../../css/tooltips.css";
 
 /**
  * Componente que representa la vista para añadir una ruta a través
@@ -19,15 +24,24 @@ import RutaService from "../../../services/rutas/RutaService";
  * dibujando la ruta.
  */
 class AddRutaMapView extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.rutaService = new RutaService();
+    // referencias
+    this.nameField = React.createRef();
+    this.descriptionField = React.createRef();
+    this.pointsField = React.createRef();
   }
 
   state = {
     name: "",
     description: "",
-    points: [], // array de objetos {index: indice en el array, name: "nombre del punto", latlng: objeto LatLng}
+    points: [], // array de objetos {index: indice en el array, name: "nombre del punto", latlng: objeto LatLng},
+    isAdding: false, // Indica si se está añadiendo la ruta al POD.
+    routeIsAdded: false, // Indica si ya se ha añadido la ruta al POD.
+    invalidName: false,
+    invalidDescription: false,
+    invalidPoints: false,
   };
 
   render() {
@@ -55,7 +69,14 @@ class AddRutaMapView extends Component {
                     <FormControl
                       placeholder="Ruta de Avilés"
                       onChange={this.onChangeName}
+                      ref={this.nameField}
                     />
+                    {this.showErrorTooltTip(
+                      this.nameField,
+                      this.state.invalidName,
+                      "Nombre no válido",
+                      "right"
+                    )}
                   </InputGroup>
                   <InputGroup className="mb-3">
                     <InputGroup.Prepend>
@@ -65,7 +86,14 @@ class AddRutaMapView extends Component {
                       placeholder="Texto descriptivo de la ruta"
                       as="textarea"
                       onChange={this.onChangeDescription}
+                      ref={this.descriptionField}
                     />
+                    {this.showErrorTooltTip(
+                      this.descriptionField,
+                      this.state.invalidDescription,
+                      "Descripción no válida",
+                      "right"
+                    )}
                   </InputGroup>
                 </Card.Body>
               </Card>
@@ -74,7 +102,15 @@ class AddRutaMapView extends Component {
           <Row>
             <Col>
               <Card className="mb-2">
-                <Card.Header>Seleccionar los hitos de la ruta</Card.Header>
+                <Card.Header ref={this.pointsField}>
+                  Seleccionar los hitos de la ruta
+                </Card.Header>
+                {this.showErrorTooltTip(
+                  this.pointsField,
+                  this.state.invalidPoints,
+                  "La ruta debe tener al menos un Inicio y un Hito",
+                  "right"
+                )}
                 <Card.Body>
                   <Card.Text>
                     Puedes utilizar el mapa de la parte inferior para
@@ -99,11 +135,12 @@ class AddRutaMapView extends Component {
                 style={{ padding: "12px 48px" }}
                 onClick={this.handleAdd}
               >
-                Agregar
+                {this.handleIsAdding()}
               </Button>
             </Col>
           </Row>
         </Container>
+        {this.handleRouteAdded()}
       </div>
     );
   }
@@ -129,21 +166,31 @@ class AddRutaMapView extends Component {
     let description = this.state.description;
     let points = this.state.points;
     // Pre-condiciones
+    // Restablecemos las variables de control de inputs inváidos
+    this.setState({
+      invalidName: false,
+      invalidDescription: false,
+      invalidPoints: false,
+    });
+
     if (name == null || name.length === 0) {
       // Nombre vacío
-      alert("No puedes agregar una ruta sin nombre.");
+      this.setState({ invalidName: true });
+      this.handleScrollIntoView(this.nameField);
       return;
     }
 
     if (description == null || description.length === 0) {
       // Descripción vacía
-      alert("No puedes agregar una ruta sin descripción.");
+      this.setState({ invalidDescription: true });
+      this.handleScrollIntoView(this.descriptionField);
       return;
     }
 
     if (points == null || points.length < 2) {
       // Ruta con menos de dos puntos.
-      alert("La ruta debe tener al menos un inicio y un hito.");
+      this.setState({ invalidPoints: true });
+      this.handleScrollIntoView(this.pointsField);
       return;
     }
 
@@ -160,11 +207,54 @@ class AddRutaMapView extends Component {
     );
     for (let i in hitos) ruta.addHito(hitos[i]);
 
-    console.log(ruta);
+    this.setState({ isAdding: true });
 
     if (await this.rutaService.addRutaObject(ruta)) {
-      alert("Ruta añadida correctamente");
+      this.setState({ isAdding: false, routeIsAdded: true });
     }
+  };
+
+  /**
+   * Renderiza el texto del botón para añadir la ruta o bien
+   * un Spinner de carga en función del estado isAdding.
+   */
+  handleIsAdding = () => {
+    if (this.state.isAdding) {
+      return (
+        <div>
+          <Spinner
+            as="span"
+            role="status"
+            animation="border"
+            size="sm"
+            className="mr-2"
+          />
+          Agregando...
+        </div>
+      );
+    }
+    return "Agregar";
+  };
+
+  /**
+   * Renderiza si ya se ha cargado la ruta en el POD un panel
+   * modal con un mensaje indicando al usuario que su ruta ha sido
+   * añadida.
+   */
+  handleRouteAdded = () => {
+    if (this.state.routeIsAdded) {
+      return (
+        <MessageDialog
+          show={true}
+          title={`Ruta creada: ${this.state.name}`}
+          message={
+            "Tu nueva ruta ha sido creada correctamente, puedes ir a echarle un vistazo al listado de rutas."
+          }
+          handleAceptar={() => this.setState({ routeIsAdded: false })}
+        />
+      );
+    }
+    return null;
   };
 
   // Manejadores onChange para los inputs de nombre y descripción.
@@ -175,6 +265,35 @@ class AddRutaMapView extends Component {
 
   onChangeDescription = (e) => {
     this.setState({ description: e.target.value });
+  };
+
+  // Tooltips
+
+  /**
+   * Muestra un tooltip asociado al elemento de referencia
+   * pasada como parámetro, con el texto y posición indicados.
+   */
+  showErrorTooltTip = (ref, state, text, placement) => {
+    return (
+      <Overlay target={ref} show={state} placement={placement}>
+        {(props) => (
+          <Tooltip className="error-tooltip" {...props}>
+            {text}
+          </Tooltip>
+        )}
+      </Overlay>
+    );
+  };
+
+  /**
+   * Se encarga de aplicar el efecto smooth scroll into view
+   * al componente de referencia pasada como parámetro.
+   */
+  handleScrollIntoView = (ref) => {
+    ref.current.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+    });
   };
 }
 
