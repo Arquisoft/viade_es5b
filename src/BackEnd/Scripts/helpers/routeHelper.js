@@ -1,7 +1,8 @@
 import { schema } from "rdf-namespaces"
 import { fetchDocument } from "tripledoc"
-import { readFolder, existsFileInFolder } from "../helpers/fileHelper"
+import { readFolder, existsFileInFolder, getRootStorage } from "../helpers/fileHelper"
 import { getPersonaByWebId } from "../helpers/personHelper"
+import { AccessControlList } from "@inrupt/solid-react-components"
 import Ruta from "../../../front-end/model/Ruta.js"
 import Hito from "../../../front-end/model/Hito.js"
 import Comentario from "../../../front-end/model/Comentario.js"
@@ -108,4 +109,30 @@ export async function getSharedRouteFriends (storage, routeUUID) {
     }
   }
   return result
+}
+//Actualizo los permisos de la ruta
+export async function updateRoutePermissions(webId,routeUUID)
+{
+  var storage =  await getRootStorage(webId);
+
+  //Busco con quien la tengo compartida y actualizo los permisos
+  var friends = await getSharedRouteFriends(storage,routeUUID)
+  var filePath=storage + "private/routes/" + routeUUID + ".ttl";
+
+    try {
+      //Permisos a añadir
+      const permissions = [
+        {
+          agents: friends,
+          modes: [AccessControlList.MODES.APPEND,AccessControlList.MODES.READ]
+        }
+      ];
+      //Si existe el fichero lo sobrescribe
+        const ACLFile = new AccessControlList(webId,filePath,filePath + '.acl');
+          await ACLFile.createACL(permissions);
+      } catch (error) {
+        console.log(error)
+        return false
+      }
+      return true;
 }

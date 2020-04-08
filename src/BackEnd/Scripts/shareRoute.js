@@ -1,9 +1,6 @@
 import { sendNotificationBody } from "./helpers/notificationHelper"
-import { getRootStorage } from "./helpers/fileHelper"
+import { updateRoutePermissions } from "./helpers/routeHelper"
 import { addToMySharedRoutes } from "./addToMySharedRoutes"
-import {AccessControlList} from "@inrupt/solid-react-components"
-import { fetchDocument } from "tripledoc"
-import { schema } from "rdf-namespaces"
 
 
 
@@ -20,16 +17,13 @@ export async function shareRoute (friendWebId, routeUUID) {
   const session = await auth.currentSession()
   if (!session) { window.location.href = "/login" }
 
-  // Get the root URL of the user"s Pod:
-  const storage = await getRootStorage(session.webId)
-
   // Añado a rutas compartidas
   // Si no estaba compartido ya continuo
   if (await addToMySharedRoutes(friendWebId, routeUUID)) {
     // mando notificacion
     await sendShareInvitation(session.webId, friendWebId, routeUUID)
     // añado permisos para el amigo
-    await updatePermissions(session.webId,storage + "private/routes/" + routeUUID + ".ttl",routeUUID)
+    await updateRoutePermissions(session.webId,routeUUID)
   }
   return result
 }
@@ -42,41 +36,4 @@ async function sendShareInvitation (webId, friendWebId, routeUUID) {
     schema:Action "shareRoute" ;
     schema:identifier "${routeUUID}" .
     `)
-}
-//Actualizo los permisos de la ruta
-async function updatePermissions(webId,filePath,routeUUID)
-{
-  //Busco con quien la tengo compartida y actualizo los permisos
-  var friends = await getSharedFriends(webId,routeUUID)
-    try {
-      //Permisos a añadir
-      const permissions = [
-        {
-          agents: friends,
-          modes: [AccessControlList.MODES.APPEND,AccessControlList.MODES.READ]
-        }
-      ];
-      //Si existe el fichero lo sobrescribe
-        const ACLFile = new AccessControlList(webId,filePath,filePath + '.acl');
-          await ACLFile.createACL(permissions);
-      } catch (error) {
-        console.log(error)
-        return false
-      }
-      return true;
-}
-async function getSharedFriends(webId,routeUUID)
-{
-  const route = await getRootStorage(webId) +"private/mySharedRoutes.ttl"
-  const mySharedRoutesDocument = await fetchDocument(route)
-  const rutas = mySharedRoutesDocument.getAllSubjectsOfType("http://arquisoft.github.io/viadeSpec/route")
-  //Busco la ruta en el fichero
-  for (var e = 0; e < rutas.length; e++) {
-    if (rutas[e].getLiteral(schema.identifier) === routeUUID) {
-      return rutas[e].getAllRefs(schema.agent)
-    }
-  }
-  return [];
-
-
 }
