@@ -1,7 +1,13 @@
 import { sendNotificationBody } from "./helpers/notificationHelper"
-import { findRouteURL } from "./helpers/routeHelper"
-import { moveFile, getRootStorage } from "./helpers/fileHelper"
+import { getRootStorage } from "./helpers/fileHelper"
 import { addToMySharedRoutes } from "./addToMySharedRoutes"
+import {AccessControlList} from "@inrupt/solid-react-components"
+import { fetchDocument } from "tripledoc"
+import { schema } from "rdf-namespaces"
+
+
+
+
 
 const auth = require("solid-auth-client")
 
@@ -22,15 +28,8 @@ export async function shareRoute (friendWebId, routeUUID) {
   if (await addToMySharedRoutes(friendWebId, routeUUID)) {
     // mando notificacion
     await sendShareInvitation(session.webId, friendWebId, routeUUID)
-    // Si no esta en la carpeta publica lo muevo a la misma
-    let url = await findRouteURL(storage + "private/routes/", routeUUID)
-    if (url !== null) {
-      return await moveFile(url, storage + "public/routes/" + routeUUID + ".ttl")
-    } else {
-      // Compruebo que si no esta en la privada, este en la publica
-      url = await findRouteURL(storage + "public/routes/", routeUUID)
-      if (url !== null) { return true } else { return false }
-    }
+    // añado permisos para el amigo
+    await updatePermissions(session.webId,storage + "private/routes/" + routeUUID + ".ttl",routeUUID)
   }
   return result
 }
@@ -43,4 +42,41 @@ async function sendShareInvitation (webId, friendWebId, routeUUID) {
     schema:Action "shareRoute" ;
     schema:identifier "${routeUUID}" .
     `)
+}
+//Actualizo los permisos de la ruta
+async function updatePermissions(webId,filePath,routeUUID)
+{
+  //Busco con quien la tengo compartida y actualizo los permisos
+  var friends = await getSharedFriends(webId,routeUUID)
+    try {
+      //Permisos a añadir
+      const permissions = [
+        {
+          agents: friends,
+          modes: [AccessControlList.MODES.APPEND,AccessControlList.MODES.READ]
+        }
+      ];
+      //Si existe el fichero lo sobrescribe
+        const ACLFile = new AccessControlList(webId,filePath,filePath + '.acl');
+          await ACLFile.createACL(permissions);
+      } catch (error) {
+        console.log(error)
+        return false
+      }
+      return true;
+}
+async function getSharedFriends(webId,routeUUID)
+{
+  const route = await getRootStorage(webId) +"private/mySharedRoutes.ttl"
+  const mySharedRoutesDocument = await fetchDocument(route)
+  const rutas = mySharedRoutesDocument.getAllSubjectsOfType("http://arquisoft.github.io/viadeSpec/route")
+  //Busco la ruta en el fichero
+  for (var e = 0; e < rutas.length; e++) {
+    if (rutas[e].getLiteral(schema.identifier) === routeUUID) {
+      return rutas[e].getAllRefs(schema.agent)
+    }
+  }
+  return [];
+
+
 }

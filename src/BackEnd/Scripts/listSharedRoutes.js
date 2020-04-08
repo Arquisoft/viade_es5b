@@ -1,6 +1,6 @@
 import { space, schema } from "rdf-namespaces"
 import { fetchDocument } from "tripledoc"
-import { existsFile } from "./helpers/fileHelper"
+import { existsFileInFolder } from "./helpers/fileHelper"
 import { getPersonaByWebId } from "./helpers/personHelper"
 import { readRouteFromUrl } from "./helpers/routeHelper"
 
@@ -21,7 +21,7 @@ export async function listSharedRoutes () {
   const storage = profile.getRef(space.storage)
   var result = []
   // Leemos las rutas del documento de compartidas si existe el documento
-  if (await existsFile(storage + "private", "friendSharedRoutes.ttl")) {
+  if (await existsFileInFolder(storage + "private", "friendSharedRoutes.ttl")) {
     const sharedRoutesDocument = await fetchDocument(storage + "private/friendSharedRoutes.ttl")
     if (sharedRoutesDocument != null) {
       const rutas = sharedRoutesDocument.getAllSubjectsOfType("http://arquisoft.github.io/viadeSpec/route")

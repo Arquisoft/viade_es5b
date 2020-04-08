@@ -21,7 +21,7 @@ export async function readFolder (route) {
     .catch(err => (folder = null))
   return folder
 }
-export async function existsFile (route, file) {
+export async function existsFileInFolder (route, file) {
   let folder
   folder = await readFolder(route)
   if (folder) {
@@ -31,10 +31,20 @@ export async function existsFile (route, file) {
   }
   return false
 }
+export async function existsFile (fileUrl) {
+  let result = false
+  await fc
+    .readFile(fileUrl)
+    .then(() => {
+      result = true
+    })
+    .catch(err => (result = false))
+  return result 
+}
 export async function moveFile (sourceURL, targetURL) {
   let result = false
   await fc
-    .copy(sourceURL, targetURL, { withMeta: false, withAcl: false })
+    .copy(sourceURL, targetURL, { withMeta: true, withAcl: true })
     .then(() => {
       result = true
     })

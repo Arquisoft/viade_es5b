@@ -1,6 +1,6 @@
 import { rdf, space, schema } from "rdf-namespaces"
 import { fetchDocument, createDocument } from "tripledoc"
-import { existsFile } from "./helpers/fileHelper"
+import { existsFileInFolder } from "./helpers/fileHelper"
 
 const auth = require("solid-auth-client")
 
@@ -21,7 +21,7 @@ export async function addToMySharedRoutes (friendWebId, routeUUID) {
   // Get the root URL of the user"s Pod:
   const storage = profile.getRef(space.storage)
 
-  var exists = await existsFile(storage + "private", "mySharedRoutes.ttl")
+  var exists = await existsFileInFolder(storage + "private", "mySharedRoutes.ttl")
   // si no existe el documento lo creo
   if (!exists) { await newDocument(storage + route) }
   // agrego la ruta y con quien la he compartido

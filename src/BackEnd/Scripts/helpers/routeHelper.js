@@ -1,6 +1,6 @@
 import { schema } from "rdf-namespaces"
 import { fetchDocument } from "tripledoc"
-import { readFolder, existsFile } from "../helpers/fileHelper"
+import { readFolder, existsFileInFolder } from "../helpers/fileHelper"
 import { getPersonaByWebId } from "../helpers/personHelper"
 import Ruta from "../../../front-end/model/Ruta.js"
 import Hito from "../../../front-end/model/Hito.js"
@@ -88,7 +88,7 @@ export async function findRouteURL (folderUrl, uuid) {
 }
 export async function getSharedRouteFriends (storage, routeUUID) {
   var result = []
-  var exists = await existsFile(storage + "private", "mySharedRoutes.ttl")
+  var exists = await existsFileInFolder(storage + "private", "mySharedRoutes.ttl")
   if (exists) {
     const mySharedRoutesDocument = await fetchDocument(storage + "private/mySharedRoutes.ttl")
 

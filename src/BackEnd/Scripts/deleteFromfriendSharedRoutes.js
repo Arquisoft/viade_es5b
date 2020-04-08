@@ -1,6 +1,6 @@
 import { space, schema } from "rdf-namespaces"
 import { fetchDocument } from "tripledoc"
-import { existsFile } from "./helpers/fileHelper"
+import { existsFileInFolder } from "./helpers/fileHelper"
 
 const auth = require("solid-auth-client")
 
@@ -17,7 +17,7 @@ export async function deleteFromfriendSharedRoutes (friendWebId, routeUUID) {
   // Get the root URL of the user"s Pod:
   const storage = profile.getRef(space.storage)
 
-  var exists = await existsFile(storage + "private", "friendSharedRoutes.ttl")
+  var exists = await existsFileInFolder(storage + "private", "friendSharedRoutes.ttl")
   if (exists) {
     // Borro los datos de la ruta
     const friendSharedRoutesDocument = await fetchDocument(storage + route)
