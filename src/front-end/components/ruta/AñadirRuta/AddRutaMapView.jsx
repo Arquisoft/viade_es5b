@@ -9,11 +9,14 @@ import {
   FormControl,
   Button,
   Spinner,
+  Overlay,
+  Tooltip,
 } from "react-bootstrap";
 import Hito from "../../../model/Hito";
 import Ruta from "../../../model/Ruta";
 import RutaService from "../../../services/rutas/RutaService";
 import MessageDialog from "../../util/MessageDialog";
+import "../../../css/tooltips.css";
 
 /**
  * Componente que representa la vista para añadir una ruta a través
@@ -24,6 +27,10 @@ class AddRutaMapView extends Component {
   constructor(props) {
     super(props);
     this.rutaService = new RutaService();
+    // referencias
+    this.nameField = React.createRef();
+    this.descriptionField = React.createRef();
+    this.pointsField = React.createRef();
   }
 
   state = {
@@ -32,6 +39,9 @@ class AddRutaMapView extends Component {
     points: [], // array de objetos {index: indice en el array, name: "nombre del punto", latlng: objeto LatLng},
     isAdding: false, // Indica si se está añadiendo la ruta al POD.
     routeIsAdded: false, // Indica si ya se ha añadido la ruta al POD.
+    invalidName: false,
+    invalidDescription: false,
+    invalidPoints: false,
   };
 
   render() {
@@ -59,7 +69,14 @@ class AddRutaMapView extends Component {
                     <FormControl
                       placeholder="Ruta de Avilés"
                       onChange={this.onChangeName}
+                      ref={this.nameField}
                     />
+                    {this.showErrorTooltTip(
+                      this.nameField,
+                      this.state.invalidName,
+                      "Nombre no válido",
+                      "right"
+                    )}
                   </InputGroup>
                   <InputGroup className="mb-3">
                     <InputGroup.Prepend>
@@ -69,7 +86,14 @@ class AddRutaMapView extends Component {
                       placeholder="Texto descriptivo de la ruta"
                       as="textarea"
                       onChange={this.onChangeDescription}
+                      ref={this.descriptionField}
                     />
+                    {this.showErrorTooltTip(
+                      this.descriptionField,
+                      this.state.invalidDescription,
+                      "Descripción no válida",
+                      "right"
+                    )}
                   </InputGroup>
                 </Card.Body>
               </Card>
@@ -78,7 +102,15 @@ class AddRutaMapView extends Component {
           <Row>
             <Col>
               <Card className="mb-2">
-                <Card.Header>Seleccionar los hitos de la ruta</Card.Header>
+                <Card.Header ref={this.pointsField}>
+                  Seleccionar los hitos de la ruta
+                </Card.Header>
+                {this.showErrorTooltTip(
+                  this.pointsField,
+                  this.state.invalidPoints,
+                  "La ruta debe tener al menos un Inicio y un Hito",
+                  "right"
+                )}
                 <Card.Body>
                   <Card.Text>
                     Puedes utilizar el mapa de la parte inferior para
@@ -134,21 +166,31 @@ class AddRutaMapView extends Component {
     let description = this.state.description;
     let points = this.state.points;
     // Pre-condiciones
+    // Restablecemos las variables de control de inputs inváidos
+    this.setState({
+      invalidName: false,
+      invalidDescription: false,
+      invalidPoints: false,
+    });
+
     if (name == null || name.length === 0) {
       // Nombre vacío
-      alert("No puedes agregar una ruta sin nombre.");
+      this.setState({ invalidName: true });
+      this.handleScrollIntoView(this.nameField);
       return;
     }
 
     if (description == null || description.length === 0) {
       // Descripción vacía
-      alert("No puedes agregar una ruta sin descripción.");
+      this.setState({ invalidDescription: true });
+      this.handleScrollIntoView(this.descriptionField);
       return;
     }
 
     if (points == null || points.length < 2) {
       // Ruta con menos de dos puntos.
-      alert("La ruta debe tener al menos un inicio y un hito.");
+      this.setState({ invalidPoints: true });
+      this.handleScrollIntoView(this.descriptionField);
       return;
     }
 
@@ -223,6 +265,35 @@ class AddRutaMapView extends Component {
 
   onChangeDescription = (e) => {
     this.setState({ description: e.target.value });
+  };
+
+  // Tooltips
+
+  /**
+   * Muestra un tooltip asociado al elemento de referencia
+   * pasada como parámetro, con el texto y posición indicados.
+   */
+  showErrorTooltTip = (ref, state, text, placement) => {
+    return (
+      <Overlay target={ref} show={state} placement={placement}>
+        {(props) => (
+          <Tooltip className="error-tooltip" {...props}>
+            {text}
+          </Tooltip>
+        )}
+      </Overlay>
+    );
+  };
+
+  /**
+   * Se encarga de aplicar el efecto smooth scroll into view
+   * al componente de referencia pasada como parámetro.
+   */
+  handleScrollIntoView = (ref) => {
+    ref.current.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+    });
   };
 }
 
