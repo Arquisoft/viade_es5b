@@ -74,7 +74,7 @@ class RutaService {
   }
 
   addRutaObject(ruta) {
-    BackMain.añadirRuta(ruta);
+    return BackMain.añadirRuta(ruta);
   }
 
   shareRuta(friendWebId, rutaUUID) {

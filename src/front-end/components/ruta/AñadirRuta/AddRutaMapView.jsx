@@ -30,8 +30,8 @@ class AddRutaMapView extends Component {
     name: "",
     description: "",
     points: [], // array de objetos {index: indice en el array, name: "nombre del punto", latlng: objeto LatLng},
-    isAdding: true, // Indica si se está añadiendo la ruta al POD.
-    routeIsAdded: true, // Indica si ya se ha añadido la ruta al POD.
+    isAdding: false, // Indica si se está añadiendo la ruta al POD.
+    routeIsAdded: false, // Indica si ya se ha añadido la ruta al POD.
   };
 
   render() {
@@ -165,10 +165,10 @@ class AddRutaMapView extends Component {
     );
     for (let i in hitos) ruta.addHito(hitos[i]);
 
-    console.log(ruta);
+    this.setState({ isAdding: true });
 
     if (await this.rutaService.addRutaObject(ruta)) {
-      alert("Ruta añadida correctamente");
+      this.setState({ isAdding: false, routeIsAdded: true });
     }
   };
 
