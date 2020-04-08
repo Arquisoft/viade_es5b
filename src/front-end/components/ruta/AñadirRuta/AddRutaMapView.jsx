@@ -8,10 +8,12 @@ import {
   InputGroup,
   FormControl,
   Button,
+  Spinner,
 } from "react-bootstrap";
 import Hito from "../../../model/Hito";
 import Ruta from "../../../model/Ruta";
 import RutaService from "../../../services/rutas/RutaService";
+import MessageDialog from "../../util/MessageDialog";
 
 /**
  * Componente que representa la vista para añadir una ruta a través
@@ -27,7 +29,9 @@ class AddRutaMapView extends Component {
   state = {
     name: "",
     description: "",
-    points: [], // array de objetos {index: indice en el array, name: "nombre del punto", latlng: objeto LatLng}
+    points: [], // array de objetos {index: indice en el array, name: "nombre del punto", latlng: objeto LatLng},
+    isAdding: true, // Indica si se está añadiendo la ruta al POD.
+    routeIsAdded: true, // Indica si ya se ha añadido la ruta al POD.
   };
 
   render() {
@@ -99,11 +103,12 @@ class AddRutaMapView extends Component {
                 style={{ padding: "12px 48px" }}
                 onClick={this.handleAdd}
               >
-                Agregar
+                {this.handleIsAdding()}
               </Button>
             </Col>
           </Row>
         </Container>
+        {this.handleRouteAdded()}
       </div>
     );
   }
@@ -165,6 +170,49 @@ class AddRutaMapView extends Component {
     if (await this.rutaService.addRutaObject(ruta)) {
       alert("Ruta añadida correctamente");
     }
+  };
+
+  /**
+   * Renderiza el texto del botón para añadir la ruta o bien
+   * un Spinner de carga en función del estado isAdding.
+   */
+  handleIsAdding = () => {
+    if (this.state.isAdding) {
+      return (
+        <div>
+          <Spinner
+            as="span"
+            role="status"
+            animation="border"
+            size="sm"
+            className="mr-2"
+          />
+          Agregando...
+        </div>
+      );
+    }
+    return "Agregar";
+  };
+
+  /**
+   * Renderiza si ya se ha cargado la ruta en el POD un panel
+   * modal con un mensaje indicando al usuario que su ruta ha sido
+   * añadida.
+   */
+  handleRouteAdded = () => {
+    if (this.state.routeIsAdded) {
+      return (
+        <MessageDialog
+          show={true}
+          title={`Ruta creada: ${this.state.name}`}
+          message={
+            "Tu nueva ruta ha sido creada correctamente, puedes ir a echarle un vistazo al listado de rutas."
+          }
+          handleAceptar={() => this.setState({ routeIsAdded: false })}
+        />
+      );
+    }
+    return null;
   };
 
   // Manejadores onChange para los inputs de nombre y descripción.
