@@ -190,7 +190,7 @@ class AddRutaMapView extends Component {
     if (points == null || points.length < 2) {
       // Ruta con menos de dos puntos.
       this.setState({ invalidPoints: true });
-      this.handleScrollIntoView(this.descriptionField);
+      this.handleScrollIntoView(this.pointsField);
       return;
     }
 
