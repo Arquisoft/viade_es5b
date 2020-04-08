@@ -1,6 +1,5 @@
 import { schema } from "rdf-namespaces"
 import { fetchDocument } from "tripledoc"
-import { getRootStorage } from "./helpers/fileHelper"
 import { findRouteURL } from "./helpers/routeHelper"
 import { getPersonaByWebId } from "./helpers/personHelper"
 
@@ -16,13 +15,8 @@ export async function listCommentsOfRoute (routeUUID, authorWebId) {
   if (!session) {
     window.location.href = "/login"
   }
-  const storage = await getRootStorage(
-    authorWebId == null ? session.webId : authorWebId
-  )
 
-  let url = await findRouteURL(storage + "private/routes/", routeUUID)
-  // Si no la encuentro la busco en publico
-  if (url === null) { url = await findRouteURL(storage + "public/routes/", routeUUID) }
+  let url = await findRouteURL(authorWebId == null ? session.webId : authorWebId, routeUUID)
   // Si la encuentro entonces busco los comentarios
   if (url !== null) {
     const routeDoc = await fetchDocument(url)

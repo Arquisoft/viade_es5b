@@ -1,6 +1,6 @@
 import { schema } from "rdf-namespaces"
 import { fetchDocument } from "tripledoc"
-import { readFolder, existsFileInFolder, getRootStorage } from "../helpers/fileHelper"
+import { existsFileInFolder, getRootStorage } from "../helpers/fileHelper"
 import { getPersonaByWebId } from "../helpers/personHelper"
 import { AccessControlList } from "@inrupt/solid-react-components"
 import Ruta from "../../../front-end/model/Ruta.js"
@@ -65,27 +65,23 @@ export async function readRouteFromUrl (url) {
   }
   return ruta
 }
-export async function findRouteURL (folderUrl, uuid) {
-  const folder = await readFolder(folderUrl)
-  if (folder) {
-    for (var i = 0; i < folder.files.length; i++) {
-      let routeDoc
-      await fetchDocument(folder.files[i].url).then((content) => {
-        routeDoc = content
-      })
-        .catch(err => routeDoc = null)
+export async function findRouteURL (authorWebId, uuid) {
+  const storage = await getRootStorage(authorWebId)
+  let routeDoc
+  let routeURL = null
+  await fetchDocument(storage + "private/routes/" + uuid + ".ttl").then((content) => {
+    routeDoc = content
+  })
+    .catch(err => routeDoc = null)
 
-      if (routeDoc != null) {
-        var route = routeDoc.getSubject("#ruta")
-        var ID = route.getString(schema.identifier)
-        if (ID === uuid) {
-          return folder.files[i].url
-        }
-      }
-    };
+  if (routeDoc != null) {
+    var route = routeDoc.getSubject("#ruta")
+    var ID = route.getString(schema.identifier)
+    if (ID === uuid) {
+      routeURL = storage + "private/routes/" + uuid + ".ttl"
+    }
   }
-  console.log(folderUrl + " " + uuid + " ruta no encontrada")
-  return null
+  return routeURL;
 }
 export async function getSharedRouteFriends (storage, routeUUID) {
   var result = []

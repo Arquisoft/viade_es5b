@@ -1,7 +1,7 @@
 import { getNotificationDocuments } from "./helpers/notificationHelper"
 import { schema } from "rdf-namespaces"
 import { findRouteURL, readRouteFromUrl } from "./helpers/routeHelper"
-import { getRootStorage, deleteFile } from "./helpers/fileHelper"
+import { deleteFile } from "./helpers/fileHelper"
 import { addSharedRoute } from "./addSharedRoute"
 import { deleteFromfriendSharedRoutes } from "./deleteFromfriendSharedRoutes"
 
@@ -30,8 +30,7 @@ export async function processSharedRoutes () {
           // Comprobamos si existe de verdad la ruta en la parte publica del usuario, si existe
           // continuamos
           const friendWebId = message.getRef(schema.agent)
-          const storage = await getRootStorage(friendWebId)
-          const routeUrl = await findRouteURL(storage + "public/routes/", message.getString(schema.identifier))
+          const routeUrl = await findRouteURL(friendWebId, message.getString(schema.identifier))
           if (routeUrl !== null) {
             // Si lo encontro entonces insertamos en el apartado de rutas compartidas y borramos el mensaje
             await addSharedRoute(friendWebId, routeUrl, message.getString(schema.identifier))
@@ -48,8 +47,8 @@ export async function processSharedRoutes () {
           // Comprobamos si existe de verdad la ruta en la parte publica del usuario, si existe
           // continuamos
           const friendWebId = message.getRef(schema.agent)
-          const storage = await getRootStorage(friendWebId)
-          const routeUrl = await findRouteURL(storage + "public/routes/", message.getString(schema.identifier))
+          const routeUrl = await findRouteURL(friendWebId, message.getString(schema.identifier))
+
           if (routeUrl !== null) {
             // Si la encontro entonces mostramos una notificacion al usuario
             const ruta = await readRouteFromUrl(routeUrl)
@@ -64,8 +63,8 @@ export async function processSharedRoutes () {
           // Comprobamos si existe de verdad la ruta en la parte publica del usuario, si existe
           // continuamos
           const friendWebId = message.getRef(schema.agent)
-          const storage = await getRootStorage(friendWebId)
-          const routeUrl = await findRouteURL(storage + "public/routes/", message.getString(schema.identifier))
+          const routeUrl = await findRouteURL(friendWebId, message.getString(schema.identifier))
+
           if (routeUrl !== null) {
             // Si la encontro entonces mostramos una notificacion al usuario
             const ruta = await readRouteFromUrl(routeUrl)

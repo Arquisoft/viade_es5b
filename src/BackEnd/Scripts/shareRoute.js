@@ -9,7 +9,7 @@ import { addToMySharedRoutes } from "./addToMySharedRoutes"
 const auth = require("solid-auth-client")
 
 // Envia al usuario un mensaje con la direccion de la ruta a compartir que se guardara en su inbox
-// Luego, si logre mandarlo, muevo la ruta de la carpeta privada a la publica.
+// Luego, si logre mandarlo, añado los permisos de posteo en la ruta.
 // si logro compartirla devuelvo true sino false.
 
 export async function shareRoute (friendWebId, routeUUID) {

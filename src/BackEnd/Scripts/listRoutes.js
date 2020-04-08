@@ -15,14 +15,11 @@ export async function listRoutes () {
 
   // Get the root URL of the user"s Pod:
   const storage = profile.getRef(space.storage)
-  var result1 = []
-  var result2 = []
+  var result = []
 
-  // Leemos rutas tanto privadas como publicas
-  result1 = await readRoutes(storage + "private/routes/")
-  result2 = await readRoutes(storage + "public/routes/")
+  result = await readRoutes(storage + "private/routes/")
 
-  return result1.concat(result2)
+  return result
 }
 async function readRoutes (folderRoute) {
   const folder = await readFolder(folderRoute)

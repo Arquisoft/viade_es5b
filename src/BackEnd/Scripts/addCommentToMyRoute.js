@@ -14,9 +14,7 @@ export async function addCommentToMyRoute (comentario, routeUUID) {
   const storage = await getRootStorage(session.webId)
   const webId = session.webId
 
-  let url = await findRouteURL(storage + "private/routes/", routeUUID)
-  // Si no la encuentro la busco en publico
-  if (url === null) { url = await findRouteURL(storage + "public/routes/", routeUUID) }
+  let url = await findRouteURL(webId, routeUUID)
   // Si la encuentro entonces inserto el comentario y mando una circular
   if (url !== null) {
     result = await insertData(comentario, url, webId)

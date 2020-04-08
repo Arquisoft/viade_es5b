@@ -14,9 +14,7 @@ export async function deleteRoute (uuid, routeName) {
   const session = await auth.currentSession()
   if (!session) { window.location.href = "/login" }
   const storage = await getRootStorage(session.webId)
-  let url = await findRouteURL(storage + "private/routes/", uuid)
-  // Si no la encuentro la busco en publico
-  if (url === null) { url = await findRouteURL(storage + "public/routes/", uuid) }
+  let url = await findRouteURL(session.webId, uuid)
   // Si la encuentro la borro
   if (url !== null) {
     // Busco a que amigos mandar la circular
