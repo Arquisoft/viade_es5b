@@ -29,7 +29,7 @@ export async function deleteRoute (uuid, routeName) {
         await sendRouteDeletedNotification(session.webId, friends[i], uuid, routeName)
       }
     }
-    // Borro los ficheros asociados a la ruta
+    // Borro los ficheros asociados a la ruta (que sean mios)
     await deleteFilesFromRoute(session.webId, url)
     // Borro el fichero de la ruta
     await fc.delete(url)

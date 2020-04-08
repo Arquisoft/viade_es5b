@@ -51,6 +51,8 @@ class AmigoService {
    * si logro añadirlo devuelve true, sino false;
    */
   addAmigo (webId) {
+    //elimino simbolos redundantes (darian problemas para permisos)
+    webId = webId.replace(/([^:]\/)\/+/g, "$1");
     return BackMain.añadirAmigo(webId)
   }
 

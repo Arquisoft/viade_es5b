@@ -97,7 +97,9 @@ export async function getSharedRouteFriends (storage, routeUUID) {
         const amigos = rutas[e].getAllRefs(schema.agent)
         for (var i = 0; i < amigos.length; i++) {
           // los añado a result
-          result = [...result, amigos[i]]
+          //elimino simbolos redundantes como doble barra (darian problemas para permisos)
+          let amigo = amigos[i].replace(/([^:]\/)\/+/g, "$1")
+          result = [...result, amigo]
         }
         // Ya encontre lo que busco asi que salgo
         break

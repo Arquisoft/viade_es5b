@@ -50,14 +50,16 @@ export async function addMediaToRoute (files, routeUUID,routeOwnerWebID) {
     if (filenames.length > 0) {
       //Si soy el dueño de la ruta mando un mensaje a todos
       if(webId === routeOwnerWebID) {
+        console.log("soy el dueño " + webId)
         // Busco a que amigos mandar la circular y las mando
         var friends = await getSharedRouteFriends(storage, routeUUID)
         for (let i = 0; i < friends.length; i++) {
-          await sendMediaNotification(webId, friends[i], routeUUID, filenames)
+          await sendMediaNotification(webId, friends[i], url, filenames)
         }
       }
       //sino le mando un mensaje al dueño de la ruta
       else {
+        console.log("No soy el dueño " + routeOwnerWebID)
         await sendMediaNotification(webId, routeOwnerWebID, url, filenames)
       }
       result = true
