@@ -83,6 +83,7 @@ class Ruta {
   }
 
   setHitos (hitosAdd) {
+    this.hitos = []
     for (var h in hitosAdd) {
       this.hitos.push(
         new Hito(hitosAdd[h].nombre, hitosAdd[h].latitud, hitosAdd[h].longitud)

@@ -47,10 +47,13 @@ async function insertData (webId, route, ruta) {
         if (ruta.getInicio().nombre != null) newPoint.addString(schema.name, ruta.getInicio().nombre)
         newPoint.addDecimal(schema.latitude, ruta.getInicio()[0])
         newPoint.addDecimal(schema.longitude, ruta.getInicio()[1])
+        newPoint.addInteger("http://arquisoft.github.io/viadeSpec/order", i)
+
       } else {
         newPoint.addString(schema.name, ruta.getHitos()[i - 1].getNombre())
         newPoint.addDecimal(schema.latitude, ruta.getHitos()[i - 1].getLat())
         newPoint.addDecimal(schema.longitude, ruta.getHitos()[i - 1].getLong())
+        newPoint.addInteger("http://arquisoft.github.io/viadeSpec/order", i)
       }
 
       newPoint.addRef(rdf.type, "http://arquisoft.github.io/viadeSpec/points")

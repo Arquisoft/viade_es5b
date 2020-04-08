@@ -4,7 +4,6 @@ import { existsFileInFolder, getRootStorage } from "../helpers/fileHelper"
 import { getPersonaByWebId } from "../helpers/personHelper"
 import { AccessControlList } from "@inrupt/solid-react-components"
 import Ruta from "../../../front-end/model/Ruta.js"
-import Hito from "../../../front-end/model/Hito.js"
 import Comentario from "../../../front-end/model/Comentario.js"
 
 export async function readRouteFromUrl (url) {
@@ -20,10 +19,9 @@ export async function readRouteFromUrl (url) {
     try {
       const route = routeDoc.getSubject("#ruta")
 
-      const puntos = routeDoc.getSubjectsOfType(
+      var puntos = routeDoc.getSubjectsOfType(
         "http://arquisoft.github.io/viadeSpec/points"
       )
-
       ruta = new Ruta(
         route.getString(schema.name),
         [
@@ -33,16 +31,29 @@ export async function readRouteFromUrl (url) {
         route.getString(schema.description)
       )
       ruta.setUUID(route.getString(schema.identifier))
+      
+      var hitos=[]
 
       for (var e = 1; e < puntos.length; e++) {
-        ruta.addHito(
-          new Hito(
-            puntos[e].getString(schema.name),
-            puntos[e].getDecimal(schema.latitude),
-            puntos[e].getDecimal(schema.longitude)
+        console.log(puntos[e].getInteger("http://arquisoft.github.io/viadeSpec/order"))
+        hitos.push(
+            {
+              nombre: puntos[e].getString(schema.name),
+              latitud: puntos[e].getDecimal(schema.latitude),
+              longitud: puntos[e].getDecimal(schema.longitude),
+              orden: puntos[e].getInteger("http://arquisoft.github.io/viadeSpec/order")
+            }
           )
-        )
       }
+
+      console.log("Sin ordenar "+hitos)
+      //Ordenamos los puntos
+      hitos = hitos.sort(sortByOrder)
+
+      console.log("Ordenado "+hitos)
+
+      ruta.setHitos(hitos)
+
 
       const comentarios = routeDoc.getSubjectsOfType(
         "http://arquisoft.github.io/viadeSpec/userComment"
@@ -64,6 +75,9 @@ export async function readRouteFromUrl (url) {
     }
   }
   return ruta
+}
+function sortByOrder(a, b) {
+  return a.orden - b.orden;
 }
 export async function findRouteURL (authorWebId, uuid) {
   const storage = await getRootStorage(authorWebId)
