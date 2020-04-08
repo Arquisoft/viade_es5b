@@ -11,6 +11,8 @@ import { listCommentsOfRoute } from "./Scripts/listCommentsOfRoute.js"
 import { addMediaToMyRoute } from "./Scripts/addMediaToMyRoute.js"
 import { getPersonaByWebId } from "./Scripts/helpers/personHelper"
 import { listMediaOfRoute } from "./Scripts/listMediaOfRoute"
+import { validAppPermissions } from "./Scripts/validAppPermissions"
+
 export default class BackMain {
   static listarRutas () {
     return listRoutes()
@@ -62,5 +64,8 @@ export default class BackMain {
 
   static obtenerFicherosRuta (rutaUUID, webId) {
     return listMediaOfRoute(rutaUUID, webId)
+  }
+  static permisosAppValidos () {
+    return validAppPermissions()
   }
 }

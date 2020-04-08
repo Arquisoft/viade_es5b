@@ -100,6 +100,9 @@ class RutaService {
   obtenerFicherosRuta(rutaUUID, webId) {
     return BackMain.obtenerFicherosRuta(rutaUUID, webId);
   }
+  permisosAppValidos() {
+    return BackMain.permisosAppValidos();
+  }
 }
 
 export default RutaService;

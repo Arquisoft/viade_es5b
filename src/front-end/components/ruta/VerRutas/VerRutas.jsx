@@ -38,6 +38,7 @@ class VerRutas extends Component {
           children={
             <RouteList
               handleLoaded={this.handleLoaded}
+              permisosValidos={this.rutaService.permisosAppValidos}
               getRutas={this.rutaService.getRutas}
               deleteRuta={this.rutaService.deleteRuta}
               shareRuta={this.rutaService.shareRuta}

@@ -12,6 +12,7 @@ class RouteList extends Component {
     super(props);
     this.state = {
       rutas: [],
+      permisosValidos : true,
       showSharePanel: false,
       routeToShare: null,
       emptyList: false
@@ -20,13 +21,21 @@ class RouteList extends Component {
 
   async componentDidMount() {
     let rutas = await this.props.getRutas();
-    this.setState({ rutas: rutas, emptyList: rutas.length === 0 });
+    let permisosValidos =await this.props.permisosValidos();
+    console.log("permisos validos :" + permisosValidos)
+    this.setState({ rutas: rutas, permisosValidos: permisosValidos, emptyList: rutas.length === 0 });
     this.props.handleLoaded(); // Indicamos al padre que ya se ha cargado la vista.
   }
 
   render() {
     return (
       <Accordion data-testid="acordeon" defaultActiveKey="0">
+          {!this.state.permisosValidos && (
+          <Alert data-testid="alerta" variant="warning">
+            La aplicación no dispone de los suficientes permisos para compartir rutas.
+            debe dar permiso a la aplicación para controlar los permisos de los recursos.
+          </Alert>
+        )}
         {this.state.emptyList && (
           <Alert data-testid="alerta" variant="warning">
             Actualmente no dispones de ninguna ruta en tu POD. Accede a
