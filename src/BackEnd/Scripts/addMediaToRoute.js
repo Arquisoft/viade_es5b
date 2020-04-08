@@ -24,7 +24,7 @@ export async function addMediaToRoute (files, routeUUID,routeOwnerWebID) {
       const file = files[i]
       filenames = filenames + ", " + file.name
       const fileName = uuidv4() + file.name
-      const folder = storage + "public/files/" + fileName
+      const folder = storage + "public/viade_es5b/files/" + fileName
       console.log("leyendo fichero " + file.name)
       const reader = new FileReader()
 

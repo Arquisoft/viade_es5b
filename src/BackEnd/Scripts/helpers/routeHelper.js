@@ -69,7 +69,7 @@ export async function findRouteURL (authorWebId, uuid) {
   const storage = await getRootStorage(authorWebId)
   let routeDoc
   let routeURL = null
-  await fetchDocument(storage + "private/routes/" + uuid + ".ttl").then((content) => {
+  await fetchDocument(storage + "private/viade_es5b/routes/" + uuid + ".ttl").then((content) => {
     routeDoc = content
   })
     .catch(err => routeDoc = null)
@@ -78,16 +78,16 @@ export async function findRouteURL (authorWebId, uuid) {
     var route = routeDoc.getSubject("#ruta")
     var ID = route.getString(schema.identifier)
     if (ID === uuid) {
-      routeURL = storage + "private/routes/" + uuid + ".ttl"
+      routeURL = storage + "private/viade_es5b/routes/" + uuid + ".ttl"
     }
   }
   return routeURL;
 }
 export async function getSharedRouteFriends (storage, routeUUID) {
   var result = []
-  var exists = await existsFileInFolder(storage + "private", "mySharedRoutes.ttl")
+  var exists = await existsFileInFolder(storage + "private/viade_es5b", "mySharedRoutes.ttl")
   if (exists) {
-    const mySharedRoutesDocument = await fetchDocument(storage + "private/mySharedRoutes.ttl")
+    const mySharedRoutesDocument = await fetchDocument(storage + "private/viade_es5b/mySharedRoutes.ttl")
 
     const rutas = mySharedRoutesDocument.getAllSubjectsOfType("http://arquisoft.github.io/viadeSpec/route")
     for (var e = 0; e < rutas.length; e++) {
@@ -115,7 +115,7 @@ export async function updateRoutePermissions(webId,routeUUID)
 
   //Busco con quien la tengo compartida y actualizo los permisos
   var friends = await getSharedRouteFriends(storage,routeUUID)
-  var filePath=storage + "private/routes/" + routeUUID + ".ttl";
+  var filePath=storage + "private/viade_es5b/routes/" + routeUUID + ".ttl";
 
     try {
       //Permisos a añadir

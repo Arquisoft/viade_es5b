@@ -8,7 +8,7 @@ export async function addRoute (ruta) {
   var result = false
   const session = await auth.currentSession()
   if (!session) { window.location.href = "/login" }
-  const route = "private/routes/" + ruta.getUUID() + ".ttl"
+  const route = "private/viade_es5b/routes/" + ruta.getUUID() + ".ttl"
   const webId = session.webId
 
   result =await newDocument(webId, route)

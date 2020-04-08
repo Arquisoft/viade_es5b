@@ -39,7 +39,7 @@ export async function deleteRoute (uuid, routeName) {
 }
 
 async function deleteFromSharedRoutes (storage, routeUUID) {
-  const route = "private/mySharedRoutes.ttl"
+  const route = "private/viade_es5b/mySharedRoutes.ttl"
   const mySharedRoutesDocument = await fetchDocument(storage + route)
   const rutas = mySharedRoutesDocument.getAllSubjectsOfType("http://arquisoft.github.io/viadeSpec/route")
   for (var e = 0; e < rutas.length; e++) {

@@ -27,7 +27,7 @@ export async function processSharedRoutes () {
         var action = message.getString(schema.action)
         /// Si es del tipo shareRoute es que quiere compartir una ruta con nosotros
         if (action === "shareRoute") {
-          // Comprobamos si existe de verdad la ruta en la parte publica del usuario, si existe
+          // Comprobamos si existe de verdad la ruta, si existe
           // continuamos
           const friendWebId = message.getRef(schema.agent)
           const routeUrl = await findRouteURL(friendWebId, message.getString(schema.identifier))
@@ -59,7 +59,7 @@ export async function processSharedRoutes () {
         }
         // Si es del tipo mediaRoute es que alguien ha subido un fichero en una ruta compartida
         if (action === "mediaRoute") {
-          // Comprobamos si existe de verdad la ruta en la parte publica del usuario, si existe
+          // Comprobamos si existe de verdad la ruta, si existe
           // continuamos
           const friendWebId = message.getRef(schema.agent)
 

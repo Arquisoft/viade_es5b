@@ -12,7 +12,7 @@ const auth = require("solid-auth-client")
 export async function addToMySharedRoutes (friendWebId, routeUUID) {
   const session = await auth.currentSession()
   if (!session) { window.location.href = "/login" }
-  const route = "private/mySharedRoutes.ttl"
+  const route = "private/viade_es5b/mySharedRoutes.ttl"
   const webId = session.webId
 
   const profileDocument = await fetchDocument(webId)
@@ -21,7 +21,7 @@ export async function addToMySharedRoutes (friendWebId, routeUUID) {
   // Get the root URL of the user"s Pod:
   const storage = profile.getRef(space.storage)
 
-  var exists = await existsFileInFolder(storage + "private", "mySharedRoutes.ttl")
+  var exists = await existsFileInFolder(storage + "private/viade_es5b", "mySharedRoutes.ttl")
   // si no existe el documento lo creo
   if (!exists) { await newDocument(storage + route) }
   // agrego la ruta y con quien la he compartido

@@ -21,8 +21,8 @@ export async function listSharedRoutes () {
   const storage = profile.getRef(space.storage)
   var result = []
   // Leemos las rutas del documento de compartidas si existe el documento
-  if (await existsFileInFolder(storage + "private", "friendSharedRoutes.ttl")) {
-    const sharedRoutesDocument = await fetchDocument(storage + "private/friendSharedRoutes.ttl")
+  if (await existsFileInFolder(storage + "private/viade_es5b", "friendSharedRoutes.ttl")) {
+    const sharedRoutesDocument = await fetchDocument(storage + "private/viade_es5b/friendSharedRoutes.ttl")
     if (sharedRoutesDocument != null) {
       const rutas = sharedRoutesDocument.getAllSubjectsOfType("http://arquisoft.github.io/viadeSpec/route")
 

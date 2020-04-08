@@ -17,7 +17,7 @@ export async function listRoutes () {
   const storage = profile.getRef(space.storage)
   var result = []
 
-  result = await readRoutes(storage + "private/routes/")
+  result = await readRoutes(storage + "private/viade_es5b/routes/")
 
   return result
 }
