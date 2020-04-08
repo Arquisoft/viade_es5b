@@ -15,16 +15,19 @@ export async function deleteRoute (uuid, routeName) {
   if (!session) { window.location.href = "/login" }
   const storage = await getRootStorage(session.webId)
   let url = await findRouteURL(session.webId, uuid)
-  // Si la encuentro la borro
   if (url !== null) {
-    // Busco a que amigos mandar la circular
+    // Busco a los amigos con los que la tengo compartida
     var friends = await getSharedRouteFriends(storage, uuid)
-    // quito todas las referencias a la ruta
-    await deleteFromSharedRoutes(storage, uuid)
-    // mando mensajes de actualizacion de que se elimino la ruta
-    for (let i = 0; i < friends.length; i++) {
-      console.log("enviando notificacion borrado a " + friends[i])
-      await sendRouteDeletedNotification(session.webId, friends[i], uuid, routeName)
+    //Si la tengo compartida con algun amigo
+    if(friends.length > 0)
+    {
+      // quito todas las referencias a la ruta
+      await deleteFromSharedRoutes(storage, uuid)
+      // mando mensajes de actualizacion de que se elimino la ruta
+      for (let i = 0; i < friends.length; i++) {
+        console.log("enviando notificacion borrado a " + friends[i])
+        await sendRouteDeletedNotification(session.webId, friends[i], uuid, routeName)
+      }
     }
     // Borro los ficheros asociados a la ruta
     await deleteFilesFromRoute(session.webId, url)

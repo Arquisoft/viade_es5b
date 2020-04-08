@@ -55,6 +55,7 @@ class RouteList extends Component {
               comentarMiRuta={this.props.comentarMiRuta}
               obtenerComentariosRuta={this.props.obtenerComentariosRuta}
               showMap={this.props.showMap}
+              permisosValidos={this.state.permisosValidos}
             />
           ))}
 

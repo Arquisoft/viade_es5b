@@ -6,6 +6,7 @@ import '../../../css/map-style.css'
 import CommentBox from '../../share/CommentBox'
 import PhotoGallery from '../../share/PhotoGallery'
 
+
 /**
  * Representa un elemento Card con la
  * información de la ruta que encapsula.
@@ -16,14 +17,27 @@ class RouteCard extends Component {
       <Card>
         <Card.Header>
           <h3 data-testid='r-title'>{this.props.ruta.getNombre()}</h3>
-          <Button
-            data-testid='rb-compartir'
-            variant='success'
-            className='mr-2'
-            onClick={() => this.props.handleShare(this.props.ruta)}
-          >
-            Compartir
-          </Button>
+          {this.props.permisosValidos && (
+            <Button
+              data-testid='rb-compartir'
+              variant='success'
+              className='mr-2'
+              onClick={() => this.props.handleShare(this.props.ruta)}
+              >
+              Compartir
+            </Button>
+                      )}
+                    {!this.props.permisosValidos && (
+            <Button
+              data-testid='rb-compartir'
+              variant='warning'
+              className='mr-2'
+              disabled
+              >
+              Compartir
+            </Button>
+                      )}
+
           <Button
             data-testid='rb-eliminar'
             variant='danger'
