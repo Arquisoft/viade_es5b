@@ -132,8 +132,8 @@ class RutaService {
   procesarRutasCompartidas() {
     //return BackMain.procesarRutasCompartidas();
   }
-  comentarMiRuta(comentario, rutaUUID) {
-    //return BackMain.comentarMiRuta(comentario, rutaUUID);
+  comentarRuta(comentario, rutaUUID) {
+    //return BackMain.comentarRuta(comentario, rutaUUID);
   }
   obtenerComentariosRuta(rutaUUID, webId) {
     return [new Comentario("Publicado: 31/3/2020 22:41:26","Muy bien").setAutor(new Persona("Lucía", "123", "imagen1")), new Comentario("Publicado: 01/4/2020 22:41:26","Genial").setAutor(new Persona("Diego", "245", "imagen2"))];

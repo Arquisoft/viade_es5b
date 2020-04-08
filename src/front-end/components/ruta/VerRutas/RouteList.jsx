@@ -52,7 +52,7 @@ class RouteList extends Component {
               key={key++}
               subirFicheroAMiRuta={this.props.subirFicheroAMiRuta}
               obtenerFicherosRuta={this.props.obtenerFicherosRuta}
-              comentarMiRuta={this.props.comentarMiRuta}
+              comentarRuta={this.props.comentarRuta}
               obtenerComentariosRuta={this.props.obtenerComentariosRuta}
               showMap={this.props.showMap}
               permisosValidos={this.state.permisosValidos}

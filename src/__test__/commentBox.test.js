@@ -9,7 +9,7 @@ let rutaService=new RutaService();
 test("Se renderizan bien los componentes de CommentBox", () => {
     afterAll(cleanup);
     const { getByTestId, getAllByTestId } = render(<CommentBox onlyRead={false} author={null} ruta={rutaService.getRutas()[0]} 
-    comentarMiRuta={rutaService.comentarMiRuta} obtenerComentariosRuta={rutaService.obtenerComentariosRuta} ></CommentBox>);
+    comentarRuta={rutaService.comentarRuta} obtenerComentariosRuta={rutaService.obtenerComentariosRuta} ></CommentBox>);
     //let dialogo = await waitForElement(() => getByTestId("componenteModal"));
     expect(getByTestId("Acordeon")).toBeTruthy();
     expect(getByTestId("cardEnv")).toBeTruthy();
@@ -21,7 +21,7 @@ test("Se renderizan bien los componentes de CommentBox", () => {
 /*test("Comprobamos que se abre la caja de comentarios correctamente", async () => {
     afterAll(cleanup);
     const { getByTestId, getAllByTestId } = render(<CommentBox onlyRead={false} author={null} ruta={rutaService.getRutas()[0]} 
-    comentarMiRuta={rutaService.comentarMiRuta} obtenerComentariosRuta={rutaService.obtenerComentariosRuta} ></CommentBox>);
+    comentarRuta={rutaService.comentarRuta} obtenerComentariosRuta={rutaService.obtenerComentariosRuta} ></CommentBox>);
     let botonComentario = await waitForElement(() => getByTestId("btComment"));
     botonComentario.click();
     let listaComentarios = await waitForElement(() => getByTestId("listaComentarios"));

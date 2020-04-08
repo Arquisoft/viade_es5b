@@ -7,24 +7,33 @@ import { sendNotificationBody } from "./helpers/notificationHelper"
 const auth = require("solid-auth-client")
 
 // Devuelve true si logro insertar el comentario
-export async function addCommentToMyRoute (comentario, routeUUID) {
+export async function addCommentToRoute (comentario, routeUUID, routeOwnerWebID) {
   var result = false
   const session = await auth.currentSession()
   if (!session) { window.location.href = "/login" }
-  const storage = await getRootStorage(session.webId)
   const webId = session.webId
+  if(routeOwnerWebID === null) routeOwnerWebID = webId
 
-  let url = await findRouteURL(webId, routeUUID)
-  // Si la encuentro entonces inserto el comentario y mando una circular
+  const storage = await getRootStorage(routeOwnerWebID)
+
+  let url = await findRouteURL(routeOwnerWebID, routeUUID)
+  // Si la encuentro entonces inserto el comentario y notifico al dueño de la ruta
   if (url !== null) {
     result = await insertData(comentario, url, webId)
     if (result) {
-      // Busco a que amigos mandar la circular y las mando
-      var friends = await getSharedRouteFriends(storage, routeUUID)
-      for (let i = 0; i < friends.length; i++) {
-        await sendCommentNotification(webId, friends[i], routeUUID, comentario)
+      //Si soy el dueño de la ruta mando un comentario a todos
+      if(webId === routeOwnerWebID) {
+        // Busco a que amigos mandar la circular y las mando
+        var friends = await getSharedRouteFriends(storage, routeUUID)
+        for (let i = 0; i < friends.length; i++) {
+          await sendCommentNotification(webId, friends[i], routeUUID, comentario)
+        }
       }
+      //sino le mando un mensaje al dueño de la ruta
+      else {
+      await sendCommentNotification(webId, routeOwnerWebID, routeUUID, comentario)
       console.log(routeUUID + " comentario añadido")
+      }
     }
   }
   return result

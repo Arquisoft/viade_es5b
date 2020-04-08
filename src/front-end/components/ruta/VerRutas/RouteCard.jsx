@@ -88,7 +88,7 @@ class RouteCard extends Component {
                       author={null}
                       ruta={this.props.ruta}
                       onlyRead={false}
-                      comentarMiRuta={this.props.comentarMiRuta}
+                      comentarRuta={this.props.comentarRuta}
                       obtenerComentariosRuta={this.props.obtenerComentariosRuta}
                     />
                   </Col>

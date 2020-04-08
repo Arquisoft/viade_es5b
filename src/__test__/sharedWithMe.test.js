@@ -13,7 +13,7 @@ test("Se renderizan bien los componentes de SharedWithMe", () => {
       getRutasCompartidasConmigo={rutaService.getRutasCompartidasConmigo}
       subirFicheroAMiRuta={rutaService.subirFicheroAMiRuta}
       obtenerFicherosRuta={rutaService.obtenerFicherosRuta}
-      comentarMiRuta={rutaService.comentarMiRuta}
+      comentarRuta={rutaService.comentarRuta}
       obtenerComentariosRuta={rutaService.obtenerComentariosRuta}></SharedWithMe>);
     expect(getByTestId("title")).toHaveTextContent("Compartido conmigo");
     expect(getByTestId("textoCompartidoConmigo")).toHaveTextContent("En esta sección puedes ver los detalles de las rutas que te han compartido tus amigos, junto con sus comentarios y fotos.");
@@ -26,7 +26,7 @@ test("No nos han compartido ninguna ruta, por tanto, se muestra la alerta",async
       getRutasCompartidasConmigo={rutaService.getNoRutasCompartidas}
       subirFicheroAMiRuta={rutaService.subirFicheroAMiRuta}
       obtenerFicherosRuta={rutaService.obtenerFicherosRuta}
-      comentarMiRuta={rutaService.comentarMiRuta}
+      comentarRuta={rutaService.comentarRuta}
       obtenerComentariosRuta={rutaService.obtenerComentariosRuta}></SharedWithMe>);
       let alertaNoRutasCompartidas = await waitForElement(() => getByTestId("alertaNoRutasCompartidas"));
       expect(alertaNoRutasCompartidas).toHaveTextContent("Aún no te han compartido ninguna ruta.");

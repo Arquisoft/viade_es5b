@@ -85,8 +85,8 @@ class RutaService {
     return BackMain.procesarRutasCompartidas();
   }
 
-  comentarMiRuta(comentario, rutaUUID) {
-    return BackMain.comentarMiRuta(comentario, rutaUUID);
+  comentarRuta(comment, routeUUID,routeOwnerWebID) {
+    return BackMain.comentarRuta(comment, routeUUID,routeOwnerWebID);
   }
 
   obtenerComentariosRuta(rutaUUID, webId) {

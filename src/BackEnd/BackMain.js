@@ -6,7 +6,7 @@ import { addFriend } from "./Scripts/addFriend.js"
 import { shareRoute } from "./Scripts/shareRoute.js"
 import { processSharedRoutes } from "./Scripts/processSharedRoutes.js"
 import { listSharedRoutes } from "./Scripts/listSharedRoutes.js"
-import { addCommentToMyRoute } from "./Scripts/addCommentToMyRoute.js"
+import { addCommentToRoute } from "./Scripts/addCommentToRoute.js"
 import { listCommentsOfRoute } from "./Scripts/listCommentsOfRoute.js"
 import { addMediaToMyRoute } from "./Scripts/addMediaToMyRoute.js"
 import { getPersonaByWebId } from "./Scripts/helpers/personHelper"
@@ -46,8 +46,8 @@ export default class BackMain {
     return listSharedRoutes()
   }
 
-  static comentarMiRuta (comentario, rutaUUID) {
-    return addCommentToMyRoute(comentario, rutaUUID)
+  static comentarRuta (comment, routeUUID,routeOwnerWebID) {
+    return addCommentToRoute(comment, routeUUID,routeOwnerWebID)
   }
 
   static obtenerComentariosRuta (rutaUUID, webId) {

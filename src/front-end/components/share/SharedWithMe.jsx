@@ -65,8 +65,8 @@ class SharedWithMe extends Component {
                           <CommentBox
                             author={sharedRoute.getAmigo()}
                             ruta={sharedRoute.getRuta()}
-                            onlyRead={true}
-                            comentarMiRuta={this.props.comentarMiRuta}
+                            onlyRead={false}
+                            comentarRuta={this.props.comentarRuta}
                             obtenerComentariosRuta={
                               this.props.obtenerComentariosRuta
                             }

@@ -26,7 +26,7 @@ class ShareView extends Component {
             }
             subirFicheroAMiRuta={this.rutaService.subirFicheroAMiRuta}
             obtenerFicherosRuta={this.rutaService.obtenerFicherosRuta}
-            comentarMiRuta={this.rutaService.comentarMiRuta}
+            comentarRuta={this.rutaService.comentarRuta}
             obtenerComentariosRuta={this.rutaService.obtenerComentariosRuta}
             showMap={true}
           />

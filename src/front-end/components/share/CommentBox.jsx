@@ -114,7 +114,8 @@ class CommentBox extends Component {
     this.setState({ comment: "" });
     // Creamos el objeto Comment
     let comment = new Comentario(date, commentText);
-    if (await this.props.comentarMiRuta(comment, routeUUID)) {
+    let webID = this.props.author == null ? null : this.props.author.getWebId();
+    if (await this.props.comentarRuta(comment, routeUUID, webID)) {
       // Lo guardamos en el pod del autor
       this.loadComments(); // Recuperamos los comentarios
     }

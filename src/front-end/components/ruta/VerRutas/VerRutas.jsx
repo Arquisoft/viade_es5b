@@ -45,7 +45,7 @@ class VerRutas extends Component {
               obtenerFicherosRuta={this.rutaService.obtenerFicherosRuta}
               subirFicheroAMiRuta={this.rutaService.subirFicheroAMiRuta}
               getAmigos={this.amigoService.getAmigos}
-              comentarMiRuta={this.rutaService.comentarMiRuta}
+              comentarRuta={this.rutaService.comentarRuta}
               obtenerComentariosRuta={this.rutaService.obtenerComentariosRuta}
               showMap={true}
             />
