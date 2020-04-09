@@ -20,6 +20,13 @@ class RouteCard extends Component {
     isDeleting: false, // Indica si la ruta está  siendo eliminada del POD.
   };
 
+  componentDidMount() {
+    this.flyToPoint({
+      lat: this.props.ruta.getInicio()[0],
+      lng: this.props.ruta.getInicio()[1],
+    });
+  }
+
   render() {
     return (
       <Card>
