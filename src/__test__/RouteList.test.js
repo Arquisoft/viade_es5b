@@ -12,9 +12,9 @@ let amigoService = new AmigoService();
 test("Componente se renderiza sin crahsear.", () => {
   const div = document.createElement("div");
   console.log(rutaService.getRutas());
-  ReactDOM.render(<RouteList 
+  ReactDOM.render(<RouteList
     getRutas={rutaService.getRutas} obtenerFicherosRuta={rutaService.obtenerFicherosRuta} handleLoaded={rutaService.handleLoaded}></RouteList>, div);
-  
+
 });
 
 
@@ -33,5 +33,5 @@ test("Hay dos rutas, se muestran dos RouteCard con el nombre de la ruta como tí
   const { getByTestId } = render(<RouteList getRutas={rutaService.getRutas} obtenerFicherosRuta={rutaService.obtenerFicherosRuta} handleLoaded={rutaService.handleLoaded}></RouteList>);
   let acordeon = await waitForElement(() => getByTestId("acordeon"));
   expect(acordeon.children.length).toBe(2);
-  
+
 });

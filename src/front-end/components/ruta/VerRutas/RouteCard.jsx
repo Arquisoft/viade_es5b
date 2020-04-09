@@ -27,20 +27,20 @@ class RouteCard extends Component {
               variant='success'
               className='mr-2'
               onClick={() => this.props.handleShare(this.props.ruta)}
-              >
+            >
               Compartir
             </Button>
-                      )}
-                    {!this.props.permisosValidos && (
+          )}
+          {!this.props.permisosValidos && (
             <Button
               data-testid='rb-compartir'
               variant='warning'
               className='mr-2'
               disabled
-              >
+            >
               Compartir
             </Button>
-                      )}
+          )}
 
           <Button
             data-testid='rb-eliminar'
