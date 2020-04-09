@@ -12,11 +12,23 @@ import Comentario from "../../model/Comentario";
 import "../../css/scroll.css";
 import 'emoji-mart/css/emoji-mart.css';
 import { Picker } from 'emoji-mart';
-import emoji from 'react-easy-emoji';
 import { toArray } from "react-emoji-render";
-import { Emojione } from 'react-emoji-render';
-const Render = require("react-emoji-render");
-const Emoji = Render.Emojione;
+
+const parseEmojis = value => {
+  const emojisArray = toArray(value);
+
+  // toArray outputs React elements for emojis and strings for other
+  const newValue = emojisArray.reduce((previous, current) => {
+    if (typeof current === "string") {
+      return previous + current;
+    }
+    return previous + current.props.children;
+  }, "");
+
+  return newValue;
+};
+
+
 /**
  * Clase que representa un componente de una caja de comentarios.
  * Recibe sus funcionalidades del padre.
@@ -107,7 +119,6 @@ class CommentBox extends Component {
                           <Card.Text>{
                             c.getTexto()
                           }</Card.Text>
-
                         </Card.Body>
                       </Card>
                     );
@@ -205,19 +216,6 @@ class CommentBox extends Component {
 export default CommentBox;
 
 
-const parseEmojis = value => {
-  const emojisArray = toArray(value);
-
-  // toArray outputs React elements for emojis and strings for other
-  const newValue = emojisArray.reduce((previous, current) => {
-    if (typeof current === "string") {
-      return previous + current;
-    }
-    return previous + current.props.children;
-  }, "");
-
-  return newValue;
-};
 
 
 const styles = {
