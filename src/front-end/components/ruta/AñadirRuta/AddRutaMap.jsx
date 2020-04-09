@@ -58,6 +58,7 @@ class AddRutaMap extends Component {
                     <FormControl
                       placeholder="Ruta de Avilés"
                       onChange={this.onChangeName}
+                      value={this.state.name}
                       ref={this.nameField}
                     />
                     {this.showErrorTooltTip(
@@ -75,6 +76,7 @@ class AddRutaMap extends Component {
                       placeholder="Texto descriptivo de la ruta"
                       as="textarea"
                       onChange={this.onChangeDescription}
+                      value={this.state.description}
                       ref={this.descriptionField}
                     />
                     {this.showErrorTooltTip(
@@ -199,7 +201,13 @@ class AddRutaMap extends Component {
     this.setState({ isAdding: true });
 
     if (await this.props.addRutaObject(ruta)) {
-      this.setState({ isAdding: false, routeIsAdded: true });
+      this.setState({
+        isAdding: false,
+        routeIsAdded: true,
+        name: "",
+        description: "",
+        points: [],
+      });
     }
   };
 
