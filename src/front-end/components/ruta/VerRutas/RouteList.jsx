@@ -21,7 +21,7 @@ class RouteList extends Component {
 
   async componentDidMount() {
     let rutas = await this.props.getRutas();
-    let permisosValidos =await this.props.permisosValidos;
+    let permisosValidos =await this.props.permisosValidos();
     console.log("permisos validos :" + permisosValidos)
     this.setState({ rutas: rutas, permisosValidos: permisosValidos, emptyList: rutas.length === 0 });
     this.props.handleLoaded(); // Indicamos al padre que ya se ha cargado la vista.
