@@ -1,5 +1,14 @@
 import React, { Component } from "react";
-import { Card, Container, Row, Col, Table, Spinner } from "react-bootstrap";
+import {
+  Card,
+  Container,
+  Row,
+  Col,
+  Table,
+  Spinner,
+  Overlay,
+  Tooltip,
+} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import MapRuta from "../../map/MapRuta";
 import "../../../css/map-style.css";
@@ -14,17 +23,22 @@ class RouteCard extends Component {
   constructor(props) {
     super(props);
     this.refMapa = React.createRef(); // Referencia al mapa donde se representa la ruta
+    this.refTablaHitos = React.createRef(); // Referencia a la tabla de hitos.
   }
 
   state = {
     isDeleting: false, // Indica si la ruta está  siendo eliminada del POD.
+    clickOnPointTooltip: true, // Indica true si hay que mostrar el tooltip de ayuda para clickar sobre los hitos.
   };
 
   componentDidMount() {
-    this.flyToPoint({
-      lat: this.props.ruta.getInicio()[0],
-      lng: this.props.ruta.getInicio()[1],
-    });
+    this.refMapa.current.leafletElement.flyTo(
+      {
+        lat: this.props.ruta.getInicio()[0],
+        lng: this.props.ruta.getInicio()[1],
+      },
+      13
+    );
   }
 
   render() {
@@ -72,7 +86,8 @@ class RouteCard extends Component {
                       {this.props.ruta.getDescripcion()}
                     </Card.Text>
                     <Card.Title>Hitos</Card.Title>
-                    <Table striped bordered hover>
+                    {this.showClickOnPointTooltip()}
+                    <Table striped bordered hover ref={this.refTablaHitos}>
                       <thead>
                         <tr>
                           <th>Nombre</th>
@@ -201,8 +216,29 @@ class RouteCard extends Component {
    * acceder al mapa.
    */
   flyToPoint = (latlng) => {
+    this.setState({ clickOnPointTooltip: false }); // Se oculta el tooltip de ayuda
     let mapa = this.refMapa.current.leafletElement;
     mapa.flyTo(latlng, 14);
+  };
+
+  /**
+   * Muestra en función del estado, un tooltip de ayuda para indicar
+   * que se puede hacer click sobre los hitos de la tabla.
+   */
+  showClickOnPointTooltip = () => {
+    return (
+      <Overlay
+        target={this.refTablaHitos}
+        show={this.state.clickOnPointTooltip}
+        placement="top"
+      >
+        {(props) => (
+          <Tooltip {...props}>
+            Puedes hacer click sobre un hito para centrarlo en el mapa.
+          </Tooltip>
+        )}
+      </Overlay>
+    );
   };
 }
 
