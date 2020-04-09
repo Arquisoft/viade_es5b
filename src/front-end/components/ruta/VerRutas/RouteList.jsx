@@ -21,7 +21,7 @@ class RouteList extends Component {
 
   async componentDidMount() {
     let rutas = await this.props.getRutas();
-    let permisosValidos =await this.props.permisosValidos();
+    let permisosValidos =await this.props.permisosValidos;
     console.log("permisos validos :" + permisosValidos)
     this.setState({ rutas: rutas, permisosValidos: permisosValidos, emptyList: rutas.length === 0 });
     this.props.handleLoaded(); // Indicamos al padre que ya se ha cargado la vista.
@@ -37,7 +37,7 @@ class RouteList extends Component {
           </Alert>
         )}
         {this.state.emptyList && (
-          <Alert data-testid="alerta" variant="warning">
+          <Alert data-testid="alerta_no_rutas" variant="warning">
             Actualmente no dispones de ninguna ruta en tu POD. Accede a
             <a href="#/add-ruta"> Añadir Ruta </a> para añadir una nueva ruta.
           </Alert>
