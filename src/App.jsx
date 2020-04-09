@@ -15,7 +15,7 @@ import "react-notifications-component/dist/theme.css";
 import { store } from "react-notifications-component";
 import RutaService from "./front-end/services/rutas/RutaService";
 import ShareView from "./front-end/components/share/ShareView";
-import AddRutaMapView from "./front-end/components/ruta/AñadirRuta/AddRutaMapView";
+import AddMapView from "./front-end/components/ruta/AñadirRuta/AddMapView";
 import AddMenu from "./front-end/components/ruta/AñadirRuta/AddMenu";
 import AddRuta from "./front-end/components/ruta/AñadirRuta/AddRuta";
 const rutaService = new RutaService();
@@ -77,7 +77,7 @@ class App extends Component {
               <PrivateLayout
                 exact
                 path="/add-ruta-map"
-                component={AddRutaMapView}
+                component={AddMapView}
               />
 
               <NotLoggedInLayout

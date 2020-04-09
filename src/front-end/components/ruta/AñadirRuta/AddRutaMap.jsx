@@ -14,7 +14,6 @@ import {
 } from "react-bootstrap";
 import Hito from "../../../model/Hito";
 import Ruta from "../../../model/Ruta";
-import RutaService from "../../../services/rutas/RutaService";
 import MessageDialog from "../../util/MessageDialog";
 import "../../../css/tooltips.css";
 
@@ -23,10 +22,9 @@ import "../../../css/tooltips.css";
  * de un mapa, en donde el usuario puede ir hacieno click para ir
  * dibujando la ruta.
  */
-class AddRutaMapView extends Component {
+class AddRutaMap extends Component {
   constructor(props) {
     super(props);
-    this.rutaService = new RutaService();
     // referencias
     this.nameField = React.createRef();
     this.descriptionField = React.createRef();
@@ -47,16 +45,7 @@ class AddRutaMapView extends Component {
   render() {
     return (
       <div>
-        <Container>
-          <Row>
-            <Col>
-              <h1>Añadir una ruta a través de un mapa</h1>
-              <p>
-                Desde aquí podrás crear tu propia ruta personalizada, indicando
-                sus datos básicos y los hitos que la conforman.
-              </p>
-            </Col>
-          </Row>
+        <Container fluid>
           <Row>
             <Col>
               <Card className="mb-2" style={{ width: "70vh" }}>
@@ -109,7 +98,7 @@ class AddRutaMapView extends Component {
                   this.pointsField,
                   this.state.invalidPoints,
                   "La ruta debe tener al menos un Inicio y un Hito",
-                  "right"
+                  "top"
                 )}
                 <Card.Body>
                   <Card.Text>
@@ -209,7 +198,7 @@ class AddRutaMapView extends Component {
 
     this.setState({ isAdding: true });
 
-    if (await this.rutaService.addRutaObject(ruta)) {
+    if (await this.props.addRutaObject(ruta)) {
       this.setState({ isAdding: false, routeIsAdded: true });
     }
   };
@@ -297,4 +286,4 @@ class AddRutaMapView extends Component {
   };
 }
 
-export default AddRutaMapView;
+export default AddRutaMap;

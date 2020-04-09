@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Col, Row, Card } from "react-bootstrap";
+import { Container, Col, Row, Card, Jumbotron } from "react-bootstrap";
 import "../../../css/card-menu.css";
 
 /**
@@ -11,8 +11,13 @@ class AddMenu extends Component {
   render() {
     return (
       <div>
-        <h1>Crear una nueva ruta</h1>
-        <p>Selecciona el modo en el que deseas añadir una nueva ruta.</p>
+        <header>
+          <Jumbotron>
+            <h1>Crear una nueva ruta</h1>
+            <p>Selecciona el modo en el que deseas añadir una nueva ruta.</p>
+          </Jumbotron>
+        </header>
+
         <Container>
           <Row>
             <Col>
