@@ -37,7 +37,7 @@ class RouteList extends Component {
           </Alert>
         )}
         {this.state.emptyList && (
-          <Alert data-testid="alerta" variant="warning">
+          <Alert data-testid="alerta_no_rutas" variant="warning">
             Actualmente no dispones de ninguna ruta en tu POD. Accede a
             <a href="#/add-ruta"> Añadir Ruta </a> para añadir una nueva ruta.
           </Alert>

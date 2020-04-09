@@ -21,10 +21,10 @@ test("Componente se renderiza sin crahsear.", () => {
 test("No hay rutas, se muestra la alerta correspondiente.", async () => {
 
   const { getByTestId } = render(<RouteList getRutas={rutaService.getNoRutas} obtenerFicherosRuta={rutaService.obtenerFicherosRuta} handleLoaded={rutaService.handleLoaded}></RouteList>);
-  let alerta = await waitForElement(() => getByTestId("alerta"));
+  let alerta = await waitForElement(() => getByTestId("alerta_no_rutas"));
   expect(alerta).toHaveTextContent(
     "Actualmente no dispones de ninguna ruta en tu POD. Accede a Añadir Ruta para añadir una nueva ruta."
-  );
+  );//
 
 });
 
