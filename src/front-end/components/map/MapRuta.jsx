@@ -10,7 +10,7 @@ delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
   iconUrl: require("leaflet/dist/images/marker-icon.png"),
-  shadowUrl: require("leaflet/dist/images/marker-shadow.png")
+  shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 });
 
 /**
@@ -25,12 +25,13 @@ class MapRuta extends Component {
     this.hitos = this.getCoords(this.props.ruta); // obtenemos la lista de coordenadas de los hitos
     this.zoom = 10;
     this.inicio = this.props.ruta.getInicio(); // Coordenadas de inicio de la ruta
+    this.refMapa = React.createRef();
   }
 
   render() {
     console.log(this.inicio);
     return (
-      <Map center={this.inicio} zoom={this.zoom}>
+      <Map ref={this.props.refMapa} center={this.inicio} zoom={this.zoom}>
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -71,7 +72,7 @@ class MapRuta extends Component {
    */
   getPolyLine() {
     var points = [];
-    points.push(this.inicio, ...this.hitos.map(h => [h.lat, h.long]));
+    points.push(this.inicio, ...this.hitos.map((h) => [h.lat, h.long]));
     console.log(points);
     return <Polyline color="red" positions={points} />;
   }
@@ -105,7 +106,7 @@ class MapRuta extends Component {
       coords.push({
         hito: name,
         lat: lat,
-        long: long
+        long: long,
       });
     }
     return coords;

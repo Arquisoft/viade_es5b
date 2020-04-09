@@ -243,7 +243,7 @@ class AddRutaMap extends Component {
       return (
         <MessageDialog
           show={true}
-          title={`Ruta creada: ${this.state.name}`}
+          title={"Ruta creada"}
           message={
             "Tu nueva ruta ha sido creada correctamente, puedes ir a echarle un vistazo al listado de rutas."
           }

@@ -6,12 +6,16 @@ import "../../../css/map-style.css";
 import CommentBox from "../../share/CommentBox";
 import PhotoGallery from "../../share/PhotoGallery";
 
-
 /**
  * Representa un elemento Card con la
  * información de la ruta que encapsula.
  */
 class RouteCard extends Component {
+  constructor(props) {
+    super(props);
+    this.refMapa = React.createRef(); // Referencia al mapa donde se representa la ruta
+  }
+
   state = {
     isDeleting: false, // Indica si la ruta está  siendo eliminada del POD.
   };
@@ -20,12 +24,12 @@ class RouteCard extends Component {
     return (
       <Card>
         <Card.Header>
-          <h3 data-testid='r-title'>{this.props.ruta.getNombre()}</h3>
+          <h3 data-testid="r-title">{this.props.ruta.getNombre()}</h3>
           {this.props.permisosValidos && (
             <Button
-              data-testid='rb-compartir'
-              variant='success'
-              className='mr-2'
+              data-testid="rb-compartir"
+              variant="success"
+              className="mr-2"
               onClick={() => this.props.handleShare(this.props.ruta)}
             >
               Compartir
@@ -33,9 +37,9 @@ class RouteCard extends Component {
           )}
           {!this.props.permisosValidos && (
             <Button
-              data-testid='rb-compartir'
-              variant='warning'
-              className='mr-2'
+              data-testid="rb-compartir"
+              variant="warning"
+              className="mr-2"
               disabled
             >
               Compartir
@@ -43,8 +47,8 @@ class RouteCard extends Component {
           )}
 
           <Button
-            data-testid='rb-eliminar'
-            variant='danger'
+            data-testid="rb-eliminar"
+            variant="danger"
             onClick={() => this.delete()}
           >
             {this.handleIsDeleting()}
@@ -70,7 +74,14 @@ class RouteCard extends Component {
                         </tr>
                       </thead>
                       <tbody data-testid="r-hitos">
-                        <tr>
+                        <tr
+                          onClick={() =>
+                            this.flyToPoint({
+                              lat: this.props.ruta.getInicio()[0],
+                              lng: this.props.ruta.getInicio()[1],
+                            })
+                          }
+                        >
                           <td>
                             <b>Inicio</b>
                           </td>
@@ -78,7 +89,15 @@ class RouteCard extends Component {
                           <td>{this.props.ruta.getInicio()[1]}</td>
                         </tr>
                         {this.props.ruta.getHitos().map((h, key) => (
-                          <tr key={key++}>
+                          <tr
+                            key={key++}
+                            onClick={() =>
+                              this.flyToPoint({
+                                lat: h.getLat(),
+                                lng: h.getLong(),
+                              })
+                            }
+                          >
                             <td>{h.getNombre()}</td>
                             <td>{h.getLat()}</td>
                             <td>{h.getLong()}</td>
@@ -121,6 +140,7 @@ class RouteCard extends Component {
                           className="map"
                           ruta={this.props.ruta}
                           data-testid="mapa"
+                          refMapa={this.refMapa}
                         />
                       )}
                     </div>
@@ -166,6 +186,16 @@ class RouteCard extends Component {
       this.props.ruta.getNombre()
     );
     this.setState({ isDeleting: false });
+  };
+
+  /**
+   * Método encargado de 'volar' hasta las coordenadas
+   * que se le pasan como parámetro. Hace uso de referencias para
+   * acceder al mapa.
+   */
+  flyToPoint = (latlng) => {
+    let mapa = this.refMapa.current.leafletElement;
+    mapa.flyTo(latlng, 14);
   };
 }
 
