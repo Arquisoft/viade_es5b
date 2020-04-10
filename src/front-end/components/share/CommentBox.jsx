@@ -14,6 +14,7 @@ import 'emoji-mart/css/emoji-mart.css';
 import { Picker } from 'emoji-mart';
 import { toArray } from "react-emoji-render";
 
+
 const parseEmojis = value => {
   const emojisArray = toArray(value);
 
@@ -141,6 +142,7 @@ class CommentBox extends Component {
   };
   addEmoji = e => {
     let emoji = e.native;
+    
     this.setState({
       comment: this.state.comment + emoji
     });
