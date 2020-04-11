@@ -60,6 +60,7 @@ class AddRutaMap extends Component {
                       onChange={this.onChangeName}
                       value={this.state.name}
                       ref={this.nameField}
+                      testid="input-nombre"
                     />
                     {this.showErrorTooltTip(
                       this.nameField,
@@ -78,6 +79,7 @@ class AddRutaMap extends Component {
                       onChange={this.onChangeDescription}
                       value={this.state.description}
                       ref={this.descriptionField}
+                      testid="input-descripcion"
                     />
                     {this.showErrorTooltTip(
                       this.descriptionField,
@@ -111,10 +113,12 @@ class AddRutaMap extends Component {
                     superior para eliminar el último marcador o eliminar todos
                     los marcadores.
                   </Card.Text>
-                  <AddRouteMap
-                    points={this.state.points}
-                    updatePoints={this.updatePoints}
-                  />
+                  {this.props.showMap && (
+                    <AddRouteMap
+                      points={this.state.points}
+                      updatePoints={this.updatePoints}
+                    />
+                  )}
                 </Card.Body>
               </Card>
             </Col>
@@ -125,6 +129,7 @@ class AddRutaMap extends Component {
                 variant="success"
                 style={{ padding: "12px 48px" }}
                 onClick={this.handleAdd}
+                testid="boton-agregar"
               >
                 {this.handleIsAdding()}
               </Button>
@@ -167,21 +172,21 @@ class AddRutaMap extends Component {
     if (name == null || name.length === 0) {
       // Nombre vacío
       this.setState({ invalidName: true });
-      this.handleScrollIntoView(this.nameField);
+      this.props.handleScrollIntoView(this.nameField);
       return;
     }
 
     if (description == null || description.length === 0) {
       // Descripción vacía
       this.setState({ invalidDescription: true });
-      this.handleScrollIntoView(this.descriptionField);
+      this.props.handleScrollIntoView(this.descriptionField);
       return;
     }
 
     if (points == null || points.length < 2) {
       // Ruta con menos de dos puntos.
       this.setState({ invalidPoints: true });
-      this.handleScrollIntoView(this.pointsField);
+      this.props.handleScrollIntoView(this.pointsField);
       return;
     }
 
@@ -280,17 +285,6 @@ class AddRutaMap extends Component {
         )}
       </Overlay>
     );
-  };
-
-  /**
-   * Se encarga de aplicar el efecto smooth scroll into view
-   * al componente de referencia pasada como parámetro.
-   */
-  handleScrollIntoView = (ref) => {
-    ref.current.scrollIntoView({
-      behavior: "smooth",
-      block: "end",
-    });
   };
 }
 

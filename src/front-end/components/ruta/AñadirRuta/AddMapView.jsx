@@ -26,10 +26,25 @@ class AddMapView extends Component {
             </p>
           </Jumbotron>
         </header>
-        <AddRutaMap addRutaObject={this.rutaService.addRutaObject} />
+        <AddRutaMap
+          addRutaObject={this.rutaService.addRutaObject}
+          showMap={true}
+          handleScrollIntoView={this.handleScrollIntoView}
+        />
       </div>
     );
   }
+
+  /**
+   * Se encarga de aplicar el efecto smooth scroll into view
+   * al componente de referencia pasada como parámetro.
+   */
+  handleScrollIntoView = (ref) => {
+    ref.current.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+    });
+  };
 }
 
 export default AddMapView;
