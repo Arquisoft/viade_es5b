@@ -51,6 +51,7 @@ class VerRutas extends Component {
               comentarRuta={this.rutaService.comentarRuta}
               obtenerComentariosRuta={this.rutaService.obtenerComentariosRuta}
               showMap={true}
+              flyTo={this.flyTo}
             />
           }
           loading={this.state.loading}
@@ -58,6 +59,15 @@ class VerRutas extends Component {
       </div>
     );
   }
+
+  /**
+   * Método invocado desde los RouteCard para llevar a cabo la
+   * animación para centrar un punto en el mapa.
+   */
+  flyTo = (latlng, zoom, ref) => {
+    let mapa = ref.current.leafletElement;
+    mapa.flyTo(latlng, zoom);
+  };
 
   /**
    * Invocado desde la lista de rutas para indicar que ya se han

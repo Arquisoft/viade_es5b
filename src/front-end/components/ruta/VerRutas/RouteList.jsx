@@ -62,7 +62,7 @@ class RouteList extends Component {
                 obtenerComentariosRuta={this.props.obtenerComentariosRuta}
                 showMap={this.props.showMap}
                 permisosValidos={this.state.permisosValidos}
-                flyTo={this.flyTo}
+                flyTo={this.props.flyTo}
               />
             );
           })}
@@ -71,11 +71,6 @@ class RouteList extends Component {
       </Accordion>
     );
   }
-
-  flyTo = (latlng, zoom, ref) => {
-    let mapa = ref.current.leafletElement;
-    mapa.flyTo(latlng, zoom);
-  };
 
   /**
    * Manejador para el borrado de una ruta.
