@@ -12,7 +12,7 @@ class RouteList extends Component {
     super(props);
     this.state = {
       rutas: [],
-      permisosValidos : true,
+      permisosValidos: true,
       showSharePanel: false,
       routeToShare: null,
       emptyList: false,
@@ -21,19 +21,24 @@ class RouteList extends Component {
 
   async componentDidMount() {
     let rutas = await this.props.getRutas();
-    let permisosValidos =await this.props.permisosValidos();
-    console.log("permisos validos :" + permisosValidos)
-    this.setState({ rutas: rutas, permisosValidos: permisosValidos, emptyList: rutas.length === 0 });
+    let permisosValidos = await this.props.permisosValidos;
+    console.log("permisos validos :" + permisosValidos);
+    this.setState({
+      rutas: rutas,
+      permisosValidos: permisosValidos,
+      emptyList: rutas.length === 0,
+    });
     this.props.handleLoaded(); // Indicamos al padre que ya se ha cargado la vista.
   }
 
   render() {
     return (
       <Accordion data-testid="acordeon" defaultActiveKey="0">
-          {!this.state.permisosValidos && (
+        {!this.state.permisosValidos && (
           <Alert data-testid="alerta" variant="warning">
-            La aplicación no dispone de los suficientes permisos para compartir rutas.
-            debe dar permiso a la aplicación para controlar los permisos de los recursos.
+            La aplicación no dispone de los suficientes permisos para compartir
+            rutas. debe dar permiso a la aplicación para controlar los permisos
+            de los recursos.
           </Alert>
         )}
         {this.state.emptyList && (
@@ -43,21 +48,24 @@ class RouteList extends Component {
           </Alert>
         )}
         {this.state.rutas.length > 0 &&
-          this.state.rutas.map((r, key) => (
-            <RouteCard
-              role="r-card"
-              handleDelete={this.handleDeleteRoute}
-              handleShare={this.handleShare}
-              ruta={r}
-              key={key++}
-              subirFicheroARuta={this.props.subirFicheroARuta}
-              obtenerFicherosRuta={this.props.obtenerFicherosRuta}
-              comentarRuta={this.props.comentarRuta}
-              obtenerComentariosRuta={this.props.obtenerComentariosRuta}
-              showMap={this.props.showMap}
-              permisosValidos={this.state.permisosValidos}
-            />
-          ))}
+          this.state.rutas.map((r, key) => {
+            return (
+              <RouteCard
+                role="r-card"
+                handleDelete={this.handleDeleteRoute}
+                handleShare={this.handleShare}
+                ruta={r}
+                key={key++}
+                subirFicheroARuta={this.props.subirFicheroARuta}
+                obtenerFicherosRuta={this.props.obtenerFicherosRuta}
+                comentarRuta={this.props.comentarRuta}
+                obtenerComentariosRuta={this.props.obtenerComentariosRuta}
+                showMap={this.props.showMap}
+                permisosValidos={this.state.permisosValidos}
+                flyTo={this.props.flyTo}
+              />
+            );
+          })}
 
         {this.toggleSharePanel()}
       </Accordion>

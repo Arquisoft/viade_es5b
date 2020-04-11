@@ -18,7 +18,7 @@ class VerRutas extends Component {
   }
 
   state = {
-    loading: true
+    loading: true,
   };
 
   render() {
@@ -28,8 +28,11 @@ class VerRutas extends Component {
           <Jumbotron>
             <h1 className="display-4">Mis rutas</h1>
             <p>
-              En este apartado puedes echar un vistazo a tus rutas,
-              visualizarlas en un mapa, ver sus detalles o bien eliminarlas.
+              Aquí se muestra un listado con todas las rutas almacenadas en tu
+              POD. Puedes ver los datos básicos de cada una, agregarles
+              comentarios y fotos, eliminarlas de tu POD o bien compartirlas con
+              varios amigos. Además puedes utilizar la <b>tabla de hitos</b>{" "}
+              para hacer click sobre un hito y visualizarlo en el mapa.
             </p>
           </Jumbotron>
         </header>
@@ -48,6 +51,7 @@ class VerRutas extends Component {
               comentarRuta={this.rutaService.comentarRuta}
               obtenerComentariosRuta={this.rutaService.obtenerComentariosRuta}
               showMap={true}
+              flyTo={this.flyTo}
             />
           }
           loading={this.state.loading}
@@ -55,6 +59,15 @@ class VerRutas extends Component {
       </div>
     );
   }
+
+  /**
+   * Método invocado desde los RouteCard para llevar a cabo la
+   * animación para centrar un punto en el mapa.
+   */
+  flyTo = (latlng, zoom, ref) => {
+    let mapa = ref.current.leafletElement;
+    mapa.flyTo(latlng, zoom);
+  };
 
   /**
    * Invocado desde la lista de rutas para indicar que ya se han
