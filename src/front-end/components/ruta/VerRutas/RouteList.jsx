@@ -48,26 +48,34 @@ class RouteList extends Component {
           </Alert>
         )}
         {this.state.rutas.length > 0 &&
-          this.state.rutas.map((r, key) => (
-            <RouteCard
-              role="r-card"
-              handleDelete={this.handleDeleteRoute}
-              handleShare={this.handleShare}
-              ruta={r}
-              key={key++}
-              subirFicheroARuta={this.props.subirFicheroARuta}
-              obtenerFicherosRuta={this.props.obtenerFicherosRuta}
-              comentarRuta={this.props.comentarRuta}
-              obtenerComentariosRuta={this.props.obtenerComentariosRuta}
-              showMap={this.props.showMap}
-              permisosValidos={this.state.permisosValidos}
-            />
-          ))}
+          this.state.rutas.map((r, key) => {
+            return (
+              <RouteCard
+                role="r-card"
+                handleDelete={this.handleDeleteRoute}
+                handleShare={this.handleShare}
+                ruta={r}
+                key={key++}
+                subirFicheroARuta={this.props.subirFicheroARuta}
+                obtenerFicherosRuta={this.props.obtenerFicherosRuta}
+                comentarRuta={this.props.comentarRuta}
+                obtenerComentariosRuta={this.props.obtenerComentariosRuta}
+                showMap={this.props.showMap}
+                permisosValidos={this.state.permisosValidos}
+                flyTo={this.flyTo}
+              />
+            );
+          })}
 
         {this.toggleSharePanel()}
       </Accordion>
     );
   }
+
+  flyTo = (latlng, zoom, ref) => {
+    let mapa = ref.current.leafletElement;
+    mapa.flyTo(latlng, zoom);
+  };
 
   /**
    * Manejador para el borrado de una ruta.

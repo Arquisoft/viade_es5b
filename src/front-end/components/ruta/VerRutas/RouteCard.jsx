@@ -32,6 +32,15 @@ class RouteCard extends Component {
   };
 
   componentDidMount() {
+    this.props.flyTo(
+      {
+        lat: this.props.ruta.getInicio()[0],
+        lng: this.props.ruta.getInicio()[1],
+      },
+      13,
+      this.refMapa
+    );
+    /*
     this.refMapa.current.leafletElement.flyTo(
       {
         lat: this.props.ruta.getInicio()[0],
@@ -39,6 +48,7 @@ class RouteCard extends Component {
       },
       13
     );
+    */
   }
 
   render() {
@@ -217,8 +227,9 @@ class RouteCard extends Component {
    */
   flyToPoint = (latlng) => {
     this.setState({ clickOnPointTooltip: false }); // Se oculta el tooltip de ayuda
-    let mapa = this.refMapa.current.leafletElement;
-    mapa.flyTo(latlng, 14);
+    this.props.flyTo(latlng, 14, this.refMapa);
+    // let mapa = this.refMapa.current.leafletElement;
+    //  mapa.flyTo(latlng, 14);
   };
 
   /**
