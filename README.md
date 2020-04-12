@@ -11,3 +11,9 @@ This project is an assignment for the [Software Architecture course](https://arq
 The app is deployed at [https://arquisoft.github.io/viade_es5b/](https://arquisoft.github.io/viade_es5b/) which also contains a [technical documentation](https://arquisoft.github.io/viade_es5b/docs).
 
 More information about how this project has been setup is available [in the wiki](https://github.com/Arquisoft/viade_es5b/wiki).
+
+Para ejecutarlo en Docker:
+    1º Ejecutar Docker y asegurarse de que esta instalado, funcionando y actualizado
+    2º Desde simbolo de sistema (poweshell si puede ser) ejecutar
+    docker build https://github.com/Arquisoft/viade_es5b.git
+

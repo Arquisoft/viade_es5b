@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  viade_es5b:
+    image: viade_es5b
+    build: .
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000
