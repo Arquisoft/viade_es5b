@@ -1,2 +1,4 @@
 ignore:
   - "src/index.js"
+codecov:
+  token: 32c81a4a-8b0e-41c9-ad6b-2da64f7b8893
