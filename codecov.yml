@@ -1,3 +1,2 @@
 ignore:
-  - "src/leaflet-files/**/*"  # ignore folders and all its contents
-  
+  - "src/leaflet-files" #A ver si se elimina
