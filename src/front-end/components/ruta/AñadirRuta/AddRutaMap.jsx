@@ -14,7 +14,6 @@ import {
 } from "react-bootstrap";
 import Hito from "../../../model/Hito";
 import Ruta from "../../../model/Ruta";
-import RutaService from "../../../services/rutas/RutaService";
 import MessageDialog from "../../util/MessageDialog";
 import "../../../css/tooltips.css";
 
@@ -23,10 +22,9 @@ import "../../../css/tooltips.css";
  * de un mapa, en donde el usuario puede ir hacieno click para ir
  * dibujando la ruta.
  */
-class AddRutaMapView extends Component {
+class AddRutaMap extends Component {
   constructor(props) {
     super(props);
-    this.rutaService = new RutaService();
     // referencias
     this.nameField = React.createRef();
     this.descriptionField = React.createRef();
@@ -47,16 +45,7 @@ class AddRutaMapView extends Component {
   render() {
     return (
       <div>
-        <Container>
-          <Row>
-            <Col>
-              <h1>Añadir una ruta a través de un mapa</h1>
-              <p>
-                Desde aquí podrás crear tu propia ruta personalizada, indicando
-                sus datos básicos y los hitos que la conforman.
-              </p>
-            </Col>
-          </Row>
+        <Container fluid>
           <Row>
             <Col>
               <Card className="mb-2" style={{ width: "70vh" }}>
@@ -69,7 +58,9 @@ class AddRutaMapView extends Component {
                     <FormControl
                       placeholder="Ruta de Avilés"
                       onChange={this.onChangeName}
+                      value={this.state.name}
                       ref={this.nameField}
+                      testid="input-nombre"
                     />
                     {this.showErrorTooltTip(
                       this.nameField,
@@ -86,7 +77,9 @@ class AddRutaMapView extends Component {
                       placeholder="Texto descriptivo de la ruta"
                       as="textarea"
                       onChange={this.onChangeDescription}
+                      value={this.state.description}
                       ref={this.descriptionField}
+                      testid="input-descripcion"
                     />
                     {this.showErrorTooltTip(
                       this.descriptionField,
@@ -109,7 +102,7 @@ class AddRutaMapView extends Component {
                   this.pointsField,
                   this.state.invalidPoints,
                   "La ruta debe tener al menos un Inicio y un Hito",
-                  "right"
+                  "top"
                 )}
                 <Card.Body>
                   <Card.Text>
@@ -120,10 +113,12 @@ class AddRutaMapView extends Component {
                     superior para eliminar el último marcador o eliminar todos
                     los marcadores.
                   </Card.Text>
-                  <AddRouteMap
-                    points={this.state.points}
-                    updatePoints={this.updatePoints}
-                  />
+                  {this.props.showMap && (
+                    <AddRouteMap
+                      points={this.state.points}
+                      updatePoints={this.updatePoints}
+                    />
+                  )}
                 </Card.Body>
               </Card>
             </Col>
@@ -134,6 +129,7 @@ class AddRutaMapView extends Component {
                 variant="success"
                 style={{ padding: "12px 48px" }}
                 onClick={this.handleAdd}
+                testid="boton-agregar"
               >
                 {this.handleIsAdding()}
               </Button>
@@ -176,21 +172,21 @@ class AddRutaMapView extends Component {
     if (name == null || name.length === 0) {
       // Nombre vacío
       this.setState({ invalidName: true });
-      this.handleScrollIntoView(this.nameField);
+      this.props.handleScrollIntoView(this.nameField);
       return;
     }
 
     if (description == null || description.length === 0) {
       // Descripción vacía
       this.setState({ invalidDescription: true });
-      this.handleScrollIntoView(this.descriptionField);
+      this.props.handleScrollIntoView(this.descriptionField);
       return;
     }
 
     if (points == null || points.length < 2) {
       // Ruta con menos de dos puntos.
       this.setState({ invalidPoints: true });
-      this.handleScrollIntoView(this.pointsField);
+      this.props.handleScrollIntoView(this.pointsField);
       return;
     }
 
@@ -209,8 +205,14 @@ class AddRutaMapView extends Component {
 
     this.setState({ isAdding: true });
 
-    if (await this.rutaService.addRutaObject(ruta)) {
-      this.setState({ isAdding: false, routeIsAdded: true });
+    if (await this.props.addRutaObject(ruta)) {
+      this.setState({
+        isAdding: false,
+        routeIsAdded: true,
+        name: "",
+        description: "",
+        points: [],
+      });
     }
   };
 
@@ -246,7 +248,7 @@ class AddRutaMapView extends Component {
       return (
         <MessageDialog
           show={true}
-          title={`Ruta creada: ${this.state.name}`}
+          title={"Ruta creada"}
           message={
             "Tu nueva ruta ha sido creada correctamente, puedes ir a echarle un vistazo al listado de rutas."
           }
@@ -284,17 +286,6 @@ class AddRutaMapView extends Component {
       </Overlay>
     );
   };
-
-  /**
-   * Se encarga de aplicar el efecto smooth scroll into view
-   * al componente de referencia pasada como parámetro.
-   */
-  handleScrollIntoView = (ref) => {
-    ref.current.scrollIntoView({
-      behavior: "smooth",
-      block: "end",
-    });
-  };
 }
 
-export default AddRutaMapView;
+export default AddRutaMap;

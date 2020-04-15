@@ -1,27 +1,24 @@
 import React from "react";
 import { useWebId } from "@inrupt/solid-react-components";
 import { Alert } from "react-bootstrap";
+import { Value, LoggedIn, LoggedOut } from "@solid/react";
 
 export const HomeMessageComponent = () => {
   const WebId = useWebId();
 
   return (
     <>
-      {WebId ? (
-        <>
-          <h3>Sesión iniciada</h3>
-          <Alert variant="success">
-            <b>WebID: </b>
-            {WebId}
-          </Alert>
-        </>
-      ) : (
-        <>
-          <Alert variant="warning">
-            Aún no has iniciado sesión. <a href="#/login">Iniciar sesión</a>
-          </Alert>
-        </>
-      )}
+      <LoggedIn>
+        <h3>
+          Hola <Value src="user.name" />, has iniciado sesión con este WebID:
+        </h3>
+        <Alert variant="success">{WebId}</Alert>
+      </LoggedIn>
+      <LoggedOut>
+        <Alert variant="warning">
+          Aún no has iniciado sesión. <a href="#/login">Iniciar sesión</a>
+        </Alert>
+      </LoggedOut>
     </>
   );
 };

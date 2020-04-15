@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
 import L from "leaflet";
+import "../../../front-end/css/errors.css";
 
 /**
  * Componente que representa un panel modal que permite
@@ -11,7 +12,7 @@ class MapPointModal extends Component {
   state = {
     nameValue: "",
     latValue: "",
-    lngValue: ""
+    lngValue: "",
   };
 
   render() {
@@ -35,27 +36,25 @@ class MapPointModal extends Component {
                 />
               </InputGroup>
               <InputGroup className="mb-2">
-                <InputGroup.Prepend className="mr-2">
+                <InputGroup.Prepend>
                   <InputGroup.Text>Latitud</InputGroup.Text>
                 </InputGroup.Prepend>
-                <input
+                <FormControl
                   onChange={this.onChangeLat}
                   placeholder={this.props.point.latlng.lat}
                   type="number"
                   step="any"
-                  className="pl-2"
                 />
               </InputGroup>
               <InputGroup className="mb-2">
-                <InputGroup.Prepend className="mr-2">
+                <InputGroup.Prepend>
                   <InputGroup.Text>Longitud</InputGroup.Text>
                 </InputGroup.Prepend>
-                <input
+                <FormControl
                   onChange={this.onChangeLng}
                   placeholder={this.props.point.latlng.lng}
                   type="number"
                   step="any"
-                  className="pl-2"
                 />
               </InputGroup>
             </div>
@@ -72,17 +71,17 @@ class MapPointModal extends Component {
   }
 
   // Métodos para manejar los eventos de cambio de los campos
-  onChangeName = e => {
+  onChangeName = (e) => {
     this.setState({
-      nameValue: e.target.value
+      nameValue: e.target.value,
     });
   };
 
-  onChangeLat = e => {
+  onChangeLat = (e) => {
     this.setState({ latValue: parseFloat(e.target.value) });
   };
 
-  onChangeLng = e => {
+  onChangeLng = (e) => {
     this.setState({ lngValue: parseFloat(e.target.value) });
   };
 
@@ -105,7 +104,7 @@ class MapPointModal extends Component {
     let result = {
       index: this.props.point.index,
       name: "",
-      latlng: null
+      latlng: null,
     };
     result.name =
       data.nameValue.length === 0 ? this.props.point.name : data.nameValue;

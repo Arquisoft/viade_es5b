@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Col, Row, Card } from "react-bootstrap";
+import { Container, Col, Row, Card, Jumbotron } from "react-bootstrap";
 import "../../../css/card-menu.css";
 
 /**
@@ -11,19 +11,26 @@ class AddMenu extends Component {
   render() {
     return (
       <div>
-        <h1>Crear una nueva ruta</h1>
-        <p>Selecciona el modo en el que deseas añadir una nueva ruta.</p>
+        <header>
+          <Jumbotron>
+            <h1>Crear una nueva ruta</h1>
+            <p>Selecciona el modo en el que deseas añadir una nueva ruta.</p>
+          </Jumbotron>
+        </header>
+
         <Container>
           <Row>
-            <Col>
-              <a href="#/add-ruta">
+            <Col role="menu-item">
+              <a href="#/add-ruta" data-testid="a-manual">
                 <Card className="card-item">
                   <Card.Img
                     variant="top"
                     src={process.env.PUBLIC_URL + "/img/form-logo.png"}
                   />
                   <Card.Body>
-                    <Card.Title>Crear manualmente</Card.Title>
+                    <Card.Title data-testid="manual">
+                      Crear manualmente
+                    </Card.Title>
                     <Card.Text>
                       Crea una nueva ruta introduciendo sus datos a mano a
                       través de un formulario.
@@ -33,15 +40,17 @@ class AddMenu extends Component {
               </a>
             </Col>
 
-            <Col>
-              <a href="#/add-ruta-map">
+            <Col role="menu-item">
+              <a href="#/add-ruta-map" data-testid="a-mapa">
                 <Card className="card-item">
                   <Card.Img
                     variant="top"
                     src={process.env.PUBLIC_URL + "/img/map-logo.jpg"}
                   />
                   <Card.Body>
-                    <Card.Title>Crear con un mapa</Card.Title>
+                    <Card.Title data-testid="conmapa">
+                      Crear con un mapa
+                    </Card.Title>
                     <Card.Text>
                       Crea una ruta con la ayuda de un mapa interactivo sobre el
                       que puedes ir haciendo click para ir dibujando tu ruta en
@@ -51,14 +60,16 @@ class AddMenu extends Component {
                 </Card>
               </a>
             </Col>
-            <Col>
+            <Col role="menu-item">
               <Card className="card-item">
                 <Card.Img
                   variant="top"
                   src={process.env.PUBLIC_URL + "/img/file-logo.jpg"}
                 />
                 <Card.Body>
-                  <Card.Title>Crear a partir de fichero</Card.Title>
+                  <Card.Title data-testid="confichero">
+                    Crear a partir de fichero
+                  </Card.Title>
                   <Card.Text>
                     Crea una nueva ruta importando sus datos a partir de un
                     fichero.
