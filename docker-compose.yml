@@ -8,3 +8,10 @@ services:
       NODE_ENV: production
     ports:
       - 3000
+  solidserver:
+    build: ./node-solid-server/
+    volumes:
+      - ./volumes/soliddata:/usr/src/app/data
+      - ./volumes/soliddb:/usr/src/app/.db
+    ports:
+      - "8443:8443"
