@@ -37,8 +37,9 @@ defineFeature((feature), (test) => {
 
     });
 
-    then("I expect to be on the Bienvenido a Viade", async () => {
-      
+    then("I expect to be on the Welcome page of ViaDe", async () => {
+      await expect(page).toMatch("¡Bienvenido a Viade!", { timeout: 1000 });
+      await expect(page).toMatch("Hola viade5b, has iniciado sesión con este WebID:", { timeout: 1000 });
     });
 
   }); 
