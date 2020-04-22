@@ -37,10 +37,12 @@ defineFeature((feature), (test) => {
     });
 
     when("We share a route", async () => {
+        let popup;
         await expect(page).toMatchElement("h1", { text: "Mis rutas" , timeout: 3000});
         //Pulsamos el botón Compartir:
-        const [button] = await page.$x("//div[@class='elements']/button[contains(., 'Button text')]");
-        const[div]=await page.$x("//div/h3[contains(.,'RutaParaCompartir')]")
+        await page.waitForSelector('button[data-testid="rb-compartir"]');
+        await page.click('button[data-testid="rb-compartir"]');
+       
     });
 
     then("We check that the route has been shared", async () => {
