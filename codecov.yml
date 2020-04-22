@@ -1,2 +1,3 @@
 ignore:
   - "src/leaflet-files" #Definitivo
+  - "gatling-charts-highcharts-bundle-3.3.1"
