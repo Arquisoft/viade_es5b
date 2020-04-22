@@ -32,10 +32,12 @@ defineFeature((feature), (test) => {
       await page.waitFor('input[name=password]');
       await page.$eval('[name=password]', el => el.value = 'viade_es5b');
       await page.click('#login');
+      await page.waitFor(5000);
     });
 
     when("We press Log Out", async () => {
         await page.goto("http://localhost:3000/#/",{waitUntil: "load", timeout: 0});
+        
     });
 
     then("I expect to be on the Welcome page of ViaDe", async () => {
