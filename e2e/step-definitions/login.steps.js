@@ -8,7 +8,7 @@ let page = null;
 defineFeature((feature), (test) => {
 
 	
-  test("We want to login into Viade_es5b", ({ given, when, then}) => {
+  test("We want to add a route in viade_es5b", ({ given, when, then}) => {
     
 
     given("The login page", async() => {
