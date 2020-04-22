@@ -21,6 +21,7 @@ defineFeature((feature), (test) => {
     });
 
     when("We press Iniciar Sesion and enter our information", async () => {
+      await expect(page).toMatchElement("h1", { text: "¡Bienvenido a Viade!" , timeout: 3000});
       //Hacemos click en el Iniciar sesion:
       await page.click('[href="#/login"]');
 
@@ -38,8 +39,9 @@ defineFeature((feature), (test) => {
     });
 
     then("I expect to be on the Welcome page of ViaDe", async () => {
-      await expect(page).toMatch("¡Bienvenido a Viade!", { timeout: 1000 });
-      await expect(page).toMatch("Hola viade5b, has iniciado sesión con este WebID:", { timeout: 1000 });
+      
+      await expect(page).toMatchElement("h1", { text: "¡Bienvenido a Viade!" , timeout: 3000});
+      await expect(page).toMatchElement("h3", { text: "Hola viade5b, has iniciado sesión con este WebID:" , timeout: 3000});
     });
 
   }); 
