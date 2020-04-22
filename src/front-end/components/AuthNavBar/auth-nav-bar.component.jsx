@@ -19,7 +19,7 @@ const AuthNavBar = (props) => {
       </Nav>
 
       <Nav className="ml-auto">
-        <Nav.Link className="logout" id="logout" onClick={logout}>
+        <Nav.Link className="logout" onClick={logout}>
           Log Out
         </Nav.Link>
       </Nav>
