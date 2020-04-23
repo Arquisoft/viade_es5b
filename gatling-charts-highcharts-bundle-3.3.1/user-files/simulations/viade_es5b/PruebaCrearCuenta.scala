@@ -110,5 +110,5 @@ class PruebaCrearCuenta extends Simulation {
 			.get("/img/background-pattern.svg")
 			.headers(headers_6))
 
-	setUp(scn.inject(atOnceUsers(1))).protocols(httpProtocol)
+	setUp(scn.inject(rampUsers(50)during(60 seconds))).protocols(httpProtocol)
 }
