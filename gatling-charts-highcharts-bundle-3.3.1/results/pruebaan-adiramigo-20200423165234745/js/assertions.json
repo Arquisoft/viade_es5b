@@ -1,0 +1,10 @@
+{
+  "simulation": "viade_es5b.PruebaAñadirAmigo",
+  "simulationId": "pruebaan-adiramigo",
+  "start": 1587660754745,
+  "description": "",
+  "scenarios": ["PruebaAñadirAmigo"],
+  "assertions": [
+
+  ]
+}
