@@ -1,0 +1,1 @@
+{"issuer":"https://localhost:8443","grant_types":["implicit"],"redirect_uris":["http://localhost:3000/viade_es5b/#/"],"response_types":["id_token token"],"scope":"openid profile"}
