@@ -1,0 +1,10 @@
+{
+  "simulation": "viade_es5b.PRuebaCompartirRuta",
+  "simulationId": "pruebacompartirruta",
+  "start": 1587661459918,
+  "description": "",
+  "scenarios": ["PRuebaCompartirRuta"],
+  "assertions": [
+
+  ]
+}
