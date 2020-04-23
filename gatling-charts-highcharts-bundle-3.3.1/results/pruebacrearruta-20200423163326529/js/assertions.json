@@ -1,0 +1,10 @@
+{
+  "simulation": "viade_es5b.PruebaCrearRuta",
+  "simulationId": "pruebacrearruta",
+  "start": 1587659606529,
+  "description": "no",
+  "scenarios": ["PruebaCrearRuta"],
+  "assertions": [
+
+  ]
+}
