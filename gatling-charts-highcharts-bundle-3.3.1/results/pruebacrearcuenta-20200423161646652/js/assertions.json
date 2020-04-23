@@ -1,0 +1,10 @@
+{
+  "simulation": "viade_es5b.PruebaCrearCuenta",
+  "simulationId": "pruebacrearcuenta",
+  "start": 1587658606652,
+  "description": "Test1-50Usuarios",
+  "scenarios": ["PruebaCrearCuenta"],
+  "assertions": [
+
+  ]
+}
