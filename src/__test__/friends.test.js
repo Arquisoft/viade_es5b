@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import "@testing-library/jest-dom";
 import FriendList from '../front-end/components/friends/FriendList'
 import AddFriend from '../front-end/components/friends/AddFriend'
+import Friends from '../front-end/components/friends/Friends'
 import Persona from '../front-end/model/Persona'
 import { render, waitForElement } from '@testing-library/react'
 import '@testing-library/jest-dom'
@@ -68,14 +69,14 @@ test("Presionar boton añadir y que aparezca Agregar", () => {
 //   const { getByTestId } = render(<Friends amigos={[]}></Friends>);
 
 //   expect(getByTestId("titleAmigos")).toHaveTextContent("Amigos");
-//   expect(getByTestId("gestionAmigos")).toHaveTextContent("Desde aquí puedes realizar la gestión de tus amigos.");
-//   expect(getByTestId("titleAgregarAmigo")).toBeInTheDocument();
+// expect(getByTestId("gestionAmigos")).toHaveTextContent("Desde aquí puedes realizar la gestión de tus amigos.");
+// expect(getByTestId("titleAgregarAmigo")).toBeInTheDocument();
 
-//   //Dentro del componente addFriend
-//   expect(getByTestId("nuevoAmigo")).toHaveTextContent("Para agregar un nuevo amigo, introduce su WebID. El WebID puede cambiar según el provedor del POD del usuario.");
-//   expect(getByTestId("webID")).toHaveTextContent("WebID");
-//   expect(getByTestId("formAddFriend")).toBeInTheDocument();
-//   expect(getByTestId("buttonAdd")).toBeInTheDocument();
+// //Dentro del componente addFriend
+// expect(getByTestId("nuevoAmigo")).toHaveTextContent("Para agregar un nuevo amigo, introduce su WebID. El WebID puede cambiar según el provedor del POD del usuario.");
+// expect(getByTestId("webID")).toHaveTextContent("WebID");
+// expect(getByTestId("formAddFriend")).toBeInTheDocument();
+// expect(getByTestId("buttonAdd")).toBeInTheDocument();
 // });
 // // PRUEBAS DE RENDERIZADO DE LOS COMPONENTES
 
