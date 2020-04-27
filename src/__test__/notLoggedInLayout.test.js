@@ -1,15 +1,15 @@
 import React from 'react'
-//import NotLoggedInLayout from '../front-end/layouts/NotLoggedInLayout/not-logged-in.layout'
+import NotLoggedInLayout from '../front-end/layouts/NotLoggedInLayout/not-logged-in.layout'
 import { act } from 'react-dom/test-utils'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
-//import LogInComponent from '../front-end/components/authentication/login/Login'
+import LogInComponent from '../front-end/components/authentication/login/Login'
 
 it('NotLoggedInLayout', () => {
   expect(true);
 })
 
-/*let container
+let container
 
 beforeEach(() => {
   container = document.createElement('div')
@@ -27,9 +27,9 @@ it('NotLoggedInLayout', () => {
       exact
       path='/login'
       component={LogInComponent}
-                            />
+    />
     </Router>, container)
   })
 
-  expect(container).toBeTruthy()
-})*/
+  expect(container).toBeTruthy();
+})
