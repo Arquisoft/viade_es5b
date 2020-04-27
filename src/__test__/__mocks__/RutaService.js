@@ -158,6 +158,9 @@ class RutaService {
   getNoRutasCompartidas(){
     return [];
   }
+  permisosAppValidos() {
+    return true;
+  }
 }
 
 export default RutaService;
