@@ -6,23 +6,23 @@ class Home extends Component {
   render() {
     return (
       <>
-        <div className="jumbotron">
+        <div className="jumbotron text-center">
           <h1 data-testid="welcome" className="display-2 mb-4">
             ¡Bienvenido a Viade!
           </h1>
           <HomeLogin />
         </div>
 
-        <div className="jumbotron">
+        <div className="jumbotron text-center">
           <h3 data-testid="header-title" className="display-4">
             ¿Qué es Viade-Rutas?
           </h3>
-          <p data-testid="p1" className="parrafo">
+          <p data-testid="p1" className="parrafo-central">
             Viade-Rutas es un proyecto desarrollado por un grupo de alumnos de
             la Escuela de Ingeniería Informática del Software, en Oviedo, para
             la asignatura de Arquitectura del Software.
           </p>
-          <p data-testid="p2" className="parrafo">
+          <p data-testid="p2" className="parrafo-central">
             Se trata de una aplicación descentralizada, es decir, los datos con
             los que trabaja no se almacenan en una base de datos central, sino
             que cada usuario dispone de su propio espacio de almacenamiento, que
