@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import RouteCard from "../front-end/components/ruta/VerRutas/RouteCard";
 import Ruta from "../front-end/model/Ruta";
 import Hito from "../front-end/model/Hito";
-import AmigoService from "../__test__/__mocks__/AmigoService";
 import {
   render,
   cleanup,
@@ -14,6 +13,15 @@ import {
 import "@testing-library/jest-dom";
 import SharePanel from "../front-end/components/share/SharePanel";
 import CommentBox from "../front-end/components/share/CommentBox";
+import AmigoService from '../front-end/services/amigos/AmigoService';
+
+import * as dependancy from '../BackEnd/BackMain';
+import BackMain from './__mocks__/BackMain';
+
+dependancy.default = BackMain;
+
+
+
 
 // Rutas de prueba
 let ruta = new Ruta("Ruta Avilés", [43.534401, -5.909476], "Genial");

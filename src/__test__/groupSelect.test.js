@@ -2,7 +2,17 @@ import React from "react";
 import { render, cleanup, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import GroupSelect from "../front-end/components/share/GroupSelect";
-import AmigoService from "../__test__/__mocks__/AmigoService"
+import AmigoService from "../front-end/services/amigos/AmigoService";
+
+import * as dependancy from '../BackEnd/BackMain';
+import BackMain from './__mocks__/BackMain';
+
+dependancy.default = BackMain;
+
+
+
+
+
 
 let amigoService = new AmigoService();
 

@@ -2,7 +2,17 @@ import React from "react";
 import { render, cleanup, waitForElement, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import CommentBox from "../front-end/components/share/CommentBox";
-import RutaService from "../__test__/__mocks__/RutaService"
+import RutaService from '../front-end/services/rutas/RutaService';
+
+import * as dependancy from '../BackEnd/BackMain';
+import BackMain from './__mocks__/BackMain';
+
+dependancy.default = BackMain;
+
+
+
+
+
 
 let rutaService=new RutaService();
 
