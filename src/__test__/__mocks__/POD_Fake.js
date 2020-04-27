@@ -1,7 +1,7 @@
 export default class BackMain_Fake {
-    // static listarRutas () {
-    //   return listRoutes()
-    // }
+    static listarRutas () {
+      return listRoutes()
+    }
 
     static añadirRuta(Ruta) {
         return addRoute(Ruta)
@@ -78,3 +78,28 @@ async function insertData (webId, route, ruta) {
   await routeDocument.save([newRoute])
   return true;
 }
+export async function listRoutes () {
+   
+    const profileDocument = await fetchDocument(UUID_fake)
+    const profile = profileDocument.getSubject(UUID_fake)
+  
+    // Get the root URL of the user"s Pod:
+    const storage = profile.getRef(space.storage)
+    var result = []
+  
+    result = await readRoutes(storage + "private/viade_es5b/routes/")
+  
+    return result
+  }
+  async function readRoutes (folderRoute) {
+    const folder = await readFolder(folderRoute)
+    var result = []
+    if (folder) {
+      for (var i = 0; i < folder.files.length; i++) {
+        const ruta = await readRouteFromUrl(folder.files[i].url)
+        if (ruta != null) { result = [...result, ruta] }
+      }
+    }
+    return result
+  }
+  
