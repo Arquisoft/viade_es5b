@@ -39,8 +39,8 @@ defineFeature((feature), (test) => {
     when("We share a route", async () => {
         await expect(page).toMatchElement("h1", { text: "Mis rutas" , timeout: 3000});
         //Pulsamos el botón Compartir:
-        const [button] = await page.$x("//div[@class='elements']/button[contains(., 'Button text')]");
-        const[div]=await page.$x("//div/h3[contains(.,'RutaParaCompartir')]")
+        let btsCompartir = document.getElementsByClassName("mr-2");
+        btsCompartir[1].click();
     });
 
     then("We check that the route has been shared", async () => {
