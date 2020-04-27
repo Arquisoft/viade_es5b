@@ -51,6 +51,7 @@ class CommentBox extends Component {
                       rows="2"
                       value={this.state.comment}
                       onChange={this.handleOnChange}
+                      data-testid="commentRoute"
                     />
                   </InputGroup>
                   <Button
