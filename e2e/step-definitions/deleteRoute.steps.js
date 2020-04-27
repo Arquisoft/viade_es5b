@@ -65,18 +65,17 @@ defineFeature((feature), (test) => {
         await dialog.accept();
       });
 
+    });
+
+    then("I expect to be delete on route list", async () => {
       //vamos a mis rutas
       await page.click('[href="#/ver-rutas"]');
 
       //eliminamos la ruta
       await page.waitFor(10000);
-      await page.click('[data-testid=rb-eliminar]', {timeout: 500000000000000000000000});
-
-    });
-
-    then("I expect to be delete on route list", async () => {
-      await expect("[data-testid=rb-eliminar]").toBeNull();
-      
+      await page.click('[data-testid=rb-eliminar]', );
+      //await page.waitFor(10000);
+      await expect(page).toMatchElement("Alert[data-testid=alerta_no_rutas]");
     });
 
   }); 
