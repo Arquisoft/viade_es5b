@@ -18,7 +18,7 @@ defineFeature((feature), (test) => {
       });
       page = await browser.newPage();
       await page.goto("http://localhost:3000/#/",{waitUntil: "load", timeout: 0}); 
-      await expect(page).toMatchElement("h1", { text: "¡Bienvenido a Viade!" , timeout: 3000});
+      await expect(page).toMatchElement("h1", { text: "¡Bienvenido a Viade!" , timeout: 5000});
       //Hacemos click en el Iniciar sesion:
       await page.click('[href="#/login"]');
 
