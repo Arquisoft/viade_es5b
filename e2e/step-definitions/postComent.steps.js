@@ -37,45 +37,14 @@ defineFeature((feature), (test) => {
     });
 
     when("We press publicar and enter our information", async () => {
-      //Accedemos al formulario para añadir una ruta
-      /*await page.click('[href="#/add-menu"]');
-      await expect(page).toMatchElement("h1", { text: "Crear una nueva ruta" , timeout: 3000});
-      await page.click('[href="#/add-ruta"]');
-      await expect(page).toMatchElement("h1", { text: "Añadir rutas:" , timeout: 3000});
-
-      //Añadimos la ruta en el formulario
-      await page.type('input[name=nombre]', 'Ruta 21', {delay: 20});
-      await page.type('input[name=latitudInicio]', '200', {delay: 20});
-      await page.type('input[name=longitudInicio]', '100', {delay: 20});
-      await page.type('textArea[name=descripcion]', 'Ruta muy buena', {delay: 20});
-      await page.click('[data-testid=addRouteButton]');
-
-      //Añadimos un hito a la ruta
-      await page.type('input[name=nombreHito]', 'Hito 1', {delay: 20});
-      await page.type('input[name=latitudHito]', '300', {delay: 20});
-      await page.type('input[name=longitudHito]', '200', {delay: 20});
-      await page.click('[data-testid=addHitoButton]');
-
-      //Salvamos ruta
-      await page.click('[data-testid=saveRouteButton]');
-
-      //Aceptamos la alerta
-      page.on('dialog', async dialog => {
-        console.log(dialog.message());
-        await dialog.accept();
-      });*/
-
-      //vamos a mis rutas
+      //Vamos a mis rutas
       await page.click('[href="#/ver-rutas"]');
 
-      //publicamos un comentario en la ruta
+      //Publicamos un comentario en la ruta
       await page.waitFor(10000);
       await page.click('[data-testid=btComment]');
       await page.waitFor(5000);
-      //await page('[data-testid=commentRoute]').text('Hola')
-      //await page.waitFor(5000);
       await page.type('textArea[data-testid=commentRoute]', 'Hola', {delay: 20});
-      //await page.type('[data-testid=commentRoute]', 'Hola', {delay: 20, timeout: 10000});
       await page.click('[data-testid=btPublicar]');
 
     });
