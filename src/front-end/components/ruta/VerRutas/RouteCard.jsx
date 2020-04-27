@@ -244,7 +244,7 @@ class RouteCard extends Component {
         placement="top"
       >
         {(props) => (
-          <Tooltip {...props}>
+          <Tooltip data-testid="tooltip" {...props}>
             Puedes hacer click sobre un hito para centrarlo en el mapa.
           </Tooltip>
         )}

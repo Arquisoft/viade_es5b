@@ -107,6 +107,11 @@ test("RouteCard contiene la información del inicio y los hitos de la ruta.", ()
       }
     }
   }
+  // Comprobación del tooltip.
+  const tooltip = getAllByTestId("tooltip");
+  expect(tooltip[0]).toHaveTextContent(
+    "Puedes hacer click sobre un hito para centrarlo en el mapa."
+  );
 });
 
 /*test("Al hacer click en Ver en el map se muestra el componente MapRuta", async () => {
