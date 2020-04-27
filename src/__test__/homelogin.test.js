@@ -1,12 +1,27 @@
-import React from 'react'
+import React from "react";
 //import HomeMessageComponent from '../front-end/components/authentication/login/HomeLogin'
-import { act } from 'react-dom/test-utils'
-import ReactDOM from 'react-dom'
+import { act } from "react-dom/test-utils";
+import ReactDOM from "react-dom";
+import "@testing-library/jest-dom";
+import HomeLogin from "../front-end/components/authentication/login/HomeLogin";
+import { render } from "@testing-library/react";
 
-
-it('HomeLogin', () => {
+it("HomeLogin", () => {
   expect(true);
-})
+});
+
+test("Se renderiza correctamente.", () => {
+  const { getByTestId } = render(<HomeLogin></HomeLogin>);
+});
+
+/*
+test("Aparece el texto de usuario no loggeado.", () => {
+  const { getByTestId } = render(<HomeLogin></HomeLogin>);
+  expect(getByTestId("logged")).toHaveTextContent(
+    " Aún no has iniciado sesión. Iniciar sesión"
+  );
+});*/
+
 /*let container
 
 beforeEach(() => {

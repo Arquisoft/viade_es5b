@@ -9,13 +9,13 @@ export const HomeMessageComponent = () => {
   return (
     <>
       <LoggedIn>
-        <h3>
+        <h3 data-testid="logged">
           Hola <Value src="user.name" />, has iniciado sesión con este WebID:
         </h3>
         <Alert variant="success">{WebId}</Alert>
       </LoggedIn>
       <LoggedOut>
-        <Alert variant="warning">
+        <Alert data-testid="noLogged" variant="warning">
           Aún no has iniciado sesión. <a href="#/login">Iniciar sesión</a>
         </Alert>
       </LoggedOut>
