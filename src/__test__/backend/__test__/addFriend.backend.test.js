@@ -13,5 +13,7 @@ jest.mock('solid-auth-client');
 // test("Añade un amigo que no es una url valida", async () => {
 //   return expect(addFriend("")).toBe(false);
 // });
-
+test("Test de ejemplo", () =>{
+    expect(true);
+});
 
