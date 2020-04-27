@@ -24,7 +24,6 @@ ignore:
   - "src/front-end/components/friends/AddFriend.jsx"
   - "src/front-end/components/friends/Friends.jsx"
   #Innecesario
-  - "src/App"
   - "src/index"
   - "src/serviceWorker"
   - "src/jest-puppeteer.config.js"
