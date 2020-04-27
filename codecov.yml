@@ -18,7 +18,7 @@ ignore:
   - "src/front-end/components/share/PhotoGallery.jsx"
   - "src/front-end/components/share/ShareView.jsx"
   - "src/front-end/components/share/CommentBox.jsx"
-  #NavBAr
+  #NavBar
   - "src/front-end/components/AuthNavBar/auth-nav-bar.component.jsx"
   #Relacionado con amigos
   - "src/front-end/components/friends/AddFriend.jsx"

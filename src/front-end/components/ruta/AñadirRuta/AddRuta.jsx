@@ -97,7 +97,7 @@ crearRuta=e=>{
 
   render() {
     return (
-      <div className="addRuta">
+      <div className="addRuta" data-testid="panel-ruta" >
         <h1 data-testid="titleAñadirRuta">Añadir rutas:</h1>
         <form onSubmit={this.onSubmit}>
             <div className="form-group">

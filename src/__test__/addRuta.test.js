@@ -1,8 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import RouteCard from "../front-end/components/ruta/VerRutas/RouteCard";
-import Ruta from "../front-end/model/Ruta";
-import Hito from "../front-end/model/Hito";
+// import ReactDOM from "react-dom";
+// import RouteCard from "../front-end/components/ruta/VerRutas/RouteCard";
+// import Ruta from "../front-end/model/Ruta";
+// import Hito from "../front-end/model/Hito";
 import { render, cleanup, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import AddRuta from "../front-end/components/ruta/AñadirRuta/AddRuta";
@@ -14,8 +14,8 @@ import AddRuta from "../front-end/components/ruta/AñadirRuta/AddRuta";
 //Componente AddRuta
 test("Comprobar que se renderiza sin fallos el componente AddRuta", () => {
     const div = document.createElement("div");
-    const { getByTestId } = render(<AddRuta ></AddRuta>, div);
-    
+    const { getByTestId } = render(<AddRuta ></AddRuta>, div);//data-testid="in-nombreRuta" 
+    expect(getByTestId("panel-ruta")).toHaveTextContent("Añadir rutas:");
 });
 
 //PRUEBAS PARA EL FORMULARIO DE AÑADIR RUTA
