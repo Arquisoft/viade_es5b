@@ -8,7 +8,7 @@ import RutaService from "../__test__/__mocks__/RutaService"
 import AmigoService from "../__test__/__mocks__/AmigoService"
 import { render, getByText } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import RouteList from "../front-end/components/ruta/VerRutas/RouteList";
+import VerRutas from "../front-end/components/ruta/VerRutas/VerRutas";
 
 let rutaService = new RutaService();
 let amigoService = new AmigoService();
@@ -21,11 +21,17 @@ ruta.addHito(hito1)
 ruta.addHito(hito2)
 console.log('-------------------' + ruta.getHitos().length)
 
-/*test("se renderiza sin fallos", () => {
-  const div = document.createElement("div");
-  ReactDOM.render(<VerRutas rutaService={rutaService} amigoService={amigoService}></VerRutas>, div);
-});*/
+jest.mock("../front-end/components/ruta/VerRutas/RouteList", () => {
+  return {
+    __esModule: true,
+    default: () => {
+      return <div></div>;
+    },
+  };
+});
 
-test("Comprobar test porque no funciona",()=>{
-  expect(true);
+test("se renderiza sin fallos", () => {
+  const div = document.createElement("div");
+  const{getByTestId} = render(<VerRutas></VerRutas>, div);
+  expect(getByTestId("titleVerRutas")).toHaveTextContent("Mis rutas");
 });
