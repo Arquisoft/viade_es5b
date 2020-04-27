@@ -26,7 +26,7 @@ class VerRutas extends Component {
       <div>
         <header>
           <Jumbotron>
-            <h1 className="display-4">Mis rutas</h1>
+            <h1 className="display-4" data-testid="titleVerRutas">Mis rutas</h1>
             <p>
               Aquí se muestra un listado con todas las rutas almacenadas en tu
               POD. Puedes ver los datos básicos de cada una, agregarles
