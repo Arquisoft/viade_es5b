@@ -1,25 +1,25 @@
-import { space, rdf, schema } from "rdf-namespaces"
-import { fetchDocument, createDocument } from "tripledoc"
+export default class BackMain_Fake {
+    // static listarRutas () {
+    //   return listRoutes()
+    // }
 
-const auth = require("solid-auth-client")
+    static añadirRuta(Ruta) {
+        return addRoute(Ruta)
+    }
 
-export async function addRoute(ruta) {
+}
+var UUID_fake=1;
+var rutas = []
+export async function addRoute (ruta) {
 
-  var result = false
-  const session = await auth.currentSession()
-  if (!session) { window.location.href = "/login" }
-  const route = "private/viade_es5b/routes/" + ruta.getUUID() + ".ttl"
-  const webId = session.webId
-
-  result = await newDocument(webId, route)
-  result = await insertData(webId, route, ruta)
+  const route = "private/viade_es5b/routes/" + UUID_fake + ".ttl"
+  const webId = UUID_fake;
+  result =await newDocument(UUID_fake, route)
+  result =await insertData(UUID_fake, route, ruta)
   return result;
 }
 
-
-// https://github.com/solid/solidproject.org/blob/staging/_posts/for-developers/apps/first-app/2019-01-01-04_data-model.md
-// https://vincenttunru.gitlab.io/tripledoc/
-async function newDocument(webId, route) {
+async function newDocument (webId, route) {
   const profileDocument = await fetchDocument(webId)
   const profile = profileDocument.getSubject(webId)
 
@@ -33,7 +33,7 @@ async function newDocument(webId, route) {
   await routesList.save()
   return true;
 }
-async function insertData(webId, route, ruta) {
+async function insertData (webId, route, ruta) {
   const profileDocument = await fetchDocument(webId)
   const routeDocument = await fetchDocument(profileDocument.getSubject(webId).getRef(space.storage) + route)
 
