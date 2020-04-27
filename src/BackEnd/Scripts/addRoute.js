@@ -3,7 +3,7 @@ import { fetchDocument, createDocument } from "tripledoc"
 
 const auth = require("solid-auth-client")
 
-export async function addRoute (ruta) {
+export async function addRoute(ruta) {
 
   var result = false
   const session = await auth.currentSession()
@@ -11,14 +11,15 @@ export async function addRoute (ruta) {
   const route = "private/viade_es5b/routes/" + ruta.getUUID() + ".ttl"
   const webId = session.webId
 
-  result =await newDocument(webId, route)
-  result =await insertData(webId, route, ruta)
+  result = await newDocument(webId, route)
+  result = await insertData(webId, route, ruta)
   return result;
 }
 
+
 // https://github.com/solid/solidproject.org/blob/staging/_posts/for-developers/apps/first-app/2019-01-01-04_data-model.md
 // https://vincenttunru.gitlab.io/tripledoc/
-async function newDocument (webId, route) {
+async function newDocument(webId, route) {
   const profileDocument = await fetchDocument(webId)
   const profile = profileDocument.getSubject(webId)
 
@@ -32,7 +33,7 @@ async function newDocument (webId, route) {
   await routesList.save()
   return true;
 }
-async function insertData (webId, route, ruta) {
+async function insertData(webId, route, ruta) {
   const profileDocument = await fetchDocument(webId)
   const routeDocument = await fetchDocument(profileDocument.getSubject(webId).getRef(space.storage) + route)
 

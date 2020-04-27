@@ -1,0 +1,1 @@
+{"client_id":"f70370c03e9b0bc6170ef1b595702599","redirect_uris":["http://localhost:3000/viade_es5b/#/"],"response_types":["id_token token"],"grant_types":["implicit"],"application_type":"web","id_token_signed_response_alg":"RS256","token_endpoint_auth_method":"client_secret_basic","frontchannel_logout_session_required":false}
