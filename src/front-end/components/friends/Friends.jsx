@@ -30,7 +30,7 @@ class Friends extends Component {
 
   render() {
     return (
-      <div>
+      <div data-testid="componeteJUmbotron">
         <Jumbotron>
           <h2 className="display-4" data-testid="titleAmigos">
             Amigos

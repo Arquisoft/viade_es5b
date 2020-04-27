@@ -83,6 +83,9 @@ class AmigoService {
   getPersonByWebID(webID) {
     //return BackMain.getPersonByWebID(webID);
   }
+  getUnAMigo(){
+    return this.BDAmigos[0];
+  }
 }
 
 export default AmigoService;

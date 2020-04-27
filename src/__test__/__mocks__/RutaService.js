@@ -56,7 +56,8 @@ class RutaService {
     r2.addHito(new Hito("Hito-r2-2", 43.363071, -5.846447));
 
     let c1=new Comentario("Publicado: 31/3/2020 22:41:26","Muy bien");
-    c1.setAutor("Lucía", "123", "imagen");
+    //c1.setAutor("Lucía", "123", "imagen");
+    c1.setAutor("https://uo265060.solid.community/profile/card#me");
     let c2=new Comentario("Publicado: 01/4/2020 22:41:26","Genial");
 
     r1.addComentario(c1);
