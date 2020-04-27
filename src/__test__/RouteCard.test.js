@@ -53,8 +53,8 @@ test("RouteCard contiene la información básica de la ruta.", () => {
     <RouteCard
       ruta={ruta}
       obtenerFicherosRuta={rutaService.obtenerFicherosRuta}
-      handleShare={() => {}}
-      handleDelete={() => {}}
+      handleShare={() => { }}
+      handleDelete={() => { }}
       flyTo={mock}
     ></RouteCard>
   );
@@ -68,8 +68,8 @@ test("RouteCard contiene los botones de compartir y eliminar", () => {
     <RouteCard
       ruta={ruta}
       obtenerFicherosRuta={rutaService.obtenerFicherosRuta}
-      handleShare={() => {}}
-      handleDelete={() => {}}
+      handleShare={() => { }}
+      handleDelete={() => { }}
       flyTo={mock}
     ></RouteCard>
   );
@@ -122,14 +122,12 @@ test("RouteCard contiene la información del inicio y los hitos de la ruta.", ()
   );
 });
 
-/*test("Al hacer click en Ver en el map se muestra el componente MapRuta", async () => {
-
-  const { getByTestId, getAllByTestId } = render(<RouteCard ruta={ruta} obtenerFicherosRuta={rutaService.obtenerFicherosRuta} showMap={true}></RouteCard>);
-  /*const elem = getAllByTestId("rb-ver");
-  for(let i = 0; i < elem.length; i++){
-    elem[i].click();
-  }*/
-/*
-  let mapa = await waitForElement(() => getByTestId("mapa"));
-  expect(mapa).toBeInTheDocument();
-}); */
+// test("Al hacer click en Ver en el map se muestra el componente MapRuta", async () => {
+//   const { getByTestId, getAllByTestId } = render(<RouteCard ruta={ruta} obtenerFicherosRuta={rutaService.obtenerFicherosRuta} showMap={true}></RouteCard>);
+//   const elem = getAllByTestId("rb-ver");
+//   for (let i = 0; i < elem.length; i++) {
+//     elem[i].click();
+//   }
+//   let mapa = await waitForElement(() => getByTestId("mapa"));
+//   expect(mapa).toBeInTheDocument();
+// }); 

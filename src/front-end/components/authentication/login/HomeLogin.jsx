@@ -8,15 +8,15 @@ export const HomeMessageComponent = () => {
 
   return (
     <>
-      <LoggedIn>
+      <LoggedIn data-testid="Logged">
         <h3 data-testid="logged">
           Hola <Value src="user.name" />, has iniciado sesión con este WebID:
         </h3>
         <Alert variant="success">{WebId}</Alert>
       </LoggedIn>
-      <LoggedOut>
+      <LoggedOut data-testid="noLogged">
         <Alert data-testid="noLogged" variant="warning">
-          Aún no has iniciado sesión. <a href="#/login">Iniciar sesión</a>
+          Aún no has iniciado sesión. <a data-testid="noLogged2" href="#/login">Iniciar sesión</a>
         </Alert>
       </LoggedOut>
     </>

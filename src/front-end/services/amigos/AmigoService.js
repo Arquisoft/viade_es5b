@@ -62,6 +62,7 @@ class AmigoService {
   getPersonByWebID (webID) {
     return BackMain.getPersonByWebID(webID)
   }
+
 }
 
 export default AmigoService

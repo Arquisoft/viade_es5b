@@ -24,12 +24,10 @@ it('Register', () => {
   })
 
   expect(container).toBeTruthy()
-
-  /* expect(container.querySelector('.register-wrapper')).toBeTruthy();
+  expect(container.querySelector('.register-wrapper')).toBeTruthy();
   expect(container.querySelector('.panel-header')).toBeTruthy();
   expect(container.querySelector('.register-panel')).toBeTruthy();
   expect(container.querySelector('.panel-body')).toBeTruthy();
   expect(container.querySelector('.actions')).toBeTruthy();
-
-  expect(container.querySelector('.title')).toBeTruthy(); */
+  expect(container.querySelector('.title')).toBeTruthy();
 })

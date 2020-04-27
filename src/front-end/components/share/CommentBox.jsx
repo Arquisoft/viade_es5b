@@ -79,7 +79,7 @@ class CommentBox extends Component {
                 <div className="scroll-container" data-testid="listaComentarios">
                   {this.state.commentList.map((c, key) => {
                     return (
-                      <Card className="mb-4 mr-2" key={key++}>
+                      <Card className="mb-4 mr-2" data-testid="cajaComentario" key={key++}>
                         <Card.Header>{`${c
                           .getAutor()
                           .getNombre()} ${c.getFormattedDate()}`}</Card.Header>
@@ -134,7 +134,7 @@ class CommentBox extends Component {
       commentList: await this.props.obtenerComentariosRuta(uuid, webID),
       loading: false
     });
-    
+
     this.setState({ empty: this.state.commentList.length === 0 });
   };
 
