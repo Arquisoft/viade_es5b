@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import auth from "solid-auth-client";
+import "../../css/spacing.css";
 
 const AuthNavBar = (props) => {
   const logout = () => {
@@ -10,7 +11,16 @@ const AuthNavBar = (props) => {
   };
   return (
     <Navbar bg="primary" variant="dark">
-      <Navbar.Brand href="#/">Viade-Rutas</Navbar.Brand>
+      <Navbar.Brand href="#/">
+        <img
+          alt=""
+          src={process.env.PUBLIC_URL + "/img/viade2.png"}
+          width="40"
+          height="40"
+          className="d-inline-block align-top"
+        />{" "}
+        <div className=" d-inline-block viade-brand">Viade-Rutas</div>
+      </Navbar.Brand>
       <Nav>
         <Nav.Link href="#/ver-rutas">Mis rutas</Nav.Link>
         <Nav.Link href="#/add-menu">Crear rutas</Nav.Link>

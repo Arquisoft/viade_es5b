@@ -17,7 +17,6 @@ ignore:
   #Opciones para compartir
   - "src/front-end/components/share/PhotoGallery.jsx"
   - "src/front-end/components/share/ShareView.jsx"
-  - "src/front-end/components/share/CommentBox.jsx"
   #NavBar
   - "src/front-end/components/AuthNavBar/auth-nav-bar.component.jsx"
   #Relacionado con amigos
