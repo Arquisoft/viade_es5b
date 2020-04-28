@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { media } from '../../../../utils/styledComponents';
+import { media } from "../../../../utils/styledComponents";
 
 export const PanelWrapper = styled.div`
   display: flex;

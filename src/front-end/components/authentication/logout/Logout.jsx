@@ -1,5 +1,5 @@
-import auth from 'solid-auth-client';
-import React, { Component } from 'react';
+import auth from "solid-auth-client";
+import React, { Component } from "react";
 
 class BtLogout extends Component {
   render () {
