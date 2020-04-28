@@ -30,7 +30,6 @@ let hito2 = new Hito("Parque Ferrera", 4.5, 5.7);
 ruta.addHito(hito1);
 ruta.addHito(hito2);
 
-console.log("-------------------" + ruta.getHitos().length);
 
 let amigoService = new AmigoService();
 

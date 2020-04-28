@@ -36,7 +36,6 @@ async function insertData (route, friend, routeUrl, routeUUID) {
 	const rutas = sharedRoutesDocument.getAllSubjectsOfType("http://arquisoft.github.io/viadeSpec/route");
 	for (var e = 0; e < rutas.length; e++) {
 		if (rutas[e].getRef(schema.url) === routeUrl) {
-			console.log("ruta repetida , ya la habian compartido : " + routeUrl);
 			repeated = true;
 			break;
 		}

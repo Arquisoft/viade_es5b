@@ -27,10 +27,7 @@ class Persona {
 	}
 
 	toString () {
-		console.log("-Persona:");
-		console.log("--Nombre: " + this.nombre);
-		console.log("--WebID: " + this.webId);
-		console.log("--Foto: " + this.foto);
+
 	}
 }
 

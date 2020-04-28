@@ -35,7 +35,6 @@ export async function sendNotification (webId, targetWebId, type) {
 	},
 	function (error, response, body) {
 		if (error) { return false; } else {
-			console.log("Notificacion subida correctamente, el servidor respondio con :", body);
 			return true;
 		}
 	});
@@ -53,7 +52,6 @@ export async function sendNotificationBody (webId, targetWebId, body) {
 	},
 	function (error, response, body) {
 		if (error) { return false; } else {
-			console.log("Notificacion subida correctamente, el servidor respondio con :", body);
 			return true;
 		}
 	});
@@ -74,7 +72,7 @@ export async function getNotificationDocuments (webId) {
 				if (doc) {
 					result = [...result, doc];
 				}
-			} catch (e) { console.log(e);
+			} catch (e) {
 			}
 		}
 		return result;

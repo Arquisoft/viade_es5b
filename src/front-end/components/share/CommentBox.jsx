@@ -148,7 +148,6 @@ class CommentBox extends Component {
    */
   handleClick = () => {
     if (!this.state.loaded) {
-      console.log("HOlllla");
       this.loadComments();
       this.setState({ loaded: true });
     }

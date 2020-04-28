@@ -68,7 +68,6 @@ class Friends extends Component {
   handleAddFriend = async webID => {
     // Agregamos el nuevo amigo
     this.setState({ loading: true });
-    console.log("---- Intentando agregar amigo " + webID);
     let response = await this.service.addAmigo(webID);
     if (response) {
       // Se ha agregado correctamente

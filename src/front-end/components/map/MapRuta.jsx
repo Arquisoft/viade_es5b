@@ -29,7 +29,6 @@ class MapRuta extends Component {
   }
 
   render() {
-    console.log(this.inicio);
     return (
       <Map ref={this.props.refMapa} center={this.inicio} zoom={this.zoom}>
         <TileLayer
@@ -73,7 +72,6 @@ class MapRuta extends Component {
   getPolyLine() {
     var points = [];
     points.push(this.inicio, ...this.hitos.map((h) => [h.lat, h.long]));
-    console.log(points);
     return <Polyline color="red" positions={points} />;
   }
 

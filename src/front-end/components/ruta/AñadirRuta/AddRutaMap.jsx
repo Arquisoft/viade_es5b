@@ -148,7 +148,6 @@ class AddRutaMap extends Component {
    */
   updatePoints = (points) => {
     this.setState({ points: points });
-    console.log(this.state.points);
   };
 
   /**

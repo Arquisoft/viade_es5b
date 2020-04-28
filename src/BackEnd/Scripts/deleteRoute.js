@@ -26,7 +26,6 @@ export async function deleteRoute(uuid, routeName) {
       await deleteFromSharedRoutes(storage, uuid);
       // mando mensajes de actualizacion de que se elimino la ruta
       for (let i = 0; i < friends.length; i++) {
-        console.log("enviando notificacion borrado a " + friends[i]);
         await sendRouteDeletedNotification(
           session.webId,
           friends[i],
@@ -53,7 +52,6 @@ async function deleteFromSharedRoutes(storage, routeUUID) {
   for (var e = 0; e < rutas.length; e++) {
     // Donde encuentre esta ruta la elimino
     if (rutas[e].getLiteral(schema.identifier) === routeUUID) {
-      console.log("borrando comparticion ruta " + routeUUID);
       mySharedRoutesDocument.removeSubject(rutas[e].asRef());
     }
   }
@@ -66,9 +64,7 @@ async function deleteFilesFromRoute(webId, url) {
   const rutas = mySharedRoutesDocument.getAllSubjectsOfType(schema.MediaObject);
   for (var e = 0; e < rutas.length; e++) {
     // Elimino los ficheros de los que sea dueño
-    console.log(rutas[e].getRef(schema.author) + " vs " + webId);
     if (rutas[e].getRef(schema.author) === webId) {
-      console.log("borrando fichero " + rutas[e].getRef(schema.contentUrl));
       fc.delete(rutas[e].getRef(schema.contentUrl));
     }
   }

@@ -48,9 +48,7 @@ class Comentario {
 	}
 
 	toString () {
-		console.log("-Comentario:");
-		console.log("--Autor: " + this.autor.getWebId());
-		console.log("--Texto: " + this.texto);
+
 	}
 }
 

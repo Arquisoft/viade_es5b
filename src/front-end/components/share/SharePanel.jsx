@@ -103,7 +103,6 @@ class SharePanel extends Component {
    * Método que comparte la ruta con los amigos seleccionados.
    */
   share = async () => {
-    console.log("---- SHARING ----");
     for (let i = 0; i < this.selectedFriends.length; i++) {
       await this.props.shareRuta(
         this.selectedFriends[i].getWebId(),

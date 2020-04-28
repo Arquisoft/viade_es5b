@@ -30,10 +30,6 @@ class Hito {
 	}
 
 	toString () {
-		console.log("-Hito:");
-		console.log("--Nombre: " + this.nombre);
-		console.log("--Longitud: " + this.longitud);
-		console.log("--Latitud: " + this.latitud);
 	}
 }
 

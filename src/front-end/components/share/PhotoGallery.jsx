@@ -139,7 +139,6 @@ class PhotoGallery extends Component {
    * que el webId es el del usuario loggeado.
    */
   loadImages = async () => {
-    console.log("Trayendo imagenes del pod");
     this.setState({ loading: true });
     let uuid = this.state.route.getUUID();
     let webID = this.props.author == null ? null : this.props.author.getWebId();

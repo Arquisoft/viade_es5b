@@ -35,7 +35,6 @@ export async function readRouteFromUrl (url) {
 			var hitos=[];
 
 			for (var e = 1; e < puntos.length; e++) {
-				console.log(puntos[e].getInteger("http://arquisoft.github.io/viadeSpec/order"));
 				hitos.push(
 					{
 						nombre: puntos[e].getString(schema.name),
@@ -46,11 +45,8 @@ export async function readRouteFromUrl (url) {
 				);
 			}
 
-			console.log("Sin ordenar "+hitos);
 			//Ordenamos los puntos
 			hitos = hitos.sort(sortByOrder);
-
-			console.log("Ordenado "+hitos);
 
 			ruta.setHitos(hitos);
 
@@ -70,7 +66,6 @@ export async function readRouteFromUrl (url) {
 				ruta.addFichero(fichero);
 			}
 		} catch (error) {
-			console.log(error);
 			return null;
 		}
 	}
@@ -143,7 +138,6 @@ export async function updateRoutePermissions(webId,routeUUID)
 		const ACLFile = new AccessControlList(webId,filePath,filePath + ".acl");
 		await ACLFile.createACL(permissions);
 	} catch (error) {
-		console.log(error);
 		return false;
 	}
 	return true;

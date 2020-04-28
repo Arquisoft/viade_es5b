@@ -25,7 +25,6 @@ export async function deleteFromfriendSharedRoutes (friendWebId, routeUUID) {
 		for (var e = 0; e < rutas.length; e++) {
 			// Donde encuentre esta ruta la elimino
 			if (rutas[e].getLiteral(schema.identifier) === routeUUID && rutas[e].getRef(schema.agent) === friendWebId) {
-				console.log("borrando ruta que me compartieron" + routeUUID);
 				friendSharedRoutesDocument.removeSubject(rutas[e].asRef());
 			}
 		}

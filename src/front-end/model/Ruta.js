@@ -92,9 +92,6 @@ class Ruta {
 	}
 
 	toString () {
-		for (var h of this.hitos) {
-			console.log(h);
-		}
 	}
 }
 

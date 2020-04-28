@@ -29,9 +29,7 @@ class Notificacion {
 	}
 
 	toString () {
-		console.log("-Notificacion:");
-		console.log("--Titulo: " + this.titulo);
-		console.log("--Mensaje: " + this.mensaje);
+
 	}
 }
 

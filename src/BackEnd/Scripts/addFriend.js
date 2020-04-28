@@ -19,7 +19,6 @@ export async function addFriend(friendWebId) {
   for (var i = 0; i < friends.length; i += 1) {
     if (friends[i] === friendWebId) {
       friend = true;
-      console.log(friendWebId + "ya era mi amigo");
     }
   }
   // Si no es amigo lo añado

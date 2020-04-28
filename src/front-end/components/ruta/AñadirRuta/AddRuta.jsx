@@ -47,7 +47,6 @@ onSubmit=e=>{//Creamos ruta sin hitos.
 onSubmit2=e=>{//Creamos hitos.
   this.addHito();
   e.preventDefault();
-  console.log(this.state.hitos);
 
   //Inicializamos el formulario de hito:
   this.setState({
@@ -74,10 +73,6 @@ addHito = () =>{
 }
 
 crearRuta=e=>{
-  console.log("Añadimos la ruta: "+this.state.nombre+", con "+this.state.hitos.length+" hitos");
-  for (var h of this.state.hitos){
-    console.log(h);
-  }
   this.setState(
     {
       formulario1:false,

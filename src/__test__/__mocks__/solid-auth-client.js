@@ -8,7 +8,6 @@ class SolidAuthClient extends EventEmitter {
     super();
     this.session = undefined;
     this.mockWebId("https://pedro223.inrupt.net/profile/card#me");
-    console.log(this.session);
   }
 
   fetch = () => fetchResponse;

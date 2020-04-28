@@ -29,7 +29,6 @@ export async function addMediaToRoute(files, routeUUID, routeOwnerWebID) {
       filenames = filenames + ", " + file.name;
       const fileName = uuidv4() + file.name;
       const folder = storage + "public/viade_es5b/files/" + fileName;
-      console.log("leyendo fichero " + file.name);
       const reader = new FileReader();
 
       reader.onload = async (f) => {
@@ -45,7 +44,6 @@ export async function addMediaToRoute(files, routeUUID, routeOwnerWebID) {
           credentials: "include",
         });
         if (response.ok) {
-          console.log("fichero subido " + folder);
           insertData(folder, url, webId);
         }
       };
