@@ -6,23 +6,24 @@ ignore:
   #No deberia ser comprobado asi
   - "src/BackEnd"
   - "src/docs"
-  #Por completar, siguiendo el modelo BlackList, los comprobados ya no estan en la lista
-  - "src/front-end/model"
-  - "src/front-end/layouts"
-  #De components
+  #NavBar
+  - "src/front-end/components/AuthNavBar/auth-nav-bar.component.jsx"
   #Del mapa
   - "src/front-end/components/map/MapPointModal.jsx"
   - "src/front-end/components/map/MapRuta.jsx"
   - "src/front-end/components/map/AddRouteMap.jsx"
+  #Por completar, siguiendo el modelo BlackList, los comprobados ya no estan en la lista
+  #De generalidades
+  - "src/front-end/model"
+  - "src/front-end/layouts"
+  #De components
   #Opciones para compartir
   - "src/front-end/components/share/PhotoGallery.jsx"
   - "src/front-end/components/share/ShareView.jsx"
-  #NavBar
-  - "src/front-end/components/AuthNavBar/auth-nav-bar.component.jsx"
   #Relacionado con amigos
   - "src/front-end/components/friends/AddFriend.jsx"
   - "src/front-end/components/friends/Friends.jsx"
-  #Innecesario
+  #Innecesario comprobarlo 
   - "src/index"
   - "src/serviceWorker"
   - "src/jest-puppeteer.config.js"
