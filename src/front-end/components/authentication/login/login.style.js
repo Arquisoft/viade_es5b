@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import GradientBackground from '../utils/GradientBackground/gradient-background.component'
-import Panel from '../utils/panel/panel.component'
+import styled from 'styled-components';
+import GradientBackground from '../utils/GradientBackground/gradient-background.component';
+import Panel from '../utils/panel/panel.component';
 
 export const LoginWrapper = styled(GradientBackground)`
   h1 {

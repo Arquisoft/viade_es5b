@@ -1,11 +1,11 @@
-import auth from 'solid-auth-client'
-import React, { Component } from 'react'
+import auth from 'solid-auth-client';
+import React, { Component } from 'react';
 
 class BtLogout extends Component {
   render () {
     const logout = () => {
-      auth.logout()
-      this.props.handleLogOut()
+      auth.logout();
+      this.props.handleLogOut();
       // window.location = "/login";
     }
 

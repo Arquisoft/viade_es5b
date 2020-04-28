@@ -31,6 +31,6 @@ export const LogInComponent = () => {
         </LoginPanel>
       </CenterContainer>
     </LoginWrapper>
-  )
+  );
 }
 export default LogInComponent

@@ -23,7 +23,7 @@ defineFeature((feature), (test) => {
       await page.click('[href="#/login"]');
 
       //Introducimos el webId y hacemos click en el botón Login:
-      await page.type('input[name=idp]', 'https://viadees5b2.solid.community/profile/card#me', {delay: 20})
+      await page.type('input[name=idp]', 'https://viadees5b2.solid.community/profile/card#me', {delay: 20});
       await page.click('[class="sc-EHOje dqQDCe"]');
 
       //Introducimos el nombre de usuario, la contraseña y hacemos click en el botón de Log In
