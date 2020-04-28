@@ -279,6 +279,50 @@ BBDD -> App: Devuelve las rutas con sus galerías
 
 ****
 
+=== Comentar una ruta compartida
+
+****
+
+. Click en "Compartido conmigo".
+. Escogemos la ruta compartida en la que queremos crear un comentario.
+. Click en "Comentarios".
+. Escribimos el comentario y click en el botón de "Publicar".
+
+[plantuml,"DiagramaComentarRutaCompartida",png]
+----
+Usuario -> App: Seleccionamos "Compartido conmigo"
+App -> BBDD : Solicitar las rutas compartidas al usuario al POD
+BBDD -> App: Devuelve las rutas
+App -> Usuario: Devuelve la vista con las rutas compartidas al usuario
+Usuario -> App: Escoge la ruta a la que quiere crear un comentario y click en "Comentarios"
+Usuario -> App: Escribe el comentario y click en el botón "Publicar"
+App -> BBDD: Crea un comentario nuevo para la ruta en el POD
+App -> Usuario: Visualizamos el comentario en la lista de comentarios de la ruta
+----
+
+****
+
+=== Añadir una imagen a una ruta compartida
+
+****
+
+. Click en "Compartido conmigo".
+. Escogemos la ruta en la que queremos añadir una imagen.
+. En Galería seleccionamos la imagen y click en el botón de "Subir".
+
+[plantuml,"DiagramaSubirImagenRutaCompartida",png]
+----
+Usuario -> App: Seleccionamos "Compartido conmigo"
+App -> BBDD : Solicitar las rutas compartidas al usuario al POD
+BBDD -> App: Devuelve las rutas
+App -> Usuario: Devuelve la vista con las rutas compartidas al usuario
+Usuario -> App: Escoge la ruta a la que quiere añadir una foto, selecciona la imagen y click en el botón "Subir"
+App -> BBDD: Añade una foto para la ruta en el POD
+App -> Usuario: Visualizamos la imagen añadida en la galería de la ruta
+----
+
+****
+
 === Ver comentarios de una ruta compartida
 
 ****
