@@ -118,7 +118,6 @@ class MapPointModal extends Component {
         : data.lngValue;
 
     result.latlng = L.latLng(lat, lng);
-    console.log(result);
     return result;
   }
 }

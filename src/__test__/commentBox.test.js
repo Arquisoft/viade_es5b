@@ -58,7 +58,7 @@ test("Se renderizan bien los componentes de CommentBox", () => {
 });
 
 test("Los comentarios de la ruta se obtienen correctamente.", async () => {
-  const { getByTestId, getAllByTestId } = render(
+  const { getByTestId } = render(
     <CommentBox
       onlyRead={false}
       author={null}

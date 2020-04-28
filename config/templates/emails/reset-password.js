@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 /**
  * Returns a partial Email object (minus the `to` and `from` properties),
@@ -13,9 +13,9 @@
  *
  * @return {Object}
  */
-function render (data) {
+function render(data) {
   return {
-    subject: 'Account password reset',
+    subject: "Account password reset",
 
     /**
      * Text version
@@ -42,8 +42,8 @@ If you did not mean to reset your password, ignore this email, your password wil
 <p><a href="${data.resetUrl}">${data.resetUrl}</a></p>
 
 <p>If you did not mean to reset your password, ignore this email, your password will not change.</p>
-`
-  }
+`,
+  };
 }
 
-module.exports.render = render
+module.exports.render = render;

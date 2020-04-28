@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 /**
  * Returns a partial Email object (minus the `to` and `from` properties),
@@ -13,9 +13,9 @@
  *
  * @return {Object}
  */
-function render (data) {
+function render(data) {
   return {
-    subject: 'Delete Solid-account request',
+    subject: "Delete Solid-account request",
 
     /**
      * Text version
@@ -42,8 +42,8 @@ If you did not mean to delete your account, ignore this email.`,
 <p><a href="${data.deleteUrl}">${data.deleteUrl}</a></p>
 
 <p>If you did not mean to delete your account, ignore this email.</p>
-`
-  }
+`,
+  };
 }
 
-module.exports.render = render
+module.exports.render = render;

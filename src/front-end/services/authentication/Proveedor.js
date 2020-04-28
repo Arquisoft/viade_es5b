@@ -3,7 +3,7 @@ type ProviderEntity = {
   image: String,
   value: String,
   registerLink: String,
-  description: String
+  description: String,
 };
 
 export default class Provider {
@@ -13,29 +13,29 @@ export default class Provider {
   static getIdentityProviders(): Array<ProviderEntity> {
     return [
       {
-        id: 'inrupt',
-        label: 'Inrupt',
-        image: process.env.PUBLIC_URL +'/img/inrupt.svg',
-        value: 'https://inrupt.net/auth',
-        registerLink: 'https://inrupt.net/register',
-        description: 'Lorem ipsum dolor sit amet non ipsom dolor'
+        id: "inrupt",
+        label: "Inrupt",
+        image: process.env.PUBLIC_URL + "/img/inrupt.svg",
+        value: "https://inrupt.net/auth",
+        registerLink: "https://inrupt.net/register",
+        description: "Lorem ipsum dolor sit amet non ipsom dolor",
       },
       {
-        id: 'solid-community',
-        label: 'Solid Community',
-        image: process.env.PUBLIC_URL +'/img/community.png',
-        value: 'https://solid.community',
-        registerLink: 'https://solid.community/register',
-        description: 'Lorem ipsum dolor sit non consectetur'
+        id: "solid-community",
+        label: "Solid Community",
+        image: process.env.PUBLIC_URL + "/img/community.png",
+        value: "https://solid.community",
+        registerLink: "https://solid.community/register",
+        description: "Lorem ipsum dolor sit non consectetur",
       },
       {
-        id: 'local-pod-server',
-        label: 'Servidor Local',
-        image: process.env.PUBLIC_URL +'/img/server.png',
-        value: 'https://localhost:8443',
-        registerLink: 'https://localhost:8443/register',
-        description: 'Nuestro propio servidor de PODS'
-      }
+        id: "local-pod-server",
+        label: "Servidor Local",
+        image: process.env.PUBLIC_URL + "/img/server.png",
+        value: "https://localhost:8443",
+        registerLink: "https://localhost:8443/register",
+        description: "Nuestro propio servidor de PODS",
+      },
     ];
   }
 }

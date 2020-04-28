@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 /**
  * Returns a partial Email object (minus the `to` and `from` properties),
@@ -12,9 +12,9 @@
  *
  * @return {Object}
  */
-function render (data) {
+function render(data) {
   return {
-    subject: 'Welcome to Solid',
+    subject: "Welcome to Solid",
 
     /**
      * Text version of the Welcome email
@@ -32,8 +32,8 @@ Your Web Id: ${data.webid}`,
 
 <p>Your account has been created.</p>
 
-<p>Your Web Id: ${data.webid}</p>`
-  }
+<p>Your Web Id: ${data.webid}</p>`,
+  };
 }
 
-module.exports.render = render
+module.exports.render = render;

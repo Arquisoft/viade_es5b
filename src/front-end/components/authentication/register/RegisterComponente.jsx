@@ -1,23 +1,29 @@
-import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import  ProviderItem  from '../children/ProviderItem/provider.item.component';
-import { RegisterWrapper,RegisterPanel, PanelHeader, PanelBody, Actions } from './register.style';
-import GradientBackground from '../utils/GradientBackground/gradient-background.component';
-import CenterContainer from '../utils/CenterContainer/center-container.component';
+import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
+import ProviderItem from "../children/ProviderItem/provider.item.component";
+import {
+  RegisterWrapper,
+  RegisterPanel,
+  PanelHeader,
+  PanelBody,
+  Actions,
+} from "./register.style";
+import GradientBackground from "../utils/GradientBackground/gradient-background.component";
+import CenterContainer from "../utils/CenterContainer/center-container.component";
 
 type Provider = {};
 
 type Register = {
-  provider: String
+  provider: String,
 };
 
 type Props = {
-  providers: Array<Provider>
+  providers: Array<Provider>,
 };
 
 type State = {
   register: Register,
-  canContinue: false
+  canContinue: false,
 };
 
 class RegisterComponent extends Component<Props, State> {
@@ -26,15 +32,15 @@ class RegisterComponent extends Component<Props, State> {
     this.state = {
       canContinue: false,
       register: {
-        provider: ""
-      }
+        provider: "",
+      },
     };
   }
 
   next = () => {
     const {
       canContinue,
-      register: { provider }
+      register: { provider },
     } = this.state;
     const { protocol, host } = window.location;
     if (canContinue) {
@@ -43,19 +49,19 @@ class RegisterComponent extends Component<Props, State> {
     }
   };
 
-  selectProvider = e => {
+  selectProvider = (e) => {
     const { register } = this.state;
     this.setState({
       register: { ...register, provider: e.target.value },
-      canContinue: true
+      canContinue: true,
     });
   };
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
     const {
       canContinue,
-      register: { provider }
+      register: { provider },
     } = this.state;
     const { protocol, host } = window.location;
     if (canContinue) {
@@ -67,7 +73,7 @@ class RegisterComponent extends Component<Props, State> {
   render() {
     const {
       canContinue,
-      register: { provider }
+      register: { provider },
     } = this.state;
     const { providers } = this.props;
 
@@ -77,7 +83,7 @@ class RegisterComponent extends Component<Props, State> {
           <RegisterWrapper className="register-wrapper">
             <h1 className="title">Sign up en Viade</h1>
             <form onSubmit={this.onSubmit}>
-            <RegisterPanel className="register-panel">
+              <RegisterPanel className="register-panel">
                 <PanelHeader className="panel-header">
                   <h2>Selecciona proveedor</h2>
                   <div className="progress-bar" />
@@ -95,7 +101,7 @@ class RegisterComponent extends Component<Props, State> {
                       LogIn
                     </Link>
                     <ul>
-                      {providers.map(providerData => (
+                      {providers.map((providerData) => (
                         <ProviderItem
                           className="providerItem"
                           data={providerData}
@@ -119,10 +125,10 @@ class RegisterComponent extends Component<Props, State> {
                     Continuar
                   </button>
                 </Actions>
-                </RegisterPanel>
+              </RegisterPanel>
             </form>
           </RegisterWrapper>
-          </CenterContainer>
+        </CenterContainer>
       </GradientBackground>
     );
   }

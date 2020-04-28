@@ -105,8 +105,8 @@ class MapRuta extends Component {
       const long = hitos[i].getLong();
       coords.push({
         hito: name,
-        lat: lat,
-        long: long,
+        lat,
+        long,
       });
     }
     return coords;
