@@ -41,6 +41,7 @@
     "start": "react-scripts --max_old_space_size=4096 start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
+    "test detallados": "npm run test -- --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "instalar": "npm install",
     "reinstalar": "reinstall",
