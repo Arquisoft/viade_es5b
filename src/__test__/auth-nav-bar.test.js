@@ -26,24 +26,5 @@ it("AuthNavBar", () => {
 	expect(container).toBeTruthy();
 	const href = container.querySelector(".logout");
 	expect(href).toBeTruthy();
-
-	act(() => {
-		href.dispatchEvent(new MouseEvent("click"));
-	});
-
-	// expect(container.querySelector('.login-panel')).toBeTruthy();
+	href.click();
 });
-
-/* describe.only('AuthNavBar', () => {
-  afterAll(cleanup);
-
-  const { container } = render(
-    <Router>
-      <AuthNavBar/>
-    </Router>
-  );
-
-  test('renders without crashing', () => {
-    expect(container).toBeTruthy();
-  });
-}); */
