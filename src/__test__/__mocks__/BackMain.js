@@ -97,10 +97,16 @@ export default class BackMain {
 	}
 
 	static comentarRuta (comment, routeUUID,routeOwnerWebID) {
+		return true;
 	}
 
 	static obtenerComentariosRuta (rutaUUID, webId) {
-		return [new Comentario("Publicado: 31/3/2020 22:41:26","Muy bien").setAutor(new Persona("Lucía", "123", "imagen1")), new Comentario("Publicado: 01/4/2020 22:41:26","Genial").setAutor(new Persona("Diego", "245", "imagen2"))];
+		let c1 = new Comentario(new Date(),"Muy bien");
+		let c2 = new Comentario(new Date(),"Genial");
+		c1.setAutor(new Persona("Lucía", "123", "imagen1"))
+		c2.setAutor(new Persona("Diego", "245", "imagen2"))
+
+		return [c1,c2];
 	}
 
 	static getPersonByWebID (webID) {

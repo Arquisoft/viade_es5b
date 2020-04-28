@@ -9,41 +9,26 @@ import {
 import "@testing-library/jest-dom";
 import CommentBox from "../front-end/components/share/CommentBox";
 import RutaService from "../front-end/services/rutas/RutaService";
-import AmigoService from "../front-end/services/amigos/AmigoService";
+import Persona from "../front-end/model/Persona";
 
-import auth from "./__mocks__/solid-auth-client";
 import * as dependancy from "../BackEnd/BackMain";
 import BackMain from "./__mocks__/BackMain";
-import Comentario from "../front-end/model/Comentario";
+
+
+let c3 = new Persona("Pedro","test","foto.png");
 
 dependancy.default = BackMain;
 
 let rutaService = new RutaService();
-let amigoservice = new AmigoService();
 
 let testRoute = rutaService.getRutas()[0];
-let comentarios = [];
-let c1 = new Comentario(new Date(), "Comentario1");
-let c2 = new Comentario(new Date(), "Comentario2");
-comentarios.push(c1);
-comentarios.push(c2);
-
-console.log(comentarios);
-function obtenerComentariosRuta(uuid, webID) {
-  return comentarios;
-}
-
-function comentarRuta(comment, routeUUID, webID) {
-  comentarios.push(comment);
-  return true;
-}
 
 test("Se renderizan bien los componentes de CommentBox", () => {
   //afterAll(cleanup);
   const { getByTestId, getAllByTestId } = render(
     <CommentBox
       onlyRead={false}
-      author={null}
+      author={c3}
       ruta={testRoute}
       comentarRuta={rutaService.comentarRuta}
       obtenerComentariosRuta={rutaService.obtenerComentariosRuta}
@@ -61,10 +46,10 @@ test("Los comentarios de la ruta se obtienen correctamente.", async () => {
   const { getByTestId } = render(
     <CommentBox
       onlyRead={false}
-      author={null}
+      author={c3}
       ruta={testRoute}
-      comentarRuta={obtenerComentariosRuta}
-      obtenerComentariosRuta={comentarRuta}
+      comentarRuta={rutaService.comentarRuta}
+      obtenerComentariosRuta={rutaService.obtenerComentariosRuta}
     ></CommentBox>
   );
   let botonComentario = await waitForElement(() => getByTestId("btComment"));
