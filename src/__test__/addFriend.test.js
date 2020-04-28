@@ -34,9 +34,9 @@ it("AddFriend", () => {
 
 test("Presionar boton añadir y que aparezca Agregar", () => {
 	const { getByTestId } = render(<AddFriend />);
-	act(() => {
+	//act(() => {
 		getByTestId("buttonAdd").click();
-	});
+	//});
 
 	expect(getByTestId("buttonAdd")).toHaveTextContent("Agregar");
 });

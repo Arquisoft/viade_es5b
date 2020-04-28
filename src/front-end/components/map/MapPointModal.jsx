@@ -64,7 +64,7 @@ class MapPointModal extends Component {
           <Button variant="secondary" onClick={this.props.handleClose}>
             Cancelar
           </Button>
-          <Button onClick={this.modificar}>Modificar</Button>
+          <Button onClick={this.modificar} data-testid="btModificar">Modificar</Button>
         </Modal.Footer>
       </Modal>
     );

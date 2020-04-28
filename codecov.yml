@@ -15,11 +15,11 @@ ignore:
   - "src/front-end/model"
   #De components
   #Opciones para compartir
-  - "src/front-end/components/share/PhotoGallery.jsx"
+  #- "src/front-end/components/share/PhotoGallery.jsx"
   - "src/front-end/components/share/ShareView.jsx"
   #Relacionado con amigos
-  - "src/front-end/components/friends/AddFriend.jsx"
-  - "src/front-end/components/friends/Friends.jsx"
+  #- "src/front-end/components/friends/AddFriend.jsx"
+  #- "src/front-end/components/friends/Friends.jsx"
   #Innecesario comprobarlo 
   - "src/index"
   - "src/serviceWorker"
