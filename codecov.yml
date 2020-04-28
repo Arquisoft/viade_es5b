@@ -12,7 +12,8 @@ ignore:
   - "src/front-end/components/map/AddRouteMap.jsx"
   #Por completar, siguiendo el modelo BlackList, los comprobados ya no estan en la lista
   #De generalidades
-  - "src/front-end/model"
+  - "src/front-end/model/Comentario.js"
+  - "src/front-end/model/Notificacion.js"
   #De components
   #Opciones para compartir
   #- "src/front-end/components/share/PhotoGallery.jsx"
