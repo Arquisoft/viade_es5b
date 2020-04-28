@@ -40,7 +40,7 @@ async function insertData (route, friend, routeUUID) {
 	const rutas = mySharedRoutesDocument.getAllSubjectsOfType("http://arquisoft.github.io/viadeSpec/route");
 	for (var e = 0; e < rutas.length; e++) {
 		// Si ya existe un subject con el identificador de la ruta, entonces uso ese
-		if (rutas[e].getLiteral(schema.identifier) === routeUUID) {
+		if (rutas[parseInt(e)].getLiteral(schema.identifier) === routeUUID) {
 			ruta = rutas[e];
 			// compruevo que no este el amigo aqui ya metido
 			const amigos = rutas[e].getAllRefs(schema.agent);

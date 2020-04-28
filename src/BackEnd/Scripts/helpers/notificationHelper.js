@@ -68,7 +68,7 @@ export async function getNotificationDocuments (webId) {
 		var result = [];
 		for (var i = 0; i < containerItemUrls.length; i++) {
 			try {
-				var doc = await fetchDocument(containerItemUrls[i]);
+				var doc = await fetchDocument(containerItemUrls[parseInt(i)]);
 				if (doc) {
 					result = [...result, doc];
 				}

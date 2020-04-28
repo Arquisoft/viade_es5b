@@ -51,7 +51,7 @@ async function deleteFromSharedRoutes(storage, routeUUID) {
   );
   for (var e = 0; e < rutas.length; e++) {
     // Donde encuentre esta ruta la elimino
-    if (rutas[e].getLiteral(schema.identifier) === routeUUID) {
+    if (rutas[parseInt(e)].getLiteral(schema.identifier) === routeUUID) {
       mySharedRoutesDocument.removeSubject(rutas[e].asRef());
     }
   }
@@ -64,7 +64,7 @@ async function deleteFilesFromRoute(webId, url) {
   const rutas = mySharedRoutesDocument.getAllSubjectsOfType(schema.MediaObject);
   for (var e = 0; e < rutas.length; e++) {
     // Elimino los ficheros de los que sea dueño
-    if (rutas[e].getRef(schema.author) === webId) {
+    if (rutas[parseInt(e)].getRef(schema.author) === webId) {
       fc.delete(rutas[e].getRef(schema.contentUrl));
     }
   }

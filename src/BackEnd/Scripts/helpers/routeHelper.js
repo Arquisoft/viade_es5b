@@ -37,9 +37,9 @@ export async function readRouteFromUrl (url) {
 			for (var e = 1; e < puntos.length; e++) {
 				hitos.push(
 					{
-						nombre: puntos[e].getString(schema.name),
-						latitud: puntos[e].getDecimal(schema.latitude),
-						longitud: puntos[e].getDecimal(schema.longitude),
+						nombre: puntos[parseInt(e)].getString(schema.name),
+						latitud: puntos[parseInt(e)].getDecimal(schema.latitude),
+						longitud: puntos[parseInt(e)].getDecimal(schema.longitude),
 						orden: puntos[e].getInteger("http://arquisoft.github.io/viadeSpec/order")
 					}
 				);
@@ -103,7 +103,7 @@ export async function getSharedRouteFriends (storage, routeUUID) {
 			// Miro a ver si estoy compartiendo esta ruta
 			if (rutas[e].getLiteral(schema.identifier) === routeUUID) {
 				// Si la estoy compartiendo entonces saco los amigos con los que la comparto
-				const amigos = rutas[e].getAllRefs(schema.agent);
+				const amigos = rutas[parseInt(e)].getAllRefs(schema.agent);
 				for (var i = 0; i < amigos.length; i++) {
 					// los añado a result
 					//elimino simbolos redundantes como doble barra (darian problemas para permisos)
