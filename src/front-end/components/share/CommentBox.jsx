@@ -6,7 +6,7 @@ import {
   Form,
   Button,
   Spinner,
-  Alert
+  Alert,
 } from "react-bootstrap";
 import Comentario from "../../model/Comentario";
 import "../../css/scroll.css";
@@ -22,7 +22,7 @@ class CommentBox extends Component {
     onlyRead: this.props.onlyRead,
     loading: true,
     empty: false,
-    loaded: false
+    loaded: false,
   };
 
   render() {
@@ -76,10 +76,14 @@ class CommentBox extends Component {
                 <Alert variant="warning">Aún no hay comentarios</Alert>
               )}
               {this.state.commentList.length > 0 && (
-                <div className="scroll-container" data-testid="listaComentarios">
+                <div className="scroll-container">
                   {this.state.commentList.map((c, key) => {
                     return (
-                      <Card className="mb-4 mr-2" data-testid="cajaComentario" key={key++}>
+                      <Card
+                        className="mb-4 mr-2"
+                        data-testid="cajaComentario"
+                        key={key++}
+                      >
                         <Card.Header>{`${c
                           .getAutor()
                           .getNombre()} ${c.getFormattedDate()}`}</Card.Header>
@@ -102,7 +106,7 @@ class CommentBox extends Component {
    * Manejador para recolectar el texto del comentario
    * que introduce el usuario en el input.
    */
-  handleOnChange = e => {
+  handleOnChange = (e) => {
     this.setState({ comment: e.target.value });
   };
 
@@ -132,7 +136,7 @@ class CommentBox extends Component {
     let webID = this.props.author == null ? null : this.props.author.getWebId();
     this.setState({
       commentList: await this.props.obtenerComentariosRuta(uuid, webID),
-      loading: false
+      loading: false,
     });
 
     this.setState({ empty: this.state.commentList.length === 0 });
@@ -144,6 +148,7 @@ class CommentBox extends Component {
    */
   handleClick = () => {
     if (!this.state.loaded) {
+      console.log("HOlllla");
       this.loadComments();
       this.setState({ loaded: true });
     }
