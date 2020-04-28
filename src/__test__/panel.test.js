@@ -1,13 +1,13 @@
-import React from 'react'
-import { render, cleanup } from '@testing-library/react'
-import Panel from '../front-end/components/authentication/utils/panel/panel.component'
+import React from "react";
+import { render, cleanup } from "@testing-library/react";
+import Panel from "../front-end/components/authentication/utils/panel/panel.component";
 
-afterAll(cleanup)
+afterAll(cleanup);
 
-const { container } = render(<Panel />)
+const { container } = render(<Panel />);
 
-describe('Panel', () => {
-  it('renders without crashing', () => {
-    expect(container).toBeTruthy()
-  })
-})
+describe("Panel", () => {
+	it("renders without crashing", () => {
+		expect(container).toBeTruthy();
+	});
+});

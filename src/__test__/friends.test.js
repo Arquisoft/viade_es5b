@@ -1,42 +1,42 @@
-import React from 'react';
-import { act } from 'react-dom/test-utils';
-import ReactDOM from 'react-dom';
+import React from "react";
+import { act } from "react-dom/test-utils";
+import ReactDOM from "react-dom";
 import "@testing-library/jest-dom";
-import FriendList from '../front-end/components/friends/FriendList'
-import AddFriend from '../front-end/components/friends/AddFriend'
-import Friends from '../front-end/components/friends/Friends'
-import Persona from '../front-end/model/Persona'
-import { render, waitForElement } from '@testing-library/react'
-import '@testing-library/jest-dom'
+import FriendList from "../front-end/components/friends/FriendList";
+import AddFriend from "../front-end/components/friends/AddFriend";
+import Friends from "../front-end/components/friends/Friends";
+import Persona from "../front-end/model/Persona";
+import { render, waitForElement } from "@testing-library/react";
+import "@testing-library/jest-dom";
 //Lista de amigos de prueba:
 // Rutas de prueba
-const amigos = []
+const amigos = [];
 function setUp() {
-  const amigo1 = new Amigo(
-    'Pedro',
-    'https://pedro223.inrupt.net/profile/card#me'
-  )
+	const amigo1 = new Amigo(
+		"Pedro",
+		"https://pedro223.inrupt.net/profile/card#me"
+	);
 
-  const amigo2 = new Amigo(
-    'Alex',
-    'https://hamalawindows.solid.community/profile/card#me'
-  )
+	const amigo2 = new Amigo(
+		"Alex",
+		"https://hamalawindows.solid.community/profile/card#me"
+	);
 
-  amigos.push(amigo1)
-  amigos.push(amigo2)
+	amigos.push(amigo1);
+	amigos.push(amigo2);
 }
 
 
 let container;
 
 beforeEach(() => {
-  container = document.createElement('div');
-  document.body.appendChild(container);
+	container = document.createElement("div");
+	document.body.appendChild(container);
 });
 
 afterEach(() => {
-  document.body.removeChild(container);
-  container = null;
+	document.body.removeChild(container);
+	container = null;
 });
 
 // it('AddFriend', () => {
@@ -56,11 +56,11 @@ afterEach(() => {
 // });
 
 test("Presionar boton añadir y que aparezca Agregar", () => {
-  const { getByTestId } = render(<AddFriend />)
-  act(() => {
-    getByTestId("buttonAdd").click();
-  });
-  expect(getByTestId("buttonAdd")).toHaveTextContent("Agregar");
+	const { getByTestId } = render(<AddFriend />);
+	act(() => {
+		getByTestId("buttonAdd").click();
+	});
+	expect(getByTestId("buttonAdd")).toHaveTextContent("Agregar");
 });
 
 // //PRUEBAS DE RENDERIZADO DE LOS COMPONENTES
@@ -128,5 +128,5 @@ test("Presionar boton añadir y que aparezca Agregar", () => {
 
 // });
 test("Comprobar test porque no funciona", () => {
-  expect(true);
+	expect(true);
 });

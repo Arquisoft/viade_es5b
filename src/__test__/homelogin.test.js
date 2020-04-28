@@ -1,5 +1,5 @@
 import React from "react";
-import HomeMessageComponent from '../front-end/components/authentication/login/HomeLogin'
+import HomeMessageComponent from "../front-end/components/authentication/login/HomeLogin";
 import { act } from "react-dom/test-utils";
 import ReactDOM from "react-dom";
 import "@testing-library/jest-dom";
@@ -7,11 +7,11 @@ import HomeLogin from "../front-end/components/authentication/login/HomeLogin";
 import { render } from "@testing-library/react";
 
 it("HomeLogin", () => {
-  expect(true);
+	expect(true);
 });
 
 test("Se renderiza correctamente.", () => {
-  const { getByTestId } = render(<HomeLogin></HomeLogin>);
+	const { getByTestId } = render(<HomeLogin></HomeLogin>);
 });
 
 
@@ -22,22 +22,22 @@ test("Se renderiza correctamente.", () => {
 //   );
 // });
 
-let container
+let container;
 
 beforeEach(() => {
-  container = document.createElement('div')
-  document.body.appendChild(container)
-})
+	container = document.createElement("div");
+	document.body.appendChild(container);
+});
 
 afterEach(() => {
-  document.body.removeChild(container)
-  container = null
-})
+	document.body.removeChild(container);
+	container = null;
+});
 
-it('HomeLogin', () => {
-  act(() => {
-    ReactDOM.render(<HomeMessageComponent />, container)
-  })
+it("HomeLogin", () => {
+	act(() => {
+		ReactDOM.render(<HomeMessageComponent />, container);
+	});
 
-  expect(container).toBeTruthy();
+	expect(container).toBeTruthy();
 });

@@ -4,19 +4,19 @@ import RouteCard from "../front-end/components/ruta/VerRutas/RouteCard";
 import Ruta from "../front-end/model/Ruta";
 import Hito from "../front-end/model/Hito";
 import {
-  render,
-  cleanup,
-  waitForElement,
-  fireEvent,
-  screen
+	render,
+	cleanup,
+	waitForElement,
+	fireEvent,
+	screen
 } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import SharePanel from "../front-end/components/share/SharePanel";
 import CommentBox from "../front-end/components/share/CommentBox";
-import AmigoService from '../front-end/services/amigos/AmigoService';
+import AmigoService from "../front-end/services/amigos/AmigoService";
 
-import * as dependancy from '../BackEnd/BackMain';
-import BackMain from './__mocks__/BackMain';
+import * as dependancy from "../BackEnd/BackMain";
+import BackMain from "./__mocks__/BackMain";
 
 dependancy.default = BackMain;
 
@@ -35,92 +35,92 @@ console.log("-------------------" + ruta.getHitos().length);
 let amigoService = new AmigoService();
 
 test("Se renderizan bien los componentes de SharePanel", () => {
-  afterAll(cleanup);
-  const { getByTestId } = render(
-    <SharePanel
-      ruta={ruta}
-      getAmigos={amigoService.getAmigos}
-      show={true}
-    ></SharePanel>
-  );
+	afterAll(cleanup);
+	const { getByTestId } = render(
+		<SharePanel
+			ruta={ruta}
+			getAmigos={amigoService.getAmigos}
+			show={true}
+		></SharePanel>
+	);
 
-  expect(getByTestId("componenteModal")).toBeTruthy();
-  expect(getByTestId("titleCompartir")).toHaveTextContent(
-    "Compartir esta ruta"
-  );
-  expect(getByTestId("nombreRutaCompartir")).toHaveTextContent(
-    "Ruta: " + ruta.getNombre()
-  );
-  expect(getByTestId("parrafoSeleccion")).toHaveTextContent(
-    "Selecciona a los amigos con los que deseas compartir esta ruta:"
-  );
-  expect(getByTestId("cancelarCompartirButton")).toHaveTextContent("Cancelar");
-  expect(getByTestId("compartirButton")).toHaveTextContent("Compartir");
+	expect(getByTestId("componenteModal")).toBeTruthy();
+	expect(getByTestId("titleCompartir")).toHaveTextContent(
+		"Compartir esta ruta"
+	);
+	expect(getByTestId("nombreRutaCompartir")).toHaveTextContent(
+		"Ruta: " + ruta.getNombre()
+	);
+	expect(getByTestId("parrafoSeleccion")).toHaveTextContent(
+		"Selecciona a los amigos con los que deseas compartir esta ruta:"
+	);
+	expect(getByTestId("cancelarCompartirButton")).toHaveTextContent("Cancelar");
+	expect(getByTestId("compartirButton")).toHaveTextContent("Compartir");
 });
 
 test("Se renderizan bien los componentes de SharePanel, escogemos amigos y compartimos la ruta", async () => {
-  afterAll(cleanup);
-  const { getByTestId, getAllByTestId } = render(
-    <SharePanel
-      ruta={ruta}
-      getAmigos={amigoService.getAmigos}
-      show={true}
-      shareRuta={() => {}}
-      cancel={() => {}}
-    ></SharePanel>
-  );
-  expect(getByTestId("titleCompartir")).toHaveTextContent(
-    "Compartir esta ruta"
-  );
-  expect(getByTestId("nombreRutaCompartir")).toHaveTextContent(
-    "Ruta: " + ruta.getNombre()
-  );
-  expect(getByTestId("parrafoSeleccion")).toHaveTextContent(
-    "Selecciona a los amigos con los que deseas compartir esta ruta:"
-  );
-  let amigos = await waitForElement(() => getAllByTestId("itemLista"));
-  expect(getByTestId("cancelarCompartirButton")).toHaveTextContent("Cancelar");
-  expect(getByTestId("compartirButton")).toHaveTextContent("Compartir");
-  expect(getByTestId("envoltorio").children.length).toBe(3);
+	afterAll(cleanup);
+	const { getByTestId, getAllByTestId } = render(
+		<SharePanel
+			ruta={ruta}
+			getAmigos={amigoService.getAmigos}
+			show={true}
+			shareRuta={() => {}}
+			cancel={() => {}}
+		></SharePanel>
+	);
+	expect(getByTestId("titleCompartir")).toHaveTextContent(
+		"Compartir esta ruta"
+	);
+	expect(getByTestId("nombreRutaCompartir")).toHaveTextContent(
+		"Ruta: " + ruta.getNombre()
+	);
+	expect(getByTestId("parrafoSeleccion")).toHaveTextContent(
+		"Selecciona a los amigos con los que deseas compartir esta ruta:"
+	);
+	let amigos = await waitForElement(() => getAllByTestId("itemLista"));
+	expect(getByTestId("cancelarCompartirButton")).toHaveTextContent("Cancelar");
+	expect(getByTestId("compartirButton")).toHaveTextContent("Compartir");
+	expect(getByTestId("envoltorio").children.length).toBe(3);
 
-  var elementos = getAllByTestId("itemLista");
-  for (var e in elementos) {
-    elementos[e].click();
-  }
-  getByTestId("compartirButton").click();
+	var elementos = getAllByTestId("itemLista");
+	for (var e in elementos) {
+		elementos[e].click();
+	}
+	getByTestId("compartirButton").click();
 });
 
 test("Se renderizan bien los componentes de SharePanel, seleccionamos y quitamos de la selección a amigos ", async () => {
-  afterAll(cleanup);
-  const { getByTestId, getAllByTestId } = render(
-    <SharePanel
-      ruta={ruta}
-      getAmigos={amigoService.getAmigos}
-      show={true}
-      shareRuta={() => {}}
-      cancel={() => {}}
-    ></SharePanel>
-  );
-  expect(getByTestId("titleCompartir")).toHaveTextContent(
-    "Compartir esta ruta"
-  );
-  expect(getByTestId("nombreRutaCompartir")).toHaveTextContent(
-    "Ruta: " + ruta.getNombre()
-  );
-  expect(getByTestId("parrafoSeleccion")).toHaveTextContent(
-    "Selecciona a los amigos con los que deseas compartir esta ruta:"
-  );
-  let amigos = await waitForElement(() => getAllByTestId("itemLista"));
-  expect(getByTestId("cancelarCompartirButton")).toHaveTextContent("Cancelar");
-  expect(getByTestId("compartirButton")).toHaveTextContent("Compartir");
-  expect(getByTestId("envoltorio").children.length).toBe(3);
+	afterAll(cleanup);
+	const { getByTestId, getAllByTestId } = render(
+		<SharePanel
+			ruta={ruta}
+			getAmigos={amigoService.getAmigos}
+			show={true}
+			shareRuta={() => {}}
+			cancel={() => {}}
+		></SharePanel>
+	);
+	expect(getByTestId("titleCompartir")).toHaveTextContent(
+		"Compartir esta ruta"
+	);
+	expect(getByTestId("nombreRutaCompartir")).toHaveTextContent(
+		"Ruta: " + ruta.getNombre()
+	);
+	expect(getByTestId("parrafoSeleccion")).toHaveTextContent(
+		"Selecciona a los amigos con los que deseas compartir esta ruta:"
+	);
+	let amigos = await waitForElement(() => getAllByTestId("itemLista"));
+	expect(getByTestId("cancelarCompartirButton")).toHaveTextContent("Cancelar");
+	expect(getByTestId("compartirButton")).toHaveTextContent("Compartir");
+	expect(getByTestId("envoltorio").children.length).toBe(3);
 
-  var elementos = getAllByTestId("itemLista");
-  for (var e in elementos) {
-    elementos[e].click();
-  }
-  for (var e in elementos) {
-    elementos[e].click();
-  }
-  getByTestId("cancelarCompartirButton").click();
+	var elementos = getAllByTestId("itemLista");
+	for (var e in elementos) {
+		elementos[e].click();
+	}
+	for (var e in elementos) {
+		elementos[e].click();
+	}
+	getByTestId("cancelarCompartirButton").click();
 });

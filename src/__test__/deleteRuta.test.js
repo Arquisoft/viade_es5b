@@ -5,9 +5,9 @@ import Ruta from "../front-end/model/Ruta";
 import Hito from "../front-end/model/Hito";
 import { render, waitForElement, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import RutaService from '../front-end/services/rutas/RutaService';
-import * as dependancy from '../BackEnd/BackMain';
-import BackMain from './__mocks__/BackMain';
+import RutaService from "../front-end/services/rutas/RutaService";
+import * as dependancy from "../BackEnd/BackMain";
+import BackMain from "./__mocks__/BackMain";
 
 
 dependancy.default = BackMain;
@@ -22,13 +22,13 @@ ruta.addHito(hito2);
 let rutaService = new RutaService();
 
 test("RouteCard contiene el botón de eliminar.", () => {
-  const mock = jest.fn();
-  const { getByTestId } = render(
-    <RouteCard
-      ruta={ruta}
-      obtenerFicherosRuta={rutaService.obtenerFicherosRuta}
-      flyTo={mock}
-    ></RouteCard>
-  );
-  expect(getByTestId("rb-eliminar")).toHaveTextContent("Eliminar");
+	const mock = jest.fn();
+	const { getByTestId } = render(
+		<RouteCard
+			ruta={ruta}
+			obtenerFicherosRuta={rutaService.obtenerFicherosRuta}
+			flyTo={mock}
+		></RouteCard>
+	);
+	expect(getByTestId("rb-eliminar")).toHaveTextContent("Eliminar");
 });
