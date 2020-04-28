@@ -1,22 +1,22 @@
 class RutaAmigo {
-  constructor (ruta, persona) {
-    this.ruta = ruta
-    this.amigo = persona
-  }
+	constructor (ruta, persona) {
+		this.ruta = ruta;
+		this.amigo = persona;
+	}
 
-  /*
+	/*
    * Devuelve el amigo
    */
-  getAmigo () {
-    return this.amigo
-  }
+	getAmigo () {
+		return this.amigo;
+	}
 
-  /*
+	/*
    * Devuelve la ruta
    */
-  getRuta () {
-    return this.ruta
-  }
+	getRuta () {
+		return this.ruta;
+	}
 }
 
-export default RutaAmigo
+export default RutaAmigo;
