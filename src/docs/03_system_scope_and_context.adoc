@@ -35,8 +35,6 @@ image::BusinessDiagram.jpeg[bd]
 
 ****
 
-**<optionally: Explanation of external domain interfaces>**
-
 === Technical Context
 
 ****
@@ -65,5 +63,3 @@ image::TecnicDG.jpeg[]
 
 ****
 
-
-**<Mapping Input/Output to Channels>**
