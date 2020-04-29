@@ -41,7 +41,7 @@
     "start": "react-scripts --max_old_space_size=4096 start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
-    "test detallados": "npm run test -- --coverage --watchAll=false",
+    "test detallados": "test -- --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "instalar": "npm install",
     "reinstalar": "reinstall",
@@ -54,6 +54,17 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/leaflet-files/**/*",
+      "!src/index.js",
+      "!src/BackEnd/**/*",
+      "!src/serviceWorker.js",
+      "!src/jest-puppeteer.config.js",
+      "!src/jest-config.js"
+    ]
   },
   "browserslist": {
     "production": [
