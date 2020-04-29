@@ -4,7 +4,7 @@
 
 # VIADE ES5B
 
-This repository contains a skeleton of the VIADE project.
+This repository contains the VIADE project developed by the ASW team es5b.
 
 This project is an assignment for the [Software Architecture course](https://arquisoft.github.io/) following [these requirements](https://labra.solid.community/public/SoftwareArchitecture/AssignmentDescription/).
 
