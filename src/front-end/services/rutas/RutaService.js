@@ -48,17 +48,6 @@ class RutaService {
 	deleteRuta(uuid, rutaNombre) {
 		return BackMain.borrarRuta(uuid, rutaNombre);
 	}
-
-	findRouteById(uuid) {
-		// implementar mas tarde
-		// rutasUsuario = this.getRutasUsuarioLogeado(webId)
-		var ruta = null;
-		for (var i = 0; i < this.BDRutas.length; i++) {
-			if (this.BDRutas[i].getUUID() === uuid) ruta = this.BDRutas[i];
-		}
-		return ruta;
-	}
-
 	addRuta(nombre, latitud, longitud, descripcion, hitos) {
 		latitud = parseFloat(latitud.replace(/\s+/g, ""));
 		longitud = parseFloat(longitud.replace(/\s+/g, ""));
