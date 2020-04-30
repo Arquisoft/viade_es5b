@@ -1,30 +1,30 @@
 [[section-deployment-view]]
 
 
-== Deployment View
+== Vista de implementación
 
 
 
-=== Infrastructure Level 1
+=== Infraestructura Nivel 1
 
 ****
 
 image::DW7.JPG[dv]
 
-Motivation::
+Motivación::
 
 En el diagrama se representa una vista de la estructura de la aplicación que se va a proceder a realizar. En ella el usuario, en este caso el actor estaría comodamente situado en su casa y a través de un ordenador accedería a nuestra aplicacíon por medio de una interfaz. Esta aplicación estaría en la nube, y accedería a los datos del usuario a través de su POD una vez que el usuario le de permisos para hacerlo. 
 
-Quality and/or Performance Features::
+Características de calidad y/o rendimiento::
 
 La aplicación, al ser descentralizada tendrá tiempos de espera mayores, ya que accede a la información de estos a traves de sus PODs. Por otro lado se asegura la seguridad y la protección de los datos del usuario ante un intento de robo de datos.
 
-Mapping of Building Blocks to Infrastructure::
+Mapeo de bloques de construcción a infraestructura::
 La aplicación permite hacer diferentes acciones al usuario dentro de la aplicación, y usar sus datos a través de solid para formar la interfaz por la que podrá navegar.
 
 
 ****
-=== Infrastructure Level 2
+=== Infraestructura Nivel 2
 ****
 
 image::DWInfrastructureE1.JPG[dwE1]
