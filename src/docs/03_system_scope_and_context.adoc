@@ -1,41 +1,42 @@
 [[section-system-scope-and-context]]
-== System Scope and Context
+== Alcance y contexto del sistema
 
 
 ****
-.Contents
+.Contenido
 Nuestra aplicación descentralizada de rutas da la posibilidad al usuario de compartir sus rutas fácilmente sin poner en riesgo la seguridad de sus datos.
 
 
-.Motivation
-The domain interfaces and technical interfaces to communication partners are among your system's most critical aspects. Make sure that you completely understand them.
+.Motivación
 
-.Form
-Various options:
+Las interfaces de dominio y las interfaces técnicas para los socios de comunicación se encuentran entre los aspectos más críticos de su sistema. Asegúrese de entenderlos completamente.
+
+.Forma
+Varias opciones:
 
 * Diagrama de contexto
-* Lists of communication partners and their interfaces.
+* Listas de socios de comunicación y sus interfaces.
 ****
 
 
-=== Business Context
+=== Contexto empresarial
 
 ****
-.Contents
+.Contenido
 Los usuarios de la aplicación podrán compartir sus rutas con otros usuarios sin que sus datos tengan que pasar a través de un servidor externo.
 Es decir esta aplicación utiliza datos que están en nuestro servidor privado (POD). De este modo sus datos simpre están en un sitio seguro.
 
-.Motivation
+.Motivación
 Cada usuario podrá compartir sus rutas y podrá acceder a rutas de otros usuarios.
 
-.Form
+.Forma
 En un futuro se realizará el diagramas para el Business Context, seguido de una breve explicación.
 
 image::BusinessDiagram.jpeg[bd]
 
 ****
 
-=== Technical Context
+=== Contexto técnico
 
 ****
 .Backend
@@ -46,14 +47,14 @@ como las rutas, evitando accesos no deseados de personas externas.
 Para la creación de interfaces de usuario utilizaremos React, una biblioteca de JavaScript diseñada para crear interfaces de usuario con el objetivo de
 facilitar el desarrollo de aplicaciones de una sola página.
 
-.Contents
+.Contenido
 Google maps, GitHub, Visual Studio Code ejecutado sobre una terminal Windows / Linux con npm (sistema de gestión de paquetes por defecto para Node.js).
 
-.Motivation
+.Motivación
 Se ha escogido SOLID para el backend por su seguridad, al darnos la capacidad para tener una aplicación descentralizada.
 Así mismo, se utiliza React para el Frontend por su facilidad para la creación de interfaces de usuario.
 
-.Form
+.Forma
 Se describirá en un diagrama UML, seguido de una breve explicación
 
 El siguiente diagrama es una descripción técnica del funcionamiento de nuestra aplicación, siendo las cajas rojas los elementos más complejos que en versiones posteriores se pasarán a representar con más diagramas.
