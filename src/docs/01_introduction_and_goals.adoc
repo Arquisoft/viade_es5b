@@ -1,12 +1,12 @@
 [[section-introduction-and-goals]]
-== Introduction and Goals
+== Introducción y objetivos
 
 
 ****
 El objetivo  del proyecto es la creación de un sistema descentralizado de gestión de rutas basado en las especificaciones SOLID, en la que lo más importante será la privacidad de los datos y el control de los mismos por los usuarios.
 ****
 
-=== Requirements Overview
+=== Resumen de requisitos
 
 
 ****
@@ -18,7 +18,7 @@ El objetivo  del proyecto es la creación de un sistema descentralizado de gesti
 * Los usuarios pueden compartir fotos, videos u otros ficheros con sus amigos.
 ****
 
-=== Quality Goals
+=== Objetivos de calidad
 
 
 ****
