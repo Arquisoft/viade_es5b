@@ -1,25 +1,25 @@
 [[section-glossary]]
-== Glossary
+== Glosario
 
 
 
 [role="arc42help"]
 ****
-.Contents
-The most important domain and technical terms that your stakeholders use when discussing the system.
+.Contenido
+El dominio y los términos técnicos más importantes que utilizan sus partes interesadas cuando discuten el sistema.
 
-You can also see the glossary as source for translations if you work in multi-language teams.
+También puede ver el glosario como fuente de traducciones si trabaja en equipos multilingües.
 
-.Motivation
-You should clearly define your terms, so that all stakeholders
+.Motivación
+Debe definir claramente sus términos, para todos los interesados
 
-* have an identical understanding of these terms
-* do not use synonyms and homonyms
+* tener una comprensión idéntica de estos términos
+* no use sinónimos y homónimos
 
-.Form
-A table with columns <Term> and <Definition>.
+.Forma
+Una tabla con las columnas <Term> y <Definition>.
 
-Potentially more columns in case you need translations.
+Potencialmente más columnas en caso de que necesite traducciones.
 
 ****
 
