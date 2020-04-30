@@ -1,9 +1,9 @@
 [[section-building-block-view]]
 
 
-== Building Block View
+== Vista del bloque de contrucción
 
-=== Whitebox Overall System
+=== Sistema general de caja blanca
 ****
 image::Contexto.JPG[Arquitectura del Contexto del Sistema]
 

@@ -1,5 +1,5 @@
 [[section-architecture-constraints]]
-== Restricciones arquitectónicas
+== Restricciones de la Arquitectura
 
 ****
 .Contenido

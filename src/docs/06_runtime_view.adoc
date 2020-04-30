@@ -1,31 +1,34 @@
 [[section-runtime-view]]
-== Runtime View
+== Vista de tiempo de ejecución
 
 
 [role="arc42help"]
 ****
-.Contents
-The runtime view describes concrete behavior and interactions of the system’s building blocks in form of scenarios from the following areas:
+.Contenido
+La vista de tiempo de ejecución describe el comportamiento concreto y las interacciones de los componentes básicos del sistema en forma de escenarios de las siguientes áreas:
 
-* important use cases or features: how do building blocks execute them?
-* interactions at critical external interfaces: how do building blocks cooperate with users and neighboring systems?
-* operation and administration: launch, start-up, stop
-* error and exception scenarios
+* casos de uso o características importantes: ¿cómo los ejecutan los bloques de construcción?
+* interacciones en interfaces externas críticas: ¿cómo cooperan los bloques de construcción con los usuarios y los sistemas vecinos?
+* operación y administración: lanzamiento, puesta en marcha, parada
+* escenarios de error y excepción
 
-Remark: The main criterion for the choice of possible scenarios (sequences, workflows) is their *architectural relevance*. It is *not* important to describe a large number of scenarios. You should rather document a representative selection.
 
-.Motivation
-You should understand how (instances of) building blocks of your system perform their job and communicate at runtime.
-You will mainly capture scenarios in your documentation to communicate your architecture to stakeholders that are less willing or able to read and understand the static models (building block view, deployment view).
+Observación: El criterio principal para la elección de posibles escenarios (secuencias, flujos de trabajo) es su * relevancia arquitectónica *. Es * no * importante describir una gran cantidad de escenarios. Debería más bien documentar una selección representativa.
 
-.Form
-There are many notations for describing scenarios, e.g.
+.Motivación
 
-* numbered list of steps (in natural language)
-* activity diagrams or flow charts
-* sequence diagrams
-* BPMN or EPCs (event process chains)
-* state machines
+Debe comprender cómo (las instancias de) bloques de construcción de su sistema realizan su trabajo y se comunican en tiempo de ejecución.
+Capturará principalmente escenarios en su documentación para comunicar su arquitectura a las partes interesadas que estén menos dispuestas o sean capaces de leer y comprender los modelos estáticos (vista de bloque de construcción, vista de implementación).
+
+.Forma
+
+Hay muchas anotaciones para describir escenarios, p. Ej.
+
+* lista numerada de pasos (en lenguaje natural)
+* diagramas de actividades o diagramas de flujo
+* diagramas de secuencia
+* BPMN o EPCs (cadenas de procesos de eventos)
+* máquinas de estado
 * ...
 
 
