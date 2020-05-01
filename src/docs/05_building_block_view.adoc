@@ -41,8 +41,47 @@ En este primer nivel, podemos distinguir dos interfaces importantes. La primera 
 
 Por otro lado, se encuentra una segunda *interfaz entre el back end y el Solid POD*, es decir, el backend no trabaja directamente sobre el POD, si no que se usan interfaces y librerías como tripledoc para manejar los documentos y los denominados *triples* despreocupándonos de lidiar con el lenguaje RDF, y así poder llevar a cabo la consulta de datos y su modificación de manera flexible.
 
+=== Nivel 2
+image::5-Level2.jpg[Nivel 2]
+En este segundo nivel se descompone el sistema en dos cajas blancas, el *front end* y el *back end*.
+
+==== Caja blanca del Front End
+En cuanto al Front End, su responsabilidad ya ha sido mencionada anteriormente. Simplemente interacciona con el usuario para obtener datos de entrada y enviárselos al back end, del cual recibe los resultados a mostrar.
+
+===== Descripción de las cajas negras del Front End
+En este apartado se muestra en una tabla las cajas negras del Front End junto con su responsabilidad.
+[cols="1,2" options="header"]
+|===
+| **Nombre** | **Responsabilidad**
+| Módulo de autenticación | Interactúa con el usuario para determinar el modo de autenticación, y así comunicarse con el sistema de autenticación de SOLID. Contiene los componentes de la interfaz y la lógica necesaria para modelar la autenticación dentro de la aplicación. 
+| Gestión de rutas | Es un módulo que se encarga de modelar operaciones básicas sobre las rutas, es decir, añadir rutas, listarlas, o eliminarlas del POD del usuario. Componentes e infraestructura necesaria para renderizar la interfaz de usuario para el CRUD de las rutas. Se comunica con la caja negra BackMain para consumir sus servicios.
+| Módulo de amigos | Contiene los componenes, infraestructura y lógica necesaria para modelar los elementos de la interfaz de usuario relacionados con añadir amigos y visualizar su lista de amigos. También se comunica con la fachada del BackEnd para utlizar sus servicios.
+| Módulo de compartir | Engloba toda la infraestructura para compartir rutas con los amigos del usuario, incluyendo comentarios y fotos, así como proporcionar un listado de las rutas que me han compartido mis amigos. Este módulo interacciona con el CRUD de rutas para seleccionar qué ruta compartir y también con el Módulo de amigos para escoger al grupo de amigos con quien compartir la ruta.
+|===
+
+==== Caja blanca del Back End
+Por otro lado, disponemos de la caja blanca del BackEnd, que como ya vimos se encarga de manejar los documentos del POD, consultar sus datos y modificarlos, para luego comunicar los resultados al Front End.
+
+===== Descripción de las cajas negras del Back End
+Se describen en formato de tabla las diferentes cajas negras que conforman el Back End, junto con la responsabilidad de cada una de ellas.
+
+[cols="1,2" options="header"]
+|===
+| **Nombre** | **Responsabilidad**
+| BackMain | Se trata de la fachada que representa las operaciones que proporciona todo el subsistema del Back End, y que servirá a la capa de servicios que utiliza el Front End. Se comunica con los diversos módulos del FrontEnd y también con una serie de módulos que residen en el back end, que constituyen cajas negras que trabajan sobre el POD del usuario.
+| CRUD de rutas | Se trata del módulo complementario a la gestión de Rutas del Front End. Proporciona una serie de servicios relacionados con la inserción, eliminación y listado de las rutas del POD, siguiendo diversos criterios, como buscar por ID, WebID...etc
+| Gestión de amigos | Modela las operaciones que se pueden realizar en cuanto a los amigos de un usuario, listarlos, añadirlos... manejando estos datos dentro del POD del usuario en sesión.
+| Compartir | Lleva a cabo las operaciones relacionadas con la lógica para compartir rutas, comentar en mis rutas o en las de mis amigos, subirles fotos, además de gestionar el *envío y recibo de notificaciones* en la bandeja de entrada o *inbox* del POD de los usuarios.
+|===
+
+==== Interfaces importantes
+===== Interfaz para las notificaciones
+El módulo de las notificaciones se encuentra integrado tanto en el módulo de compartir del front end como del back end. Su responsabilidad es la gestión de las notificaciones que reciben los usuarios cuando se les comparte una ruta, o alguien comenta en ella o sube alguna foto, así como cuando el autor de la ruta decide eliminarla de su POD.
+
+En el lado del front end, existe un servicio ejecutándose en segundo plano que monitoriza cada cierto tiempo el inbox del POD del usuario en sesión para comprobar si hay alguna notificación. Esto mejora la experiencia del usuario, ya que se le notifica sobre cualquier actividad relacionada con las rutas que ha compartido o que le han compartido, además de que no afecta a otros módulos de la aplicación al tratarse de un proceso en segundo plano modelado mediante la función setInterval del estándar de JavaScript.
 
 
+//// 
 A continuación, se adjuntan unas figuras que muestran un esquema de las principales funcionalidades de esta. *caja blanca de la aplicación Viade*:
 
 *Ver rutas*
@@ -61,3 +100,4 @@ image::CompartirRutas.JPG[Diagrama de Ver Rutas]
 Después de poder crear rutas, verlas y añadir amigos, podemos compartir rutas con nuestros amigos. Para ello el usuario, a traves de nuestra aplicación, cuando está visualizando una ruta "RouteCard.jsx" le proporciona la opción de borrarla o compartirla con uno o varios amigos a la vez("SharePanel.jsx"). Una vez que el usuario A comparte la ruta con su amigo B, este puede visualizar la ruta, pero esta no se guarda en su POD, si no que el usuario A le está dando acceso a B para poder verla.   
 
 image::ViadeApp.jpg[Diagrama de la caja blanca de Viade App]
+////
