@@ -48,7 +48,7 @@ Para la creación de interfaces de usuario utilizaremos React, una biblioteca de
 facilitar el desarrollo de aplicaciones de una sola página.
 
 .Contenido
-Google maps, GitHub, Visual Studio Code ejecutado sobre una terminal Windows / Linux con npm (sistema de gestión de paquetes por defecto para Node.js).
+Leaflet/React Leaflet, GitHub, Visual Studio Code ejecutado sobre una terminal Windows / Linux con npm (sistema de gestión de paquetes por defecto para Node.js).
 
 .Motivación
 Se ha escogido SOLID para el backend por su seguridad, al darnos la capacidad para tener una aplicación descentralizada.
@@ -58,7 +58,7 @@ Así mismo, se utiliza React para el Frontend por su facilidad para la creación
 Se describirá en un diagrama UML, seguido de una breve explicación
 
 El siguiente diagrama es una descripción técnica del funcionamiento de nuestra aplicación, siendo las cajas rojas los elementos más complejos que en versiones posteriores se pasarán a representar con más diagramas.
-La aplicación permite ver las rutas en un mapa usando la API de google maps.
+La aplicación permite ver las rutas en un mapa usando la API de Leaflet, encapsulada dentro de la librería de componentes React Leaflet.
 
 image::TecnicDG.jpeg[]
 

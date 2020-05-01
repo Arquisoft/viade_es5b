@@ -23,7 +23,7 @@
 
 * Uso de funciones Async/await para escribir código completamente síncrono mientras realizamos tareas asíncronas en segundo plano, mejorando así la eficiencia.
 * Uso de Bootstrap para el diseño de nuestra aplicación web, mejorando así la usabilidad.
-* Uso de la API de Google Maps para representar las rutas del usuario y así mejorar la usabilidad ya que los usuarios están más familiarizados con ella.
+* Uso de la API de Leaflet para representar las rutas del usuario en un mapa y así mejorar la usabilidad ya que los usuarios están más familiarizados con ella.
 * Uso de Solid nos permite crear una aplicación descentralizada.
 * Uso de PODs de Solid proporciona seguridad a los usuarios a la hora de evitar el acceso a sus rutas a usuarios no autorizados.
 

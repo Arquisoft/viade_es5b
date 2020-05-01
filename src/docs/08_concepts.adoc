@@ -1,13 +1,10 @@
 [[section-concepts]]
 == Conceptos transversales
-
-Inicialmente este apartado va a contener algunos conceptos básicos del proyecto según
-se profundice en la implentación del mismo irá aumentando este apartado consigo.
-
 === Interfaz de usuario
 ****
-Los usuarios emplearán una interfaz desarrollada en JavaScript junto con React a la cual
-se le incluirán los componentes específicos de solid que sean necesarios.
+Los usuarios emplearán una interfaz desarrollada en JavaScript junto con React y Bootstrap a la cual
+se le incluirán los componentes específicos que modelen la interfaz de usuario y que permitan comunicar
+al usuario con los datos almacenados en su POD.
 ****
 
 === Seguridad

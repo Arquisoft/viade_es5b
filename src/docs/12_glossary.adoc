@@ -1,32 +1,12 @@
 [[section-glossary]]
 == Glosario
-
-
-
-[role="arc42help"]
-****
-.Contenido
-El dominio y los términos técnicos más importantes que utilizan sus partes interesadas cuando discuten el sistema.
-
-También puede ver el glosario como fuente de traducciones si trabaja en equipos multilingües.
-
-.Motivación
-Debe definir claramente sus términos, para todos los interesados
-
-* tener una comprensión idéntica de estos términos
-* no use sinónimos y homónimos
-
-.Forma
-Una tabla con las columnas <Term> y <Definition>.
-
-Potencialmente más columnas en caso de que necesite traducciones.
-
-****
-
 [cols="2*"]
 |===
 |*Solid* | Conjunto de especificaciones modulares que se basan y amplían la tecnología de fundación de la red mundial (HTTP, REST, HTML).
 |*React* | Biblioteca de JavaScript para construir interfaces de usuario
+|*Leaflet* | Módulo externo utilizado para la representación visual de las rutas en un mapa.
+|*Marcador* | Representa un punto o hito de una ruta en un mapa.
+|*Polilínea* | Se trata de una linea que se utiliza para definir el itinerario que sigue la ruta en un mapa.
 |*POD* | Espacio de almacenamiento personal interoperable entre las diferentes aplicaciones.
 |*Ruta* | Recorrido definido por un inicio y una serie de hitos.
 |*Hito* | Punto carácterístico que ayuda a formar una ruta.

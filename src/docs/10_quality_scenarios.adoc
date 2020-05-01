@@ -1,18 +1,5 @@
 [[section-quality-scenarios]]
 == Requisitos de calidad
-
-****
-
-.Contenido
-Los requisitos de calidad se iran ampliando durante el proyecto.
-
-
-.Motivación
-Planteamos nuestros criterios de calidad en funcion de nuestra experiencia.
-
-
-****
-
 === Árbol de calidad
 
 ****
