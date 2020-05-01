@@ -4,64 +4,44 @@
 == Vista del bloque de contrucción
 
 === Sistema general de caja blanca
-****
-image::Contexto.JPG[Arquitectura del Contexto del Sistema]
 
-Motivación::
-La arquitectura del contexto del sistema puede verse reflejada en la imagen superior. Esta figura refleja de forma general la relación entre los principales elementos de alto nivel, distinguiendo dos bloques principales de construcción: UserPOD y ViadeAPP.  Por otro lado destacar el uso de componentes react y la librería react-testing que nos permite probar la aplicación y que serán explicados en el apartado 9. 
-Dada la complejidad interna de estos dos bloques del nivel 0, se procede a descomponerlos en dos cajas blancas en un primer nivel (nivel 1) para especificar mejor sus detalles. 
+image::5-Overall.jpg[Arquitectura del Contexto del Sistema]
+
+El objetivo de la caja blanca que se muestra en la imagen superior, es reflejar una visión global del sistema. El usuario interactúa con su propio POD, sobre el cual tiene control total, y también interacciona con la aplicación Viade, que es la caja negra que se describirá a continuación. 
 
 
-Bloques de construcción contenidos::
-En cuanto a los bloques de construcción, podemos distinguir por un lado al *POD de un usuario*, que servirá de almacén descentralizado para almacenar los datos del usuario, sus rutas, comentarios, entre otros. Por otro lado, se encuentra el bloque de la *aplicación de VIADE*, el cual se intercomunica con los PODs a través de lo que denominamos la interfaz de SOLID. Además la aplicación también se comunica con otras APIs como la API File de HTML5 o bien la API de Google Maps. En la figura también podemos observar a los usuarios, cada uno de los cuales dispone de su POD, y que son quienes decidirán si comparten o no sus datos con otros usuarios o con la aplicación.
+==== Aplicación Viade
+El bloque *Aplicación Viade*, se intercomunica con el bloque de caja blanca que representa al POD del usuario, con el cual intercambia datos. También interactúa con el usuario, pues representa la aplicación en su totalidad. 
+Su responsabilidad es la de procesar las peticiones que realiza el usuario desde su navegador para comunicarse con su POD y devolverle unas respuestas en base a esta información. El tiempo de respuesta de la aplicación debe ser lo suficientemente corto como para satisfacer las peticiones del usuario en un tiempo razonable. Además, este bloque *no debería acceder* a los datos del POD del usuario, a menos que este de su consentimiento.
 
-Interfaces importantes::
-En cuanto a interfaces, podemos definir por un lado la *interfaz de SOLID*, la cual podemos ver en la imagen, y que proporciona operaciones sobre los PODs de los usuarios, concretamente en este caso nos permite visualizar una ruta, compartirla, borrarla o crear una nueva. También se encuentran las *APIs de Google y File*, que nos proporcionarán servicios para representar las rutas sobre los mapas y la carga de ficheros respectivamente.
-
-image::InterfazPrincipal.jpeg[Interfaz de visualización de ruta]
-
-****
 === Nivel 1
-****
-Descripción de las cajas negras de el nivel 1.
+image::5-Level1.jpg[Nivel 1]
+En este primer nivel, se detallan los bloques de construcción contenidos en la caja negra descrita en la sección anterior, *Aplicación Viade*. Esta caja es de vital importancia ya que representa a la aplicación en su totalidad, y es la que lleva a cabo toda la lógica de negocio de la aplicación, que está desacoplada de los datos de los usuarios, que residen en los PODs.
 
+La responsabilidad de esta caja es llevar a cabo el procesamiento de los datos de acuerdo a la lógica de negocio de la aplicación, comunicándose mediante la interfaz SOLID con los usuarios y sus PODs, así como con otras dependencias como React Leaflet o la API File. Podemos distinguir entre *Front End* y *Back End*. El primero se encarga principalmente de la lógica de negocio que trata con los objetos del dominio y con los componentes de la interfaz de usuario modelados mediante Componentes JSX de *React.js*. Este módulo utilizará los *servicios de la capa de Back-End* para obtener datos y escribirlos en los PODs de los usuarios, recibiendo como respuestas entidades del dominio de alto nivel. Por otro lado, en el Back End se utilizan librerías como  *tripledoc* para trabajar con los documentos del POD.
+
+Antes de describir las cajas negras, vamos a explicar la nueva caja blanca de nombre *Sistema de autenticación*, la cual se encuentra dentro de la aplicación de Viade, y actúa como un sistema vecino de ambas cajas negras. Este sistema de autenticación interactúa con el Front End, ya que existen componentes de la interfaz de usuario que modelan el formulario de Log In, los cuales permiten escoger el *modo para iniciar sesión*, es decir, introduciendo directamente el WebID del usuario, o a través de un provedor de PODs, incluyendo nuestro propio servidor de PODs. De este modo, se redirige al usuario al formulario de Log In para recoger la información de sus credenciales y enviarlas al sistema de autenticación de SOLID.
+
+El Back End también se relaciona con el sistema de autenticación, pues en muchos casos necesita acceder a los datos del usuario en sesión para realizar las consultas sobre los datos de su POD, teniendo en cuenta los permisos proporcionados por su dueño.
+
+==== Descripción de las cajas negras de el nivel 1.
+A continuación, se muestra en formato de tabla, las dos cajas negras que residen en este primer nivel, junto con una breve descripción de sus responsabilidades.
 [cols="1,2" options="header"]
 |===
 | **Nombre** | **Responsabilidad**
-| User POD | Almacenar los datos del usuario y sus rutas, así como permitir la comunicación con la aplicación desacoplando los datos de la aplicación.
-| Viade App | Representa la aplicación en su totalidad, que se encarga tanto del procesamiento de los datos de entrada del usuario como de los datos almacenados en los PODs.
+| Front End | Interactuar con el usuario final, recogiendo los datos de entrada proporcionados por el mismo en las distintas operaciones disponibles a través de la interfaz. Se comunica con el backend para enviarle los datos y también para recibir los resultados de las operaciones y mostrarselas al usuario.
+| BackEnd | Recibe los datos del FrontEnd y los procesa de distinta forma para obtener resultados que mostrar al usuario. Tiene la responsabilidad de acceder al POD del usuario para consultar sus datos, escribirlos o compartir información entre diversos PODs que no tienen porqué ser del usuario que está en sesión. 
 |===
-****
 
 
-==== User POD
-
-****
-En esta primera caja negra, se engloba todo lo relacionado con los PODs de los usuarios, en donde se almacenan los datos, rutas, comentarios...de cada usuario. Es el usuario el que se encarga de permitir a la aplicación el acceso a sus datos, de tal forma que mediante la especificación de SOLID se pueda recuperar dichos datos o bien escribir datos en el POD de los usuarios.
 
 
-El propósito de esta caja negra es representar a un usuario y a su POD, junto con sus datos. Para poder comunicarse con un usuario y que este pueda autenticarse, se utiliza su *WebID*. Mediante este elemento, podremos acceder a los recursos que dicho usuario tiene almacenados en su POD.
+==== Interfaces importantes
+En este primer nivel, podemos distinguir dos interfaces importantes. La primera es la *interfaz entre FrontEnd y BackEnd*, la cual está definida por una capa de servicios que actúa de fachada entre ambas capas. De este modo, el front end solo conoce los servicios que necesita y se despreocupa de cómo se lleven a cabo esos servicios en el back end.
 
-La interfaz de esta caja se resume basicamente a las operaciones de lectura y escritura en los PODs que se llevará a cabo mediante librerías que se ajustan a la especificación SOLID. Podemos distinguir las siguientes interfaces:
-
-  * *Usuario*: representa a un usuario junto con sus propiedades básicas.
-  * *Ruta*: Modela una ruta con su nombre, datos básicos como comentarios y fotos e hitos destacados con coordenadas que serviran para representar la ruta enn el mapa.
-  * *Hito*: representa la entidad de un hito de una ruta concreta, almacenando su nombre, descripción,...etc pero también sus coordenadas, que serán de gran importancia.
-  * *Amigo*: representa a otro usuario que se a añadido como contacto para poder compartir rutas con él, almacenando su nombre y su webID. 
-
-A continuación, se muestra una figura de la *caja blanca* del User POD con sus elementos:
-
-image::UserPODV2.JPG[Caja blanca para el POD del usuario]
-
-****
-==== Viade App
-****
-En cuanto a la segunda caja negra, esta es de vital importancia ya que representa a la aplicación en su totalidad, y es la que lleva a cabo toda la lógica de negocio de la aplicación, que está desacoplada de los datos de los usuarios, que residen en los PODs.
+Por otro lado, se encuentra una segunda *interfaz entre el back end y el Solid POD*, es decir, el backend no trabaja directamente sobre el POD, si no que se usan interfaces y librerías como tripledoc para manejar los documentos y los denominados *triples* despreocupándonos de lidiar con el lenguaje RDF, y así poder llevar a cabo la consulta de datos y su modificación de manera flexible.
 
 
-La responsabilidad de esta caja negra es llevar a cabo el procesamiento de los datos de acuerdo a la lógica de negocio de la aplicación, comunicándose mediante la interfaz SOLID con los usuarios y sus PODs, así como con otras APIs como la de Google Maps o la API File. Podemos distinguir entre *Front End* y *Back End*. El primero se encarga principalmente de la lógica de negocio que trata con los objetos del dominio y con los componentes de la interfaz de usuario modelados mediante Componentes JSX de *React.js*. Este módulo utilizará los *servicios de la capa de Back-End* para obtener datos y escribirlos en los PODs de los usuarios, recibiendo como respuestas grafos RDF que sirven para representar a los recursos en el navegador del usuario. Por otro lado, en el Back End se utilizan librerías como  *rdflib* o *ldflex* para hacer peticiones a los PODs de los usuarios y así tener disponible una especie de 'CRUD', lo cual se consigue mediante las tripletas (*Triple*).
-
-La principal interfaz es la de SOLID, en donde se definen una serie de operaciones que permiten acceder a los PODs de los usuarios, siempre con su consentimiento. Estas operaciones se asemejarían a un CRUD, y están representadas en el diagrama adjunto como *Data API* Luego podemos distinguir varias interfaces tales como Ruta, Usario, y otros elementos que modelan el dominio. También podemos distinguir una *capa intermedia* entre el Front-End y el Back-End que sirve de controlador entre ambos módulos, permitiendo su comunicación. Desde el punto de vista de la persistencia, tendremos interfaces que nos proporcionen acceso CRUD a los datos de los usuarios almacenados en sus PODs.
 
 A continuación, se adjuntan unas figuras que muestran un esquema de las principales funcionalidades de esta. *caja blanca de la aplicación Viade*:
 
@@ -81,4 +61,3 @@ image::CompartirRutas.JPG[Diagrama de Ver Rutas]
 Después de poder crear rutas, verlas y añadir amigos, podemos compartir rutas con nuestros amigos. Para ello el usuario, a traves de nuestra aplicación, cuando está visualizando una ruta "RouteCard.jsx" le proporciona la opción de borrarla o compartirla con uno o varios amigos a la vez("SharePanel.jsx"). Una vez que el usuario A comparte la ruta con su amigo B, este puede visualizar la ruta, pero esta no se guarda en su POD, si no que el usuario A le está dando acceso a B para poder verla.   
 
 image::ViadeApp.jpg[Diagrama de la caja blanca de Viade App]
-****
