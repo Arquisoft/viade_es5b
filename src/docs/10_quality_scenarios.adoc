@@ -4,10 +4,10 @@
 
 ****
 .Contenido
-image::qualityTree.png[qualityTreeFoto]
+image::qualityTree.JPG[qualityTreeFoto]
 
 .Explicación
-En este árbol de calidad podemos observar nuestros escenarios de calidad que explicaremos en el siguiente apartado. 
+En este arbol podemos observar los diferentes objetivos de calidad que serán usados para representar los escenarios de uso. 
 
 
 ****
@@ -18,32 +18,79 @@ En este árbol de calidad podemos observar nuestros escenarios de calidad que ex
 
 .Escenarios de uso
 |===
-| *Escenario*  | *Explicación*  | *Prioridad*
+| *ID*  | *Objetivo de calidad*  | *Escenario* | *Enfoque de la solución* | *Riesgo*
 
-| *Usabilidad*
-| Facilitar el uso de sistema para que el usuario no lo abandone. Interfaz amigable, con indicadores de tiempos de carga. 
-| Alta
-| *Seguridad*
-| Un usuario no podrá ver rutas privadas de otros usuarios.
-| Alta
-| *Seguridad*
-| Un Usuario no podrá acceder a la aplicación sin tener una cuenta creada.
-| Muy alta
-| *Disponibilidad*
-| La aplicacion debe ser apta para el mayor numero de personas posibles.
-| Media
-| *Escalabilidad*
-| Si la aplicación tuviera un número elevado de usuarios seguiría funcionando correctamente.
-| Baja
-| *Descentralización*
-| Los datos de los usuarios están guardados en sus respectivos PODs haciendo así la aplicación descentralizada.
-| Muy alta
-| *Eficiencia*
-| Minimizar los tiempos de respuesta a las peticiones del usuario. En caso de un tiempo de respuesta largo indicarlo mediante un aviso.
-| Media
-| *Portabilidad*
-| La aplicación web podrá ser utilizada en diferentes plataformas para llegar a más usuarios.
-| Media
+| US-1
+| Usabilidad 
+| Un usuario sin conocimientos previos sobre el uso de aplicaciones de rutas desea crear una ruta con 3 hitos sin tener que acceder a tuturiales. Tiempo máximo en crearla 5 minutos.
+| La aplicación cuenta con una interfaz de creación de rutas que permite crear estas simplemente haciendo click en el mapa para seleccionar los hitos que la forman.
+| Rechazo por parte del usuario de la aplicación. 
+
+| US-2
+| Usabilidad
+| Un usuario daltónico intenta crear una ruta con 3 hitos con la aplicación.
+| Se han usado colores diferenciables en la aplicación a la vez de texto en los botones que evitan al usuario confundirse. Tiempo máximo en crearla 5 minutos.
+| Rechazo por parte del usuario de la aplicación.
+
+| ES-1
+| Escalabilidad
+| La aplicación pasa a tener 50 usuarios conectados a la vez. 
+| Test de carga con la herramienta gatling que permitieron ver un correcto funcionamiento de la aplicación con esa carga de usuarios. Tiempos de carga de la aplicación menores de 1200ms.
+| Tiempos de carga mayores de 1200ms y por tanto inaceptable para el usuario.
+
+| EF-1
+| Eficiencia
+| Un usuario interactua con la aplicación entrando en las diferenten pantallas que esta proporciona. El usuario espera tiempos de carga asumibles al realizar cualquier operación(menos de 1 minuto).
+| Animaciónes entre los tiempos de carga que indiquen al usuario que la aplicación sigue funcionando. Pruebas de tiempos de reacción de la aplicación con resultados menores a un minuto. Uso de peticiones asíncronas con async / await.
+| Tiempos de espera demasiado largos que pueden producir el rechazo de la aplicación por parte del usuario.
+
+| PD-1
+| Portabilidad, Descentralización
+| Un usuario desea entrar en la aplicación con su POD del proveedor inrupt. Tiempo máximo de acceso 3 minutos.
+| Nuestra aplicación permite acceder con un WebId de este proveedor.
+| Rechazo por partede los usuarios que tienen su POD con este proveedor. 
+
+| PD-2
+| Portabilidad, Descentralización
+| Un usuario desea entrar en la aplicación con su POD del proveedor Solid Community. Tiempo máximo de acceso 3 minutos.
+| Nuestra aplicación permite acceder con un WebId de este proveedor.
+| Rechazo por partede los usuarios que tienen su POD con este proveedor.
+
+| PD-3
+| Portabilidad, Descentralización
+| Un usuario desea entrar en la aplicación con su POD de su Servidor local. Tiempo máximo de acceso 3 minutos.
+| Nuestra aplicación permite acceder con un WebId de su servidor local.
+| Rechazo por partede los usuarios que tienen su POD en su servidor local.
+
+| MA-1
+| Mantenibilidad
+| Un programador quiere añadir una nueva funcionalidad a la aplicación para que se puedan editar las rutas.
+| Se ha establecido una organización en paquetes y un acceso a datos de manera que añadir esta funcionalidad no significaría modificar ninguna parte funcional de la aplicación quitando los nuevos elementos de la interfaz. Clases del backend modificadas: 1 (la clase fachada).
+| Estancamiento de la aplicacion ya que no se podría ampliar su funcionalidad.
+
+| IN-1
+| Interoperabilidad
+| Un usuario quiere compartir una ruta con uno de sus amigos.
+| La aplicación permite a los usuarios compartir sus rutas. Tiempo máximo en compartir la ruta 2 minutos.
+| El usuario dejará de usar la aplicación y pasará a usar otra que le permita compartir estas rutas.
+
+| IN-2
+| Interoperabilidad
+| Un usuario quiere dejar un comentario en una ruta que ha sido compartida con él.
+| La aplicación permite a los usuarios hacer comentarios en la rutas que han sido compartidas con él. Tiempo máximo en realizar un comentario de una frase 3 minutos.
+| El usuario se planteará el uso de otras aplicacíones de rutas que si permitan los comentarios.
+
+| SE-1
+| Seguridad
+| Una persona quiere suplantar la identidad de un usuario de la aplicación.
+| La aplicación cuenta con un sitema de login que evita acceder a cuentas de otros sin permiso. Ataques por fuerza bruta con exito: 0.
+| Robo de datos del usuario. Inaceptable.
+
+| DI-1
+| Disponibilidad
+| La aplicación debe estar disponible 24hx365d.
+| Se verificará cada minuto la disponibilidad de la aplicación, en caso de fallo se notificará al equipo técnico para reparar el problema.
+| No disponibilidad de la aplicación hasta que se resuelva el incidente. Tiempo máximo 5 horas.
 |===
 
 ****
