@@ -32,7 +32,7 @@ Cada usuario podrá compartir sus rutas y podrá acceder a rutas de otros usuari
 .Forma
 En un futuro se realizará el diagramas para el Business Context, seguido de una breve explicación.
 
-image::BusinessDiagram.jpeg[bd]
+image::BusinessDiagram.png[bd]
 
 ****
 
