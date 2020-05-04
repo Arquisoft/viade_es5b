@@ -56,11 +56,14 @@ image:inicioSesion.png[inicioSesionDiagrama]
 
 [plantuml,"DiagramaAddRuta",png]
 ----
-Usuario -> App: Seleccionamos "Añadir ruta"
-App -> Usuario: Devuelve la vista con el formulario de Añadir ruta
-Usuario -> App: Rellenar campos de ruta e hitos
-App -> BBDD: Guarda la ruta en el POD
-App -> Usuario: Mensaje de "Ruta guardada"
+actor Usuario
+boundary Viade_es5b
+database POD
+Usuario -> Viade_es5b: Seleccionamos "Añadir ruta"
+Viade_es5b -> Usuario: Devuelve la vista con el formulario de Añadir ruta
+Usuario -> Viade_es5b: Rellenar campos de ruta e hitos
+Viade_es5b -> POD: Guarda la ruta en el POD
+Viade_es5b -> Usuario: Mensaje de "Ruta guardada"
 ----
 ****
 === Ver rutas
@@ -70,10 +73,13 @@ App -> Usuario: Mensaje de "Ruta guardada"
 
 [plantuml,"DiagramaVerRutas",png]
 ----
-Usuario -> App: Seleccionamos "Mis rutas"
-App -> BBDD : Solicitar las rutas del usuario al POD
-BBDD -> App: Devuelve las rutas
-App -> Usuario: Devuelve la vista con las rutas del usuario
+actor Usuario
+boundary Viade_es5b
+database POD
+Usuario -> Viade_es5b: Seleccionamos "Mis rutas"
+Viade_es5b -> POD : Solicitar las rutas del usuario al POD
+POD -> Viade_es5b: Devuelve las rutas
+Viade_es5b -> Usuario: Devuelve la vista con las rutas del usuario
 ----
 
 ****
@@ -87,17 +93,20 @@ App -> Usuario: Devuelve la vista con las rutas del usuario
 
 [plantuml,"DiagramaEliminarRuta",png]
 ----
-Usuario -> App: Seleccionamos "Mis rutas"
-App -> BBDD : Solicitar las rutas del usuario al POD
-BBDD -> App: Devuelve las rutas
-App -> Usuario: Devuelve la vista con las rutas del usuario
-Usuario -> App: Escoge la ruta a eliminar y pulsa el botón "Eliminar"
-App -> BBDD: Elimina la ruta del POD
-App -> Usuario: Mensaje de "Ruta eliminada"
+actor Usuario
+boundary Viade_es5b
+database POD
+Usuario -> Viade_es5b: Seleccionamos "Mis rutas"
+Viade_es5b -> POD : Solicitar las rutas del usuario al POD
+POD -> Viade_es5b: Devuelve las rutas
+Viade_es5b -> Usuario: Devuelve la vista con las rutas del usuario
+Usuario -> Viade_es5b: Escoge la ruta a eliminar y pulsa el botón "Eliminar"
+Viade_es5b -> POD: Elimina la ruta del POD
+Viade_es5b -> Usuario: Mensaje de "Ruta eliminada"
 ----
 
 ****
-=== Agregar amigo que existe
+=== Agregar amigo que existe y no es amigo del usuario
 
 ****
 
@@ -108,11 +117,14 @@ App -> Usuario: Mensaje de "Ruta eliminada"
 
 [plantuml,"DiagramaAgregarAmigoExistente",png]
 ----
-Usuario -> App: Seleccionamos "Amigos"
-App -> Usuario: Devuelve la vista que nos permite agregar un amigo y listar los amigos
-Usuario -> App: Rellenamos el campo con el webId del usuario que queremos agregar como amigo y click en "Agregar"
-App -> BBDD: Guarda el amigo en el POD del usuario
-App -> Usuario: Muestra el nuevo amigo en la lista de amigos
+actor Usuario
+boundary Viade_es5b
+database POD
+Usuario -> Viade_es5b: Seleccionamos "Amigos"
+Viade_es5b -> Usuario: Devuelve la vista que nos permite agregar un amigo y listar los amigos
+Usuario -> Viade_es5b: Rellenamos el campo con el webId del usuario que queremos agregar como amigo y click en "Agregar"
+Viade_es5b -> POD: Guarda el amigo en el POD del usuario
+Viade_es5b -> Usuario: Muestra el nuevo amigo en la lista de amigos
 ----
 
 ****
@@ -128,13 +140,16 @@ App -> Usuario: Muestra el nuevo amigo en la lista de amigos
 
 [plantuml,"DiagramaAgregarAmigoNoExistenteOYaAmigo",png]
 ----
-Usuario -> App: Seleccionamos "Amigos"
-App -> Usuario: Devuelve la vista que nos permite agregar un amigo y listar los amigos
-Usuario -> App: Rellenamos el campo con el webId del usuario que queremos agregar como amigo y click en "Agregar"
-App -> BBDD: Intenta guardar el amigo en el POD del usuario
-BBDD -> BBDD: No encuentra un usuario con ese webID o comprueba que ya es amigo del usuario
-BBDD -> App: Notifica que no se ha agregado el nuevo amigo
-App -> Usuario: Notifica que "No existe el usuario o ya está presente en tu lista de amigos." y muestra la lista de amigos sin añadir un nuevo amigo
+actor Usuario
+boundary Viade_es5b
+database POD
+Usuario -> Viade_es5b: Seleccionamos "Amigos"
+Viade_es5b -> Usuario: Devuelve la vista que nos permite agregar un amigo y listar los amigos
+Usuario -> Viade_es5b: Rellenamos el campo con el webId del usuario que queremos agregar como amigo y click en "Agregar"
+Viade_es5b -> POD: Intenta guardar el amigo en el POD del usuario
+POD -> POD: No encuentra un usuario con ese webID o comprueba que ya es amigo del usuario
+POD -> Viade_es5b: Notifica que no se ha agregado el nuevo amigo
+Viade_es5b -> Usuario: Notifica que "No existe el usuario o ya está presente en tu lista de amigos." y muestra la lista de amigos sin añadir un nuevo amigo
 ----
 
 ****
@@ -147,10 +162,13 @@ App -> Usuario: Notifica que "No existe el usuario o ya está presente en tu lis
 
 [plantuml,"DiagramaVerAmigos",png]
 ----
-Usuario -> App: Seleccionamos "Amigos"
-App -> BBDD : Solicitar los amigos del usuario al POD
-BBDD -> App: Devuelve los amigos
-App -> Usuario: Devuelve la vista con los amigos del usuario
+actor Usuario
+boundary Viade_es5b
+database POD
+Usuario -> Viade_es5b: Seleccionamos "Amigos"
+Viade_es5b -> POD : Solicitar los amigos del usuario al POD
+POD -> Viade_es5b: Devuelve los amigos
+Viade_es5b -> Usuario: Devuelve la vista con los amigos del usuario
 ----
 
 ****
@@ -167,18 +185,22 @@ App -> Usuario: Devuelve la vista con los amigos del usuario
 
 [plantuml,"DiagramaCompartirRuta",png]
 ----
-Usuario -> App: Seleccionamos "Mis rutas"
-App -> BBDD : Solicitar las rutas del usuario al POD
-BBDD -> App: Devuelve las rutas
-App -> Usuario: Devuelve la vista con las rutas del usuario
-Usuario -> App: Escoge la ruta a compartir y pulsa el botón "Compartir"
-App -> BBDD: Solicita los amigos del usuario al POD
-BBDD -> App: Devuelve los amigos del usuario
-App -> Usuario: Muestra la lista de amigos al usuario
-Usuario -> App: Selecciona los amigos a los que quiere compartir la ruta y pulsa el botón "Compartir"
-App -> BBDD: Guarda la ruta con el usuario que la compartió en los PODs de los amigos seleccionados
-BBDD -> AppAmigo: Notifica que se le ha compartido una ruta
-AppAmigo -> Usuario: Notifica al usuario que le han compartido una ruta
+actor Usuario
+boundary Viade_es5b
+database POD
+database PODAmigo
+Usuario -> Viade_es5b: Seleccionamos "Mis rutas"
+Viade_es5b -> POD : Solicitar las rutas del usuario al POD
+POD -> Viade_es5b: Devuelve las rutas
+Viade_es5b -> Usuario: Devuelve la vista con las rutas del usuario
+Usuario -> Viade_es5b: Escoge la ruta a compartir y pulsa el botón "Compartir"
+Viade_es5b -> POD: Solicita los amigos del usuario al POD
+POD -> Viade_es5b: Devuelve los amigos del usuario
+Viade_es5b -> Usuario: Muestra la lista de amigos al usuario
+Usuario -> Viade_es5b: Selecciona los amigos a los que quiere compartir la ruta y pulsa el botón "Compartir"
+Viade_es5b -> PODAmigo: Guarda la ruta con el usuario que la compartió en los PODs de los amigos seleccionados
+PODAmigo -> Viade_es5b: Notifica que se le ha compartido una ruta
+Viade_es5b -> Usuario: Notifica al usuario que le han compartido una ruta
 
 ----
 
@@ -192,15 +214,18 @@ AppAmigo -> Usuario: Notifica al usuario que le han compartido una ruta
 
 [plantuml,"DiagramaRutasCompartidas",png]
 ----
-Usuario -> App: Seleccionamos "Compartido conmigo"
-App -> BBDD : Solicitar las rutas que han compartido al usuario al POD
-BBDD -> App: Devuelve las rutas
-App -> Usuario: Devuelve la vista con las rutas que se han compartido al usuario
+actor Usuario
+boundary Viade_es5b
+database POD
+Usuario -> Viade_es5b: Seleccionamos "Compartido conmigo"
+Viade_es5b -> POD : Solicitar las rutas que han compartido al usuario al POD
+POD -> Viade_es5b: Devuelve las rutas
+Viade_es5b -> Usuario: Devuelve la vista con las rutas que se han compartido al usuario
 ----
 
 ****
 
-=== Comentar una ruta
+=== Comentar una ruta propia
 
 ****
 
@@ -211,19 +236,22 @@ App -> Usuario: Devuelve la vista con las rutas que se han compartido al usuario
 
 [plantuml,"DiagramaComentarRuta",png]
 ----
-Usuario -> App: Seleccionamos "Mis rutas"
-App -> BBDD : Solicitar las rutas del usuario al POD
-BBDD -> App: Devuelve las rutas
-App -> Usuario: Devuelve la vista con las rutas del usuario
-Usuario -> App: Escoge la ruta a la que quiere crear un comentario y click en "Comentarios"
-Usuario -> App: Escribe el comentario y click en el botón "Publicar"
-App -> BBDD: Crea un comentario nuevo para la ruta en el POD
-App -> Usuario: Visualizamos el comentario en la lista de comentarios de la ruta
+actor Usuario
+boundary Viade_es5b
+database POD
+Usuario -> Viade_es5b: Seleccionamos "Mis rutas"
+Viade_es5b -> POD : Solicitar las rutas del usuario al POD
+POD -> Viade_es5b: Devuelve las rutas
+Viade_es5b -> Usuario: Devuelve la vista con las rutas del usuario
+Usuario -> Viade_es5b: Escoge la ruta a la que quiere crear un comentario y click en "Comentarios"
+Usuario -> Viade_es5b: Escribe el comentario y click en el botón "Publicar"
+Viade_es5b -> POD: Crea un comentario nuevo para la ruta en el POD
+Viade_es5b -> Usuario: Visualizamos el comentario en la lista de comentarios de la ruta
 ----
 
 ****
 
-=== Añadir una imagen a una ruta
+=== Añadir una imagen a una ruta propia
 
 ****
 
@@ -233,18 +261,21 @@ App -> Usuario: Visualizamos el comentario en la lista de comentarios de la ruta
 
 [plantuml,"DiagramaSubirImagenRuta",png]
 ----
-Usuario -> App: Seleccionamos "Mis rutas"
-App -> BBDD : Solicitar las rutas del usuario al POD
-BBDD -> App: Devuelve las rutas
-App -> Usuario: Devuelve la vista con las rutas del usuario
-Usuario -> App: Escoge la ruta a la que quiere añadir una foto, selecciona la imagen y click en el botón "Subir"
-App -> BBDD: Añade una foto para la ruta en el POD
-App -> Usuario: Visualizamos la imagen añadida en la galería de la ruta
+actor Usuario
+boundary Viade_es5b
+database POD
+Usuario -> Viade_es5b: Seleccionamos "Mis rutas"
+Viade_es5b -> POD : Solicitar las rutas del usuario al POD
+POD -> Viade_es5b: Devuelve las rutas
+Viade_es5b -> Usuario: Devuelve la vista con las rutas del usuario
+Usuario -> Viade_es5b: Escoge la ruta a la que quiere añadir una foto, selecciona la imagen y click en el botón "Subir"
+Viade_es5b -> POD: Añade una foto para la ruta en el POD
+Viade_es5b -> Usuario: Visualizamos la imagen añadida en la galería de la ruta
 ----
 
 ****
 
-=== Ver comentarios de una ruta
+=== Ver comentarios de una ruta propia
 
 ****
 
@@ -254,18 +285,21 @@ App -> Usuario: Visualizamos la imagen añadida en la galería de la ruta
 
 [plantuml,"DiagramaVerComentariosRuta",png]
 ----
-Usuario -> App: Seleccionamos "Mis rutas"
-App -> BBDD : Solicitar las rutas del usuario al POD
-BBDD -> App: Devuelve las rutas
-App -> Usuario: Devuelve la vista con las rutas del usuario
-Usuario -> App: Escoge la ruta de la que queremos ver los comentarios y click en "Comentarios"
-App -> BBDD: Solicita los comentarios de la ruta al POD
-App -> Usuario: Visualizamos los comentarios de la ruta
+actor Usuario
+boundary Viade_es5b
+database POD
+Usuario -> Viade_es5b: Seleccionamos "Mis rutas"
+Viade_es5b -> POD : Solicitar las rutas del usuario al POD
+POD -> Viade_es5b: Devuelve las rutas
+Viade_es5b -> Usuario: Devuelve la vista con las rutas del usuario
+Usuario -> Viade_es5b: Escoge la ruta de la que queremos ver los comentarios y click en "Comentarios"
+Viade_es5b -> POD: Solicita los comentarios de la ruta al POD
+Viade_es5b -> Usuario: Visualizamos los comentarios de la ruta
 ----
 
 ****
 
-=== Ver galería de una ruta
+=== Ver galería de una ruta propia
 
 ****
 
@@ -275,9 +309,13 @@ App -> Usuario: Visualizamos los comentarios de la ruta
 
 [plantuml,"DiagramaVerGaleriaRuta",png]
 ----
-Usuario -> App: Seleccionamos "Mis rutas"
-App -> BBDD : Solicitar las rutas del usuario al POD
-BBDD -> App: Devuelve las rutas con sus galerías
+actor Usuario
+boundary Viade_es5b
+database POD
+Usuario -> Viade_es5b: Seleccionamos "Mis rutas"
+Viade_es5b -> POD : Solicitar las rutas del usuario al POD
+POD -> Viade_es5b: Devuelve las rutas con sus galerías
+Viade_es5b -> Usuario: Muestra la galería de la ruta al usuario
 ----
 
 ****
@@ -293,14 +331,18 @@ BBDD -> App: Devuelve las rutas con sus galerías
 
 [plantuml,"DiagramaComentarRutaCompartida",png]
 ----
-Usuario -> App: Seleccionamos "Compartido conmigo"
-App -> BBDD : Solicitar las rutas compartidas al usuario al POD
-BBDD -> App: Devuelve las rutas
-App -> Usuario: Devuelve la vista con las rutas compartidas al usuario
-Usuario -> App: Escoge la ruta a la que quiere crear un comentario y click en "Comentarios"
-Usuario -> App: Escribe el comentario y click en el botón "Publicar"
-App -> BBDD: Crea un comentario nuevo para la ruta en el POD
-App -> Usuario: Visualizamos el comentario en la lista de comentarios de la ruta
+actor Usuario
+boundary Viade_es5b
+database POD
+database PODAmigo
+Usuario -> Viade_es5b: Seleccionamos "Compartido conmigo"
+Viade_es5b -> POD : Solicitar las rutas compartidas al usuario al POD
+POD -> Viade_es5b: Devuelve las rutas
+Viade_es5b -> Usuario: Devuelve la vista con las rutas compartidas al usuario
+Usuario -> Viade_es5b: Escoge la ruta a la que quiere crear un comentario y click en "Comentarios"
+Usuario -> Viade_es5b: Escribe el comentario y click en el botón "Publicar"
+Viade_es5b -> PODAmigo: Crea un comentario nuevo para la ruta en el POD
+Viade_es5b -> Usuario: Visualizamos el comentario en la lista de comentarios de la ruta
 ----
 
 ****
@@ -315,13 +357,17 @@ App -> Usuario: Visualizamos el comentario en la lista de comentarios de la ruta
 
 [plantuml,"DiagramaSubirImagenRutaCompartida",png]
 ----
-Usuario -> App: Seleccionamos "Compartido conmigo"
-App -> BBDD : Solicitar las rutas compartidas al usuario al POD
-BBDD -> App: Devuelve las rutas
-App -> Usuario: Devuelve la vista con las rutas compartidas al usuario
-Usuario -> App: Escoge la ruta a la que quiere añadir una foto, selecciona la imagen y click en el botón "Subir"
-App -> BBDD: Añade una foto para la ruta en el POD
-App -> Usuario: Visualizamos la imagen añadida en la galería de la ruta
+actor Usuario
+boundary Viade_es5b
+database POD
+database PODAmigo
+Usuario -> Viade_es5b: Seleccionamos "Compartido conmigo"
+Viade_es5b -> POD : Solicitar las rutas compartidas al usuario al POD
+POD -> Viade_es5b: Devuelve las rutas
+Viade_es5b -> Usuario: Devuelve la vista con las rutas compartidas al usuario
+Usuario -> Viade_es5b: Escoge la ruta a la que quiere añadir una foto, selecciona la imagen y click en el botón "Subir"
+Viade_es5b -> PODAmigo: Añade una foto para la ruta en el POD del amigo
+Viade_es5b -> Usuario: Visualizamos la imagen añadida en la galería de la ruta
 ----
 
 ****
@@ -336,13 +382,16 @@ App -> Usuario: Visualizamos la imagen añadida en la galería de la ruta
 
 [plantuml,"DiagramaVerComentariosRutaCompartida",png]
 ----
-Usuario -> App: Seleccionamos "Compartido conmigo"
-App -> BBDD : Solicitar las rutas compartidas al usuario al POD
-BBDD -> App: Devuelve las rutas compartidas
-App -> Usuario: Devuelve la vista con las rutas compartidas al usuario
-Usuario -> App: Escoge la ruta compartida de la que queremos ver los comentarios y click en "Comentarios"
-App -> BBDD: Solicita los comentarios de la ruta compartida al POD
-App -> Usuario: Visualizamos los comentarios de la ruta compartida
+actor Usuario
+boundary Viade_es5b
+database POD
+Usuario -> Viade_es5b: Seleccionamos "Compartido conmigo"
+Viade_es5b -> POD : Solicitar las rutas compartidas al usuario al POD
+POD -> Viade_es5b: Devuelve las rutas compartidas
+Viade_es5b -> Usuario: Devuelve la vista con las rutas compartidas al usuario
+Usuario -> Viade_es5b: Escoge la ruta compartida de la que queremos ver los comentarios y click en "Comentarios"
+Viade_es5b -> POD: Solicita los comentarios de la ruta compartida al POD
+Viade_es5b -> Usuario: Visualizamos los comentarios de la ruta compartida
 ----
 
 ****
@@ -357,9 +406,13 @@ App -> Usuario: Visualizamos los comentarios de la ruta compartida
 
 [plantuml,"DiagramaVerGaleriaRutaCompartida",png]
 ----
-Usuario -> App: Seleccionamos "Compartido conmigo"
-App -> BBDD : Solicitar las rutas compartidas al usuario al POD
-BBDD -> App: Devuelve las rutas que nos han compartido con sus galerías
+actor Usuario
+boundary Viade_es5b
+database POD
+Usuario -> Viade_es5b: Seleccionamos "Compartido conmigo"
+Viade_es5b -> POD : Solicitar las rutas compartidas al usuario al POD
+POD -> Viade_es5b: Devuelve las rutas que nos han compartido con sus galerías
+Viade_es5b -> Usuario: Muestra la galería de la ruta al usuario
 ----
 
 ****
