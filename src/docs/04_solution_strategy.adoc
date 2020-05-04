@@ -1,7 +1,7 @@
 [[section-solution-strategy]]
 == Estrategia de solución
+A continuación, se muestra una tabla en la que se describen las diferentes tecnologías que se han ido utilizando a lo largo del desarrollo de la aplicación. Se recogen aquellas tecnologías y herramientas realmente importantes y que tienen cierto peso en el desarrollo del proyecto.
 
-****
 .Tecnologias
 |===
 |Tecnología |Propósito 
@@ -18,21 +18,48 @@
 |IDE para la codificación de la solución y de la documentación.
 |React Bootstrap| Framework de estilos que proporciona componentes React ya implementados para modelar la interfaz de usuario de manera rápida y elegante.
 |React Leaflet Map| Componente de React que nos permite visualizar un mapa con coordenadas, polilíneas, figuras, layers... Hace uso de la API de Leaflet Map.
+| React Testing Library + Jest | Librerías que proporcionan herramientas para llevar a cabo el desarrollo de las *pruebas unitarias TDD* del proyecto.
+| Jest Cucumber | Herramienta que proporciona todo lo necesario para la especificación y definición de las *pruebas de aceptación* o *BDD*, mediante las plantillas para definir las historias de usuario.
+| Jest Puppeteer | Librería para llevar a cabo la implementación de las pruebas de aceptación definidas en las historias de usuario y poder ejecutarlas en un entorno controlado mediante Chromium.
+| Docker Desktop + Docker Compose | Herramienta utilizada para desplegar la aplicación web en un contenedor local, junto con un servidor de POD's con la ayuda de Docker Compose. De esta forma se pueden realizar los test de carga en un entorno controlado.
+| Gatling Load Testing | Herramienta de testing que permite realizar tests de carga para generar unos reportes finales que puedan reflejar el rendimiento de las operaciones de la aplicación, y así detectar aquellas zonas en las que el rendimiento sea inferior.
+| Asciidoctor | Herramienta para agilizar el proceso de creación de la documentación del proyecto, junto con la extensión AsciiDoc de Visual Studio Code.
 |===
-.Enfoques para alcanzar objetivos de calidad
 
-* Uso de funciones Async/await para escribir código completamente síncrono mientras realizamos tareas asíncronas en segundo plano, mejorando así la eficiencia.
-* Uso de Bootstrap para el diseño de nuestra aplicación web, mejorando así la usabilidad.
-* Uso de la API de Leaflet para representar las rutas del usuario en un mapa y así mejorar la usabilidad ya que los usuarios están más familiarizados con ella.
-* Uso de Solid nos permite crear una aplicación descentralizada.
+.Enfoques para alcanzar objetivos de calidad
+En esta sección, se proporciona una lista de los enfoques que se han llevado a cabo para alcanzar diversos objetivos de calidad.
+
+* Uso de Bootstrap y React framework para el diseño de la interfaz de nuestra aplicación web, mejorando así la usabilidad y accesibilidad.
+
+* Uso de Solid nos permite crear una aplicación descentralizada y en la que cada usuario es responsable de sus datos, y de con quién desea compartirlos mejorando así la seguridad y disponibilidad de los datos.
+
 * Uso de PODs de Solid proporciona seguridad a los usuarios a la hora de evitar el acceso a sus rutas a usuarios no autorizados.
+
+
+* Separación del equipo de desarrollo en *frontend* y *backend* para agilizar el proceso de investigación sobre las tecnologías utilizadas y así obtener funcionalidad relativamente rápido.
+
+* Uso de la API de Leaflet para representar las rutas del usuario en un mapa y así mejorar la usabilidad, al ser más intuitivo visualizar la ruta dibujada en un mapa. También mejora la usabilidad considerablemente a la hora de permitir la creación de una ruta seleccionando los puntos en un mapa.
+
+* Uso de spinners y overlays, es decir, iconos y pantallas de carga para mejorar la experiencia del usuario en aquellas operaciones que impliquen una mayor tiempo de respuesta.
+
+* Separación del código en varios módulos o capas, una dedicada a la renderización de los componentes de la interfaz de usuario y otra encargada de procesar los datos y de su persistencia. De este modo se aumenta la mantenibilidad del código y su modularidad, lo cual hace que sea más sencillo realizar cambios en un futuro.
+
+* Implementar componentes de React desacoplados de la lógica, es decir, pasando referencias a las funciones que utilizan a través de sus Props. De este modo, se mejora la adaptabilidad de estos componentes y su reutilización, además de que se hace más fácil testearlos mediante pruebas unitarias.
+
+* Uso de funciones Async/await para escribir código completamente asíncrono mientras realizamos tareas asíncronas en segundo plano, mejorando así la eficiencia y la disponibilidad de los datos en la interfaz de usuario.
+
+
 
 .Descomposición de alto nivel
 
-A continuación se muestra el diagrama de la descomposición de alto nivel de nuestra aplicación web. En el cual podemos observar que se divide en
-dos funcionalidades principales: usuarios y servicio de rutas.
+A continuación, se muestra el diagrama de la descomposición de alto nivel de nuestra aplicación web. En el cual podemos observar que se divide en
+dos funcionalidades principales: *usuarios* y *servicio de rutas*.
 
-image::DescAltoNivel4.JPG[]
+image::DescomposicionAltoNivel.jpg[Descomposición de alto nivel del sistema.]
+
+En este diagrama, se muestran de color *azul claro*, aquellos módulos o componentes de alto nivel en los que se divide la aplicación. Por otro lado, aquellos componentes o funcionalidades concretas que no ha sido posible finalizar se muestran en *rojo*. En cuanto a los módulos de color *verde*, estos representan aquellas funcionalidades que han sido terminadas y probadas con éxito, y que están disponibles en la versión actual de la aplicación.
+
+Puede verse que casi el 100 % de la funcionalidad ha sido implementada, exceptuando el caso concreto de crear una nueva ruta mediante un fichero, el cual contenga toda la información de la ruta. En un futuro se propone implementar esta funcionalidad permitiendo a la aplicación generar rutas a partir de ficheros subidos por los usuarios, pudiendo incluso la subida simultánea de múltiples ficheros.
 
 Los usuarios serán capaces de crear sus propias rutas, para luego visualizarlas en un mapa. Además también tendrán la posibilidad de *añadir comentarios y fotos* a sus rutas.
 Otra funcionalidad destacable, es la posibilidad de *agregar amigos* introduciendo su *webID*. No existen las peticiones de amistad, así que una vez agregado el usuario, este ya entablará una relación de amistad con nosotros. 
@@ -41,11 +68,11 @@ El usuario loggeado tendrá la posibilidad de compartir sus rutas con otros usua
 
 .Decisiones Organizativas
 
-Division en capas de la arquitectura para una mayor mantenibilidad.
+Como ya se mencionó antes, se ha llevado a cabo una separación en capas o módulos bien definidos, de forma que se mejore así la mantenibilidad del código, además de facilitar el reparto de tareas entre los miembros del equipo.
 
-Empezar el trabajo por asuntos de mayor prioridad como añadir y visualizar rutas.
+También se ha optado por comenzar el desarrollo de aquellas funcionalidades o tareas de mayor prioridad como añadir y visualizar rutas, de forma que así se obtiene algo funcional que pueda ser enseñado al cliente (en este caso al profesor de prácticas) en periodos tiempos relativamente cortos.
 
-Division del trabajo en dos equipos (backend y frontend).
+Por otro lado, se ha llevado a cabo la division del trabajo en dos equipos (backend y frontend), cuyo reparto entre los miembros del grupo se muestra a continuación.
 |===
 |BackEnd|FrontEnd
 
@@ -67,4 +94,4 @@ back-end deben estar bien delimitados para hacer que la comunicación sea lo mas
 Relacionado con lo anterior, es útil agrupar componentes y clases relacionadas en paquetes o módulos aumentando la cohesión.
 
 De este modo, obtenemos una arquitectura en dos capas, que se conecta mediante una interfaz definida por los *servicios*, que contienen la lógica de negocio y son quienes se comunican con los servicios de persistencia.
-****
+
